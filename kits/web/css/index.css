@@ -1,0 +1,269 @@
+body,h1{
+	margin:0;
+	padding:0;
+	font-family:Microsoft Yahei;
+	font-size:14px;
+	}
+a{
+	text-decoration:none;
+	color:#000;
+	}
+a:hover{
+	color:#5093e3;
+	}
+/*代办事项页面*/
+.center{
+	width:1053px;
+	height:650px;
+	margin:20px auto;
+	}
+/*分类，如登录提醒、系统公告*/
+.title{
+	height:36px;
+	line-height:36px;
+	font-size:16px;
+/*	background: pink;*/
+	}
+.entry{width: 500px;height: 36px;}
+.entry div{float: left;}
+.entry .entry-1{font-size: 16px;font-weight: bold;margin-right: 5px;}
+.entry .entry-2{margin-right: 15px;}
+
+
+
+
+
+
+
+.title img{
+	width:16px;
+	vertical-align:middle;
+	margin-top:-1px;
+	}
+.read{
+	float:right;
+	font-size:14px;
+	height:40px;
+	line-height:40px;
+	}
+b{
+	margin-right:4px;
+	}
+.time{
+	font-style:normal;
+	margin-right:15px;
+	}
+/*安全提醒、公告*/
+.top{
+	position:relative;
+	width:1053px;
+	overflow:hidden;
+	}
+.t-left,.t-right{
+	float:left;
+	}
+.t-right{
+	position:absolute;
+	left:536px;
+	}
+/*代办事项部分*/
+.middle{
+	overflow:hidden;
+	width:1053px;
+	margin:30px 0;
+	}
+.m-box{
+	float:left;
+	margin-left:15px;
+	}
+#nav{
+	width:252px; 
+	}
+/*显示出来的代办事项部分*/
+#nav .wait{ 
+	cursor:pointer; 
+	height:100px; 
+	width:250px;
+	color:#000;
+	border:1px solid #ddd;
+/*	border-radius:4px;*/
+	position:relative;
+	}
+.w-left{
+	position:absolute;
+	top:20px;
+	left:20px;
+	}
+.w-center{
+	position:absolute;
+	top:20px;
+	right:25px;
+	font-size:18px;
+	font-weight:bold;
+	letter-spacing:2px;
+	}
+.w-right{
+	position:absolute;
+	bottom:20px;
+	right:25px;
+	font-size:16px;
+	letter-spacing:2px;
+	}
+/*被隐藏的代办事项部分*/
+.show i{
+	display:inline-block;
+	width:120px;
+	text-align:left;
+	}
+.show b{
+	display:inline-block;
+	width:54px;
+	text-align:right;
+	font-size:12px;
+	margin-left:10px;
+	}
+#nav a{
+	display:block; 
+	line-height:36px;
+	text-align:center;
+	letter-spacing:2px;
+	color:#000;
+	border-bottom:1px dotted #ddd;
+	}
+#nav a:hover{
+	background-color:#ddd; 
+	letter-spacing:2px;
+	color:#000;
+	}
+#nav .show{
+	display:none; 
+	border:1px solid #ddd; 
+	border-top:none;
+	}
+
+
+/*营业数据、营收分析*/
+.b-left,.b-right{
+	float:left;
+	}
+.b-left{
+	width:350px;
+	}
+.b-right{
+	width:683px;
+	margin-left:20px;
+	}
+.bl-box,.br-box{
+	height:315px;
+	border:1px solid #ddd;
+	margin-top:6px;
+	position:relative;
+	}
+/*营业数据条件部分*/
+.b-top{
+	padding:10px 0;
+	border-bottom:1px solid #ddd;
+	height: 84px;
+
+	}
+.select1{
+	height:32px;
+/*	line-height:32px;*/
+	margin-left:15px;
+/*	background: pink;*/
+	width: 335px;
+	position: absolute;
+	top: 28px;
+	
+	}
+.select2{
+	height:32px;
+/*	line-height:32px;*/
+	margin-left:15px;
+/*	background: pink;*/
+	width: 335px;
+	position: absolute;
+	top: 56px;
+
+	}
+.select1 .time{
+	margin:0;
+	float: left;
+	}
+.select2 .time{
+	margin:0;
+	float: left;
+	}
+input{
+	width:80px;
+}
+.inn{float: left;margin-right: 5px;}
+.select1 .chaxun{
+	font-weight:normal;
+	margin-left:8px;
+	display:inline-block;
+	border:1px solid #aaa;
+	width:48px;
+	height:18px;
+	line-height:18px;
+	text-align:center;
+
+	
+	}
+.select2 .chaxun{
+	font-weight:normal;
+	margin-left:8px;
+	display:inline-block;
+	border:1px solid #aaa;
+	width:48px;
+	height:18px;
+	line-height:18px;
+	text-align:center;
+
+	
+	}
+select{
+	width:84px;
+	}
+/*营业数据，数据显示部分*/
+.b-box{
+	width:173px;
+	height:105px;
+	position:relative;
+	float:left
+	}
+.word{
+	position:absolute;
+	top:20px;
+	left:16px;
+	font-size:16px;
+	letter-spacing:1px;
+	}
+.money{
+	position:absolute;
+	bottom:20px;
+	right:16px;
+	font-size:16px;
+	letter-spacing:1px;
+	}
+.money span{
+	font-size:14px;
+	font-weight:normal;
+	margin-left:4px;
+	}
+/*营收分析图表部分*/
+.chart{
+	position:absolute;
+	bottom:0;
+	left:4px;
+	}
+.chart img{
+	width:662px;
+	margin-left:15px;
+	}
+/*营收分析注释部分，如横纵坐标*/
+.note{
+	line-height:32px;
+	padding:10px 0;
+	margin-left:16px;
+	}

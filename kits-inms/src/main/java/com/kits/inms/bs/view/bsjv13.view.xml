@@ -1,0 +1,684 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ViewConfig>
+  <Arguments/>
+  <Context/>
+  <Model>
+    <DataType name="dtTbprocessDetail" meta="x:447;y:150">
+      <Property name="creationType">com.kits.inms.bs.domain.Tbprocessdetail</Property>
+      <PropertyDef name="pkProcessDetail">
+        <Property></Property>
+        <Property name="label">工艺路线明细档键值</Property>
+      </PropertyDef>
+      <PropertyDef name="compId">
+        <Property></Property>
+        <Property name="label">公司别</Property>
+      </PropertyDef>
+      <PropertyDef name="processRouteNo">
+        <Property></Property>
+        <Property name="label">工艺路线编码</Property>
+        <Validator name="validator1" type="length">
+          <Property name="maxLength">5</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="processSeq">
+        <Property></Property>
+        <Property name="label">工序顺序号</Property>
+        <Validator name="validator1" type="length">
+          <Property name="maxLength">3</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="processId">
+        <Property></Property>
+        <Property name="label">工序代码</Property>
+        <Property name="mapping">
+          <Property name="mapValues">${dorado.getDataProvider(&quot;bsjc32BO#queryBs32&quot;).getResult()}</Property>
+        </Property>
+        <Property name="required">true</Property>
+        <Validator name="validator1" type="length">
+          <Property name="maxLength">5</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="createEmpNo">
+        <Property></Property>
+        <Property name="label">创建人员</Property>
+      </PropertyDef>
+      <PropertyDef name="createDate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">创建日期</Property>
+      </PropertyDef>
+      <PropertyDef name="modifyEmpNo">
+        <Property></Property>
+        <Property name="label">修改人员</Property>
+      </PropertyDef>
+      <PropertyDef name="modifyDate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">修改日期</Property>
+      </PropertyDef>
+      <PropertyDef name="defs01">
+        <Property></Property>
+        <Property name="label">DEFS01_</Property>
+      </PropertyDef>
+      <PropertyDef name="defs02">
+        <Property></Property>
+        <Property name="label">DEFS02_</Property>
+      </PropertyDef>
+      <PropertyDef name="defs03">
+        <Property></Property>
+        <Property name="label">DEFS03_</Property>
+      </PropertyDef>
+      <PropertyDef name="defs04">
+        <Property></Property>
+        <Property name="label">DEFS04_</Property>
+      </PropertyDef>
+      <PropertyDef name="defs05">
+        <Property></Property>
+        <Property name="label">DEFS05_</Property>
+      </PropertyDef>
+      <PropertyDef name="defb01">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">DEFB01_</Property>
+      </PropertyDef>
+      <PropertyDef name="defb02">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">DEFB02_</Property>
+      </PropertyDef>
+      <PropertyDef name="defb03">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">DEFB03_</Property>
+      </PropertyDef>
+      <PropertyDef name="defb04">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">DEFB04_</Property>
+      </PropertyDef>
+      <PropertyDef name="defb05">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">DEFB05_</Property>
+      </PropertyDef>
+      <PropertyDef name="defm01">
+        <Property></Property>
+        <Property name="label">DEFM01_</Property>
+      </PropertyDef>
+      <PropertyDef name="defm02">
+        <Property></Property>
+        <Property name="label">DEFM02_</Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="dtTbprocessRoute" meta="x:615;y:90">
+      <ClientEvent name="onCurrentChange">functions[&quot;queryTbprocessDetail&quot;]();&#xD;
+</ClientEvent>
+      <Property name="creationType">com.kits.inms.bs.domain.Tbprocessroute</Property>
+      <PropertyDef name="pkProcessRoute">
+        <Property></Property>
+        <Property name="label">工艺路线主档键值</Property>
+      </PropertyDef>
+      <PropertyDef name="compId">
+        <Property></Property>
+        <Property name="label">公司别</Property>
+      </PropertyDef>
+      <PropertyDef name="processRouteType">
+        <Property></Property>
+        <Property name="label">工艺路线类别</Property>
+        <Property name="mapping">
+          <Property name="mapValues">
+            <Entity>
+              <Property name="01">A</Property>
+              <Property name="02">B</Property>
+              <Property name="03">C</Property>
+              <Property name="04">D</Property>
+              <Property name="05">E</Property>
+            </Entity>
+          </Property>
+        </Property>
+        <Property name="required">true</Property>
+        <Validator name="validator1" type="length">
+          <Property name="maxLength">2</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="processRouteNo">
+        <Property></Property>
+        <Property name="label">工艺路线编码</Property>
+        <Property name="readOnly">true</Property>
+        <Validator name="validator1" type="length">
+          <Property name="maxLength">5</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="processRouteDesc">
+        <Property></Property>
+        <Property name="label">工艺路线说明</Property>
+        <Property name="readOnly">true</Property>
+        <Validator name="validator1" type="length">
+          <Property name="maxLength">100</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="createEmpNo">
+        <Property></Property>
+        <Property name="label">创建人员</Property>
+      </PropertyDef>
+      <PropertyDef name="createDate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">创建日期</Property>
+      </PropertyDef>
+      <PropertyDef name="modifyEmpNo">
+        <Property></Property>
+        <Property name="label">修改人员</Property>
+      </PropertyDef>
+      <PropertyDef name="modifyDate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">修改日期</Property>
+      </PropertyDef>
+      <PropertyDef name="defs01">
+        <Property></Property>
+        <Property name="label">DEFS01_</Property>
+      </PropertyDef>
+      <PropertyDef name="defs02">
+        <Property></Property>
+        <Property name="label">DEFS02_</Property>
+      </PropertyDef>
+      <PropertyDef name="defs03">
+        <Property></Property>
+        <Property name="label">DEFS03_</Property>
+      </PropertyDef>
+      <PropertyDef name="defs04">
+        <Property></Property>
+        <Property name="label">DEFS04_</Property>
+      </PropertyDef>
+      <PropertyDef name="defs05">
+        <Property></Property>
+        <Property name="label">DEFS05_</Property>
+      </PropertyDef>
+      <PropertyDef name="defb01">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">DEFB01_</Property>
+      </PropertyDef>
+      <PropertyDef name="defb02">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">DEFB02_</Property>
+      </PropertyDef>
+      <PropertyDef name="defb03">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">DEFB03_</Property>
+      </PropertyDef>
+      <PropertyDef name="defb04">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">DEFB04_</Property>
+      </PropertyDef>
+      <PropertyDef name="defb05">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">DEFB05_</Property>
+      </PropertyDef>
+      <PropertyDef name="defm01">
+        <Property></Property>
+        <Property name="label">DEFM01_</Property>
+      </PropertyDef>
+      <PropertyDef name="defm02">
+        <Property></Property>
+        <Property name="label">DEFM02_</Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="dtQuery" meta="x:300;y:15">
+      <PropertyDef name="processRouteNo">
+        <Property></Property>
+        <Property name="label">工艺路线编码</Property>
+        <Validator name="validator1" type="length">
+          <Property name="maxLength">5</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="processIdStart">
+        <Property></Property>
+        <Property name="label">起始工序</Property>
+        <Property name="mapping">
+          <Property name="mapValues">${dorado.getDataProvider(&quot;bsjc32BO#queryBs32&quot;).getResult()}</Property>
+        </Property>
+        <Validator name="validator1" type="length">
+          <Property name="maxLength">5</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="processIdEnd">
+        <Property></Property>
+        <Property name="label">结束工序</Property>
+        <Property name="mapping">
+          <Property name="mapValues">${dorado.getDataProvider(&quot;bsjc32BO#queryBs32&quot;).getResult()}</Property>
+        </Property>
+        <Validator name="validator1" type="length">
+          <Property name="maxLength">5</Property>
+        </Validator>
+      </PropertyDef>
+    </DataType>
+  </Model>
+  <View>
+    <ClientEvent name="onCreate">functions = {&#xD;
+	&#xD;
+	&quot;queryTbprocess&quot; : function(){&#xD;
+		var data = view.get(&quot;#dsQuery.data:#&quot;);&#xD;
+		var processRouteNo = data.get(&quot;processRouteNo&quot;);&#xD;
+		var processIdStart = data.get(&quot;processIdStart&quot;);&#xD;
+		var processIdEnd = data.get(&quot;processIdEnd&quot;);&#xD;
+		view.id(&quot;dsTbprocessRoute&quot;).set(&quot;parameter&quot;,{&#xD;
+			&quot;processRouteNo&quot; : processRouteNo,&#xD;
+			&quot;processIdStart&quot; : processIdStart,&#xD;
+			&quot;processIdEnd&quot; : processIdEnd&#xD;
+		}).flushAsync(function(){&#xD;
+			var data = view.get(&quot;#dsTbprocessRoute.data&quot;);&#xD;
+			if(data.entityCount == 0){&#xD;
+				dorado.MessageBox.alert(&quot;没有相关数据!&quot;);&#xD;
+				info.doSet(&quot;text&quot;,&quot;没有相关数据!&quot;);&#xD;
+				view.id(&quot;dsTbprocessRoute&quot;).insert();&#xD;
+			}else{&#xD;
+				functions[&quot;queryTbprocessDetail&quot;]();&#xD;
+				info.doSet(&quot;text&quot;,&quot;查询成功!&quot;);&#xD;
+				functions[&quot;checkButton&quot;]();&#xD;
+			}&#xD;
+		});&#xD;
+	},&#xD;
+	&quot;queryTbprocessDetail&quot; : function(){&#xD;
+		var data = view.get(&quot;#dsTbprocessRoute.data:#&quot;);&#xD;
+		view.id(&quot;dsTbprocessDetail&quot;).set(&quot;parameter&quot;,{&#xD;
+			&quot;processRouteNo&quot; : data.get(&quot;processRouteNo&quot;)&#xD;
+		}).flushAsync(function(){&#xD;
+			functions[&quot;checkButton&quot;]();&#xD;
+		});&#xD;
+	},&#xD;
+	&quot;saveTbprocessRoute&quot; : function(){&#xD;
+		var data = view.get(&quot;#dsTbprocessRoute.data:#&quot;);&#xD;
+		var pk = data.get(&quot;pkProcessRoute&quot;);&#xD;
+		if(pk){&#xD;
+			view.id(&quot;dsTbprocessRoute&quot;).insert({&#xD;
+				&quot;processRouteType&quot; : data.get(&quot;processRouteType&quot;)&#xD;
+			});&#xD;
+		}&#xD;
+		view.id(&quot;saveTbprocessRoute&quot;).execute(function(){&#xD;
+			info.doSet(&quot;text&quot;,&quot;保存成功!&quot;);&#xD;
+			functions[&quot;checkButton&quot;]();&#xD;
+		});&#xD;
+	},&#xD;
+	&quot;modifyTbprocessRoute&quot; : function(){&#xD;
+		var data = view.get(&quot;#dsTbprocessRoute.data:#&quot;);&#xD;
+		var type = data.get(&quot;processRouteType&quot;);&#xD;
+		var data2 = view.get(&quot;#dsTbprocessDetail.data&quot;);&#xD;
+		var size = data2.entityCount;&#xD;
+		if (parseInt(type) === size){&#xD;
+			var desc = &quot;&quot;;&#xD;
+			var dg = view.id(&quot;dgTbprocessDetail&quot;);&#xD;
+			var text = dg._dom.innerText;&#xD;
+			var texts = text.split(&quot;\n&quot;);&#xD;
+			var index = 4;&#xD;
+			data2.each(function(entity){&#xD;
+				var temp = texts[index];&#xD;
+				desc += temp + &quot;-&quot;;&#xD;
+				index += 3;&#xD;
+			});&#xD;
+			desc = desc.substr(0, desc.length - 1);  &#xD;
+			data.set(&quot;processRouteDesc&quot;,desc);&#xD;
+			view.id(&quot;saveTbprocessRoute&quot;).execute(function(result){&#xD;
+				view.id(&quot;saveTbprocessDetail&quot;).set(&quot;parameter&quot;,{&#xD;
+					&quot;routeNo&quot; : result &#xD;
+				}).execute(function(){&#xD;
+					info.doSet(&quot;text&quot;,&quot;修改成功!&quot;);&#xD;
+					functions[&quot;checkButton&quot;]();&#xD;
+				});&#xD;
+			});&#xD;
+		}else {&#xD;
+			dorado.MessageBox,alert(&quot;工艺路线数量应与工艺路线类别对应！&quot;);&#xD;
+			info.doSet(&quot;text&quot;,&quot;工艺路线数量应与工艺路线类别对应!&quot;);&#xD;
+		}&#xD;
+		&#xD;
+	},&#xD;
+	&quot;deleteTbprocessRoute&quot; : function(){&#xD;
+		var entity=view.get(&quot;#dsTbprocessRoute.data:#&quot;);&#xD;
+		if(entity){&#xD;
+			var options = {&#xD;
+			    callback: function(){&#xD;
+					var selection = view.get(&quot;#dgTbprocessRoute&quot;).get(&quot;selection&quot;);&#xD;
+					if(selection.length > 0){&#xD;
+						selection.each(function(data){&#xD;
+							data.state = 3;&#xD;
+						});&#xD;
+						view.get(&quot;#delTbprocessRoute&quot;).set({&#xD;
+							executingMessage:&quot;正在删除...&quot;,&#xD;
+							successMessage:&quot;删除成功！&quot;&#xD;
+						}).execute(function(){&#xD;
+							info.doSet(&quot;text&quot;,&quot;删除成功!&quot;);&#xD;
+							functions[&quot;checkButton&quot;]();		&#xD;
+						});&#xD;
+					}else{&#xD;
+						info.doSet(&quot;text&quot;,&quot;请选择数据!&quot;);&#xD;
+						dorado.MessageBox.alert(&quot;请选择数据!&quot;);&#xD;
+					}&#xD;
+		    	},&#xD;
+				icon : &quot;WARNING&quot;,&#xD;
+				title : &quot;删除确认&quot;&#xD;
+		    }&#xD;
+			dorado.MessageBox.confirm(&quot;您确定要删除此数据吗？&quot;, options);//删除数据&#xD;
+&#xD;
+		}else{&#xD;
+			dorado.MessageBox.alert(&quot;没有数据可以删除!&quot;);&#xD;
+		}&#xD;
+	},&#xD;
+	&quot;insertTbprocessDetail&quot; : function(){&#xD;
+		view.id(&quot;dsTbprocessDetail&quot;).insert();&#xD;
+		var entity = view.get(&quot;#dsTbprocessRoute.data:#&quot;);&#xD;
+		var pk = entity.get(&quot;pkProcessRoute&quot;); &#xD;
+		var data = view.get(&quot;#dsTbprocessDetail.data:#&quot;)&#xD;
+		var prevData;&#xD;
+		if(data){&#xD;
+			prevData = data.getPrevious();&#xD;
+		}&#xD;
+		var seq;&#xD;
+		var routeNo;&#xD;
+		if (pk) {&#xD;
+			routeNo = entity.get(&quot;processRouteNo&quot;);&#xD;
+		}&#xD;
+		if(prevData){&#xD;
+			seq = parseInt(prevData.get(&quot;processSeq&quot;)) + 1;&#xD;
+			seq = (&quot;000000&quot; + seq ).substr( -3 );&#xD;
+		}else {&#xD;
+			seq = &quot;000&quot;;&#xD;
+		}&#xD;
+		data.set(&quot;processSeq&quot;,seq);&#xD;
+		data.set(&quot;processRouteNo&quot;,routeNo);&#xD;
+	},&#xD;
+	&quot;deleteTbprocessDetail&quot; : function(){&#xD;
+		var entity=view.get(&quot;#dsTbprocessDetail.data:#&quot;);&#xD;
+		if(entity){&#xD;
+			var options = {&#xD;
+			    callback: function(){&#xD;
+					var selection = view.get(&quot;#dgTbprocessDetail&quot;).get(&quot;selection&quot;);&#xD;
+					if(selection.length >= 1){&#xD;
+						selection.each(function(data){&#xD;
+							data.remove();&#xD;
+						});&#xD;
+					}else{&#xD;
+						entity.remove();&#xD;
+					}&#xD;
+			        view.get(&quot;#saveTbprocessDetail&quot;).set({&#xD;
+						executingMessage:&quot;正在删除...&quot;,&#xD;
+						successMessage:&quot;删除成功！&quot;&#xD;
+					}).execute(function(){&#xD;
+						info.doSet(&quot;text&quot;,&quot;删除成功!&quot;);&#xD;
+					});&#xD;
+		    	},&#xD;
+				icon : &quot;WARNING&quot;,&#xD;
+				title : &quot;删除确认&quot;&#xD;
+		    }&#xD;
+			dorado.MessageBox.confirm(&quot;您确定要删除此数据吗？&quot;, options);//删除数据&#xD;
+&#xD;
+		}else{&#xD;
+			dorado.MessageBox.alert(&quot;没有数据可以删除!&quot;);&#xD;
+		}&#xD;
+	},&#xD;
+	&quot;checkButton&quot; : function(){&#xD;
+		var btModify = view.id(&quot;modify&quot;);&#xD;
+		var btDelete = view.id(&quot;delete&quot;);&#xD;
+		var btAdd = view.id(&quot;btAdd&quot;);&#xD;
+		var btCancel = view.id(&quot;btCancel&quot;);&#xD;
+		&#xD;
+		var data1 = view.get(&quot;#dsTbprocessRoute.data:#&quot;);&#xD;
+		var pk = data1.get(&quot;pkProcessRoute&quot;);&#xD;
+		if(pk){&#xD;
+			btModify.set(&quot;disabled&quot;,false);&#xD;
+			btDelete.set(&quot;disabled&quot;,false);&#xD;
+			btAdd.set(&quot;disabled&quot;,false);&#xD;
+			btCancel.set(&quot;disabled&quot;,false);&#xD;
+		}else{&#xD;
+			btModify.set(&quot;disabled&quot;,true);&#xD;
+			btDelete.set(&quot;disabled&quot;,true);&#xD;
+			btAdd.set(&quot;disabled&quot;,true);&#xD;
+			btCancel.set(&quot;disabled&quot;,true);&#xD;
+		}&#xD;
+	}&#xD;
+	&#xD;
+}&#xD;
+</ClientEvent>
+    <ClientEvent name="onReady">functions[&quot;checkButton&quot;]();&#xD;
+&#xD;
+window.info = view.get(&quot;#info&quot;);&#xD;
+info.doSet(&quot;text&quot;,&quot;欢迎使用本系统 ...&quot;);&#xD;
+</ClientEvent>
+    <Property name="styleSheetFile">com/kits/saas/mw/style1.css</Property>
+    <Panel>
+      <Buttons/>
+      <Children>
+        <Panel>
+          <Property name="exClassName">panel0</Property>
+          <Buttons/>
+          <Children>
+            <AutoForm id="afQuery">
+              <Property name="dataSet">dsQuery</Property>
+              <Property name="cols">180,150,150,80,80</Property>
+              <AutoFormElement>
+                <Property name="name">processRouteNo</Property>
+                <Property name="property">processRouteNo</Property>
+                <Property name="labelPosition">left</Property>
+                <Property name="labelWidth">85</Property>
+                <Editor/>
+              </AutoFormElement>
+              <AutoFormElement>
+                <Property name="name">processIdStart</Property>
+                <Property name="property">processIdStart</Property>
+                <Property name="trigger">autoMappingDropDown1</Property>
+                <Property name="labelWidth">60</Property>
+                <Editor/>
+              </AutoFormElement>
+              <AutoFormElement>
+                <Property name="name">processIdEnd</Property>
+                <Property name="property">processIdEnd</Property>
+                <Property name="trigger">autoMappingDropDown1</Property>
+                <Property name="labelWidth">60</Property>
+                <Editor/>
+              </AutoFormElement>
+              <Button>
+                <ClientEvent name="onClick">functions[&quot;queryTbprocess&quot;]();&#xD;
+</ClientEvent>
+                <Property name="caption">查询</Property>
+                <Property name="icon">url(>skin>common/icons.gif) -40px -100px</Property>
+              </Button>
+              <Button>
+                <ClientEvent name="onClick">view.get(&quot;#dsQuery.data:#&quot;).cancel();&#xD;
+view.id(&quot;dsQuery&quot;).insert();&#xD;
+</ClientEvent>
+                <Property name="caption">重置</Property>
+                <Property name="icon">url(>skin>common/icons.gif) -40px -240px</Property>
+              </Button>
+            </AutoForm>
+          </Children>
+          <Tools/>
+        </Panel>
+        <FieldSet layout="hbox">
+          <Property name="caption">查询条件</Property>
+          <Property name="collapseable">false</Property>
+          <Property name="visible">false</Property>
+          <Property name="hideMode">display</Property>
+          <Buttons/>
+          <Children>
+            <Panel layoutConstraint="align:center;padding:10">
+              <Property name="background">white</Property>
+              <Property name="border">none</Property>
+              <Property name="width">50%</Property>
+              <Property name="height">100%</Property>
+              <Property name="contentOverflow">visible</Property>
+              <Buttons/>
+              <Children>
+                <Import src="com.kits.inms.mw.view.info#infoPanel"/>
+              </Children>
+              <Tools/>
+            </Panel>
+          </Children>
+        </FieldSet>
+        <Panel>
+          <Buttons/>
+          <Children>
+            <SplitPanel>
+              <Property name="position">50%</Property>
+              <MainControl>
+                <Panel>
+                  <Buttons/>
+                  <Children>
+                    <ToolBar>
+                      <Button id="insert">
+                        <ClientEvent name="onClick">functions[&quot;saveTbprocessRoute&quot;]();&#xD;
+</ClientEvent>
+                        <Property name="caption">新增</Property>
+                        <Property name="icon">url(>skin>common/icons.gif) -120px 0px</Property>
+                      </Button>
+                      <Button id="modify">
+                        <ClientEvent name="onClick">functions[&quot;modifyTbprocessRoute&quot;]();&#xD;
+</ClientEvent>
+                        <Property name="caption">修改</Property>
+                        <Property name="icon">url(>skin>common/icons.gif) -200px 0px</Property>
+                      </Button>
+                      <Button id="delete">
+                        <ClientEvent name="onClick">functions[&quot;deleteTbprocessRoute&quot;]();</ClientEvent>
+                        <Property name="caption">删除</Property>
+                        <Property name="icon">url(>skin>common/icons.gif) -140px 0px</Property>
+                      </Button>
+                    </ToolBar>
+                    <AutoForm>
+                      <Property name="dataSet">dsTbprocessRoute</Property>
+                      <AutoFormElement>
+                        <Property name="name">processRouteType</Property>
+                        <Property name="property">processRouteType</Property>
+                        <Property name="labelWidth">100</Property>
+                        <Property name="editorWidth">80</Property>
+                        <Property name="trigger">autoMappingDropDown1</Property>
+                        <Editor/>
+                      </AutoFormElement>
+                      <AutoFormElement>
+                        <Property name="name">processRouteNo</Property>
+                        <Property name="property">processRouteNo</Property>
+                        <Property name="labelWidth">100</Property>
+                        <Editor/>
+                      </AutoFormElement>
+                      <AutoFormElement layoutConstraint="colSpan:2">
+                        <Property name="name">processRouteDesc</Property>
+                        <Property name="property">processRouteDesc</Property>
+                        <Property name="labelWidth">100</Property>
+                        <Editor/>
+                      </AutoFormElement>
+                    </AutoForm>
+                    <ToolBar>
+                      <Button id="btAdd">
+                        <ClientEvent name="onClick">functions[&quot;insertTbprocessDetail&quot;]();&#xD;
+</ClientEvent>
+                        <Property name="caption">增行</Property>
+                        <Property name="icon">url(>skin>common/icons.gif) -120px 0px</Property>
+                      </Button>
+                      <Button id="btCancel">
+                        <ClientEvent name="onClick">var selection = view.get(&quot;#dgTbprocessDetail&quot;).get(&quot;selection&quot;);&#xD;
+if(selection.length == 0){&#xD;
+	dorado.MessageBox.alert(&quot;请选择数据!&quot;)&#xD;
+}else {&#xD;
+	selection.each(function(data){&#xD;
+		data.cancel();&#xD;
+	});&#xD;
+}&#xD;
+</ClientEvent>
+                        <Property name="caption">删行</Property>
+                        <Property name="icon">url(>skin>common/icons.gif) -140px 0px</Property>
+                      </Button>
+                    </ToolBar>
+                    <DataGrid id="dgTbprocessDetail">
+                      <ClientEvent name="onDataRowClick">if(arg.column.get(&quot;caption&quot;)!=&quot;RowSelector&quot;){&#xD;
+	var selection = self.get(&quot;selection&quot;);&#xD;
+	var entity = self.get(&quot;dataSet&quot;).getData(&quot;#&quot;);&#xD;
+	self.set(&quot;selection&quot;,entity);&#xD;
+}</ClientEvent>
+                      <Property name="dataSet">dsTbprocessDetail</Property>
+                      <Property name="selectionMode">multiRows</Property>
+                      <RowSelectorColumn/>
+                      <RowNumColumn/>
+                      <DataColumn name="processRouteNo">
+                        <Property name="property">processRouteNo</Property>
+                        <Property name="readOnly">true</Property>
+                      </DataColumn>
+                      <DataColumn name="processId">
+                        <Property name="property">processId</Property>
+                        <Property name="caption">工序设定</Property>
+                      </DataColumn>
+                    </DataGrid>
+                  </Children>
+                  <Tools/>
+                </Panel>
+              </MainControl>
+              <SideControl>
+                <Panel>
+                  <Buttons/>
+                  <Children>
+                    <ToolBar>
+                      <Fill/>
+                      <DataPilot>
+                        <Property name="dataSet">dsTbprocessRoute</Property>
+                      </DataPilot>
+                    </ToolBar>
+                    <DataGrid id="dgTbprocessRoute">
+                      <ClientEvent name="onDataRowClick">if(arg.column.get(&quot;caption&quot;)!=&quot;RowSelector&quot;){&#xD;
+	var selection = self.get(&quot;selection&quot;);&#xD;
+	var entity = self.get(&quot;dataSet&quot;).getData(&quot;#&quot;);&#xD;
+	self.set(&quot;selection&quot;,entity);&#xD;
+}</ClientEvent>
+                      <Property name="dataSet">dsTbprocessRoute</Property>
+                      <Property name="readOnly">true</Property>
+                      <Property name="selectionMode">multiRows</Property>
+                      <RowSelectorColumn/>
+                      <DataColumn name="processRouteType">
+                        <Property name="property">processRouteType</Property>
+                        <Property name="width">150</Property>
+                      </DataColumn>
+                      <DataColumn name="processRouteNo">
+                        <Property name="property">processRouteNo</Property>
+                        <Property name="width">150</Property>
+                      </DataColumn>
+                      <DataColumn name="processRouteDesc">
+                        <Property name="property">processRouteDesc</Property>
+                      </DataColumn>
+                    </DataGrid>
+                  </Children>
+                  <Tools/>
+                </Panel>
+              </SideControl>
+            </SplitPanel>
+          </Children>
+          <Tools/>
+        </Panel>
+      </Children>
+      <Tools/>
+    </Panel>
+    <DataSet id="dsTbprocessRoute">
+      <ClientEvent name="onReady">self.insert();&#xD;
+</ClientEvent>
+      <Property name="dataType">[dtTbprocessRoute]</Property>
+      <Property name="pageSize">15</Property>
+      <Property name="loadMode">manual</Property>
+      <Property name="dataProvider">bsjc13BO#queryTbProcessRoute</Property>
+    </DataSet>
+    <DataSet id="dsTbprocessDetail">
+      <Property name="dataType">[dtTbprocessDetail]</Property>
+      <Property name="dataProvider">bsjc13BO#queryTbprocessDetal</Property>
+      <Property name="pageSize">15</Property>
+      <Property name="loadMode">manual</Property>
+    </DataSet>
+    <DataSet id="dsQuery">
+      <ClientEvent name="onReady">self.insert();&#xD;
+</ClientEvent>
+      <Property name="dataType">[dtQuery]</Property>
+    </DataSet>
+    <UpdateAction id="saveTbprocessRoute">
+      <Property name="dataResolver">bsjc13BO#saveTbprocessRoute</Property>
+      <UpdateItem>
+        <Property name="dataSet">dsTbprocessRoute</Property>
+        <Property name="dataPath">[#current]</Property>
+      </UpdateItem>
+    </UpdateAction>
+    <UpdateAction id="saveTbprocessDetail">
+      <Property name="dataResolver">bsjc13BO#saveTbprocessDetail</Property>
+      <UpdateItem>
+        <Property name="dataSet">dsTbprocessDetail</Property>
+      </UpdateItem>
+    </UpdateAction>
+    <UpdateAction id="delTbprocessRoute">
+      <Property name="dataResolver">bsjc13BO#delTbProcessRoute</Property>
+      <UpdateItem>
+        <Property name="dataSet">dsTbprocessRoute</Property>
+      </UpdateItem>
+    </UpdateAction>
+  </View>
+</ViewConfig>

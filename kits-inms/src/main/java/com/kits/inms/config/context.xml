@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	                    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+	                    http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd ">
+
+    <bean parent="dorado.packagesConfigLoader">
+        <property name="configLocation" value="home:packages-config.xml">
+        </property>
+    </bean>
+    <bean parent="dorado.dataConfigLoader">
+        <property name="configLocation" value="classpath:com/kits/inms/model/*.model.xml"/>
+    </bean>
+    <bean class="com.bstek.bdf2.core.orm.AnnotationPackages">
+        <property name="scanPackages">
+            <list>
+            </list>
+        </property>
+        <property name="dataSourceRegisterName" value="${saas.dataSourceName}"></property>
+    </bean>
+
+    <bean parent="dorado.viewConfigFactoryRegister">
+        <property name="viewNamePattern" value="business.**"/>
+        <property name="viewConfigFactory">
+            <bean parent="dorado.xmlViewConfigDefinitionFactory">
+                <property name="pathPrefix" value="classpath:com/kits/"/>
+                <property name="pathSubfix" value=".view.xml"/>
+            </bean>
+        </property>
+    </bean>
+
+    <context:component-scan base-package="com.kits.inms"/>
+    <mvc:annotation-driven/>
+</beans>

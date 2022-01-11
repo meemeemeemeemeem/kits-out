@@ -1,0 +1,587 @@
+body{
+	width:100%;
+	height:100%;
+	padding:0;
+	margin:0;
+	font-family:Microsoft Yahei;
+	background-size:100%;
+	}
+a{
+	color:#333;
+	text-decoration:none;
+	}
+.top,.bottom{
+	margin:0 auto;
+	}
+.top{
+	overflow:hidden;
+	}
+.t_left{
+	float:left;
+	}
+.t_right{
+	float:right;
+	overflow:hidden;
+	letter-spacing:1px;
+	}
+.t_right div{
+	float:right;
+	margin-left:14px;
+	}
+.t_right img{
+	height:18px;
+	vertical-align:middle;
+	padding:0 2px;
+	margin-top:-2px;
+	}
+.center{
+	overflow:hidden; 
+	background-size:100%;
+	background-repeat:no-repeat;
+	position:relative;
+	}
+.box{
+	margin:0 auto;
+	}
+h5{
+	font-weight:normal;
+	text-align:center;
+	margin:0 auto;
+	padding:0;
+	}
+.help{
+	font-size:14px;
+	margin-bottom:16px;
+	}
+.box a{
+	text-decoration:none;
+	color:#5093e3;
+	}
+.login{
+	border-radius:4px;
+	background:#FFF;
+	float:right;
+	opacity:1.0;
+	}
+/*输入错误*/
+.error{
+	color:red;
+	letter-spacing:1px;
+	}
+ul,li{
+	list-style:none;
+	margin:0;
+	padding:0;
+	}
+li{
+	display:block;
+	border:1px solid #ccc;
+	}
+.border-no{
+	border:none;
+	}
+.border-no input,.border-no span{
+	border:1px solid #ccc;
+	vertical-align:middle;
+	}
+.border-no input{
+	text-indent:12px;
+	letter-spacing:2px;
+	outline:0;
+	}
+.border-no span{
+	text-align:center;
+	letter-spacing:6px;
+	color:#5093e3;
+	cursor:pointer;
+	}
+b{
+	display:block;
+	float:left;
+	}
+.user,.password{
+	float:right;
+	letter-spacing:1px;
+	border:none;
+	outline:0;	
+}
+.check{
+	float:left;
+	}
+.remember{
+	float:left;
+	}
+.checkBox a{
+	color:#000;
+	}
+.forget{
+	float:right;
+	}
+/*登录按钮*/
+.submit{
+	background-color:#5093e3;
+	border:0;
+	text-align:center;
+	color:#fff;
+	font-family:Microsoft Yahei;
+	cursor:pointer;
+	}
+.bottom{
+	text-align:center;
+	}
+.weixin{
+	position:absolute;
+	}
+.weixin .xixi{
+	display:none;
+	}
+.weixin:hover .xixi{
+	position:absolute;
+	display:block;
+	z-index:9;
+	}
+p{
+	padding:0;
+	}
+.side-bar a,.chat-tips i {
+	background-image: url(../images/login/gdt-img-1.png);
+	background-repeat: no-repeat;
+}
+/*右侧悬浮icon*/
+.side-bar {
+	position:absolute;
+	font-size: 0;
+	line-height: 0;
+	z-index: 100;
+	transition:all 0.5s;
+}
+.side-bar a {
+	display: inline-block;
+	background-color: #bbb;
+}
+.side-bar a:hover {
+	background-color: #ddd;
+}
+.side-bar .icon-mail:hover .chat-tips {
+	display: block;
+}
+.side-bar .icon-mail {
+	position: relative;
+}
+.chat-tips {
+	border: 1px solid #d1d2d6;
+	position: absolute;
+	background-color: #ffffff;
+	display: none;
+}
+.chat-tips i {
+	display: inline-block;
+	position: absolute;
+}
+.chat-tips img {
+	float:left;
+}
+@media screen and (max-width: 1367px){
+body{
+	min-width:1366px;
+	font-size:0.8em;
+	}
+.top{
+	height:54px;
+	width:1000px;
+	}
+.t_left img{
+	height:46px;
+	margin-top:4px;
+	}
+.t_right img{
+	height:14px;
+	vertical-align:middle;
+	padding:0 2px;
+	margin-top:-2px;
+	}
+.t_right{
+	margin-top:30px;
+	}
+.center{
+	min-height:536px;
+	background:url(../images/login/bg-4.jpg);
+	min-width:1366px;
+	background-repeat:no-repeat;
+	}
+.box{
+	width:1000px;
+	}
+.login{
+	width:260px;
+	border-radius:4px;
+	padding:6px 40px 0px 40px;
+	margin-top:110px;
+	}
+.welcome{
+	font-size:16px;
+	margin:10px 0 20px 0;
+	}
+.error{
+	margin-bottom:10px;
+	font-size:14px;
+	}
+li{
+	height:32px;
+	border-radius:4px;
+	margin-bottom:16px;
+	}
+.border-no input,.border-no span{
+	border-radius:4px;
+	height:32px;
+	line-height:32px;
+	}
+.border-no input{
+	width:170px;
+	}
+.border-no span{
+	display:inline-block;
+	width:70px;
+	margin-left:16px;
+	font-weight:bold;
+	}
+b{
+	height:32px;
+	}
+b img{
+	height:18px;
+	margin:7px 8px 0 8px;
+	}
+.user,.password{
+	height:30px;
+	line-height:30px;
+	font-size:14px;
+	width:222px;
+}
+.check{
+	width:14px;
+	height:14px;
+	}
+.remember,.forget{
+	margin-top:1px;
+	}
+/*登录按钮*/
+.submit{
+	height:32px;
+	border-radius:4px;
+	width:260px;
+	margin:10px auto 15px;
+	font-size:16px;
+	}
+h5{
+	height:20px;
+	}
+.bottom{
+	height:42px;
+	line-height:42px;
+	}
+.weixin{
+	right:4px;
+	bottom:120px;
+	}
+.weixin:hover .xixi{
+	right:60px;
+	bottom:-10px;
+	}
+/*右侧悬浮icon*/
+.side-bar {
+	width: 46px;
+	bottom: 40px;
+	right: 4px;
+	font-size: 0;
+	line-height: 0;
+}
+.side-bar a {
+	width: 46px;
+	height: 46px;
+	margin-bottom: 2px;
+}
+.side-bar .icon-mail {
+	background-position:-9px -275px;
+}
+.chat-tips {
+	padding: 6px;
+	right: 56px;
+	top: -27px;
+}
+.chat-tips i {
+	width: 9px;
+	height: 16px;
+	right: -9px;
+	top: 42px;
+	background-position:-88px -350px;
+}
+.chat-tips img {
+	height: 80px;
+}
+}
+@media screen and (min-width:1367px) and (max-width:1601px){
+body{
+	min-width:1600px;
+	font-size:0.9em;
+	}
+.top{
+	height:60px;
+	width:1100px;
+	}
+.t_left img{
+	height:52px;
+	margin-top:4px;
+	}
+.t_right{
+	margin-top:34px;
+	}
+.t_right img{
+	height:14px;
+	vertical-align:middle;
+	padding:0 2px;
+	margin-top:-2px;
+	}
+.center{
+	min-height:656px;
+	background:url(../images/login/bg-3.jpg);
+	min-width:1600px;
+	width:100%;
+	background-repeat:no-repeat;
+	}
+.box{
+	width:1100px;
+	}
+.login{
+	width:310px;
+	border-radius:4px;
+	padding:10px 45px 0px;
+	margin-top:160px;
+	}
+.welcome{
+	font-size:18px;
+	margin:10px 0 30px 0;
+	}
+.error{
+	margin-bottom:10px;
+	font-size:14px;
+	}
+li{
+	height:36px;
+	border-radius:4px;
+	margin-bottom:12px;
+	}
+.border-no input,.border-no span{
+	border-radius:4px;
+	height:34px;
+	line-height:34px;
+	}
+.border-no input{
+	width:200px;
+	}
+.border-no span{
+	display:inline-block;
+	width:90px;
+	margin-left:16px;
+	font-weight:bold;
+	}
+b{
+	height:42px;
+	}
+b img{
+	height:20px;
+	margin:8px 10px 0 10px;
+	}
+.user,.password{
+	height:34px;
+	line-height:34px;
+	font-size:14px;
+	width:266px;
+}
+.checkBox{
+	padding-top:4px;
+	}
+.check{
+	width:16px;
+	height:16px;
+	vertical-align:middle;
+	}
+.remember,.forget{
+	margin-top:0px;
+	}
+/*登录按钮*/
+.submit{
+	height:36px;
+	border-radius:4px;
+	width:310px;
+	margin:10px auto 15px;
+	font-size:18px;
+	}
+.bottom{
+	height:48px;
+	line-height:48px;
+	}
+/*右侧悬浮icon*/
+.side-bar {
+	width: 66px;
+	bottom: 40px;
+	right: 4px;
+	font-size: 0;
+	line-height: 0;
+}
+.side-bar a {
+	width: 66px;
+	height: 66px;
+	margin-bottom: 2px;
+}
+.side-bar .icon-mail {
+	background-position: 0 -266px;
+}
+.chat-tips {
+	padding: 8px;
+	right: 78px;
+	top: -22px;
+}
+.chat-tips i {
+	width: 9px;
+	height: 16px;
+	right: -9px;
+	top: 47px;
+	background-position:-88px -350px;
+}
+.chat-tips img {
+	height: 90px;
+}
+}
+@media screen and (min-width:1601px){
+body{
+	min-width:1920px;
+	font-size:1em;
+	}
+.top{
+	height:70px;
+	width:1200px;
+	}
+.t_left img{
+	height:62px;
+	margin-top:4px;
+	}
+.t_right{
+	margin-top:35px;
+	}
+.t_right img{
+	height:18px;
+	vertical-align:middle;
+	padding:0 2px;
+	margin-top:-2px;
+	}
+.center{
+	min-height:810px;
+	background:url(../images/login/bg-2.jpg);
+	width:100%;
+	min-width:1920px;
+	background-repeat:no-repeat;
+	}
+.box{
+	width:1200px;
+	}
+.login{
+	width:360px;
+	border-radius:4px;
+	padding:20px 45px 0px;
+	margin-top:220px;
+	}
+.welcome{
+	font-size:18px;
+	margin:10px 0 30px 0;
+	}
+.error{
+	margin-bottom:10px;
+	font-size:14px;
+	}
+li{
+	height:42px;
+	border-radius:4px;
+	margin-bottom:20px;
+	}
+.border-no input,.border-no span{
+	border-radius:4px;
+	height:40px;
+	line-height:40px;
+	}
+.border-no input{
+	width:240px;
+	}
+.border-no span{
+	display:inline-block;
+	width:100px;
+	margin-left:16px;
+	font-weight:bold;
+	}
+b{
+	height:42px;
+	}
+b img{
+	height:26px;
+	margin:8px 10px 0 10px;
+	}
+.user,.password{
+	height:40px;
+	line-height:40px;
+	font-size:14px;
+	width:310px;
+}
+.checkBox{
+	padding-top:4px;
+	}
+.check{
+	width:16px;
+	height:16px;
+	}
+.remember,.forget{
+	margin-top:-1px;
+	}
+/*登录按钮*/
+.submit{
+	height:42px;
+	border-radius:4px;
+	width:360px;
+	margin:10px auto 15px;
+	font-size:18px;
+	}
+.bottom{
+	height:64px;
+	line-height:64px;
+	}
+/*右侧悬浮icon*/
+.side-bar {
+	width: 66px;
+	bottom: 40px;
+	right: 4px;
+	font-size: 0;
+	line-height: 0;
+}
+.side-bar a {
+	width: 66px;
+	height: 66px;
+	margin-bottom: 2px;
+}
+.side-bar .icon-mail {
+	background-position: 0 -266px;
+}
+.chat-tips {
+	padding: 8px;
+	right: 78px;
+	top: -30px;
+}
+.chat-tips i {
+	width: 9px;
+	height: 16px;
+	right: -9px;
+	top: 57px;
+	background-position:-88px -350px;
+}
+.chat-tips img {
+	height: 100px;
+}
+}

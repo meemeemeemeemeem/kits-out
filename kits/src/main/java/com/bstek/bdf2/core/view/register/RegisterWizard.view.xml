@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ViewConfig listener="spring:bdf2.registerWizard#onInit">
+  <Arguments/>
+  <Context/>
+  <Model/>
+  <View layout="vbox align:center">
+    <ClientEvent name="onReady">window.location.href=&quot;bdf2.core.view.frame.Login.d&quot;;</ClientEvent>
+    <Property name="title">系统管理员用户初始化注册</Property>
+  </View>
+</ViewConfig>

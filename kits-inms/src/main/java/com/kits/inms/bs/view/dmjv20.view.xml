@@ -1,0 +1,1361 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ViewConfig>
+  <Arguments/>
+  <Context/>
+  <Model>
+    <DataType name="dtTbdm20">
+      <Property name="creationType">com.kits.inms.bs.domain.Tbdm20</Property>
+      <PropertyDef name="pkDm02">
+        <Property></Property>
+        <Property name="label">UUID</Property>
+        <Validator name="validator1" type="length">
+          <Property name="maxLength">40</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="compId">
+        <Property></Property>
+        <Property name="label">公司别</Property>
+        <Validator name="validator1" type="length">
+          <Property name="maxLength">10</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="matNo">
+        <Property></Property>
+        <Property name="label">钢种代号</Property>
+        <Validator name="validator1" type="length">
+          <Property name="maxLength">5</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="matItem">
+        <Property></Property>
+        <Property name="label">代码</Property>
+        <Validator name="validator1" type="length">
+          <Property name="maxLength">2</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="matName">
+        <Property></Property>
+        <Property name="label">钢种名称</Property>
+        <Validator name="validator1" type="length">
+          <Property name="maxLength">30</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="matAbbrevName">
+        <Property></Property>
+        <Property name="label">分类简称</Property>
+        <Validator name="validator1" type="length">
+          <Property name="maxLength">90</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="accClassify">
+        <Property></Property>
+        <Property name="label">会计科目区分</Property>
+      </PropertyDef>
+      <PropertyDef name="closeCond">
+        <Property></Property>
+        <Property name="label">结案条件</Property>
+      </PropertyDef>
+      <PropertyDef name="creEmpNo">
+        <Property></Property>
+        <Property name="label">创建人员</Property>
+        <Validator name="validator1" type="length">
+          <Property name="maxLength">20</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="creDate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">创建日期</Property>
+      </PropertyDef>
+      <PropertyDef name="modifyEmpNo">
+        <Property></Property>
+        <Property name="label">修改人员</Property>
+      </PropertyDef>
+      <PropertyDef name="modifyDate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">修改日期</Property>
+      </PropertyDef>
+      <PropertyDef name="status">
+        <Property></Property>
+        <Property name="label">状态</Property>
+      </PropertyDef>
+      <PropertyDef name="prodKind">
+        <Property></Property>
+        <Property name="label">产品种类</Property>
+      </PropertyDef>
+      <PropertyDef name="matEngName">
+        <Property></Property>
+        <Property name="label">钢种英文名称</Property>
+      </PropertyDef>
+      <PropertyDef name="matBigName">
+        <Property></Property>
+        <Property name="label">钢种中文名称</Property>
+      </PropertyDef>
+      <PropertyDef name="defs01">
+        <Property></Property>
+        <Property name="label">自定义字符1</Property>
+      </PropertyDef>
+      <PropertyDef name="defs02">
+        <Property></Property>
+        <Property name="label">自定义字符2</Property>
+      </PropertyDef>
+      <PropertyDef name="defs03">
+        <Property></Property>
+        <Property name="label">自定义字符3</Property>
+      </PropertyDef>
+      <PropertyDef name="defs04">
+        <Property></Property>
+        <Property name="label">自定义字符4</Property>
+      </PropertyDef>
+      <PropertyDef name="defs05">
+        <Property></Property>
+        <Property name="label">自定义字符5</Property>
+      </PropertyDef>
+      <PropertyDef name="defb01">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">自定义数值1</Property>
+      </PropertyDef>
+      <PropertyDef name="defb02">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">自定义数值2</Property>
+      </PropertyDef>
+      <PropertyDef name="defb03">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">自定义数值3</Property>
+      </PropertyDef>
+      <PropertyDef name="defb04">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">自定义数值4</Property>
+      </PropertyDef>
+      <PropertyDef name="defb05">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">自定义数值5</Property>
+      </PropertyDef>
+      <PropertyDef name="defm01">
+        <Property></Property>
+        <Property name="label">自定义备注1</Property>
+      </PropertyDef>
+      <PropertyDef name="defm02">
+        <Property></Property>
+        <Property name="label">自定义备注2</Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="dtTbdm21">
+      <Property name="creationType">com.kits.inms.bs.domain.Tbdm21</Property>
+      <PropertyDef name="compId">
+        <Property></Property>
+        <Property name="label">公司别</Property>
+        <Validator name="validator1" type="length">
+          <Property name="maxLength">10</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="matNo">
+        <Property></Property>
+        <Property name="label">钢种代号</Property>
+        <Validator name="validator1" type="length">
+          <Property name="maxLength">5</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="matItem">
+        <Property></Property>
+        <Property name="label">代码</Property>
+        <Validator name="validator1" type="length">
+          <Property name="maxLength">2</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="serNo">
+        <Property></Property>
+        <Property name="label">流水号</Property>
+        <Validator name="validator1" type="length">
+          <Property name="maxLength">4</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="specCode">
+        <Property></Property>
+        <Property name="label">材质名称</Property>
+        <Property name="required">true</Property>
+        <Validator name="validator1" type="length">
+          <Property name="maxLength">20</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="prodType">
+        <Property></Property>
+        <Property name="label">工艺大类</Property>
+        <Property name="required">true</Property>
+        <Validator name="validator1" type="length">
+          <Property name="maxLength">20</Property>
+        </Validator>
+      </PropertyDef>
+    </DataType>
+    <DataType name="dtQuery">
+      <PropertyDef name="matNo">
+        <Property></Property>
+        <Property name="label">钢种代号</Property>
+        <Validator name="validator1" type="length">
+          <Property name="maxLength">5</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="matItem">
+        <Property></Property>
+        <Property name="label">代码</Property>
+        <Validator name="validator1" type="length">
+          <Property name="maxLength">2</Property>
+        </Validator>
+      </PropertyDef>
+    </DataType>
+    <DataType name="dtTbdm22">
+      <Property name="creationType">com.kits.inms.bs.domain.Tbdm22</Property>
+      <PropertyDef name="matNo">
+        <Property></Property>
+        <Property name="label">钢种代号</Property>
+        <Validator name="validator1" type="length">
+          <Property name="maxLength">5</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="matName">
+        <Property></Property>
+        <Property name="label">钢种名称</Property>
+        <Validator name="validator1" type="length">
+          <Property name="maxLength">30</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="matItem">
+        <Property></Property>
+        <Property name="label">代码</Property>
+        <Validator name="validator1" type="length">
+          <Property name="maxLength">2</Property>
+        </Validator>
+      </PropertyDef>
+    </DataType>
+    <DataType name="dtSQuery">
+      <Property name="creationType">com.kits.inms.bs.domain.Tbdm20</Property>
+      <PropertyDef name="compId">
+        <Property></Property>
+        <Property name="label">公司别</Property>
+        <Property name="mapping">
+          <Property name="mapValues"></Property>
+        </Property>
+        <Validator name="validator1" type="length">
+          <Property name="maxLength">10</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="matNo">
+        <Property></Property>
+        <Property name="label">钢种代号</Property>
+        <Property name="required">false</Property>
+        <Validator name="validator1" type="length">
+          <Property name="maxLength">5</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="matItem">
+        <Property></Property>
+        <Property name="label">代码</Property>
+        <Property name="required">false</Property>
+        <Validator name="validator1" type="length">
+          <Property name="maxLength">2</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="matName">
+        <Property></Property>
+        <Property name="label">钢种名称</Property>
+        <Property name="required">false</Property>
+        <Validator name="validator1" type="length">
+          <Property name="maxLength">30</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="matAbbrevName">
+        <Property></Property>
+        <Property name="label">分类简称</Property>
+        <Validator name="validator1" type="length">
+          <Property name="maxLength">90</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="accClassify">
+        <Property></Property>
+        <Property name="label">会计科目区分</Property>
+        <Property name="mapping">
+          <Property name="mapValues">
+            <Entity>
+              <Property name="R">原料</Property>
+              <Property name="P">商品存货</Property>
+              <Property name="I">制成品</Property>
+            </Entity>
+          </Property>
+        </Property>
+        <Validator name="validator1" type="length">
+          <Property name="maxLength">1</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="closeCond">
+        <Property></Property>
+        <Property name="label">结案条件</Property>
+        <Property name="required">false</Property>
+        <Property name="mapping">
+          <Property name="mapValues">
+            <Entity>
+              <Property name="W">依重量</Property>
+              <Property name="N">依数量</Property>
+            </Entity>
+          </Property>
+        </Property>
+        <Validator name="validator1" type="length">
+          <Property name="maxLength">1</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="creEmpNo">
+        <Property></Property>
+        <Property name="label">创建人员</Property>
+        <Validator name="validator1" type="length">
+          <Property name="maxLength">20</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="creDate">
+        <Property></Property>
+        <Property name="label">创建日期</Property>
+        <Property name="dataType">Date</Property>
+      </PropertyDef>
+      <PropertyDef name="modifyEmpNo">
+        <Property></Property>
+        <Property name="label">修改人员</Property>
+        <Validator name="validator1" type="length">
+          <Property name="maxLength">20</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="modifyDate">
+        <Property></Property>
+        <Property name="label">修改日期</Property>
+        <Property name="dataType">Date</Property>
+      </PropertyDef>
+      <PropertyDef name="status">
+        <Property></Property>
+        <Property name="label">状态</Property>
+        <Property name="mapping">
+          <Property name="mapValues">
+            <Entity>
+              <Property name="0">未生效</Property>
+              <Property name="1">生效</Property>
+            </Entity>
+          </Property>
+        </Property>
+        <Validator name="validator1" type="length">
+          <Property name="maxLength">1</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="prodKind">
+        <Property></Property>
+        <Property name="label">产品种类</Property>
+        <Validator name="validator1" type="length">
+          <Property name="maxLength">1</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="matEngName">
+        <Property></Property>
+        <Property name="label">钢种英文名称</Property>
+        <Validator name="validator1" type="length">
+          <Property name="maxLength">100</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="matBigName">
+        <Property></Property>
+        <Property name="label">钢种中文总称</Property>
+        <Validator name="validator1" type="length">
+          <Property name="maxLength">100</Property>
+        </Validator>
+      </PropertyDef>
+    </DataType>
+  </Model>
+  <View>
+    <ClientEvent name="onReady">window.btInsert = view.get(&quot;#insert&quot;);&#xD;
+window.btModify = view.get(&quot;#modify&quot;);&#xD;
+window.btDelete = view.get(&quot;#delete&quot;);&#xD;
+window.btEffect = view.get(&quot;#effect&quot;);&#xD;
+window.btIneffect = view.get(&quot;#ineffect&quot;);&#xD;
+&#xD;
+btModify.set(&quot;disabled&quot;,&quot;true&quot;);&#xD;
+btDelete.set(&quot;disabled&quot;,&quot;true&quot;);&#xD;
+btEffect.set(&quot;disabled&quot;,&quot;true&quot;);&#xD;
+btIneffect.set(&quot;disabled&quot;,&quot;true&quot;);&#xD;
+&#xD;
+</ClientEvent>
+    <ClientEvent name="onCreate">functions = {&#xD;
+	&#xD;
+	&quot;showDlMat&quot;:function(){&#xD;
+		var ds = view.get(&quot;#dsTbdm22&quot;);&#xD;
+		ds.set(&quot;parameter&quot;).flushAsync();&#xD;
+		view.get(&quot;#dlMat&quot;).show();&#xD;
+	},&#xD;
+	&quot;queryTbdm22OnClick&quot;:function(){&#xD;
+		var entity=view.get(&quot;#afQueryTbdm22.entity&quot;);&#xD;
+		view.get(&quot;#dsTbdm22&quot;).set(&quot;parameter&quot;,{&#xD;
+					&quot;matNo&quot;: entity.get(&quot;matNo&quot;),&#xD;
+					&quot;matItem&quot;: entity.get(&quot;matItem&quot;),&#xD;
+					&quot;matName&quot;: entity.get(&quot;matName&quot;),&#xD;
+				}).flushAsync();&#xD;
+	},&#xD;
+	&quot;selectMat&quot;:function(){&#xD;
+		var entity=view.get(&quot;#dsTbdm22.data:#&quot;);&#xD;
+		var data = view.get(&quot;#dsTbdm20.data:#&quot;);&#xD;
+		view.get(&quot;#dlMat&quot;).hide();&#xD;
+		data.set({&#xD;
+			&quot;matNo&quot;:entity.get(&quot;matNo&quot;),&#xD;
+			&quot;matItem&quot;:entity.get(&quot;matItem&quot;),&#xD;
+			&quot;matName&quot;:entity.get(&quot;matName&quot;)&#xD;
+		});&#xD;
+	},&#xD;
+	&quot;showDlInsert&quot;:function(str){&#xD;
+		if(str == &quot;insert&quot;){&#xD;
+			view.get(&quot;#dsTbdm20&quot;).insert();&#xD;
+		}&#xD;
+		view.get(&quot;#dlInsert&quot;).show();&#xD;
+	},&#xD;
+	&quot;saveOnClick&quot;:function(){&#xD;
+        view.get(&quot;#saveTbdm20&quot;).set({&#xD;
+            executingMessage: &quot;正在保存...&quot;,&#xD;
+            successMessage: &quot;保存成功！&quot;&#xD;
+        }).execute(function(result){&#xD;
+			if(result != null){&#xD;
+				dorado.MessageBox.alert(result);&#xD;
+				var data = view.get(&quot;#dsTbdm20.data:#&quot;);&#xD;
+				data.state = 1;&#xD;
+				view.get(&quot;#saveTbdm20&quot;).onFailure();&#xD;
+			}else{&#xD;
+				functions[&quot;queryTbdm20&quot;]();&#xD;
+				view.get(&quot;#dlInsert&quot;).hide();&#xD;
+			}&#xD;
+        });&#xD;
+	},&#xD;
+	&quot;cancelInsert&quot;:function(){&#xD;
+		view.get(&quot;#dsTbdm20&quot;).getData(&quot;#&quot;).cancel();&#xD;
+		view.get(&quot;#dlInsert&quot;).hide();&#xD;
+	},&#xD;
+	&quot;queryTbdm20&quot;:function(){&#xD;
+		var entity=view.get(&quot;#dsQuery.data:#&quot;);&#xD;
+		if(entity){&#xD;
+			view.get(&quot;#dsTbdm20&quot;).set(&quot;parameter&quot;,{&#xD;
+				&quot;matNo&quot;:entity.get(&quot;matNo&quot;),&#xD;
+				&quot;matItem&quot;:entity.get(&quot;matItem&quot;),&#xD;
+				&quot;compId&quot;:&quot;Knowledge&quot;&#xD;
+			}).flushAsync(function(){&#xD;
+				view.get(&quot;#dsQuery&quot;).clear();&#xD;
+				view.get(&quot;#dsQuery&quot;).insert();&#xD;
+			});&#xD;
+		}else{&#xD;
+			dorado.MessageBox.alert(&quot;请输入数据!&quot;)&#xD;
+		}&#xD;
+	},&#xD;
+	&quot;delOnclick&quot;: function(){&#xD;
+		var entity=view.get(&quot;#dsTbdm20.data:#&quot;);&#xD;
+		if(entity){&#xD;
+&#xD;
+				var options = {&#xD;
+				    callback: function(){&#xD;
+			            entity.remove();&#xD;
+				        view.get(&quot;#saveTbdm20&quot;).set({&#xD;
+							executingMessage:&quot;正在删除...&quot;,&#xD;
+							successMessage:&quot;删除成功！&quot;&#xD;
+						}).execute(function(){&#xD;
+							functions[&quot;queryTbdm20&quot;]();&#xD;
+						});&#xD;
+			    	},&#xD;
+					icon : &quot;WARNING&quot;,&#xD;
+					title : &quot;删除确认&quot;&#xD;
+			    }&#xD;
+				dorado.MessageBox.confirm(&quot;您确定要删除此数据吗？&quot;, options);//删除数据&#xD;
+&#xD;
+		}else{&#xD;
+			dorado.MessageBox.alert(&quot;没有数据可以删除!&quot;);&#xD;
+		}&#xD;
+    },&#xD;
+	&quot;effectOnclick&quot;:function(){&#xD;
+		var entity=view.get(&quot;#dsTbdm20.data:#&quot;);&#xD;
+		entity.set(&quot;status&quot;,&quot;1&quot;);&#xD;
+		view.get(&quot;#saveTbdm20&quot;).set({&#xD;
+            executingMessage: &quot;正在保存...&quot;,&#xD;
+            successMessage: &quot;保存成功！&quot;&#xD;
+        }).execute(function(){&#xD;
+			functions[&quot;queryTbdm20&quot;]();&#xD;
+		});&#xD;
+	},&#xD;
+	&quot;ineffectOnclick&quot;:function(){&#xD;
+		var entity=view.get(&quot;#dsTbdm20.data:#&quot;);&#xD;
+		entity.set(&quot;status&quot;,&quot;0&quot;);&#xD;
+		view.get(&quot;#saveTbdm20&quot;).set({&#xD;
+            executingMessage: &quot;正在保存...&quot;,&#xD;
+            successMessage: &quot;保存成功！&quot;&#xD;
+        }).execute(function(){&#xD;
+			functions[&quot;queryTbdm20&quot;]();&#xD;
+		});&#xD;
+	},&#xD;
+	&quot;checkButtons&quot;:function(){&#xD;
+		var btInsert = view.get(&quot;#insert&quot;);&#xD;
+		var btModify = view.get(&quot;#modify&quot;);&#xD;
+		var btDelete = view.get(&quot;#delete&quot;);&#xD;
+		var btEffect = view.get(&quot;#effect&quot;);&#xD;
+		var btIneffect = view.get(&quot;#ineffect&quot;);&#xD;
+		&#xD;
+		var data = view.get(&quot;#dsTbdm20.data&quot;);&#xD;
+		var rowData = view.get(&quot;#dsTbdm20.data:#&quot;);&#xD;
+		var size = data.entityCount;&#xD;
+		if (size >= 1) {&#xD;
+		    btModify.set(&quot;disabled&quot;,false);&#xD;
+		    btDelete.set(&quot;disabled&quot;,false);&#xD;
+		    if (rowData.get(&quot;status&quot;) == 0) {&#xD;
+				btIneffect.set(&quot;disabled&quot;,&quot;true&quot;);&#xD;
+		        btEffect.set(&quot;disabled&quot;,false);&#xD;
+		    }else {&#xD;
+				btEffect.set(&quot;disabled&quot;,&quot;true&quot;);&#xD;
+		        btIneffect.set(&quot;disabled&quot;,false);&#xD;
+		    }&#xD;
+//			if(size == 1){&#xD;
+//				view.get(&quot;#afTbdm20&quot;).set(&quot;visible&quot;,true);&#xD;
+//				view.get(&quot;#dgTbdm20&quot;).set(&quot;visible&quot;,false);&#xD;
+//			}&#xD;
+//			if(size > 1){&#xD;
+//				view.get(&quot;#afTbdm20&quot;).set(&quot;visible&quot;,false);&#xD;
+//				view.get(&quot;#dgTbdm20&quot;).set(&quot;visible&quot;,true);&#xD;
+//			}&#xD;
+		}else{&#xD;
+			btModify.set(&quot;disabled&quot;,&quot;true&quot;);&#xD;
+			btDelete.set(&quot;disabled&quot;,&quot;true&quot;);&#xD;
+			btEffect.set(&quot;disabled&quot;,&quot;true&quot;);&#xD;
+			btIneffect.set(&quot;disabled&quot;,&quot;true&quot;);&#xD;
+		}&#xD;
+	},&#xD;
+	&quot;showDlSQuery&quot;:function(){&#xD;
+		view.get(&quot;#dsSQuery&quot;).insert();&#xD;
+		view.get(&quot;#dlSQuery&quot;).show();&#xD;
+	},&#xD;
+	&quot;querySelectMat&quot;:function(){&#xD;
+		var entity=view.get(&quot;#dsTbdm22.data:#&quot;);&#xD;
+		var data = view.get(&quot;#dsSQuery.data:#&quot;);&#xD;
+		view.get(&quot;#dlMat2&quot;).hide();&#xD;
+		data.set({&#xD;
+			&quot;matNo&quot;:entity.get(&quot;matNo&quot;),&#xD;
+			&quot;matItem&quot;:entity.get(&quot;matItem&quot;),&#xD;
+			&quot;matName&quot;:entity.get(&quot;matName&quot;)&#xD;
+		});&#xD;
+	},&#xD;
+	&quot;SQueryTbdm20&quot;:function(){&#xD;
+		var entity=view.get(&quot;#dsSQuery.data:#&quot;);&#xD;
+		if(entity){&#xD;
+			view.get(&quot;#dsTbdm20&quot;).set(&quot;parameter&quot;,{&#xD;
+				&quot;matNo&quot;:entity.get(&quot;matNo&quot;),&#xD;
+				&quot;matItem&quot;:entity.get(&quot;matItem&quot;),&#xD;
+				&quot;compId&quot;:&quot;Knowledge&quot;,&#xD;
+				&quot;matName&quot;:entity.get(&quot;matName&quot;),&#xD;
+				&quot;matAbbrevName&quot;:entity.get(&quot;matAbbrevName&quot;),&#xD;
+				&quot;accClassify&quot;:entity.get(&quot;accClassify&quot;),&#xD;
+				&quot;closeCond&quot;:entity.get(&quot;closeCond&quot;),&#xD;
+				&quot;creEmpNo&quot;:entity.get(&quot;creEmpNo&quot;),&#xD;
+				&quot;creDate&quot;:entity.get(&quot;creDate&quot;),&#xD;
+				&quot;status&quot;:entity.get(&quot;status&quot;),&#xD;
+				&quot;modifyEmpNo&quot;:entity.get(&quot;modifyEmpNo&quot;),&#xD;
+				&quot;modifyDate&quot;:entity.get(&quot;modifyDate&quot;)&#xD;
+			}).flushAsync();&#xD;
+			view.get(&quot;#dsSQuery&quot;).getData(&quot;#&quot;).cancel();&#xD;
+			view.get(&quot;#dlSQuery&quot;).hide();&#xD;
+		}else{&#xD;
+			dorado.MessageBox.alert(&quot;请输入数据!&quot;)&#xD;
+		}&#xD;
+	},&#xD;
+	&quot;queryTbdm21&quot;:function(){&#xD;
+		var entity = view.get(&quot;#dsTbdm20.data:#&quot;);&#xD;
+		if(entity){&#xD;
+			view.get(&quot;#dsTbdm21&quot;).set(&quot;parameter&quot;,{&#xD;
+				&quot;compId&quot;:entity.get(&quot;compId&quot;),&#xD;
+				&quot;matNo&quot;:entity.get(&quot;matNo&quot;),&#xD;
+				&quot;matItem&quot;:entity.get(&quot;matItem&quot;)&#xD;
+			}).flushAsync(function(){&#xD;
+				functions[&quot;checkButton2&quot;]();&#xD;
+			});&#xD;
+		}&#xD;
+	},&#xD;
+	&quot;checkButton2&quot;:function(){&#xD;
+		var btInsert = view.get(&quot;#insert2&quot;);&#xD;
+		var btModify = view.get(&quot;#modify2&quot;);&#xD;
+		var btDelete = view.get(&quot;#delete2&quot;);&#xD;
+		&#xD;
+		var data1 = view.get(&quot;#dsTbdm20.data&quot;);&#xD;
+		var size1 = data1.entityCount;&#xD;
+		var data2 = view.get(&quot;#dsTbdm21.data&quot;);&#xD;
+		var size2 = data2.entityCount;&#xD;
+		&#xD;
+		if(size1 == 0){&#xD;
+			btInsert.set(&quot;disabled&quot;,true);&#xD;
+		}else {&#xD;
+			btInsert.set(&quot;disabled&quot;,false);&#xD;
+		}&#xD;
+		if(size2 == 0){&#xD;
+			btModify.set(&quot;disabled&quot;,true);&#xD;
+			btDelete.set(&quot;disabled&quot;,true);&#xD;
+		}else{&#xD;
+			btModify.set(&quot;disabled&quot;,false);&#xD;
+			btDelete.set(&quot;disabled&quot;,false);&#xD;
+		}&#xD;
+	},&#xD;
+	&quot;showDlInsert2&quot;:function(str){&#xD;
+		var entity = view.get(&quot;#dsTbdm20.data:#&quot;);&#xD;
+		var form = view.get(&quot;#afTbdm21&quot;);&#xD;
+		var rowCompId = form.get(&quot;#compId&quot;);&#xD;
+		var rowMatNo = form.get(&quot;#matNo&quot;);&#xD;
+		var rowMatItem = form.get(&quot;#matItem&quot;);&#xD;
+		if(entity){&#xD;
+			rowCompId.set(&quot;readOnly&quot;,true);&#xD;
+			rowMatNo.set(&quot;readOnly&quot;,true);&#xD;
+			rowMatItem.set(&quot;readOnly&quot;,true);&#xD;
+			if(str == &quot;insert&quot;){&#xD;
+				view.get(&quot;#dsTbdm21&quot;).insert({&#xD;
+					&quot;compId&quot;:entity.get(&quot;compId&quot;),&#xD;
+					&quot;matNo&quot;:entity.get(&quot;matNo&quot;),&#xD;
+					&quot;matItem&quot;:entity.get(&quot;matItem&quot;)&#xD;
+				});&#xD;
+			}else if(str == &quot;modify&quot;){&#xD;
+&#xD;
+			}&#xD;
+		}else{&#xD;
+&#xD;
+		}&#xD;
+		view.get(&quot;#dlInsert2&quot;).show();&#xD;
+	},&#xD;
+	&quot;saveTbdm21&quot;:function(){&#xD;
+		view.get(&quot;#saveTbdm21&quot;).set({&#xD;
+            executingMessage: &quot;正在保存...&quot;,&#xD;
+            successMessage: &quot;保存成功！&quot;&#xD;
+        }).execute(function(result){&#xD;
+			if(result != null){&#xD;
+				var data = view.get(&quot;#dsTbdm21.data:#&quot;);&#xD;
+				data.state = 1;	&#xD;
+				dorado.MessageBox.alert(result);&#xD;
+				view.get(&quot;#saveTbdm21&quot;).onFailure();&#xD;
+			}else{&#xD;
+				functions[&quot;queryTbdm21&quot;]();&#xD;
+				view.get(&quot;#dlInsert2&quot;).hide();&#xD;
+			} &#xD;
+			functions[&quot;checkButton2&quot;](); &#xD;
+        });&#xD;
+	},&#xD;
+	&quot;delTbdm21&quot;: function(){&#xD;
+		var entity=view.get(&quot;#dsTbdm21.data:#&quot;);&#xD;
+		if(entity){&#xD;
+				var options = {&#xD;
+				    callback: function(){&#xD;
+			            entity.remove();&#xD;
+				        view.get(&quot;#saveTbdm21&quot;).set({&#xD;
+							executingMessage:&quot;正在删除...&quot;,&#xD;
+							successMessage:&quot;删除成功！&quot;&#xD;
+						}).execute(function(){&#xD;
+							functions[&quot;queryTbdm21&quot;]();&#xD;
+						});&#xD;
+			    	},&#xD;
+					icon : &quot;WARNING&quot;,&#xD;
+					title : &quot;删除确认&quot;&#xD;
+			    }&#xD;
+				dorado.MessageBox.confirm(&quot;您确定要删除此数据吗？&quot;, options);//删除数据&#xD;
+&#xD;
+		}else{&#xD;
+			dorado.MessageBox.alert(&quot;没有数据可以删除!&quot;);&#xD;
+		}&#xD;
+    }&#xD;
+}&#xD;
+</ClientEvent>
+    <Panel>
+      <Buttons/>
+      <Children>
+        <AutoForm id="afQuery">
+          <Property name="dataSet">dsQuery</Property>
+          <Property name="cols">200,120,80,80,80</Property>
+          <AutoFormElement>
+            <Property name="name">matNo</Property>
+            <Property name="property">matNo</Property>
+            <Property name="labelWidth">60</Property>
+            <Property name="trigger">trigger1</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">matItem</Property>
+            <Property name="property">matItem</Property>
+            <Property name="labelWidth">40</Property>
+            <Editor/>
+          </AutoFormElement>
+          <Button id="query">
+            <ClientEvent name="onClick">functions[&quot;queryTbdm20&quot;]();&#xD;
+</ClientEvent>
+            <Property name="caption">查询</Property>
+            <Property name="icon">url(>skin>common/icons.gif) -40px -100px</Property>
+          </Button>
+          <Button id="reset">
+            <ClientEvent name="onClick">view.get(&quot;#dsQuery&quot;).clear();&#xD;
+view.get(&quot;#dsQuery&quot;).insert();&#xD;
+</ClientEvent>
+            <Property name="caption">重置</Property>
+            <Property name="icon">url(>skin>common/icons.gif) -40px -240px</Property>
+          </Button>
+        </AutoForm>
+      </Children>
+      <Tools/>
+    </Panel>
+    <Panel>
+      <Buttons/>
+      <Children>
+        <TabControl>
+          <ControlTab id="tab1">
+            <Property name="caption">规格</Property>
+            <Panel>
+              <Buttons/>
+              <Children>
+                <ToolBar>
+                  <Button id="insert">
+                    <ClientEvent name="onClick">functions[&quot;showDlInsert&quot;](&quot;insert&quot;);&#xD;
+</ClientEvent>
+                    <Property name="caption">新增</Property>
+                    <Property name="icon">url(>skin>common/icons.gif) -120px 0px</Property>
+                  </Button>
+                  <Button id="modify">
+                    <ClientEvent name="onClick">functions[&quot;showDlInsert&quot;](&quot;modify&quot;);&#xD;
+</ClientEvent>
+                    <Property name="caption">修改</Property>
+                    <Property name="icon">url(>skin>common/icons.gif) -200px 0px</Property>
+                  </Button>
+                  <Button id="delete">
+                    <ClientEvent name="onClick">functions[&quot;delOnclick&quot;]();&#xD;
+</ClientEvent>
+                    <Property name="caption">删除</Property>
+                    <Property name="icon">url(>skin>common/icons.gif) -140px 0px</Property>
+                  </Button>
+                  <Button id="effect">
+                    <ClientEvent name="onClick">functions[&quot;effectOnclick&quot;]();&#xD;
+</ClientEvent>
+                    <Property name="caption">生效</Property>
+                  </Button>
+                  <Button id="ineffect">
+                    <ClientEvent name="onClick">functions[&quot;ineffectOnclick&quot;]();&#xD;
+</ClientEvent>
+                    <Property name="caption">失效</Property>
+                  </Button>
+                </ToolBar>
+                <AutoForm id="afTbdm20">
+                  <Property name="dataSet">dsTbdm20</Property>
+                  <Property name="cols">*,*,*,*,*,*,*,*,*,*,*,*</Property>
+                  <Property name="labelWidth">90</Property>
+                  <Property name="readOnly">true</Property>
+                  <Property name="hideMode">display</Property>
+                  <Property name="width">80%</Property>
+                  <Property name="visible">false</Property>
+                  <AutoFormElement layoutConstraint="colSpan:4">
+                    <Property name="name">matNo</Property>
+                    <Property name="property">matNo</Property>
+                    <Editor>
+                      <TextEditor/>
+                    </Editor>
+                  </AutoFormElement>
+                  <AutoFormElement layoutConstraint="colSpan:2">
+                    <Property name="name">matItem</Property>
+                    <Property name="property">matItem</Property>
+                    <Editor/>
+                  </AutoFormElement>
+                  <AutoFormElement layoutConstraint="colSpan:6">
+                    <Property name="name">matName</Property>
+                    <Property name="property">matName</Property>
+                    <Editor/>
+                  </AutoFormElement>
+                  <AutoFormElement layoutConstraint="colSpan:6">
+                    <Property name="name">matAbbrevName</Property>
+                    <Property name="property">matAbbrevName</Property>
+                    <Editor/>
+                  </AutoFormElement>
+                  <AutoFormElement layoutConstraint="colSpan:6">
+                    <Property name="name">accClassify</Property>
+                    <Property name="property">accClassify</Property>
+                    <Editor/>
+                  </AutoFormElement>
+                  <AutoFormElement layoutConstraint="colSpan:6">
+                    <Property name="name">closeCond</Property>
+                    <Property name="property">closeCond</Property>
+                    <Editor/>
+                  </AutoFormElement>
+                  <AutoFormElement layoutConstraint="colSpan:3">
+                    <Property name="name">creEmpNo</Property>
+                    <Property name="property">creEmpNo</Property>
+                    <Property name="editable">true</Property>
+                    <Property name="readOnly">true</Property>
+                    <Editor/>
+                  </AutoFormElement>
+                  <AutoFormElement layoutConstraint="colSpan:3">
+                    <Property name="name">creDate</Property>
+                    <Property name="property">creDate</Property>
+                    <Property name="readOnly">true</Property>
+                    <Editor/>
+                  </AutoFormElement>
+                  <AutoFormElement layoutConstraint="colSpan:6">
+                    <Property name="name">status</Property>
+                    <Property name="property">status</Property>
+                    <Property name="readOnly">true</Property>
+                    <Editor/>
+                  </AutoFormElement>
+                  <AutoFormElement layoutConstraint="colSpan:3">
+                    <Property name="name">modifyEmpNo</Property>
+                    <Property name="property">modifyEmpNo</Property>
+                    <Property name="readOnly">true</Property>
+                    <Editor/>
+                  </AutoFormElement>
+                  <AutoFormElement layoutConstraint="colSpan:3">
+                    <Property name="name">modifyDate</Property>
+                    <Property name="property">modifyDate</Property>
+                    <Property name="readOnly">true</Property>
+                    <Editor/>
+                  </AutoFormElement>
+                </AutoForm>
+                <DataGrid id="dgTbdm20">
+                  <ClientEvent name="onCurrentChange">functions[&quot;checkButtons&quot;]();&#xD;
+</ClientEvent>
+                  <ClientEvent name="onDataRowDoubleClick">functions[&quot;showDlInsert&quot;](&quot;modify&quot;);&#xD;
+</ClientEvent>
+                  <Property name="dataSet">dsTbdm20</Property>
+                  <Property name="visible">true</Property>
+                  <Property name="lazyInit">true</Property>
+                  <Property name="readOnly">true</Property>
+                  <Property name="hideMode">display</Property>
+                  <RowNumColumn/>
+                  <DataColumn name="matNo">
+                    <Property name="property">matNo</Property>
+                  </DataColumn>
+                  <DataColumn name="matItem">
+                    <Property name="property">matItem</Property>
+                  </DataColumn>
+                  <DataColumn name="matName">
+                    <Property name="property">matName</Property>
+                  </DataColumn>
+                  <DataColumn name="matAbbrevName">
+                    <Property name="property">matAbbrevName</Property>
+                  </DataColumn>
+                  <DataColumn name="closeCond">
+                    <Property name="property">closeCond</Property>
+                  </DataColumn>
+                  <DataColumn name="status">
+                    <Property name="property">status</Property>
+                  </DataColumn>
+                  <DataColumn name="creEmpNo">
+                    <Property name="property">creEmpNo</Property>
+                  </DataColumn>
+                  <DataColumn name="creDate">
+                    <Property name="property">creDate</Property>
+                  </DataColumn>
+                  <DataColumn name="modifyEmpNo">
+                    <Property name="property">modifyEmpNo</Property>
+                  </DataColumn>
+                  <DataColumn name="modifyDate">
+                    <Property name="property">modifyDate</Property>
+                  </DataColumn>
+                </DataGrid>
+              </Children>
+              <Tools/>
+            </Panel>
+          </ControlTab>
+          <ControlTab id="tab2">
+            <ClientEvent name="onClick">functions[&quot;queryTbdm21&quot;]();</ClientEvent>
+            <Property name="caption">材质对应</Property>
+            <Panel>
+              <Buttons/>
+              <Children>
+                <ToolBar>
+                  <Button id="insert2">
+                    <ClientEvent name="onClick">functions[&quot;showDlInsert2&quot;](&quot;insert&quot;);&#xD;
+</ClientEvent>
+                    <Property name="caption">新增</Property>
+                    <Property name="icon">url(>skin>common/icons.gif) -120px 0px</Property>
+                  </Button>
+                  <Button id="modify2">
+                    <ClientEvent name="onClick">functions[&quot;showDlInsert2&quot;](&quot;modify&quot;);&#xD;
+</ClientEvent>
+                    <Property name="caption">修改</Property>
+                    <Property name="icon">url(>skin>common/icons.gif) -200px 0px</Property>
+                  </Button>
+                  <Button id="delete2">
+                    <ClientEvent name="onClick">functions[&quot;delTbdm21&quot;]();&#xD;
+</ClientEvent>
+                    <Property name="caption">删除</Property>
+                    <Property name="icon">url(>skin>common/icons.gif) -140px 0px</Property>
+                  </Button>
+                </ToolBar>
+                <DataGrid>
+                  <ClientEvent name="onCurrentChange">functions[&quot;checkButton2&quot;](); </ClientEvent>
+                  <ClientEvent name="onDataRowDoubleClick">functions[&quot;showDlInsert2&quot;](&quot;modify&quot;);&#xD;
+</ClientEvent>
+                  <Property name="dataSet">dsTbdm21</Property>
+                  <Property name="readOnly">true</Property>
+                  <DataColumn name="compId">
+                    <Property name="property">compId</Property>
+                  </DataColumn>
+                  <DataColumn name="matNo">
+                    <Property name="property">matNo</Property>
+                  </DataColumn>
+                  <DataColumn name="matItem">
+                    <Property name="property">matItem</Property>
+                  </DataColumn>
+                  <DataColumn name="serNo">
+                    <Property name="property">serNo</Property>
+                  </DataColumn>
+                  <DataColumn name="specCode">
+                    <Property name="property">specCode</Property>
+                  </DataColumn>
+                  <DataColumn name="prodType">
+                    <Property name="property">prodType</Property>
+                  </DataColumn>
+                </DataGrid>
+              </Children>
+              <Tools/>
+            </Panel>
+          </ControlTab>
+        </TabControl>
+      </Children>
+      <Tools/>
+    </Panel>
+    <Dialog id="dlMat">
+      <Property name="width">620</Property>
+      <Buttons/>
+      <Children>
+        <AutoForm id="afQueryTbdm22">
+          <Property name="dataSet">dsTbdm22</Property>
+          <Property name="cols">170,170,170,90</Property>
+          <Property name="labelWidth">60</Property>
+          <AutoFormElement>
+            <Property name="name">matNo</Property>
+            <Property name="property">matNo</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">matName</Property>
+            <Property name="property">matName</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">matItem</Property>
+            <Property name="property">matItem</Property>
+            <Editor/>
+          </AutoFormElement>
+          <Button id="queryTbdm22">
+            <ClientEvent name="onClick">functions[&quot;queryTbdm22OnClick&quot;]();&#xD;
+</ClientEvent>
+            <Property name="caption">查询</Property>
+            <Property name="icon">url(>skin>common/icons.gif) -40px -100px</Property>
+          </Button>
+        </AutoForm>
+        <ToolBar>
+          <DataPilot>
+            <Property name="itemCodes">pages</Property>
+            <Property name="dataSet">dsTbdm22</Property>
+          </DataPilot>
+          <Button id="confirm">
+            <ClientEvent name="onClick">functions[&quot;selectMat&quot;]();&#xD;
+</ClientEvent>
+            <Property name="caption">确认</Property>
+            <Property name="icon">url(>skin>common/icons.gif) -20px 0px</Property>
+          </Button>
+        </ToolBar>
+        <DataGrid>
+          <ClientEvent name="onDataRowDoubleClick">functions[&quot;selectMat&quot;]();&#xD;
+</ClientEvent>
+          <Property name="dataSet">dsTbdm22</Property>
+          <Property name="width">620</Property>
+          <Property name="height">600</Property>
+          <Property name="readOnly">true</Property>
+          <DataColumn name="matNo">
+            <Property name="property">matNo</Property>
+          </DataColumn>
+          <DataColumn name="matName">
+            <Property name="property">matName</Property>
+          </DataColumn>
+          <DataColumn name="matItem">
+            <Property name="property">matItem</Property>
+          </DataColumn>
+        </DataGrid>
+      </Children>
+      <Tools/>
+    </Dialog>
+    <Dialog id="dlInsert">
+      <Property name="width">1000</Property>
+      <Property name="height">400</Property>
+      <Property name="caption">新增钢种</Property>
+      <Property name="modal">true</Property>
+      <Property name="closeable">false</Property>
+      <Buttons>
+        <Button id="save">
+          <ClientEvent name="onClick">functions[&quot;saveOnClick&quot;]();&#xD;
+</ClientEvent>
+          <Property name="caption">保存</Property>
+          <Property name="icon"> url(>skin>common/icons.gif) -140px -20px</Property>
+        </Button>
+        <Button id="cancel">
+          <ClientEvent name="onClick">functions[&quot;cancelInsert&quot;]();&#xD;
+</ClientEvent>
+          <Property name="caption">取消</Property>
+          <Property name="icon"> url(>skin>common/icons.gif) -40px -0px</Property>
+        </Button>
+      </Buttons>
+      <Children>
+        <AutoForm id="afInsert">
+          <Property name="dataSet">dsTbdm20</Property>
+          <Property name="cols">*,*,*,*,*,*,*,*,*,*,*,*</Property>
+          <Property name="labelWidth">90</Property>
+          <AutoFormElement layoutConstraint="colSpan:3">
+            <Property name="name">matNo</Property>
+            <Property name="property">matNo</Property>
+            <Property name="trigger">trigger3</Property>
+            <Editor>
+              <TextEditor/>
+            </Editor>
+          </AutoFormElement>
+          <AutoFormElement layoutConstraint="colSpan:2">
+            <Property name="name">matItem</Property>
+            <Property name="property">matItem</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement layoutConstraint="colSpan:6">
+            <Property name="name">matName</Property>
+            <Property name="property">matName</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement layoutConstraint="colSpan:6">
+            <Property name="name">matAbbrevName</Property>
+            <Property name="property">matAbbrevName</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement layoutConstraint="colSpan:6">
+            <Property name="name">accClassify</Property>
+            <Property name="property">accClassify</Property>
+            <Property name="trigger">ldd1</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement layoutConstraint="colSpan:6">
+            <Property name="name">closeCond</Property>
+            <Property name="property">closeCond</Property>
+            <Property name="trigger">ldd2</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement layoutConstraint="colSpan:3">
+            <Property name="name">creEmpNo</Property>
+            <Property name="property">creEmpNo</Property>
+            <Property name="editable">true</Property>
+            <Property name="readOnly">true</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement layoutConstraint="colSpan:3">
+            <Property name="name">creDate</Property>
+            <Property name="property">creDate</Property>
+            <Property name="readOnly">true</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement layoutConstraint="colSpan:6">
+            <Property name="name">status</Property>
+            <Property name="property">status</Property>
+            <Property name="readOnly">true</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement layoutConstraint="colSpan:3">
+            <Property name="name">modifyEmpNo</Property>
+            <Property name="property">modifyEmpNo</Property>
+            <Property name="readOnly">true</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement layoutConstraint="colSpan:3">
+            <Property name="name">modifyDate</Property>
+            <Property name="property">modifyDate</Property>
+            <Property name="readOnly">true</Property>
+            <Editor/>
+          </AutoFormElement>
+        </AutoForm>
+      </Children>
+      <Tools/>
+    </Dialog>
+    <Dialog id="dlSQuery">
+      <Property name="width">1000</Property>
+      <Property name="height">400</Property>
+      <Property name="caption">高级查询</Property>
+      <Property name="modal">true</Property>
+      <Property name="closeable">true</Property>
+      <Buttons>
+        <Button id="ssearch">
+          <ClientEvent name="onClick">functions[&quot;SQueryTbdm20&quot;]();&#xD;
+</ClientEvent>
+          <Property name="caption">查询</Property>
+          <Property name="icon">	url(>skin>common/icons.gif) -40px -100px</Property>
+        </Button>
+        <Button id="reset2">
+          <ClientEvent name="onClick">view.get(&quot;#dsSQuery&quot;).clear()&#xD;
+view.get(&quot;#dsSQuery&quot;).insert();&#xD;
+</ClientEvent>
+          <Property name="caption">重置</Property>
+          <Property name="icon">url(>skin>common/icons.gif) -40px -240px</Property>
+        </Button>
+        <Button id="cancel2">
+          <ClientEvent name="onClick">view.get(&quot;#dsSQuery&quot;).getData(&quot;#&quot;).cancel();&#xD;
+			view.get(&quot;#dlSQuery&quot;).hide();</ClientEvent>
+          <Property name="caption">取消</Property>
+          <Property name="icon"> url(>skin>common/icons.gif) -40px -0px</Property>
+        </Button>
+      </Buttons>
+      <Children>
+        <AutoForm id="afSQuery">
+          <Property name="dataSet">dsSQuery</Property>
+          <Property name="cols">*,*,*,*,*,*,*,*,*,*,*,*</Property>
+          <Property name="labelWidth">90</Property>
+          <AutoFormElement layoutConstraint="colSpan:3">
+            <Property name="name">matNo</Property>
+            <Property name="property">matNo</Property>
+            <Property name="trigger">trigger2</Property>
+            <Editor>
+              <TextEditor/>
+            </Editor>
+          </AutoFormElement>
+          <AutoFormElement layoutConstraint="colSpan:2">
+            <Property name="name">matItem</Property>
+            <Property name="property">matItem</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement layoutConstraint="colSpan:6">
+            <Property name="name">matName</Property>
+            <Property name="property">matName</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement layoutConstraint="colSpan:6">
+            <Property name="name">matAbbrevName</Property>
+            <Property name="property">matAbbrevName</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement layoutConstraint="colSpan:6">
+            <Property name="name">accClassify</Property>
+            <Property name="property">accClassify</Property>
+            <Property name="trigger">ldd1</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement layoutConstraint="colSpan:6">
+            <Property name="name">closeCond</Property>
+            <Property name="property">closeCond</Property>
+            <Property name="trigger">ldd2</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement layoutConstraint="colSpan:3">
+            <Property name="name">creEmpNo</Property>
+            <Property name="property">creEmpNo</Property>
+            <Property name="editable">true</Property>
+            <Property name="readOnly">false</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement layoutConstraint="colSpan:3">
+            <Property name="name">creDate</Property>
+            <Property name="property">creDate</Property>
+            <Property name="readOnly">false</Property>
+            <Property name="trigger">ddd1</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement layoutConstraint="colSpan:6">
+            <Property name="name">status</Property>
+            <Property name="property">status</Property>
+            <Property name="readOnly">false</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement layoutConstraint="colSpan:3">
+            <Property name="name">modifyEmpNo</Property>
+            <Property name="property">modifyEmpNo</Property>
+            <Property name="readOnly">false</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement layoutConstraint="colSpan:3">
+            <Property name="name">modifyDate</Property>
+            <Property name="property">modifyDate</Property>
+            <Property name="readOnly">false</Property>
+            <Property name="trigger">ddd1</Property>
+            <Editor/>
+          </AutoFormElement>
+        </AutoForm>
+      </Children>
+      <Tools/>
+    </Dialog>
+    <Dialog id="dlMat2">
+      <Property name="width">620</Property>
+      <Buttons/>
+      <Children>
+        <AutoForm id="afSQueryTbdm22">
+          <Property name="dataSet">dsTbdm22</Property>
+          <Property name="cols">170,170,170,90</Property>
+          <Property name="labelWidth">60</Property>
+          <AutoFormElement>
+            <Property name="name">matNo</Property>
+            <Property name="property">matNo</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">matName</Property>
+            <Property name="property">matName</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">matItem</Property>
+            <Property name="property">matItem</Property>
+            <Editor/>
+          </AutoFormElement>
+          <Button id="SqueryTbdm22">
+            <ClientEvent name="onClick">functions[&quot;queryTbdm22OnClick&quot;]();&#xD;
+</ClientEvent>
+            <Property name="caption">查询</Property>
+            <Property name="icon">url(>skin>common/icons.gif) -40px -100px</Property>
+          </Button>
+        </AutoForm>
+        <ToolBar>
+          <DataPilot>
+            <Property name="itemCodes">pages</Property>
+            <Property name="dataSet">dsTbdm22</Property>
+          </DataPilot>
+          <Button id="confirm2">
+            <ClientEvent name="onClick">functions[&quot;querySelectMat&quot;]();&#xD;
+</ClientEvent>
+            <Property name="caption">确认</Property>
+            <Property name="icon">url(>skin>common/icons.gif) -20px 0px</Property>
+          </Button>
+          <Button>
+            <ClientEvent name="onClick">view.get(&quot;#dlMat2&quot;).hide();&#xD;
+</ClientEvent>
+            <Property name="caption">取消</Property>
+            <Property name="icon">url(>skin>common/icons.gif) -40px -0px</Property>
+          </Button>
+        </ToolBar>
+        <DataGrid>
+          <ClientEvent name="onDataRowDoubleClick">functions[&quot;querySelectMat&quot;]();&#xD;
+</ClientEvent>
+          <Property name="dataSet">dsTbdm22</Property>
+          <Property name="width">620</Property>
+          <Property name="height">600</Property>
+          <Property name="readOnly">true</Property>
+          <DataColumn name="matNo">
+            <Property name="property">matNo</Property>
+          </DataColumn>
+          <DataColumn name="matName">
+            <Property name="property">matName</Property>
+          </DataColumn>
+          <DataColumn name="matItem">
+            <Property name="property">matItem</Property>
+          </DataColumn>
+        </DataGrid>
+      </Children>
+      <Tools/>
+    </Dialog>
+    <Dialog id="dlInsert2">
+      <Property name="closeable">false</Property>
+      <Property name="width">600</Property>
+      <Property name="height">250</Property>
+      <Buttons>
+        <Button>
+          <ClientEvent name="onClick">functions[&quot;saveTbdm21&quot;]();&#xD;
+</ClientEvent>
+          <Property name="caption">保存</Property>
+          <Property name="icon"> url(>skin>common/icons.gif) -140px -20px</Property>
+        </Button>
+        <Button>
+          <ClientEvent name="onClick">if(view.get(&quot;#dsTbdm21.data:#&quot;)){&#xD;
+	view.get(&quot;#dsTbdm21.data:#&quot;).cancel();&#xD;
+}&#xD;
+view.get(&quot;#dlInsert2&quot;).hide();&#xD;
+</ClientEvent>
+          <Property name="caption">取消</Property>
+          <Property name="icon"> url(>skin>common/icons.gif) -40px -0px</Property>
+        </Button>
+      </Buttons>
+      <Children>
+        <AutoForm id="afTbdm21">
+          <Property name="dataSet">dsTbdm21</Property>
+          <AutoFormElement>
+            <Property name="name">compId</Property>
+            <Property name="property">compId</Property>
+            <Property name="readOnly">true</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">matNo</Property>
+            <Property name="property">matNo</Property>
+            <Property name="readOnly">true</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">matItem</Property>
+            <Property name="property">matItem</Property>
+            <Property name="readOnly">true</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">specCode</Property>
+            <Property name="property">specCode</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">prodType</Property>
+            <Property name="property">prodType</Property>
+            <Editor/>
+          </AutoFormElement>
+        </AutoForm>
+      </Children>
+      <Tools/>
+    </Dialog>
+    <UpdateAction id="saveTbdm20">
+      <Property name="dataResolver">dmjc20BO#saveTbdm20</Property>
+      <UpdateItem>
+        <Property name="dataSet">dsTbdm20</Property>
+      </UpdateItem>
+    </UpdateAction>
+    <UpdateAction id="saveTbdm21">
+      <Property name="dataResolver">dmjc20BO#saveTbdm21</Property>
+      <UpdateItem>
+        <Property name="dataSet">dsTbdm21</Property>
+      </UpdateItem>
+    </UpdateAction>
+    <DataSet id="dsTbdm20">
+      <ClientEvent name="onLoadData">functions[&quot;checkButtons&quot;]();&#xD;
+</ClientEvent>
+      <Property name="dataType">[dtTbdm20]</Property>
+      <Property name="dataProvider">dmjc20BO#queryTbdm20</Property>
+      <Property name="pageSize">20</Property>
+      <Property name="loadMode">manual</Property>
+    </DataSet>
+    <DataSet id="dsTbdm21">
+      <Property name="dataType">[dtTbdm21]</Property>
+      <Property name="loadMode">manual</Property>
+      <Property name="dataProvider">dmjc20BO#queryTbdm21</Property>
+      <Property name="pageSize">20</Property>
+    </DataSet>
+    <DataSet id="dsTbdm22">
+      <Property name="dataType">[dtTbdm22]</Property>
+      <Property name="pageSize">20</Property>
+      <Property name="dataProvider">dmjc20BO#queryTbdm22</Property>
+      <Property name="loadMode">preload</Property>
+    </DataSet>
+    <DataSet id="dsQuery">
+      <ClientEvent name="onReady">self.insert();&#xD;
+</ClientEvent>
+      <Property name="dataType">[dtQuery]</Property>
+      <Property name="loadMode">manual</Property>
+    </DataSet>
+    <DataSet id="dsSQuery">
+      <Property name="dataType">[dtSQuery]</Property>
+    </DataSet>
+    <ListDropDown id="ldd1">
+      <Property name="items">原料,商品存货,制成品</Property>
+    </ListDropDown>
+    <ListDropDown id="ldd2">
+      <Property name="items">依重量,依数量</Property>
+    </ListDropDown>
+    <ListDropDown id="listDropDown3"/>
+    <DateDropDown id="ddd1"/>
+    <Trigger id="trigger1">
+      <ClientEvent name="onExecute">functions[&quot;showDlSQuery&quot;]();&#xD;
+</ClientEvent>
+    </Trigger>
+    <Trigger id="trigger2">
+      <ClientEvent name="onExecute">var ds = view.get(&quot;#dsTbdm22&quot;);&#xD;
+ds.set(&quot;parameter&quot;).flushAsync();&#xD;
+view.get(&quot;#dlMat2&quot;).show();&#xD;
+</ClientEvent>
+    </Trigger>
+    <Trigger id="trigger3">
+      <ClientEvent name="onExecute">functions[&quot;showDlMat&quot;]();&#xD;
+</ClientEvent>
+    </Trigger>
+  </View>
+</ViewConfig>

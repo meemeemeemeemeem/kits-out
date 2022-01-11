@@ -1,0 +1,19 @@
+参考
+    com.kits.inms.itf.AsyncSampleCtrl
+    com.kits.inms.itf.call.ApiCallSample
+注：
+    示例中bio代表同步，nio代表异步
+    示例代码中nio调用bio是为了结构的简单，同时表现出同步，异步的效果
+    不要参考示例代码中的命名
+    开发中按功能分包，命名
+
+以下只针对接口平台项目中的工具使用，基本不适用于其他场景
+
+异步方法：
+    在方法上使用@Async注解  (org.springframework.scheduling.annotation.Async)
+    调用时建议使用Future进行调用
+    在示例代码中的被注释部分是获取Future结果的方法
+    拿@Async方法返回值会对外表现为同步，调用异步方法时尽量不要去拿Future返回值(作为开发，调试时使用)
+
+同步方法：
+    参考示例中的两个类的写法

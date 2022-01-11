@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- For assistance related to logback-translator or configuration  -->
+<!-- files in general, please contact the logback user mailing list -->
+<!-- at http://www.qos.ch/mailman/listinfo/logback-user             -->
+<!--                                                                -->
+<!-- For professional support please see                            -->
+<!--    http://www.qos.ch/shop/products/professionalSupport         -->
+<!--                                                                -->
+<configuration>
+    <turboFilter class="com.kits.log.LogInterceptor"/>
+    <property name="logDir" value="../logs/kits/"/>
+    <property name="logDays" value="30"/>
+    <property name="queueSize" value="512"/>
+
+    <appender name="DX" class="ch.qos.logback.classic.sift.SiftingAppender">
+        <discriminator>
+            <key>pathPrefix</key>
+            <defaultValue>sys</defaultValue>
+        </discriminator>
+        <sift>
+            <appender class="ch.qos.logback.core.rolling.RollingFileAppender">
+                <append>true</append>
+                <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+                    <FileNamePattern>${logDir}/${pathPrefix}/%d{yyyyMMdd_HH}-info_%i.log</FileNamePattern>
+                    <maxHistory>${logDays}</maxHistory>
+                    <maxFileSize>10MB</maxFileSize>
+                </rollingPolicy>
+                <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+                    <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %5level %logger{50} - %msg%n</pattern>
+                </encoder>
+                <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+                    <level>INFO</level>
+                </filter>
+            </appender>
+        </sift>
+    </appender>
+
+    <appender name="EX" class="ch.qos.logback.classic.sift.SiftingAppender">
+        <discriminator>
+            <key>pathPrefix</key>
+            <defaultValue>sys</defaultValue>
+        </discriminator>
+        <sift>
+            <appender class="ch.qos.logback.core.rolling.RollingFileAppender">
+                <append>true</append>
+                <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+                    <FileNamePattern>${logDir}/${pathPrefix}/%d{yyyyMMdd_HH}-error_%i.log</FileNamePattern>
+                    <maxHistory>${logDays}</maxHistory>
+                    <maxFileSize>10MB</maxFileSize>
+                </rollingPolicy>
+                <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+                    <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %5level %logger{50} - %msg%n_</pattern>
+                </encoder>
+                <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+                    <level>ERROR</level>
+                </filter>
+            </appender>
+        </sift>
+    </appender>
+
+    <statusListener class="ch.qos.logback.core.status.OnConsoleStatusListener"/>
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <FileNamePattern>${logDir}/console/${pathPrefix}/%d{yyyyMMdd_HH}_%i.log</FileNamePattern>
+            <maxFileSize>10MB</maxFileSize>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %5level %logger{50} - %msg%n</pattern>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>INFO</level>
+        </filter>
+    </appender>
+
+    <appender name="ASYNC_INFO" class="ch.qos.logback.classic.AsyncAppender">
+        <discardingThreshold>0</discardingThreshold>
+        <queueSize>${queueSize}</queueSize>
+        <appender-ref ref="DX"/>
+    </appender>
+
+    <!--<logger name="com.kits.metalwork.so.AjaxServiceInterceptor" level="OFF"/>-->
+    <logger name="org.springframework" level="DEBUG"/>
+    <logger name="org.hibernate" level="DEBUG"/>
+    <logger name="java.sql" level="DEBUG"/>
+    <root level="DEBUG">
+        <appender-ref ref="ASYNC_INFO"/>
+        <appender-ref ref="ASYNC_ERROR"/>
+        <appender-ref ref="console"/>
+    </root>
+</configuration>

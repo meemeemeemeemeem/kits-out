@@ -1,0 +1,1680 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ViewConfig>
+  <Arguments/>
+  <Context/>
+  <Model>
+    <DataType name="dtQuery1">
+      <PropertyDef name="matrlNo">
+        <ClientEvent name="onGetText">&#xD;
+window.matrlNoQuery = arg.text;</ClientEvent>
+        <Property name="label">料号信息</Property>
+        <Validator name="validator1" type="charLength">
+          <Property name="minLength">0</Property>
+          <Property name="maxLength">10</Property>
+        </Validator>
+      </PropertyDef>
+    </DataType>
+    <DataType name="dtQuery2">
+      <ClientEvent name="onDataChange">var property = arg.property;&#xD;
+if(property==&quot;inventoryType&quot;){&#xD;
+	var refId=&quot;&quot;;&#xD;
+	var inventoryType = view.get(&quot;#dsQuery2.data:#&quot;).get(&quot;inventoryType&quot;);&#xD;
+	&#xD;
+	if(inventoryType==&quot;R&quot;){&#xD;
+		//原料&#xD;
+		refId = &quot;rwAppreance&quot;;&#xD;
+	}else if(inventoryType==&quot;A&quot;){&#xD;
+		//辅料&#xD;
+		refId=&quot;aMAppreance&quot;;&#xD;
+		&#xD;
+	}else if(inventoryType==&quot;P&quot;){&#xD;
+		//成品&#xD;
+		refId=&quot;pMAppreance&quot;;&#xD;
+	}else if(inventoryType==&quot;M&quot;){&#xD;
+		//备品备件&#xD;
+		refId=&quot;mMAppreance&quot;;&#xD;
+	}else if(inventoryType==&quot;Y&quot;){&#xD;
+		//残料&#xD;
+		refId=&quot;yMAppreance&quot;;&#xD;
+	}else if(inventoryType==&quot;S&quot;){&#xD;
+		//半成品&#xD;
+		refId=&quot;rwAppreance&quot;;&#xD;
+	}&#xD;
+	&#xD;
+	new dorado.widget.AjaxAction({&#xD;
+		parameter:{&#xD;
+			refId:refId&#xD;
+		},&#xD;
+		service:&quot;commonUtils#getMatrlMappings&quot;&#xD;
+	}).execute(function(mapValue){&#xD;
+		debugger&#xD;
+		var mapList = [];&#xD;
+		for(key in mapValue){&#xD;
+			var map1 = {&#xD;
+				key:key,&#xD;
+				value:mapValue[key]&#xD;
+			};&#xD;
+			mapList.push(map1)&#xD;
+		}&#xD;
+		view.set(&quot;^map2.mapping&quot;,mapList)&#xD;
+	});&#xD;
+}&#xD;
+</ClientEvent>
+      <PropertyDef name="inventoryType">
+        <ClientEvent name="onGet">var refId = &quot;&quot;;&#xD;
+var inventoryType = arg.value;&#xD;
+if(inventoryType){&#xD;
+	if(inventoryType==&quot;R&quot;){&#xD;
+		//原料&#xD;
+		refId = &quot;rwAppreance&quot;;&#xD;
+	}else if(inventoryType==&quot;A&quot;){&#xD;
+		//辅料&#xD;
+		refId=&quot;aMAppreance&quot;;&#xD;
+		&#xD;
+	}else if(inventoryType==&quot;P&quot;){&#xD;
+		//成品&#xD;
+		refId=&quot;rwAppreance&quot;;&#xD;
+	}else if(inventoryType==&quot;M&quot;){&#xD;
+		//备品备件&#xD;
+		refId=&quot;aMAppreance&quot;;&#xD;
+	}else if(inventoryType==&quot;Y&quot;){&#xD;
+		//残料&#xD;
+		refId=&quot;yMAppreance&quot;;&#xD;
+	}else if(inventoryType==&quot;S&quot;){&#xD;
+		//半成品&#xD;
+		refId=&quot;rwAppreance&quot;;&#xD;
+	}&#xD;
+	&#xD;
+	new dorado.widget.AjaxAction({&#xD;
+		parameter:{&#xD;
+			refId:refId&#xD;
+		},&#xD;
+		service:&quot;commonUtils#getMatrlMappings&quot;&#xD;
+	}).execute(function(mapValue){&#xD;
+		debugger&#xD;
+		var mapList = [];&#xD;
+		for(key in mapValue){&#xD;
+			var map1 = {&#xD;
+				key:key,&#xD;
+				value:mapValue[key]&#xD;
+			};&#xD;
+			mapList.push(map1)&#xD;
+		}&#xD;
+		view.set(&quot;^map1.mapping&quot;,mapList)&#xD;
+	});&#xD;
+}	&#xD;
+	&#xD;
+</ClientEvent>
+        <Property></Property>
+        <Property name="label">料别</Property>
+        <Property name="mapping">
+          <Property name="mapValues">${dorado.getDataProvider(&quot;commonUtils#getIventoryMappings&quot;).getResult({&quot;refId&quot;:&quot;inventoryType&quot;})}</Property>
+          <Property name="keyProperty">name</Property>
+          <Property name="valueProperty">value</Property>
+        </Property>
+      </PropertyDef>
+      <PropertyDef name="appearance">
+        <Property></Property>
+        <Property name="label">外观</Property>
+        <Property name="mapping">
+          <Property name="mapValues"></Property>
+          <Property name="keyProperty">name</Property>
+          <Property name="valueProperty">value</Property>
+        </Property>
+      </PropertyDef>
+      <PropertyDef name="prodeCode">
+        <Property></Property>
+        <Property name="label">生产类型</Property>
+        <Property name="mapping">
+          <Property name="mapValues">${dorado.getDataProvider(&quot;commonUtils#getIventoryMappings&quot;).getResult({&quot;refId&quot;:&quot;prodeCode&quot;})}</Property>
+          <Property name="keyProperty">name</Property>
+          <Property name="valueProperty">value</Property>
+        </Property>
+      </PropertyDef>
+      <PropertyDef name="prodeName">
+        <Property></Property>
+        <Property name="label">品名</Property>
+        <Validator name="validator1" type="charLength">
+          <Property name="maxLength">100</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="materailName">
+        <Property></Property>
+        <Property name="label">材质</Property>
+      </PropertyDef>
+      <PropertyDef name="defs01">
+        <Property></Property>
+        <Property name="label">尺寸信息</Property>
+      </PropertyDef>
+      <PropertyDef name="defs03">
+        <Property></Property>
+        <Property name="label">质量信息</Property>
+      </PropertyDef>
+      <PropertyDef name="pdType">
+        <Property></Property>
+        <Property name="label">用途</Property>
+        <Property name="mapping">
+          <Property name="mapValues">${dorado.getDataProvider(&quot;iajc041BO#queryIa41E&quot;).getResult()}</Property>
+        </Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="dtQuery3">
+      <PropertyDef name="matNo">
+        <Property></Property>
+        <Property name="label">钢种代号</Property>
+        <Validator name="validator1" type="length">
+          <Property name="maxLength">5</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="specCode">
+        <Property></Property>
+        <Property name="label">材质名称</Property>
+        <Property name="required">true</Property>
+        <Validator name="validator1" type="length">
+          <Property name="maxLength">20</Property>
+        </Validator>
+      </PropertyDef>
+    </DataType>
+    <DataType name="dtTbdm01">
+      <ClientEvent name="onDataChange">var property = arg.property;&#xD;
+if(property==&quot;inventoryType&quot;){&#xD;
+	var refId=&quot;&quot;;&#xD;
+	var inventoryType = view.get(&quot;#dsDm01.data:#&quot;).get(&quot;inventoryType&quot;);&#xD;
+	&#xD;
+	if(inventoryType==&quot;R&quot;){&#xD;
+		//原料&#xD;
+		refId = &quot;rwAppreance&quot;;&#xD;
+	}else if(inventoryType==&quot;A&quot;){&#xD;
+		//辅料&#xD;
+		refId=&quot;mMAppreance&quot;;&#xD;
+		&#xD;
+	}else if(inventoryType==&quot;P&quot;){&#xD;
+		//成品&#xD;
+		refId=&quot;rwAppreance&quot;;&#xD;
+	}else if(inventoryType==&quot;M&quot;){&#xD;
+		//备品备件&#xD;
+		refId=&quot;mMAppreance&quot;;&#xD;
+	}else if(inventoryType==&quot;Y&quot;){&#xD;
+		//残料&#xD;
+		refId=&quot;yMAppreance&quot;;&#xD;
+	}else if(inventoryType==&quot;S&quot;){&#xD;
+		//半成品&#xD;
+		refId=&quot;rwAppreance&quot;;&#xD;
+	}&#xD;
+	&#xD;
+	new dorado.widget.AjaxAction({&#xD;
+		parameter:{&#xD;
+			refId:refId&#xD;
+		},&#xD;
+		service:&quot;commonUtils#getMatrlMappings&quot;&#xD;
+	}).execute(function(mapValue){&#xD;
+		var mapList = [];&#xD;
+		for(key in mapValue){&#xD;
+			var map1 = {&#xD;
+				key:key,&#xD;
+				value:mapValue[key]&#xD;
+			};&#xD;
+			mapList.push(map1)&#xD;
+		}&#xD;
+		view.set(&quot;^map1.mapping&quot;,mapList)&#xD;
+	});&#xD;
+}&#xD;
+</ClientEvent>
+      <Property name="creationType">com.kits.inms.bs.domain.Tbdm01</Property>
+      <PropertyDef name="compId">
+        <Property></Property>
+        <Property name="label">公司号</Property>
+      </PropertyDef>
+      <PropertyDef name="matrlNo">
+        <Property></Property>
+        <Property name="label">料号</Property>
+      </PropertyDef>
+      <PropertyDef name="inventoryType">
+        <ClientEvent name="onGet">var refId = &quot;&quot;;&#xD;
+var inventoryType = arg.value;&#xD;
+if(inventoryType){&#xD;
+	if(inventoryType==&quot;R&quot;){&#xD;
+		//原料&#xD;
+		refId = &quot;rwAppreance&quot;;&#xD;
+	}else if(inventoryType==&quot;A&quot;){&#xD;
+		//辅料&#xD;
+		refId=&quot;aMAppreance&quot;;&#xD;
+		&#xD;
+	}else if(inventoryType==&quot;P&quot;){&#xD;
+		//成品&#xD;
+		refId=&quot;rwAppreance&quot;;&#xD;
+	}else if(inventoryType==&quot;M&quot;){&#xD;
+		//备品备件&#xD;
+		refId=&quot;aMAppreance&quot;;&#xD;
+	}else if(inventoryType==&quot;Y&quot;){&#xD;
+		//残料&#xD;
+		refId=&quot;yMAppreance&quot;;&#xD;
+	}else if(inventoryType==&quot;S&quot;){&#xD;
+		//半成品&#xD;
+		refId=&quot;rwAppreance&quot;;&#xD;
+	}&#xD;
+	&#xD;
+	new dorado.widget.AjaxAction({&#xD;
+		parameter:{&#xD;
+			refId:refId&#xD;
+		},&#xD;
+		service:&quot;commonUtils#getMatrlMappings&quot;&#xD;
+	}).execute(function(mapValue){&#xD;
+		debugger&#xD;
+		var mapList = [];&#xD;
+		for(key in mapValue){&#xD;
+			var map1 = {&#xD;
+				key:key,&#xD;
+				value:mapValue[key]&#xD;
+			};&#xD;
+			mapList.push(map1)&#xD;
+		}&#xD;
+		view.set(&quot;^map1.mapping&quot;,mapList)&#xD;
+	});&#xD;
+}	&#xD;
+	&#xD;
+</ClientEvent>
+        <Property></Property>
+        <Property name="label">料别</Property>
+        <Property name="required">true</Property>
+        <Property name="mapping">
+          <Property name="mapValues">${dorado.getDataProvider(&quot;commonUtils#getIventoryMappings&quot;).getResult({&quot;refId&quot;:&quot;inventoryType&quot;})}</Property>
+          <Property name="keyProperty">name</Property>
+          <Property name="valueProperty">value</Property>
+        </Property>
+      </PropertyDef>
+      <PropertyDef name="appearance">
+        <Property></Property>
+        <Property name="label">外观</Property>
+        <Property name="required">true</Property>
+        <Property name="mapping">
+          <Property name="mapValues"></Property>
+          <Property name="keyProperty">name</Property>
+          <Property name="valueProperty">value</Property>
+        </Property>
+      </PropertyDef>
+      <PropertyDef name="priceMethod">
+        <Property></Property>
+        <Property name="label">计价方式</Property>
+        <Property name="mapping">
+          <Property name="mapValues">${dorado.getDataProvider(&quot;commonUtils#getIventoryMappings&quot;).getResult({&quot;refId&quot;:&quot;priceMethod&quot;})}</Property>
+          <Property name="keyProperty">name</Property>
+          <Property name="valueProperty">value</Property>
+        </Property>
+      </PropertyDef>
+      <PropertyDef name="prodeType">
+        <Property></Property>
+        <Property name="label">产品形态</Property>
+      </PropertyDef>
+      <PropertyDef name="materailName">
+        <Property></Property>
+        <Property name="label">钢种</Property>
+      </PropertyDef>
+      <PropertyDef name="grade">
+        <Property></Property>
+        <Property name="label">质量标准</Property>
+        <Property name="mapping">
+          <Property name="mapValues">${dorado.getDataProvider(&quot;commonUtils#getIventoryMappings&quot;).getResult({&quot;refId&quot;:&quot;grade&quot;})}</Property>
+          <Property name="keyProperty">name</Property>
+          <Property name="valueProperty">value</Property>
+        </Property>
+      </PropertyDef>
+      <PropertyDef name="trick">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">厚</Property>
+        <Validator name="validator1" type="range">
+          <Property name="minValue">0</Property>
+          <Property name="minValueValidateMode">allowEquals</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="width">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">宽</Property>
+        <Validator name="validator1" type="range">
+          <Property name="minValue">0</Property>
+          <Property name="minValueValidateMode">allowEquals</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="lengthA">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">长1</Property>
+        <Validator name="validator1" type="range">
+          <Property name="minValue">0</Property>
+          <Property name="minValueValidateMode">allowEquals</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="lengthB">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">长2</Property>
+        <Validator name="validator1" type="range">
+          <Property name="minValue">0</Property>
+          <Property name="minValueValidateMode">allowEquals</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="diameter">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">外径</Property>
+        <Validator name="validator1" type="range">
+          <Property name="minValue">0</Property>
+          <Property name="minValueValidateMode">allowEquals</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="prodeCode">
+        <Property></Property>
+        <Property name="label">生产类型</Property>
+        <Property name="mapping">
+          <Property name="mapValues">${dorado.getDataProvider(&quot;commonUtils#getIventoryMappings&quot;).getResult({&quot;refId&quot;:&quot;prodeCode&quot;})}</Property>
+          <Property name="keyProperty">name</Property>
+          <Property name="valueProperty">value</Property>
+        </Property>
+        <Property name="required">true</Property>
+      </PropertyDef>
+      <PropertyDef name="materailSrc">
+        <Property></Property>
+        <Property name="label">货源</Property>
+        <Property name="mapping">
+          <Property name="mapValues">${dorado.getDataProvider(&quot;commonUtils#getIventoryMappings&quot;).getResult({&quot;refId&quot;:&quot;materailSrc&quot;})}</Property>
+          <Property name="keyProperty">name</Property>
+          <Property name="valueProperty">value</Property>
+        </Property>
+      </PropertyDef>
+      <PropertyDef name="pdType">
+        <Property></Property>
+        <Property name="label">用途</Property>
+        <Property name="mapping">
+          <Property name="mapValues">${dorado.getDataProvider(&quot;iajc041BO#queryIa41E&quot;).getResult()}</Property>
+        </Property>
+      </PropertyDef>
+      <PropertyDef name="createEmp">
+        <Property></Property>
+        <Property name="label">建立人</Property>
+        <Property name="mapping">
+          <Property name="mapValues">${dorado.getDataProvider(&quot;commonUtils#getLoginUser&quot;).getResult()}</Property>
+          <Property name="keyProperty">name</Property>
+          <Property name="valueProperty">value</Property>
+        </Property>
+      </PropertyDef>
+      <PropertyDef name="createDate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">建立日期</Property>
+      </PropertyDef>
+      <PropertyDef name="updateEmp">
+        <Property></Property>
+        <Property name="label">UPDATE_EMP_</Property>
+        <Property name="mapping">
+          <Property name="mapValues">${dorado.getDataProvider(&quot;commonUtils#getLoginUser&quot;).getResult()}</Property>
+          <Property name="keyProperty">name</Property>
+          <Property name="valueProperty">value</Property>
+        </Property>
+      </PropertyDef>
+      <PropertyDef name="updateDate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">UPDATE_DATE_</Property>
+      </PropertyDef>
+      <PropertyDef name="version">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">VERSION</Property>
+      </PropertyDef>
+      <PropertyDef name="bak1">
+        <Property></Property>
+        <Property name="label">品名代码</Property>
+        <Property name="mapping">
+          <Property name="mapValues"></Property>
+        </Property>
+        <Property name="required">true</Property>
+      </PropertyDef>
+      <PropertyDef name="bak2">
+        <Property></Property>
+        <Property name="label">BAK2_</Property>
+      </PropertyDef>
+      <PropertyDef name="bak3">
+        <Property></Property>
+        <Property name="label">BAK3_</Property>
+      </PropertyDef>
+      <PropertyDef name="matrlDesc">
+        <Property name="label">料号描述</Property>
+        <Property name="dataType">String</Property>
+      </PropertyDef>
+      <PropertyDef name="pkDm01">
+        <Property></Property>
+        <Property name="label">PK_DM01_</Property>
+      </PropertyDef>
+      <PropertyDef name="thickTolerance">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">厚度公差</Property>
+        <Validator name="validator1" type="range">
+          <Property name="minValue">0</Property>
+          <Property name="minValueValidateMode">allowEquals</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="lengthTolerance">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">长度公差</Property>
+        <Validator name="validator1" type="range">
+          <Property name="minValue">0</Property>
+          <Property name="minValueValidateMode">allowEquals</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="widthTolerance">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">宽度公差</Property>
+        <Validator name="validator1" type="range">
+          <Property name="minValue">0</Property>
+          <Property name="minValueValidateMode">allowEquals</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="diameterOutTolerance">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">外径公差</Property>
+        <Validator name="validator1" type="range">
+          <Property name="minValue">0</Property>
+          <Property name="minValueValidateMode">allowEquals</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="diameterInTolerance">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">内径公差</Property>
+        <Validator name="validator1" type="range">
+          <Property name="minValue">0</Property>
+          <Property name="minValueValidateMode">allowEquals</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="diameterIn">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">内径</Property>
+        <Validator name="validator1" type="range">
+          <Property name="minValue">0</Property>
+          <Property name="minValueValidateMode">allowEquals</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="prodeName">
+        <Property></Property>
+        <Property name="label">品名</Property>
+        <Validator name="validator1" type="charLength">
+          <Property name="maxLength">100</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="defs01">
+        <Property></Property>
+        <Property name="label">尺寸信息</Property>
+      </PropertyDef>
+      <PropertyDef name="defs03">
+        <Property></Property>
+        <Property name="label">质量信息</Property>
+      </PropertyDef>
+      <PropertyDef name="defs04">
+        <Property></Property>
+        <Property name="label">DEFS04</Property>
+      </PropertyDef>
+      <PropertyDef name="defs05">
+        <Property></Property>
+        <Property name="label">DEFS05</Property>
+      </PropertyDef>
+      <PropertyDef name="defb01">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">DEFB01</Property>
+      </PropertyDef>
+      <PropertyDef name="defb02">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">DEFB02</Property>
+      </PropertyDef>
+      <PropertyDef name="defb03">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">DEFB03</Property>
+      </PropertyDef>
+      <PropertyDef name="defb04">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">DEFB04</Property>
+      </PropertyDef>
+      <PropertyDef name="defb05">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">DEFB05</Property>
+      </PropertyDef>
+      <PropertyDef name="defn01">
+        <Property></Property>
+        <Property name="label">规格</Property>
+      </PropertyDef>
+      <PropertyDef name="defn02">
+        <Property></Property>
+        <Property name="label">DEFN02</Property>
+      </PropertyDef>
+      <PropertyDef name="shape">
+        <Property></Property>
+        <Property name="label">SHAPE_</Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="dtTbdm011">
+      <Property name="creationType">com.kits.inms.bs.domain.Tbdm01</Property>
+      <PropertyDef name="compId">
+        <Property></Property>
+        <Property name="label">公司号</Property>
+      </PropertyDef>
+      <PropertyDef name="matrlNo">
+        <Property></Property>
+        <Property name="label">料号</Property>
+      </PropertyDef>
+      <PropertyDef name="inventoryType">
+        <Property></Property>
+        <Property name="label">料别</Property>
+        <Property name="mapping">
+          <Property name="mapValues">${dorado.getDataProvider(&quot;commonUtils#getIventoryMappings&quot;).getResult({&quot;refId&quot;:&quot;inventoryType&quot;})}</Property>
+          <Property name="keyProperty">name</Property>
+          <Property name="valueProperty">value</Property>
+        </Property>
+      </PropertyDef>
+      <PropertyDef name="appearance">
+        <Property></Property>
+        <Property name="label">外观</Property>
+        <Property name="mapping">
+          <Property name="keyProperty">name</Property>
+          <Property name="valueProperty">value</Property>
+          <Property name="mapValues">${dorado.getDataProvider(&quot;commonUtils#getIventoryMappings&quot;).getResult({&quot;refId&quot;:&quot;appearance&quot;})}</Property>
+        </Property>
+      </PropertyDef>
+      <PropertyDef name="priceMethod">
+        <Property></Property>
+        <Property name="label">计价方式</Property>
+        <Property name="mapping">
+          <Property name="mapValues">${dorado.getDataProvider(&quot;commonUtils#getIventoryMappings&quot;).getResult({&quot;refId&quot;:&quot;priceMethod&quot;})}</Property>
+          <Property name="keyProperty">name</Property>
+          <Property name="valueProperty">value</Property>
+        </Property>
+      </PropertyDef>
+      <PropertyDef name="prodeType">
+        <Property></Property>
+        <Property name="label">产品形态</Property>
+      </PropertyDef>
+      <PropertyDef name="materailName">
+        <Property></Property>
+        <Property name="label">钢种</Property>
+      </PropertyDef>
+      <PropertyDef name="grade">
+        <Property></Property>
+        <Property name="label">质量标准</Property>
+        <Property name="mapping">
+          <Property name="mapValues">${dorado.getDataProvider(&quot;commonUtils#getIventoryMappings&quot;).getResult({&quot;refId&quot;:&quot;grade&quot;})}</Property>
+          <Property name="keyProperty">name</Property>
+          <Property name="valueProperty">value</Property>
+        </Property>
+      </PropertyDef>
+      <PropertyDef name="trick">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">厚</Property>
+        <Validator name="validator1" type="range">
+          <Property name="minValue">0</Property>
+          <Property name="minValueValidateMode">allowEquals</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="width">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">宽</Property>
+        <Validator name="validator1" type="range">
+          <Property name="minValue">0</Property>
+          <Property name="minValueValidateMode">allowEquals</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="lengthA">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">长1</Property>
+        <Validator name="validator1" type="range">
+          <Property name="minValue">0</Property>
+          <Property name="minValueValidateMode">allowEquals</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="lengthB">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">长2</Property>
+        <Validator name="validator1" type="range">
+          <Property name="minValue">0</Property>
+          <Property name="minValueValidateMode">allowEquals</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="diameter">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">外径</Property>
+        <Validator name="validator1" type="range">
+          <Property name="minValue">0</Property>
+          <Property name="minValueValidateMode">allowEquals</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="prodeCode">
+        <Property></Property>
+        <Property name="label">生产类型</Property>
+        <Property name="mapping">
+          <Property name="mapValues">${dorado.getDataProvider(&quot;commonUtils#getIventoryMappings&quot;).getResult({&quot;refId&quot;:&quot;prodeCode&quot;})}</Property>
+          <Property name="keyProperty">name</Property>
+          <Property name="valueProperty">value</Property>
+        </Property>
+        <Property name="required">true</Property>
+      </PropertyDef>
+      <PropertyDef name="materailSrc">
+        <Property></Property>
+        <Property name="label">货源</Property>
+        <Property name="mapping">
+          <Property name="mapValues">${dorado.getDataProvider(&quot;commonUtils#getIventoryMappings&quot;).getResult({&quot;refId&quot;:&quot;materailSrc&quot;})}</Property>
+          <Property name="keyProperty">name</Property>
+          <Property name="valueProperty">value</Property>
+        </Property>
+      </PropertyDef>
+      <PropertyDef name="createEmp">
+        <Property></Property>
+        <Property name="label">建立人</Property>
+      </PropertyDef>
+      <PropertyDef name="createDate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">建立日期</Property>
+      </PropertyDef>
+      <PropertyDef name="updateEmp">
+        <Property></Property>
+        <Property name="label">UPDATE_EMP_</Property>
+      </PropertyDef>
+      <PropertyDef name="updateDate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">UPDATE_DATE_</Property>
+      </PropertyDef>
+      <PropertyDef name="version">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">VERSION</Property>
+      </PropertyDef>
+      <PropertyDef name="bak1">
+        <Property></Property>
+        <Property name="label">是否异形</Property>
+      </PropertyDef>
+      <PropertyDef name="bak2">
+        <Property></Property>
+        <Property name="label">BAK2_</Property>
+      </PropertyDef>
+      <PropertyDef name="bak3">
+        <Property></Property>
+        <Property name="label">BAK3_</Property>
+      </PropertyDef>
+      <PropertyDef name="matrlDesc">
+        <Property name="label">料号描述</Property>
+        <Property name="dataType">String</Property>
+      </PropertyDef>
+      <PropertyDef name="pkDm01">
+        <Property></Property>
+        <Property name="label">PK_DM01_</Property>
+      </PropertyDef>
+      <PropertyDef name="thickTolerance">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">厚度公差</Property>
+        <Validator name="validator1" type="range">
+          <Property name="minValue">0</Property>
+          <Property name="minValueValidateMode">allowEquals</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="lengthTolerance">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">长度公差</Property>
+        <Validator name="validator1" type="range">
+          <Property name="minValue">0</Property>
+          <Property name="minValueValidateMode">allowEquals</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="widthTolerance">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">宽度公差</Property>
+        <Validator name="validator1" type="range">
+          <Property name="minValue">0</Property>
+          <Property name="minValueValidateMode">allowEquals</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="diameterOutTolerance">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">外径公差</Property>
+        <Validator name="validator1" type="range">
+          <Property name="minValue">0</Property>
+          <Property name="minValueValidateMode">allowEquals</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="diameterInTolerance">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">内径公差</Property>
+        <Validator name="validator1" type="range">
+          <Property name="minValue">0</Property>
+          <Property name="minValueValidateMode">allowEquals</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="diameterIn">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">内径</Property>
+        <Validator name="validator1" type="range">
+          <Property name="minValue">0</Property>
+          <Property name="minValueValidateMode">allowEquals</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="prodeName">
+        <Property></Property>
+        <Property name="label">品名</Property>
+        <Validator name="validator1" type="charLength">
+          <Property name="maxLength">100</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="defs01">
+        <Property></Property>
+        <Property name="label">尺寸信息</Property>
+      </PropertyDef>
+      <PropertyDef name="defs03">
+        <Property></Property>
+        <Property name="label">质量信息</Property>
+      </PropertyDef>
+      <PropertyDef name="defs04">
+        <Property></Property>
+        <Property name="label">DEFS04</Property>
+      </PropertyDef>
+      <PropertyDef name="defs05">
+        <Property></Property>
+        <Property name="label">DEFS05</Property>
+      </PropertyDef>
+      <PropertyDef name="defb01">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">DEFB01</Property>
+      </PropertyDef>
+      <PropertyDef name="defb02">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">DEFB02</Property>
+      </PropertyDef>
+      <PropertyDef name="defb03">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">DEFB03</Property>
+      </PropertyDef>
+      <PropertyDef name="defb04">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">DEFB04</Property>
+      </PropertyDef>
+      <PropertyDef name="defb05">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">DEFB05</Property>
+      </PropertyDef>
+      <PropertyDef name="defn01">
+        <Property></Property>
+        <Property name="label">规格</Property>
+      </PropertyDef>
+      <PropertyDef name="defn02">
+        <Property></Property>
+        <Property name="label">DEFN02</Property>
+      </PropertyDef>
+      <PropertyDef name="shape">
+        <Property></Property>
+        <Property name="label">SHAPE_</Property>
+      </PropertyDef>
+      <PropertyDef name="prodeNo">
+        <Property></Property>
+        <Property name="label">PRODE_NO_</Property>
+      </PropertyDef>
+      <PropertyDef name="pdType">
+        <Property></Property>
+        <Property name="label">用途</Property>
+        <Property name="mapping">
+          <Property name="mapValues">${dorado.getDataProvider(&quot;iajc041BO#queryIa41E&quot;).getResult()}</Property>
+        </Property>
+      </PropertyDef>
+    </DataType>
+  </Model>
+  <View>
+    <ClientEvent name="onReady">window.dsDm01 = view.get(&quot;#dsDm01&quot;);&#xD;
+window.dsDm011 = view.get(&quot;#dsDm011&quot;);&#xD;
+window.dsQuery1 = view.get(&quot;#dsQuery1&quot;);&#xD;
+window.dsMapping = view.get(&quot;#dsMapping&quot;);&#xD;
+window.dgDm01 = view.get(&quot;#dgDm01&quot;);&#xD;
+window.dsQuery2 = view.get(&quot;#dsQuery2&quot;);&#xD;
+&#xD;
+window.saveDm01 = view.get(&quot;#saveDm01&quot;);&#xD;
+&#xD;
+window.info = view.get(&quot;#info&quot;);&#xD;
+info.doSet(&quot;text&quot;,&quot;欢迎使用本系统 ...&quot;);&#xD;
+</ClientEvent>
+    <ClientEvent name="onCreate">functions={&#xD;
+	&#xD;
+	&quot;queryDm01&quot;:function(queryParam){&#xD;
+		dsDm01.set(&quot;parameter&quot;,queryParam).flushAsync(function(returnData){&#xD;
+			if(returnData.entityCount==0){&#xD;
+				info.doSet(&quot;text&quot;,&quot;未找到相关的料号信息...&quot;);&#xD;
+			}else{&#xD;
+				&#xD;
+				info.doSet(&quot;text&quot;,&quot;查询成功！&quot;);&#xD;
+			}&#xD;
+		});&#xD;
+		&#xD;
+	},&#xD;
+	&#xD;
+	&quot;saveOnClick&quot;:function(){&#xD;
+		var state = dsDm01.getData(&quot;#&quot;).state;&#xD;
+		var dataList = dgDm01.get(&quot;selection&quot;);&#xD;
+		if(state==0){&#xD;
+			view.get(&quot;#dialogEditDm01&quot;).close();&#xD;
+		}else{&#xD;
+			saveDm01.set({&#xD;
+				executingMessage:&quot;正在保存中 ... &quot;&#xD;
+			}).execute(function(msg){&#xD;
+				if(msg==null){&#xD;
+					info.doSet(&quot;text&quot;,&quot;保存成功！&quot;);&#xD;
+					//是否刷新&#xD;
+				if(dataList){&#xD;
+					debugger&#xD;
+					dataList.removeAt(0);&#xD;
+					var len = dataList.length;&#xD;
+					if(len==0){&#xD;
+						view.get(&quot;#dialogEditDm01&quot;).close();&#xD;
+						dsDm01.set(&quot;parameter&quot;,{&#xD;
+							matrlNo:matrlNoQuery&#xD;
+					}).flushAsync();&#xD;
+&#xD;
+					}else{&#xD;
+						dsDm01.getData().setCurrent(dataList[0]);&#xD;
+						view.get(&quot;#dgDm01&quot;).set(&quot;selection&quot;,dataList);&#xD;
+					}&#xD;
+				}else{&#xD;
+					view.get(&quot;#dialogEditDm01&quot;).close();&#xD;
+					dsDm01.set(&quot;parameter&quot;,{&#xD;
+					matrlNo:matrlNoQuery&#xD;
+				}).flushAsync(function(){&#xD;
+					&#xD;
+				});&#xD;
+				}&#xD;
+			}else{&#xD;
+					info.doSet(&quot;text&quot;,msg);&#xD;
+				}&#xD;
+				&#xD;
+			});&#xD;
+		}&#xD;
+	},&#xD;
+	&#xD;
+	&quot;delOnClick&quot;:function(dataList){&#xD;
+		&#xD;
+		var options = {&#xD;
+			callback:function(){&#xD;
+				dataList.each(function(data){&#xD;
+					data.remove();&#xD;
+				});&#xD;
+				&#xD;
+				saveDm01.set({&#xD;
+					executingMessage:&quot;正在删除中 ... &quot;&#xD;
+					&#xD;
+				}).execute(function(){&#xD;
+					info.doSet(&quot;text&quot;,&quot;删除成功！&quot;);&#xD;
+				});&#xD;
+			},&#xD;
+			&#xD;
+			icon:&quot;WARNING&quot;&#xD;
+		};&#xD;
+		dorado.MessageBox.confirm(&quot;您确定要删除所勾选的数据吗？&quot;,options);&#xD;
+	},&#xD;
+	&#xD;
+	&quot;doMatrl&quot;:function(data){&#xD;
+	var prodeNo = data.get(&quot;prodeNo&quot;);&#xD;
+	var prodeName = data.get(&quot;prodeName&quot;);&#xD;
+	var prodeSize = data.get(&quot;prodeSize&quot;);&#xD;
+	var prodeMat = data.get(&quot;prodeMat&quot;);&#xD;
+	var prodeGrade = data.get(&quot;prodeGrade&quot;);&#xD;
+	//品名代码&#xD;
+	dsDm01.getData(&quot;#&quot;).set(&quot;bak1&quot;,prodeNo);&#xD;
+	//品名&#xD;
+	dsDm01.getData(&quot;#&quot;).set(&quot;prodeName&quot;,prodeName);&#xD;
+	//尺寸&#xD;
+	dsDm01.getData(&quot;#&quot;).set(&quot;defs01&quot;,prodeSize);&#xD;
+	//材质&#xD;
+	dsDm01.getData(&quot;#&quot;).set(&quot;materailName&quot;,prodeMat);&#xD;
+	//质量&#xD;
+	dsDm01.getData(&quot;#&quot;).set(&quot;defs03&quot;,prodeGrade);&#xD;
+}&#xD;
+};&#xD;
+</ClientEvent>
+    <Property name="styleSheetFile">com/kits/saas/mw/style1.css</Property>
+    <Import src="com.kits.inms.pt.view.prode#prodeDialog"/>
+    <DataSet id="dsDm01">
+      <Property name="dataType">[dtTbdm01]</Property>
+      <Property name="dataProvider">bsjc02BO#queryDm01</Property>
+      <Property name="pageSize">15</Property>
+      <Property name="loadMode">manual</Property>
+    </DataSet>
+    <DataSet id="dsDm011">
+      <Property name="dataType">[dtTbdm011]</Property>
+      <Property name="dataProvider">bsjc02BO#queryDm01</Property>
+      <Property name="pageSize">10</Property>
+      <Property name="loadMode">manual</Property>
+    </DataSet>
+    <DataSet id="dataSet1"/>
+    <DataSet id="dsQuery1">
+      <ClientEvent name="onReady">self.insert();&#xD;
+</ClientEvent>
+      <Property name="dataType">[dtQuery1]</Property>
+    </DataSet>
+    <DataSet id="dsQuery2">
+      <ClientEvent name="onReady">self.insert();&#xD;
+</ClientEvent>
+      <Property name="dataType">[dtQuery2]</Property>
+    </DataSet>
+    <UpdateAction id="saveDm01">
+      <Property name="dataResolver">bsjc02BO#updateDm01</Property>
+      <Property name="async">true</Property>
+      <UpdateItem>
+        <Property name="dataSet">dsDm01</Property>
+      </UpdateItem>
+    </UpdateAction>
+    <Panel>
+      <Property name="exClassName">panel0</Property>
+      <Buttons/>
+      <Children>
+        <AutoForm>
+          <Property name="dataSet">dsQuery1</Property>
+          <Property name="cols">250,80,80</Property>
+          <Property name="width">50%</Property>
+          <AutoFormElement>
+            <Property name="name">matrlNo</Property>
+            <Property name="property">matrlNo</Property>
+            <Property name="trigger">trigger1</Property>
+            <Editor/>
+          </AutoFormElement>
+          <Button>
+            <ClientEvent name="onClick">var data = null;&#xD;
+data = dsQuery1.getData(&quot;#&quot;);&#xD;
+&#xD;
+functions[&quot;queryDm01&quot;](data);&#xD;
+	&#xD;
+&#xD;
+</ClientEvent>
+            <Property name="caption">查询</Property>
+            <Property name="icon">url(>skin>common/icons.gif) -40px -100px</Property>
+          </Button>
+          <Button>
+            <ClientEvent name="onClick">dsQuery1.clear();&#xD;
+dsQuery1.insert();&#xD;
+</ClientEvent>
+            <Property name="caption">重置</Property>
+            <Property name="icon">url(>skin>common/icons.gif) -20px -200px</Property>
+          </Button>
+        </AutoForm>
+        <Panel layoutConstraint="align:center;padding:10">
+          <Property name="border">none</Property>
+          <Property name="width">auto</Property>
+          <Property name="height">100%</Property>
+          <Property name="contentOverflow">visible</Property>
+          <Property name="visible">false</Property>
+          <Property name="hideMode">display</Property>
+          <Buttons/>
+          <Children>
+            <Import src="com.kits.inms.mw.view.info#infoPanel"/>
+          </Children>
+          <Tools/>
+        </Panel>
+      </Children>
+      <Tools/>
+    </Panel>
+    <Panel>
+      <Buttons/>
+      <Children>
+        <ToolBar>
+          <Button>
+            <ClientEvent name="onClick">dsDm01.insert();&#xD;
+view.get(&quot;#dialogEditDm01&quot;).show();&#xD;
+</ClientEvent>
+            <Property name="icon">url(>skin>common/icons.gif) -120px 0px</Property>
+            <Property name="caption">资料新增</Property>
+          </Button>
+          <ToolBarButton>
+            <ClientEvent name="onClick">debugger&#xD;
+view.get(&quot;#matrlNo&quot;).set(&quot;readOnly&quot;,true);&#xD;
+var dataList = dgDm01.get(&quot;selection&quot;).slice(0);&#xD;
+if(dataList.length==0){&#xD;
+	dorado.MessageBox.alert(&quot;请至少选择一条要修改的数据！&quot;);&#xD;
+	return;&#xD;
+	&#xD;
+	view.get(&quot;#dialogTbcm011&quot;).show();&#xD;
+}else{&#xD;
+		dsDm01.getData().setCurrent(dataList[0]);&#xD;
+		view.get(&quot;#dialogEditDm01&quot;).show();&#xD;
+	&#xD;
+	&#xD;
+}&#xD;
+</ClientEvent>
+            <Property name="caption">资料修改</Property>
+            <Property name="icon">	url(>skin>common/icons.gif) -200px 0px</Property>
+          </ToolBarButton>
+          <Button layoutConstraint="colSpan:1">
+            <ClientEvent name="onClick">var dataList = dgDm01.get(&quot;selection&quot;).slice(0);&#xD;
+if(dataList.length==0){&#xD;
+	dorado.MessageBox.alert(&quot;请选择要删除的数据！&quot;);&#xD;
+	return;&#xD;
+}else{&#xD;
+functions[&quot;delOnClick&quot;](dataList);&#xD;
+}</ClientEvent>
+            <Property name="icon">	url(>skin>common/icons.gif) -140px 0px</Property>
+            <Property name="caption">删除</Property>
+          </Button>
+          <ToolBarButton>
+            <ClientEvent name="onClick">var options = {&#xD;
+	callback:function(){&#xD;
+		var path = $url(&quot;>exportMatrlModel.do&quot;);&#xD;
+		window.location.href=path;&#xD;
+	}&#xD;
+};&#xD;
+&#xD;
+dorado.MessageBox.confirm(&quot;您即将下载 料号信息模版 &quot;,options);&#xD;
+&#xD;
+&#xD;
+</ClientEvent>
+            <Property name="caption">下载表格模版</Property>
+            <Property name="icon">url(>skin>common/icons.gif) -160px -120px</Property>
+          </ToolBarButton>
+          <ToolBarButton>
+            <ClientEvent name="onClick">view.get(&quot;#dialogUpdFile&quot;).show();&#xD;
+//dorado.MessageBox.alert(&quot;待完善...&quot;);</ClientEvent>
+            <Property name="caption">Excel表汇入</Property>
+            <Property name="icon">url(>skin>common/icons.gif) -140px -120px</Property>
+          </ToolBarButton>
+          <Fill/>
+          <DataPilot>
+            <Property name="dataSet">dsDm01</Property>
+          </DataPilot>
+        </ToolBar>
+        <DataGrid id="dgDm01">
+          <ClientEvent name="onDataRowClick">if(arg.column.get(&quot;caption&quot;)!=&quot;RowSelector&quot;){&#xD;
+	var selection = self.get(&quot;selection&quot;);&#xD;
+	var entity = self.get(&quot;dataSet&quot;).getData(&quot;#&quot;);&#xD;
+	self.set(&quot;selection&quot;,entity);&#xD;
+}</ClientEvent>
+          <ClientEvent name="onDataRowDoubleClick">var data = dsDm01.getData();&#xD;
+view.get(&quot;#dialogEditDm01&quot;).show();&#xD;
+</ClientEvent>
+          <Property name="readOnly">true</Property>
+          <Property name="dataSet">dsDm01</Property>
+          <Property name="selectionMode">multiRows</Property>
+          <RowNumColumn>
+            <Property name="align">center</Property>
+          </RowNumColumn>
+          <RowSelectorColumn>
+            <Property name="align">center</Property>
+          </RowSelectorColumn>
+          <DataColumn name="matrlNo">
+            <Property name="property">matrlNo</Property>
+          </DataColumn>
+          <DataColumn>
+            <Property name="name">prodeName</Property>
+            <Property name="property">prodeName</Property>
+            <Property name="caption">品名</Property>
+            <Editor/>
+          </DataColumn>
+          <DataColumn name="materailName">
+            <Property name="property">materailName</Property>
+            <Property name="caption">材质</Property>
+          </DataColumn>
+          <DataColumn>
+            <Property name="name">defs01</Property>
+            <Property name="property">defs01</Property>
+            <Editor/>
+          </DataColumn>
+          <DataColumn>
+            <Property name="name">defs03</Property>
+            <Property name="property">defs03</Property>
+            <Editor/>
+          </DataColumn>
+          <DataColumn>
+            <Property name="property">defn01</Property>
+            <Property name="caption">规格</Property>
+            <Property name="name">defn01</Property>
+          </DataColumn>
+          <DataColumn>
+            <Property name="name">materailSrc</Property>
+            <Property name="property">materailSrc</Property>
+            <Property name="caption">产地</Property>
+            <Editor/>
+          </DataColumn>
+          <DataColumn name="grade">
+            <Property name="property">grade</Property>
+            <Property name="caption">质量标准</Property>
+            <Property name="ignored">true</Property>
+          </DataColumn>
+          <DataColumn name="pdType">
+            <Property name="property">pdType</Property>
+            <Property name="caption">用途</Property>
+            <Property name="trigger">autoMappingDropDown1</Property>
+          </DataColumn>
+        </DataGrid>
+      </Children>
+      <Tools/>
+    </Panel>
+    <Trigger id="trigger1">
+      <ClientEvent name="onExecute">view.get(&quot;#dialogGetMatrlNo&quot;).show();&#xD;
+</ClientEvent>
+    </Trigger>
+    <Dialog id="dialogGetMatrlNo">
+      <Property name="height">85%</Property>
+      <Property name="width">80%</Property>
+      <Property name="caption">料号信息</Property>
+      <Buttons/>
+      <Children>
+        <AutoForm>
+          <Property name="dataSet">dsQuery2</Property>
+          <Property name="cols">*,*,*,*</Property>
+          <Property name="exClassName">panel0</Property>
+          <Property name="labelAlign">right</Property>
+          <AutoFormElement>
+            <Property name="name">inventoryType</Property>
+            <Property name="property">inventoryType</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">appearance</Property>
+            <Property name="property">appearance</Property>
+            <Editor>
+              <TextEditor>
+                <Property name="trigger">autoMappingDropDown1</Property>
+                <Property name="tags">map1</Property>
+              </TextEditor>
+            </Editor>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">prodeCode</Property>
+            <Property name="property">prodeCode</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">pdType</Property>
+            <Property name="property">pdType</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">prodeName</Property>
+            <Property name="property">prodeName</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">defs01</Property>
+            <Property name="property">defs01</Property>
+            <Property name="ignored">true</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">materailName</Property>
+            <Property name="property">materailName</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">defs03</Property>
+            <Property name="property">defs03</Property>
+            <Property name="ignored">true</Property>
+            <Editor/>
+          </AutoFormElement>
+        </AutoForm>
+        <ToolBar>
+          <Button>
+            <ClientEvent name="onClick">var data = null;&#xD;
+&#xD;
+data = dsQuery2.getData(&quot;#&quot;);&#xD;
+&#xD;
+dsDm011.set(&quot;parameter&quot;,data).flushAsync();&#xD;
+&#xD;
+</ClientEvent>
+            <Property name="caption">查询</Property>
+            <Property name="icon">url(>skin>common/icons.gif) -40px -100px</Property>
+          </Button>
+          <Button>
+            <ClientEvent name="onClick">dsQuery2.clear();&#xD;
+dsQuery2.insert();&#xD;
+</ClientEvent>
+            <Property name="caption">重置</Property>
+            <Property name="icon">url(>skin>common/icons.gif) -20px -200px</Property>
+          </Button>
+          <ToolBarButton>
+            <ClientEvent name="onClick">dsQuery1.getData(&quot;#&quot;).set(&quot;matrlNo&quot;,dsDm011.getData(&quot;#&quot;).get(&quot;matrlNo&quot;));&#xD;
+&#xD;
+var matrlNo = dsDm011.getData(&quot;#&quot;).get(&quot;matrlNo&quot;);&#xD;
+dsDm01.set(&quot;parameter&quot;,{&#xD;
+	matrlNo:matrlNo&#xD;
+}).flushAsync(function(){&#xD;
+	info.doSet(&quot;text&quot;,&quot;查询【&quot;+matrlNo+&quot;】成功！&quot;);&#xD;
+});&#xD;
+view.get(&quot;#dialogGetMatrlNo&quot;).close();&#xD;
+</ClientEvent>
+            <Property name="caption">确认</Property>
+            <Property name="icon">url(>skin>common/icons.gif) -20px 0px</Property>
+          </ToolBarButton>
+          <ToolBarButton>
+            <ClientEvent name="onClick">view.get(&quot;#dialogGetMatrlNo&quot;).close();&#xD;
+</ClientEvent>
+            <Property name="caption">关闭</Property>
+            <Property name="icon">url(>skin>common/icons.gif) -40px 0px</Property>
+          </ToolBarButton>
+          <Fill/>
+          <DataPilot>
+            <Property name="dataSet">dsDm011</Property>
+          </DataPilot>
+        </ToolBar>
+        <DataGrid>
+          <ClientEvent name="onDataRowDoubleClick">dsQuery1.getData(&quot;#&quot;).set(&quot;matrlNo&quot;,dsDm011.getData(&quot;#&quot;).get(&quot;matrlNo&quot;));&#xD;
+&#xD;
+var matrlNo = dsDm011.getData(&quot;#&quot;).get(&quot;matrlNo&quot;);&#xD;
+dsDm01.set(&quot;parameter&quot;,{&#xD;
+	matrlNo:matrlNo&#xD;
+}).flushAsync(function(){&#xD;
+	info.doSet(&quot;text&quot;,&quot;查询【&quot;+matrlNo+&quot;】成功！&quot;);&#xD;
+});&#xD;
+view.get(&quot;#dialogGetMatrlNo&quot;).close();&#xD;
+</ClientEvent>
+          <Property name="readOnly">true</Property>
+          <Property name="dataSet">dsDm011</Property>
+          <RowNumColumn/>
+          <DataColumn name="matrlNo">
+            <Property name="property">matrlNo</Property>
+          </DataColumn>
+          <DataColumn name="inventoryType">
+            <Property name="property">inventoryType</Property>
+          </DataColumn>
+          <DataColumn name="appearance">
+            <Property name="property">appearance</Property>
+          </DataColumn>
+          <DataColumn name="prodeCode">
+            <Property name="property">prodeCode</Property>
+          </DataColumn>
+          <DataColumn>
+            <Property name="name">prodeName</Property>
+            <Property name="property">prodeName</Property>
+            <Property name="caption">品名</Property>
+            <Editor/>
+          </DataColumn>
+          <DataColumn name="materailName">
+            <Property name="property">materailName</Property>
+            <Property name="caption">材质</Property>
+          </DataColumn>
+          <DataColumn>
+            <Property name="property">defn01</Property>
+            <Property name="caption">规格</Property>
+            <Property name="name">defn01</Property>
+          </DataColumn>
+          <DataColumn>
+            <Property name="name">materailSrc</Property>
+            <Property name="property">materailSrc</Property>
+            <Property name="caption">产地</Property>
+            <Editor/>
+          </DataColumn>
+          <DataColumn name="grade">
+            <Property name="property">grade</Property>
+            <Property name="caption">质量标准</Property>
+          </DataColumn>
+          <DataColumn name="pdType">
+            <Property name="property">pdType</Property>
+            <Property name="caption">用途</Property>
+            <Property name="trigger">autoMappingDropDown1</Property>
+          </DataColumn>
+        </DataGrid>
+      </Children>
+      <Tools/>
+    </Dialog>
+    <Dialog id="dialogEditDm01">
+      <Property name="width">80%</Property>
+      <Property name="height">80%</Property>
+      <Property name="closeable">false</Property>
+      <Property name="caption">料号信息</Property>
+      <Buttons/>
+      <Children>
+        <ToolBar>
+          <Button>
+            <ClientEvent name="onClick">functions[&quot;saveOnClick&quot;]();&#xD;
+</ClientEvent>
+            <Property name="caption">保存</Property>
+            <Property name="icon">url(>skin>common/icons.gif) -140px -20px</Property>
+          </Button>
+          <Button>
+            <ClientEvent name="onClick">dsDm01.getData(&quot;#&quot;).cancel();&#xD;
+view.get(&quot;#dialogEditDm01&quot;).close();&#xD;
+</ClientEvent>
+            <Property name="caption">关闭</Property>
+            <Property name="icon">url(>skin>common/icons.gif) -40px 0px</Property>
+          </Button>
+        </ToolBar>
+        <AutoForm id="matrlForm">
+          <Property name="dataSet">dsDm01</Property>
+          <Property name="cols">*,*,*,*</Property>
+          <Property name="labelAlign">right</Property>
+          <AutoFormElement id="matrlNo">
+            <Property name="name">matrlNo</Property>
+            <Property name="property">matrlNo</Property>
+            <Property name="readOnly">true</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">inventoryType</Property>
+            <Property name="property">inventoryType</Property>
+            <Property name="trigger">autoMappingDropDown1</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">appearance</Property>
+            <Property name="property">appearance</Property>
+            <Editor>
+              <TextEditor>
+                <Property name="trigger">autoMappingDropDown1</Property>
+                <Property name="tags">map1</Property>
+              </TextEditor>
+            </Editor>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">prodeCode</Property>
+            <Property name="property">prodeCode</Property>
+            <Property name="trigger">autoMappingDropDown1</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">prodeName</Property>
+            <Property name="property">prodeName</Property>
+            <Property name="editable">false</Property>
+            <Property name="trigger">trigger2</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">defs01</Property>
+            <Property name="property">defs01</Property>
+            <Property name="label">尺寸信息</Property>
+            <Property name="readOnly">false</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">materailName</Property>
+            <Property name="property">materailName</Property>
+            <Property name="editable">true</Property>
+            <Property name="label">材质信息</Property>
+            <Property name="readOnly">false</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">defs03</Property>
+            <Property name="property">defs03</Property>
+            <Property name="label">质量信息</Property>
+            <Property name="readOnly">false</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">pdType</Property>
+            <Property name="property">pdType</Property>
+            <Property name="visible">true</Property>
+            <Property name="label">用途</Property>
+            <Property name="trigger">autoMappingDropDown1</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">materailSrc</Property>
+            <Property name="property">materailSrc</Property>
+            <Property name="visible">true</Property>
+            <Property name="label">产地</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">grade</Property>
+            <Property name="property">grade</Property>
+            <Property name="trigger">autoMappingDropDown1</Property>
+            <Property name="label">质量标准</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">priceMethod</Property>
+            <Property name="property">priceMethod</Property>
+            <Property name="trigger">autoMappingDropDown1</Property>
+            <Property name="ignored">false</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">trick</Property>
+            <Property name="property">trick</Property>
+            <Property name="label">厚(mm)</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">thickTolerance</Property>
+            <Property name="property">thickTolerance</Property>
+            <Property name="label">厚度公差(±mm)</Property>
+            <Property name="labelWidth">100</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">width</Property>
+            <Property name="property">width</Property>
+            <Property name="label">宽(mm)</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">widthTolerance</Property>
+            <Property name="property">widthTolerance</Property>
+            <Property name="label">宽度公差(±mm)</Property>
+            <Property name="labelWidth">100</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">lengthA</Property>
+            <Property name="property">lengthA</Property>
+            <Property name="label">长(mm)</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">lengthTolerance</Property>
+            <Property name="property">lengthTolerance</Property>
+            <Property name="label">长度公差(±mm)</Property>
+            <Property name="labelWidth">100</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">diameter</Property>
+            <Property name="property">diameter</Property>
+            <Property name="label">外径(mm)</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">diameterOutTolerance</Property>
+            <Property name="property">diameterOutTolerance</Property>
+            <Property name="label">外径公差(±mm)</Property>
+            <Property name="labelWidth">100</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">diameterIn</Property>
+            <Property name="property">diameterIn</Property>
+            <Property name="label">内径(mm)</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">diameterInTolerance</Property>
+            <Property name="property">diameterInTolerance</Property>
+            <Property name="label">内径公差(±mm)</Property>
+            <Property name="labelWidth">100</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="visible">false</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="visible">false</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">createEmp</Property>
+            <Property name="property">createEmp</Property>
+            <Property name="label">创建人员</Property>
+            <Property name="readOnly">true</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">createDate</Property>
+            <Property name="property">createDate</Property>
+            <Property name="label">创建日期</Property>
+            <Property name="readOnly">true</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">updateEmp</Property>
+            <Property name="property">updateEmp</Property>
+            <Property name="label">修改人员</Property>
+            <Property name="readOnly">true</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">updateDate</Property>
+            <Property name="property">updateDate</Property>
+            <Property name="label">修改日期</Property>
+            <Property name="readOnly">true</Property>
+            <Editor/>
+          </AutoFormElement>
+        </AutoForm>
+        <Trigger id="trigger2">
+          <ClientEvent name="onExecute">view.get(&quot;#prodeDialog&quot;).show();&#xD;
+</ClientEvent>
+        </Trigger>
+      </Children>
+      <Tools/>
+    </Dialog>
+    <Dialog id="dialogUpdFile">
+      <ClientEvent name="onClose">view.get(&quot;#dsDm012&quot;).clear();&#xD;
+</ClientEvent>
+      <Property name="width">90%</Property>
+      <Property name="height">80%</Property>
+      <Buttons/>
+      <Children>
+        <Panel id="panelUploadFile">
+          <Property name="caption">Excel表汇入</Property>
+          <Buttons/>
+          <Children>
+            <ToolBar>
+              <ToolBarButton id="tbb_uploadFile">
+                <Property name="caption">选择Excel表</Property>
+                <Property name="action">uploadAction</Property>
+                <Property name="icon">url(>skin>common/icons.gif) -140px -120px</Property>
+              </ToolBarButton>
+            </ToolBar>
+            <Panel>
+              <Buttons>
+                <Button>
+                  <ClientEvent name="onClick">view.get(&quot;#saveDm011&quot;).execute(function(msg){&#xD;
+	if(msg==null){&#xD;
+			dsDm01.set(&quot;parameter&quot;,{&#xD;
+		matrlNo:matrlNoQuery&#xD;
+	}).flushAsync(function(){&#xD;
+		dorado.MessageBox.alert(&quot;excel汇入成功！&quot;);&#xD;
+		&#xD;
+		view.get(&quot;#dialogUpdFile&quot;).close();&#xD;
+	});&#xD;
+	}else{&#xD;
+		dorado.MessageBox.alert(msg);&#xD;
+	&#xD;
+	}&#xD;
+});&#xD;
+</ClientEvent>
+                  <Property name="caption">解析入库</Property>
+                </Button>
+              </Buttons>
+              <Children>
+                <UploadAction id="uploadAction">
+                  <ClientEvent name="beforeFileUpload">view.set('#pbUpload.value',1);&#xD;
+//附件参数&#xD;
+//attachFile(self);&#xD;
+//alert(&quot;11&quot;);&#xD;
+//self.set(&quot;parameter&quot;,{&#xD;
+	//id:dsDm01.getData(&quot;#&quot;).get(&quot;pkMp031&quot;)&#xD;
+//});&#xD;
+</ClientEvent>
+                  <ClientEvent name="onUploadProgress">view.set('#pbUpload.value',arg.total.percent);</ClientEvent>
+                  <ClientEvent name="onFileUploaded">var list = arg.returnValue;&#xD;
+list.each(function(data){&#xD;
+	&#xD;
+	view.get(&quot;#dsDm012&quot;).insert(data);&#xD;
+});</ClientEvent>
+                  <ClientEvent name="onUploadComplete">/*dorado.MessageBox.alert(&quot;汇入完成！&quot;,function(){&#xD;
+	&#xD;
+	dsDm01.set(&quot;parameter&quot;,{&#xD;
+		createDate:new Date&#xD;
+	}).flushAsync();&#xD;
+	&#xD;
+	view.get(&quot;#dialogUpdFile&quot;).close();&#xD;
+});&#xD;
+*/</ClientEvent>
+                  <Property name="fileResolver">excelImport#process1</Property>
+                  <Property name="selectionMode">multiFiles</Property>
+                  <Property name="maxFileSize">5MB</Property>
+                  <Property name="headers"></Property>
+                  <Filters>
+                    <Filter>
+                      <Property name="extensions">csv,xlsx</Property>
+                      <Property name="title">CSV</Property>
+                    </Filter>
+                  </Filters>
+                </UploadAction>
+                <UpdateAction id="saveDm011">
+                  <Property name="dataResolver">bsjc02BO#saveExcelIn</Property>
+                  <Property name="async">true</Property>
+                  <UpdateItem>
+                    <Property name="dataSet">dsDm012</Property>
+                  </UpdateItem>
+                </UpdateAction>
+                <DataSet id="dsDm012">
+                  <Property name="dataType">[dtTbdm011]</Property>
+                </DataSet>
+                <ProgressBar id="pbUpload"/>
+                <DataPilot>
+                  <Property name="dataSet">dsDm012</Property>
+                </DataPilot>
+                <DataGrid>
+                  <Property name="dataSet">dsDm012</Property>
+                  <Property name="visible">true</Property>
+                  <DataColumn name="inventoryType">
+                    <Property name="property">inventoryType</Property>
+                  </DataColumn>
+                  <DataColumn name="appearance">
+                    <Property name="property">appearance</Property>
+                  </DataColumn>
+                  <DataColumn name="prodeCode">
+                    <Property name="property">prodeCode</Property>
+                  </DataColumn>
+                  <DataColumn name="prodeName">
+                    <Property name="property">prodeName</Property>
+                  </DataColumn>
+                  <DataColumn name="materailName">
+                    <Property name="property">materailName</Property>
+                  </DataColumn>
+                  <DataColumn name="defs01">
+                    <Property name="property">defs01</Property>
+                  </DataColumn>
+                  <DataColumn name="defs03">
+                    <Property name="property">defs03</Property>
+                  </DataColumn>
+                  <DataColumn name="materailSrc">
+                    <Property name="property">materailSrc</Property>
+                  </DataColumn>
+                  <DataColumn name="grade">
+                    <Property name="property">grade</Property>
+                  </DataColumn>
+                  <DataColumn name="trick">
+                    <Property name="property">trick</Property>
+                  </DataColumn>
+                  <DataColumn name="thickTolerance">
+                    <Property name="property">thickTolerance</Property>
+                  </DataColumn>
+                  <DataColumn name="width">
+                    <Property name="property">width</Property>
+                  </DataColumn>
+                  <DataColumn name="widthTolerance">
+                    <Property name="property">widthTolerance</Property>
+                  </DataColumn>
+                  <DataColumn name="lengthA">
+                    <Property name="property">lengthA</Property>
+                  </DataColumn>
+                  <DataColumn name="lengthTolerance">
+                    <Property name="property">lengthTolerance</Property>
+                  </DataColumn>
+                  <DataColumn name="priceMethod">
+                    <Property name="property">priceMethod</Property>
+                  </DataColumn>
+                  <DataColumn name="pdType">
+                    <Property name="property">pdType</Property>
+                  </DataColumn>
+                </DataGrid>
+              </Children>
+              <Tools/>
+            </Panel>
+          </Children>
+          <Tools/>
+        </Panel>
+      </Children>
+      <Tools/>
+    </Dialog>
+  </View>
+</ViewConfig>

@@ -1,0 +1,158 @@
+@charset "utf-8";
+body,ul,li,h1,h2,h3,h4,h5,h6,p,dl,dt,dd,input,img{margin:0; padding:0; list-style:none; border:0; outline:none;box-sizing: border-box;}
+html{height: 100%}
+body{ font:16px/1.5 "微软雅黑";height: 100%;}
+a{text-decoration: none;color: #fff;}
+body{min-width: 1100px}
+.logo-maximum{width: 100%;overflow: hidden;height: 100%;}
+/*登录框*/
+.logo-warp{position: relative;margin-top: 25%;}
+.logo-box{width: 250px;margin:0 auto;position: relative;}
+.logo-warp .logo{margin: 0 auto 45px;display: block;}
+/*.logo-box input{margin-top: 20px;}*/
+.logo-box div{}
+.logo-user{width: 250px;height: 40px;line-height:40px;border-radius: 4px;padding-left: 10px;color: #666;font-size: 14px;background: #F2F2F2;position: relative;margin-bottom: 20px;}
+.logo-box .Security-code{width: 250px;height: 44px;}
+.logo-box .self-motion{width: 250px;color: #666;}
+.logo-box .self-motion label{cursor:pointer;font-size: 14px;}
+.logo-box .forget-password{float: right;color: #333;font-size: 14px;}
+.logo-box .forget-password:hover{color: #5093e3;}
+.logo-box .charge{width: 180px;height: 44px;border-radius: 4px;border: 1px solid #5093e3;cursor: pointer;color: #5093e3;line-height:44px;text-align: center;float: right}
+.logo-box .new-password{width: 310px;height: 44px;border-radius: 4px;padding-left: 10px;border: 1px solid #ccc;color: #666;font-size: 18px;}
+.logo-box .inp{width: 100px;height: 40px;border: 1px solid #ccc;border-radius:4px;color:#666;float: left;line-height: 40px;font-size: 16px;margin-top:0px;float: left;box-sizing: border-box;padding-left: 10px;}
+.logo-box .number{width: 105px;height: 40px;border: 1px solid #8c8c8c;float: right;cursor: pointer;} 
+.logo-box .password{width: 310px;height: 44px;background: #5093e3;border-radius: 4px;line-height: 44px;text-align: center;display: inline-block;}
+.logo-box .center{font-size: 16px;width: 250px;height: 40px;background: #5093e3;color: #fff;cursor: pointer;display: inline-block;border-radius: 3px;text-align: center;line-height: 40px;margin-top: 20px;}
+.logo-box .center:hover {background: #75aae8;color: #fff;display: inline-block;} 
+.logo-box  .service{text-align: center;height: 40px;font-size: 14px;margin-top: 20px;}
+.service .look-service{color: #5093de}
+.service .look-service:hover{color:#3673b7;}
+.login-warpbg{background: #fff;position: absolute;top: 0;left: 0;width: 100%;height: 100%;opacity: 0.9;filter:alpha(opacity=90);}
+
+/*右侧悬浮icon*/
+.right-bar{position: fixed;right: 10px;bottom: 11%;width: 60px;z-index: 20;} 
+.right-bar .icon{float: right;/* width: 60px; */}
+.icon .gaoliang{width: 58px;height: 58px;background:#ddd;display: block;margin-top: 6px;}
+.icon .gaoliang:hover{background:#5093e3}
+.icon .gaoliang img{margin-top: 14px;margin-left: 14px;}
+.right-bar .ewm{float: left;height: 130px;position: absolute;right: 70px;bottom: 0;}
+.online-customer{width: 230px;height: 100px;background:#fff;float: right;border-radius: 5px;border: 1px solid #ddd;padding-left: 30px;box-sizing: border-box;margin-top: -11px;}
+.online-customer .boult{margin-right: -10px;float: right;margin-top: 38px}
+.online-customer a{width: 70px;height: 66px;text-align: center;margin-top: 5px; display: inline-block;float: left;font-size: 12px;margin-top: 0;padding-top: 22px;box-sizing: border-box}
+.online-customer p{color: #666;margin-top: 15px}
+.ewm{margin-right: 20px;float: right}
+.ewm .download{float: right;width: 324px;height: 116px;border: 1px solid #ddd;margin-top: 45px;border-radius: 5px;position: relative;}
+.download .Android-boult{position: absolute;right: -10px;top: 46px;}
+
+/*页面底部*/
+.bottom{width: 100%;text-align: center;line-height: 20px;color: #333;position: absolute;z-index: 10;right: 0;bottom: 0;padding: 20px 0;}
+.bottom a{color: #333232;font-size: 12px;}
+
+/*浏览器不是谷歌或者火狐的样式*/
+.explorer-warp{width: 100%;height: 100%; z-index: 1000; position: fixed; top: 0; bottom: 0;}
+.explorer{width: 100%;position: fixed;top: 30%;}
+.close{width: 30px;height: 30px;float: right;margin-top: 20px;position: relative;z-index: 2;cursor: pointer;background: url( ../images/login/close.png);background-repeat: no-repeat;}
+.close:hover{background: url( ../images/login/close-1.png)no-repeat}
+.explorer p{color: #fff;font-size: 30px;text-align: center;line-height:50px }
+.explorer .bgc{width: 100%;text-align: center;margin-top: 50px;background:#fff;padding: 10px 0;line-height: 50px;}
+.explorer .bgc a{margin:0 30px;}
+.explorer .bgc span{color:#000;display:inline-block;font-size:20px;position: relative;top: 2px;}
+.bgc img{height: 60px;vertical-align:middle;}
+.warpbg{position: absolute; top: 0; left: 0; background: #000; width: 100%; height: 100%; opacity: 0.8;filter:alpha(opacity=80);}
+
+#errorInfo{position: absolute;margin:-10px auto;}
+#errorInfos{position: absolute; margin:20px auto;}
+
+.hide{display: none;}
+.error{display: inline-block;background:url(../images/login/error.png);background-repeat: no-repeat;background-position: 9px 8px;line-height:20px;color: #7d7d7d;border: 1px solid #e8e8e8;border-radius: 3px;-webkit-animation: fadeIn 1s;-moz-animation: fadeIn 1s;-ms-animation: fadeIn 1s;animation: fadeIn 1s;color: #e4393c;font-size: 14px;width: 100%;padding: 8px 0;text-indent: 36px;margin-bottom: 20px;} 						 					 
+.error.hide{display: none;}
+.login-boxs{overflow: hidden;height: 100%;}
+.logo-maximum:before{background-image: url(../images/login/loginbg.jpg);background-size: cover;content: "";height: 100%;left: 0;position: fixed;top: 0;width: 100%;z-index: 0;}
+/* .logo-maximum{background-image: url(../images/login/loginbg.jpg);background-size: cover;height: 100%;width: 100%;z-index: 0;} */
+/* .loginbg {position: fixed; width: 100%; height: 100%; z-index: 0; }  */
+.word{position: absolute;height: auto;z-index: 1;top: 49px;left: 419px;}
+.fly{position: absolute;z-index: 1;left:0;top:0;width: 400px;}
+.login-boxs-right{width:450px;height: 100%;float: left;position: fixed;right: 0;z-index: 10;}
+
+.a-order{overflow: hidden; position: relative; } 
+.a-order .order-online{position: absolute; left: 0; text-align: center; padding: 6px; background: #5093e3;top: -104%;}
+.icon .gaoliang.a-order:hover{background:#ddd;}
+.a-order:hover .order-online{-webkit-animation: fadedown .3s;-webkit-animation-fill-mode:forwards;-moz-animation: fadedown .3s;-moz-animation-fill-mode:forwards;-ms-animation: fadedown .3s;-ms-animation-fill-mode:forwards;animation: fadedown .3s;animation-fill-mode:forwards;}
+
+
+@media screen and (max-width: 1366px){ 
+	.logo-warp{-webkit-transform: scale(.9);-moz-transform: scale(.9);-ms-transform: scale(.9);margin-top: 10%;}
+	.right-bar{-webkit-transform: scale(.9);-moz-transform: scale(.9);-ms-transform: scale(.9);}
+ 	.login-boxs-right{width:360px;}
+	.word{z-index: 1;top: 33px;left: 320px;height: 80px;}
+	.fly{left:0;top:0;width:300px;}
+ }   
+@media screen and (max-width: 1280px){ 
+	.word{z-index: 1;top: 32px;left: 256px;height: 60px;}
+	.fly{left:0;top:0;width:250px;}
+}
+
+@-webkit-keyframes fadedown{
+	0%{top: -100%;}
+	100%{top:0;}
+}
+@-moz-keyframes fadedown{
+	0%{top: -100%;}
+	100%{top:0;}
+}
+@-ms-keyframes fadedown{
+	0%{top: -100%;}
+	100%{top:0;}
+}
+@keyframes fadedown{
+	0%{top: -100%;}
+	100%{top:0;}
+}
+
+
+
+
+@-webkit-keyframes fadeIn{
+	0%{opacity: 0;}
+	100%{opacity:1;}
+}
+@-moz-keyframes fadeIn{
+	0%{opacity: 0;}
+	100%{opacity:1;}
+}
+@keyframes fadeIn{
+	0%{opacity: 0;}
+	100%{opacity:1;}
+}
+@-ms-keyframes fadeIn{
+	0%{opacity: 0;filter:alpha(opacity=0);}
+	100%{opacity:1;filter:alpha(opacity=100);}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

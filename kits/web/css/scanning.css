@@ -1,0 +1,329 @@
+@charset "utf-8";
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+    font-family: "微软雅黑";
+}
+
+body {
+    width: 100%;
+    min-width: 320px;
+	list-style: none;
+}
+
+header {
+	width:100%;
+	height:2em;
+	}
+
+header span {
+    float: left;
+    width: 50%;
+    min-width: 160px;
+    height: 2em;
+    line-height: 2em;
+    text-align: center;
+    font-size: 1.3em;
+    color: #94b6f9;
+	border-bottom:#999 solid 1px;
+	box-sizing: border-box;
+}
+
+header span.selected {
+    color: #387ef5;
+    border-bottom: #387ef5 solid 3px;
+	box-sizing: border-box;
+}
+
+#viewDiv_0 {
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+#viewDiv_1 {
+    display: none;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+/*第一页开始*/
+.centerbox, .track-rcol {
+    float: left;
+    width: 96%;
+    min-width: 307px;
+    margin-left: 2%;
+}
+
+.track-rcol {
+	margin:1em auto;
+	position:relative;
+	left:16px;
+}
+
+.track-list li {
+    float: left;
+    width: 100%;
+	height:80px;
+    min-width: 307px;
+    margin: 5px 0;
+    color: #999;
+}
+
+.track-list li.first {
+    color: #333;
+}
+
+.tubiao {
+    position: relative;
+    float:left;
+    width: 25px;
+    height: 25px;
+    border-radius: 25px;
+    background-color: #afcbfb;
+	margin:5px 10px;
+}
+.xian {
+    position: absolute;
+    height: 60px;
+    border-left: 2px dotted #999;
+	left:45%;
+	top:-62px;
+}
+
+.time {
+	float:left;
+    width: 17%;
+	margin-top:10px; 
+	text-align:right;
+	font-size:11px;
+	
+}
+.span_blue {
+	color:#387EF5;
+	float:right
+	font-size:11px;
+}
+.time span{
+	float:right;
+	font-size:11px;
+}
+
+/* .riqi {
+	font-size:12px;}
+	
+.sj {
+	font-size:12px;
+} */
+
+.txt {
+    float:left;
+    width: 66%;
+	font-size:14px;
+	margin-top:2px;
+}
+.txtblue {
+    float:left;
+    width: 66%;
+	font-size:14px;
+	margin-top:8px; 
+	color:#387EF5;
+}
+
+.first .tubiao {
+	float:left;
+    width: 25px;
+    height: 25px;
+    background: url(../images/truck_blue.png) center no-repeat;
+    background-size: 25px 25px;
+}
+
+.jindu li {
+	color:#333333;}
+
+.sm_cydh, .sm_zt{
+	color:#FFF;
+	font-size:0.8em;
+	width:48%;
+	min-width:147px;
+	height:100%;
+	display:inline-block;
+	line-height:26px;
+	margin-left:2px;
+}
+
+.mudidi {
+	width:60%;
+	min-width:184px;
+	height:30px;
+	margin:0 auto;
+	background:url(../images/arrow.png) center no-repeat;
+	background-size:41px 10px;
+	position:relative;
+}
+
+.mudidi .fanwei1{
+	float:left;
+	line-height:30px;
+	font-size:1.2em;
+    width:80px;
+	height:30px;
+	position:relative;
+	right:14px;
+	}
+	
+.mudidi .fanwei2{
+	float:right;
+	line-height:30px;
+	font-size:1.2em;
+	width:80px;
+	height:30px;
+	position:relative;
+	left:14px;
+}
+
+.mudidi .fanwei1 span {
+	display:inline-block;
+	height:30px;
+	position:absolute;
+	right:0;
+}
+	
+.mudidi .fanwei2 span {
+	display:inline-block;
+	height:30px;
+	position:absolute;
+	left:0;
+}
+
+.neirong span {
+	color:#9C9C9C;
+}
+
+.kongge {/*修改*/
+	letter-spacing:14px;
+	color:#333;
+	float:left;
+}
+
+.jianshu {/*修改*/
+	width:50%;
+	height:100%;
+	float:right;
+	white-space:nowrap;
+}
+/*第一页结束,第二页开始*/
+
+#viewDiv_1 {
+    margin-top: 0;
+}
+
+.triangle-down {
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 10px solid #f1c928;
+	float:left;
+	position:absolute;
+	left:50%;
+	top:70%;
+}
+
+.good {
+    width:192px;
+	margin:60px auto 30px;;
+	position:relative;
+	right:4px;
+}
+
+.good li {
+	height:3em;
+    position:relative;
+	text-align:center;
+	font-size:1.3em;
+	font-weight:bold;
+	color:#71a4fb;
+}
+
+.good img {
+	width:21px;
+	height:20px;
+	float:left;
+	position:relative;
+	/*top:3px;*/
+}
+
+.triangle-down-last {
+	width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 10px solid #f1c928;
+	float:left;
+	position:absolute;
+	left:50%;
+	top:90%;
+}
+
+.erweima {
+	width:260px;
+	margin:10px auto;
+	font-weight:bold;
+	position:relative;
+}
+	
+.erweima_top{
+	width:100%;
+	height:1.4em;
+	line-height:1.4em;
+	border-bottom:#999 solid 2px;
+	text-align:center;
+	font-size:1.6em;
+	letter-spacing:0.6px;
+}
+
+.erweima_bottom{
+	width:100%;
+	margin-top:15px;
+	line-height:1em;
+}
+
+.erweima_contant{
+	color:#666;
+}
+	
+.erweima_bottom p {
+	font-size:1.2em;
+	line-height:1.8em;
+}
+
+.erweima_saomiao{
+	/*position:absolute;
+	right:0;
+	top:45%;*/
+	font-weight:normal;
+	float:left;
+	width:80px;
+	margin-left:-1px;
+	margin-top:-6px;
+	text-align:center;
+}
+
+.erweima_jieshao {/*修改*/
+    font-weight:normal;
+    float:left;
+	width:80px;
+	margin-left:10px;
+	margin-top:-6px;
+	text-align:center;
+}
+.erweima_gzh{
+	 font-weight:normal;
+    float:left;
+	width:80px;
+	margin-left:10px;
+	margin-top:-6px;
+	text-align:center;
+}

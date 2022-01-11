@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ViewConfig template="bdf2.core.view.frame.main.MainFrameTemplate">
+  <Arguments/>
+  <Context/>
+  <Model/>
+  <View>
+    <ClientEvent name="onCreate">window.location.href=&quot;bdf2.core.view.frame.main.MainFrame1.d&quot;;</ClientEvent>
+    <Property name="packages">tree</Property>
+  </View>
+</ViewConfig>

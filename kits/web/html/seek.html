@@ -1,0 +1,139 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+<title>无标题文档</title>
+<link rel="stylesheet" href="../css/seek.css">
+<!-- 引入 jQuery 库 -->
+<script type="text/javascript"
+	src="../libraries/js/jquery-1.10.2.min.js"></script>
+<!-- 引入 angularjs库 -->
+<script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+<script type="text/javascript" src="../libraries/js/angular-resource.js"></script>
+<!-- 引入 js -->
+<script type="text/javascript" src="../libraries/js/seek.js"></script>
+</head>
+
+<body>
+	<!-- <div class="navigation-warp">
+		<div class="navigation">
+			<img src="../img/return.png" alt="" id='goback'> <span>好运通</span>
+		</div>
+	</div> -->
+	<!--	内容-->
+	<div class="center-warp" ng-app="myApp" ng-controller="myCtrl">
+		<div class="center-top">
+			<div class="logo">
+				<img src="../img/LOGO.png" alt=""> <span>单号查询</span>
+			</div>
+			<div class="input-box">
+				<div class="input-left">
+					<input type="text" class="inp" placeholder="请输入快递单号"
+						ng-model="billNo"> <img src="../img/search.png" alt=""
+						class="search" id="searchBill" ng-click="search()">
+					<div class="conceal" ng-repeat="c in company">
+						<div class='link' id='wayInfo' ng-click='wayDetail(c.wayId)'>
+							<span class='courier-number' >{{c.billNo}}
+							</span><span class='corporation'>{{c.companyName}}</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	<!-- 	<div class="record-warp">
+			<div class="record">
+				<img src="../img/record.png" alt=""> <span>历史记录</span>
+			</div>
+
+		</div>
+		<div class="particular-warp">
+			<div class="particular-left">
+				<img src="../img/odd number.png" alt="">
+			</div>
+
+			<div class="particular-right">
+				<div>
+					<span>订单编号 ： </span><span>54677876544567877676</span>
+				</div>
+				<div>
+					<span>货物名称 ： </span><span>较场尾你从我司几秒泡温泉的媒婆</span>
+				</div>
+				<div>
+					<span>查询时间 ： </span><span>2016.10.25</span>
+				</div>
+			</div>
+		</div>
+		<div class="particular-warp">
+			<div class="particular-left">
+				<img src="../img/odd number.png" alt="">
+			</div>
+
+			<div class="particular-right">
+				<div>
+					<span>订单编号 ： </span><span>54677876544567877676</span>
+				</div>
+				<div>
+					<span>货物名称 ： </span><span>较场尾你从我司几秒泡温泉的媒婆</span>
+				</div>
+				<div>
+					<span>查询时间 ： </span><span>2016.10.25</span>
+				</div>
+			</div>
+		</div>
+		<div class="particular-warp">
+			<div class="particular-left">
+				<img src="../img/odd number.png" alt="">
+			</div>
+
+			<div class="particular-right">
+				<div>
+					<span>订单编号 ： </span><span>54677876544567877676</span>
+				</div>
+				<div>
+					<span>货物名称 ： </span><span>较场尾你从我司几秒泡温泉的媒婆</span>
+				</div>
+				<div>
+					<span>查询时间 ： </span><span>2016.10.25</span>
+				</div>
+			</div>
+		</div>
+		<div class="particular-warp">
+			<div class="particular-left">
+				<img src="../img/odd number.png" alt="">
+			</div>
+
+			<div class="particular-right">
+				<div>
+					<span>订单编号 ： </span><span>54677876544567877676</span>
+				</div>
+				<div>
+					<span>货物名称 ： </span><span>较场尾你从我司几秒泡温泉的媒婆</span>
+				</div>
+				<div>
+					<span>查询时间 ： </span><span>2016.10.25</span>
+				</div>
+			</div>
+		</div> -->
+	</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

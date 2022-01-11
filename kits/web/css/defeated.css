@@ -1,0 +1,70 @@
+@charset "utf-8";
+body, button, dd, dl, dt, form, h1, h2, h3, h4, h5, h6, hr, input, li, ol, p, pre, td, textarea, th, ul{margin:0; padding:0; list-style:none;}
+
+body{ font:12px/1.5 "微软雅黑";background: #fff;}
+.top-warp{width: 100%;}
+.top{margin:0 auto;width: 240px; }
+.center-warp{width: 100%;height: 130px; }
+.center{width: 320px;height: 130px;margin:0 auto;line-height: 140px;}
+.center-warp p{font-size: 50px;color: #0d810b;float: left;margin-right: 20px;margin-left: 10px;margin-top: -11px;}
+.center-warp button{float:left; margin-top: 42px;width: 80px;height: 36px;border-radius: 3px;border: 1px solid #689dc4;background:url(../img/bgc2.png);font-size: 14px;cursor: pointer;}
+.xian-1{width: 100%;height: 3px;}
+.xian{width: 750px;height: 3px;background: #d5ede9;margin:0 auto}
+
+
+
+.footer-footer{width: 100%;height: 90px;margin-top: 40px;}
+.footer-middle{width: 470px;height: 90px;margin: 0 auto;text-align: left;}
+.footer-middle .help{color: #333;font-size: 22px;}
+.footer-middle .tautology{color: #666;font-size: 20px;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

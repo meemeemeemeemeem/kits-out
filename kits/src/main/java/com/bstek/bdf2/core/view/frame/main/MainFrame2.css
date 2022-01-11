@@ -1,0 +1,39 @@
+@CHARSET "UTF-8";
+
+.d-tree-custom {
+	background-color: #4c4c4c;
+}
+
+.d-tree .row {
+	color: #fff;
+	background-color: #4c4c4c;
+}
+
+.d-tree .current-row {
+	color: #524f4f;
+	background-color: #c0c0c0;
+}
+
+d-tree .current-row {
+	color: #ffffff;
+}
+
+.d-toolbar-custom {
+	background-color: #524f4f;
+}
+
+.d-toolbar .d-button {
+	color: #fff;
+}
+
+.d-toolbar .d-button-toggled {
+	color: #333;
+}
+
+.d-text-box>.editor-wrapper>.editor {
+	background-color: #EDEDED;
+}
+
+.d-text-box>.editor-wrapper>.blank-text {
+	color: #333 !important;
+}

@@ -1,0 +1,2079 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ViewConfig>
+  <Arguments/>
+  <Context/>
+  <Model>
+    <DataType name="dtQuery1">
+      <PropertyDef name="compId">
+        <Property name="label">公司别</Property>
+        <Property name="readOnly">true</Property>
+      </PropertyDef>
+      <PropertyDef name="custNo">
+        <Property name="label">客商编号</Property>
+        <Property name="mapping">
+          <Property name="mapValues"></Property>
+        </Property>
+        <Validator name="validator1" type="charLength">
+          <Property name="minLength">0</Property>
+          <Property name="maxLength">10</Property>
+        </Validator>
+      </PropertyDef>
+    </DataType>
+    <DataType name="dtTbcm011">
+      <Property name="creationType">com.kits.inms.bs.domain.Tbcm011</Property>
+      <PropertyDef name="pkCm011">
+        <Property></Property>
+        <Property name="label">PK_CM011_</Property>
+      </PropertyDef>
+      <PropertyDef name="compId">
+        <Property></Property>
+        <Property name="label">公司别</Property>
+        <Property name="defaultValue">WHKnow</Property>
+      </PropertyDef>
+      <PropertyDef name="custNo">
+        <Property></Property>
+        <Property name="label">客商编号</Property>
+        <Property name="required">true</Property>
+        <Validator name="validator1" type="length">
+          <Property name="maxLength">10</Property>
+          <Property name="minLength">0</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="custName">
+        <Property></Property>
+        <Property name="label">客商简称</Property>
+        <Validator name="validator1" type="charLength">
+          <Property name="minLength">0</Property>
+          <Property name="maxLength">20</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="version">
+        <Property></Property>
+        <Property name="label">版本</Property>
+      </PropertyDef>
+      <PropertyDef name="nationnality">
+        <Property></Property>
+        <Property name="label">国家</Property>
+        <Property name="mapping">
+          <Property name="mapValues">
+            <Entity>
+              <Property name="CHINA">中国</Property>
+              <Property name="INDIA">INA-INDIA</Property>
+              <Property name="AMERICA">USA-AMERICA</Property>
+              <Property name="BRITAIN">UK-BRITAIN</Property>
+              <Property name="FRANCE">FRA-FRANCE</Property>
+            </Entity>
+          </Property>
+        </Property>
+      </PropertyDef>
+      <PropertyDef name="custCategery">
+        <Property></Property>
+        <Property name="label">客商类别</Property>
+        <Property name="mapping">
+          <Property name="mapValues">
+            <Entity>
+              <Property name="01">01-金属及五金产品</Property>
+              <Property name="02">02-成衣及流行服饰</Property>
+              <Property name="03">03-农业及养殖业</Property>
+              <Property name="04">04-汽车及零组件</Property>
+              <Property name="05">05-自行车及零组件</Property>
+              <Property name="06">06-建筑材料</Property>
+              <Property name="07">07-化工产品</Property>
+              <Property name="08">08-通讯网络及电信</Property>
+              <Property name="09">09-建筑营造</Property>
+              <Property name="10">10-计算机及软硬件组件</Property>
+              <Property name="11">11-化妆品及美容用品</Property>
+              <Property name="12">12-电机及电器设备</Property>
+              <Property name="13">13-家电用品</Property>
+              <Property name="14">14-电子产品及零组件</Property>
+              <Property name="15">15-环保产品</Property>
+              <Property name="16">16-食品及饮料业</Property>
+              <Property name="17">17-鞋类及材料</Property>
+              <Property name="18">18-家具业</Property>
+              <Property name="19">19-电玩及附件</Property>
+              <Property name="20">20-礼品，工艺品</Property>
+              <Property name="21">21-医院，医疗供应品及设备</Property>
+              <Property name="22">22-包装及印刷业</Property>
+              <Property name="23">23-医药，健康及天然产品</Property>
+              <Property name="24">24-塑料及橡胶制品</Property>
+              <Property name="25">25-水管管线</Property>
+              <Property name="26">26-安全及警报系统</Property>
+              <Property name="27">27-服务业</Property>
+              <Property name="28">28-家庭用品</Property>
+              <Property name="29">29-珠宝及贵重饰品</Property>
+              <Property name="30">30-视听产品</Property>
+            </Entity>
+          </Property>
+        </Property>
+      </PropertyDef>
+      <PropertyDef name="yongyouCustNo">
+        <Property></Property>
+        <Property name="label">用友客户编码</Property>
+      </PropertyDef>
+      <PropertyDef name="dutyPerson">
+        <Property></Property>
+        <Property name="label">主要联络人</Property>
+        <Validator name="validator1" type="charLength">
+          <Property name="minLength">0</Property>
+          <Property name="maxLength">10</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="associated">
+        <Property></Property>
+        <Property name="label">关联方</Property>
+        <Property name="mapping">
+          <Property name="mapValues">
+            <Entity/>
+          </Property>
+        </Property>
+      </PropertyDef>
+      <PropertyDef name="assoDate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">关联日期</Property>
+      </PropertyDef>
+      <PropertyDef name="compChin">
+        <Property></Property>
+        <Property name="label">公司中文名</Property>
+        <Validator name="validator1" type="charLength">
+          <Property name="minLength">0</Property>
+          <Property name="maxLength">40</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="compEmg">
+        <Property></Property>
+        <Property name="label">公司英文名</Property>
+      </PropertyDef>
+      <PropertyDef name="registerAmt">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">注册资金</Property>
+        <Validator name="validator1" type="range">
+          <Property name="minValue">0</Property>
+          <Property name="minValueValidateMode">allowEquals</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="regCny">
+        <Property></Property>
+        <Property name="label">注册资金币别</Property>
+        <Property name="mapping">
+          <Property name="mapValues">
+            <Entity>
+              <Property name="CNY">人民币</Property>
+            </Entity>
+          </Property>
+        </Property>
+      </PropertyDef>
+      <PropertyDef name="turnOver">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">营业额</Property>
+        <Validator name="validator1" type="range">
+          <Property name="minValue">0</Property>
+          <Property name="minValueValidateMode">allowEquals</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="turCny">
+        <Property></Property>
+        <Property name="label">营业额币别</Property>
+        <Property name="mapping">
+          <Property name="mapValues">
+            <Entity>
+              <Property name="CNY">人民币</Property>
+            </Entity>
+          </Property>
+        </Property>
+      </PropertyDef>
+      <PropertyDef name="zipCode">
+        <Property></Property>
+        <Property name="label">邮编</Property>
+        <Validator name="validator1" type="charLength">
+          <Property name="minLength">0</Property>
+          <Property name="maxLength">10</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="mailAddress">
+        <Property></Property>
+        <Property name="label">邮寄地址</Property>
+      </PropertyDef>
+      <PropertyDef name="compWeb">
+        <Property></Property>
+        <Property name="label">公司网址</Property>
+        <Validator name="validator1" type="charLength">
+          <Property name="minLength">0</Property>
+          <Property name="maxLength">30</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="loadLine">
+        <Property></Property>
+        <Property name="label">座机号码</Property>
+        <Validator name="validator1" type="charLength">
+          <Property name="maxLength">20</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="phoneNumber">
+        <Property></Property>
+        <Property name="label">手机号码</Property>
+        <Validator name="validator1" type="charLength">
+          <Property name="minLength">0</Property>
+          <Property name="maxLength">20</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="faxNumber">
+        <Property></Property>
+        <Property name="label">传真号码</Property>
+      </PropertyDef>
+      <PropertyDef name="email">
+        <Property></Property>
+        <Property name="label">Email</Property>
+        <Validator name="validator1" type="charLength">
+          <Property name="minLength">0</Property>
+          <Property name="maxLength">20</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="qq">
+        <Property></Property>
+        <Property name="label">QQ</Property>
+      </PropertyDef>
+      <PropertyDef name="weChat">
+        <Property></Property>
+        <Property name="label">微信</Property>
+      </PropertyDef>
+      <PropertyDef name="facebook">
+        <Property></Property>
+        <Property name="label">FACEBOOK</Property>
+      </PropertyDef>
+      <PropertyDef name="twitter">
+        <Property></Property>
+        <Property name="label">TWITTER</Property>
+      </PropertyDef>
+      <PropertyDef name="accountNo">
+        <Property></Property>
+        <Property name="label">发票帐号</Property>
+        <Validator name="validator1" type="charLength">
+          <Property name="minLength">0</Property>
+          <Property name="maxLength">20</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="blog">
+        <Property></Property>
+        <Property name="label">微博</Property>
+      </PropertyDef>
+      <PropertyDef name="invoiceName">
+        <Property></Property>
+        <Property name="label">发票名称</Property>
+      </PropertyDef>
+      <PropertyDef name="invoiceBank">
+        <Property></Property>
+        <Property name="label">发票开户行</Property>
+        <Validator name="validator1" type="charLength">
+          <Property name="minLength">0</Property>
+          <Property name="maxLength">20</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="taxNumber">
+        <Property></Property>
+        <Property name="label">税号</Property>
+        <Validator name="validator1" type="charLength">
+          <Property name="minLength">0</Property>
+          <Property name="maxLength">20</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="invoiceAddress">
+        <Property></Property>
+        <Property name="label">发票地址</Property>
+        <Validator name="validator1" type="charLength">
+          <Property name="minLength">0</Property>
+          <Property name="maxLength">20</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="invoicePhone">
+        <Property></Property>
+        <Property name="label">发票电话</Property>
+        <Validator name="validator1" type="charLength">
+          <Property name="minLength">0</Property>
+          <Property name="maxLength">20</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="belongOrg">
+        <Property></Property>
+        <Property name="label">归属机构</Property>
+      </PropertyDef>
+      <PropertyDef name="createEmp">
+        <Property></Property>
+        <Property name="label">创建人</Property>
+      </PropertyDef>
+      <PropertyDef name="createDate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">创建日期</Property>
+      </PropertyDef>
+      <PropertyDef name="updEmp">
+        <Property></Property>
+        <Property name="label">修改人员</Property>
+      </PropertyDef>
+      <PropertyDef name="updDate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">修改日期</Property>
+      </PropertyDef>
+      <PropertyDef name="versionStus">
+        <Property></Property>
+        <Property name="label">版本状态</Property>
+      </PropertyDef>
+      <PropertyDef name="defs01">
+        <Property></Property>
+        <Property name="label">DEFS01_</Property>
+      </PropertyDef>
+      <PropertyDef name="defs02">
+        <Property></Property>
+        <Property name="label">DEFS02_</Property>
+      </PropertyDef>
+      <PropertyDef name="defs03">
+        <Property></Property>
+        <Property name="label">DEFS03_</Property>
+      </PropertyDef>
+      <PropertyDef name="defs04">
+        <Property></Property>
+        <Property name="label">DEFS04_</Property>
+      </PropertyDef>
+      <PropertyDef name="defs05">
+        <Property></Property>
+        <Property name="label">DEFS05_</Property>
+      </PropertyDef>
+      <PropertyDef name="defb01">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">DEFB01_</Property>
+      </PropertyDef>
+      <PropertyDef name="defb02">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">DEFB02_</Property>
+      </PropertyDef>
+      <PropertyDef name="defb03">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">DEFB03_</Property>
+      </PropertyDef>
+      <PropertyDef name="defb04">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">DEFB04_</Property>
+      </PropertyDef>
+      <PropertyDef name="defb05">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">DEFB05_</Property>
+      </PropertyDef>
+      <PropertyDef name="defm01">
+        <Property></Property>
+        <Property name="label">DEFM01_</Property>
+      </PropertyDef>
+      <PropertyDef name="defm02">
+        <Property></Property>
+        <Property name="label">DEFM02_</Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="dtTbcm012">
+      <ClientEvent name="onDataChange">var property=arg.property;&#xD;
+if(property==&quot;bankName&quot;){&#xD;
+	var data = dsTbcm012.getData(&quot;#&quot;);&#xD;
+	if(data){&#xD;
+		var bankName = data.get(&quot;bankName&quot;);&#xD;
+		if(bankName==&quot;中国银行&quot;){&#xD;
+			data.set(&quot;bankHeadNo&quot;,&quot;BC&quot;);&#xD;
+		}else if(bankName==&quot;中国农业银行&quot;){&#xD;
+			data.set(&quot;bankHeadNo&quot;,&quot;ABC&quot;);&#xD;
+		}else if(bankName==&quot;中国工商银行&quot;){&#xD;
+			data.set(&quot;bankHeadNo&quot;,&quot;ICBC&quot;);&#xD;
+		}else if(bankName==&quot;中国建设银行&quot;){&#xD;
+			data.set(&quot;bankHeadNo&quot;,&quot;BBC&quot;);&#xD;
+		}else if(bankName==&quot;交通银行&quot;){&#xD;
+			data.set(&quot;bankHeadNo&quot;,&quot;TB&quot;);&#xD;
+		}else if(bankName==&quot;中国邮政储蓄银行&quot;){&#xD;
+			data.set(&quot;bankHeadNo&quot;,&quot;PBC&quot;);&#xD;
+		}else if(bankName==&quot;中国民生银行&quot;){&#xD;
+			data.set(&quot;bankHeadNo&quot;,&quot;MSBC&quot;);&#xD;
+		}else if(bankName==&quot;平安银行&quot;){&#xD;
+			data.set(&quot;bankHeadNo&quot;,&quot;PAB&quot;);&#xD;
+		}else if(bankName==&quot;兴业银行&quot;){&#xD;
+			data.set(&quot;bankHeadNo&quot;,&quot;XYB&quot;);&#xD;
+		}else if(bankName==&quot;华夏银行&quot;){&#xD;
+			data.set(&quot;bankHeadNo&quot;,&quot;HXB&quot;);&#xD;
+		}else if(bankName==&quot;中信银行&quot;){&#xD;
+			data.set(&quot;bankHeadNo&quot;,&quot;ZXB&quot;);&#xD;
+		}&#xD;
+	}&#xD;
+}</ClientEvent>
+      <Property name="creationType">com.kits.inms.bs.domain.Tbcm012</Property>
+      <PropertyDef name="pkCm012">
+        <Property></Property>
+        <Property name="label">PK_CM012_</Property>
+      </PropertyDef>
+      <PropertyDef name="compId">
+        <Property></Property>
+        <Property name="label">公司别</Property>
+      </PropertyDef>
+      <PropertyDef name="custNo">
+        <Property></Property>
+        <Property name="label">客户编号</Property>
+      </PropertyDef>
+      <PropertyDef name="bankNo">
+        <Property></Property>
+        <Property name="label">银行代码</Property>
+        <Property name="required">true</Property>
+        <Validator name="validator2" type="charLength">
+          <Property name="maxLength">40</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="version">
+        <Property></Property>
+        <Property name="label">版本</Property>
+      </PropertyDef>
+      <PropertyDef name="bankHeadNo">
+        <Property></Property>
+        <Property name="label">总行代码</Property>
+        <Property name="readOnly">true</Property>
+      </PropertyDef>
+      <PropertyDef name="bankHouseNo">
+        <Property></Property>
+        <Property name="label">支行编号</Property>
+        <Validator name="validator1" type="charLength">
+          <Property name="maxLength">20</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="bankName">
+        <Property></Property>
+        <Property name="label">银行名称</Property>
+        <Property name="mapping">
+          <Property name="mapValues">
+            <Entity>
+              <Property name="中国银行">中国银行</Property>
+              <Property name="中国农业银行">中国农业银行</Property>
+              <Property name="中国工商银行">中国工商银行</Property>
+              <Property name="中国建设银行">中国建设银行</Property>
+              <Property name="交通银行">交通银行</Property>
+              <Property name="中国邮政储蓄银行">中国邮政储蓄银行</Property>
+              <Property name="中国民生银行">中国民生银行</Property>
+              <Property name="平安银行">平安银行</Property>
+              <Property name="兴业银行">兴业银行</Property>
+              <Property name="华夏银行">华夏银行</Property>
+              <Property name="中信银行">中信银行</Property>
+            </Entity>
+          </Property>
+        </Property>
+      </PropertyDef>
+      <PropertyDef name="bankAccount">
+        <Property></Property>
+        <Property name="label">银行帐号</Property>
+      </PropertyDef>
+      <PropertyDef name="createEmp">
+        <Property></Property>
+        <Property name="label">创建人</Property>
+      </PropertyDef>
+      <PropertyDef name="createDate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">创建日期</Property>
+      </PropertyDef>
+      <PropertyDef name="updEmp">
+        <Property></Property>
+        <Property name="label">修改人</Property>
+      </PropertyDef>
+      <PropertyDef name="updDate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">修改日期</Property>
+      </PropertyDef>
+      <PropertyDef name="versionStus">
+        <Property></Property>
+        <Property name="label">版本状态</Property>
+      </PropertyDef>
+      <PropertyDef name="defs01">
+        <Property></Property>
+        <Property name="label">DEFS01_</Property>
+      </PropertyDef>
+      <PropertyDef name="defs02">
+        <Property></Property>
+        <Property name="label">DEFS02_</Property>
+      </PropertyDef>
+      <PropertyDef name="defs03">
+        <Property></Property>
+        <Property name="label">DEFS03_</Property>
+      </PropertyDef>
+      <PropertyDef name="defs04">
+        <Property></Property>
+        <Property name="label">DEFS04_</Property>
+      </PropertyDef>
+      <PropertyDef name="defs05">
+        <Property></Property>
+        <Property name="label">DEFS05_</Property>
+      </PropertyDef>
+      <PropertyDef name="defb01">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">DEFB01_</Property>
+      </PropertyDef>
+      <PropertyDef name="defb02">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">DEFB02_</Property>
+      </PropertyDef>
+      <PropertyDef name="defb03">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">DEFB03_</Property>
+      </PropertyDef>
+      <PropertyDef name="defb04">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">DEFB04_</Property>
+      </PropertyDef>
+      <PropertyDef name="defb05">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">DEFB05_</Property>
+      </PropertyDef>
+      <PropertyDef name="defm01">
+        <Property></Property>
+        <Property name="label">DEFM01_</Property>
+      </PropertyDef>
+      <PropertyDef name="defm02">
+        <Property></Property>
+        <Property name="label">DEFM02_</Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="dtQuery2">
+      <PropertyDef name="compId">
+        <Property name="label">公司别</Property>
+        <Property name="readOnly">true</Property>
+      </PropertyDef>
+      <PropertyDef name="custNo">
+        <Property name="label">客户编号</Property>
+        <Property name="mapping">
+          <Property name="mapValues"></Property>
+        </Property>
+        <Validator name="validator1" type="charLength">
+          <Property name="maxLength">20</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="custName">
+        <Property name="label">客户名称</Property>
+        <Property name="mapping">
+          <Property name="mapValues"></Property>
+        </Property>
+        <Validator name="validator1" type="charLength">
+          <Property name="maxLength">20</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="createDate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">创建日期</Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="dtTbcm0111">
+      <ClientEvent name="onDataChange">var property=arg.property;&#xD;
+/*&#xD;
+if(property==&quot;nationality&quot;){&#xD;
+	var data = dsTbcm011.getData(&quot;#&quot;);&#xD;
+	if(data){&#xD;
+		var nationality = data.get(&quot;nationality&quot;);&#xD;
+		var num = functions[&quot;guid1&quot;]();&#xD;
+		if(nationality==&quot;CHINA&quot;){&#xD;
+			data.set(&quot;custNo&quot;,num+&quot;CHA&quot;);&#xD;
+		}else if(nationality==&quot;INDIA&quot;){&#xD;
+			data.set(&quot;custNo&quot;,num+&quot;INA&quot;);&#xD;
+		}else if(nationality==&quot;AMERICA&quot;){&#xD;
+			data.set(&quot;custNo&quot;,num+&quot;USA&quot;);&#xD;
+		}else if(nationality==&quot;BRITAIN&quot;){&#xD;
+			data.set(&quot;custNo&quot;,num+&quot;UK&quot;);&#xD;
+		}else if(nationality==&quot;FRANCE&quot;){&#xD;
+			data.set(&quot;custNo&quot;,num+&quot;FRA&quot;);&#xD;
+		}&#xD;
+	}&#xD;
+}&#xD;
+*/&#xD;
+if(property==&quot;registeredCapitals&quot;){&#xD;
+	var data = dsTbcm011.getData(&quot;#&quot;);&#xD;
+	if(data){&#xD;
+		var registeredCapitals = data.get(&quot;registeredCapitals&quot;);&#xD;
+		data.set(&quot;registeredCapital&quot;,registeredCapitals);&#xD;
+	}&#xD;
+}&#xD;
+&#xD;
+if(property==&quot;turnovers&quot;){&#xD;
+	var data = dsTbcm011.getData(&quot;#&quot;);&#xD;
+	if(data){&#xD;
+		var turnovers = data.get(&quot;turnovers&quot;);&#xD;
+		data.set(&quot;turnover&quot;,turnovers);&#xD;
+	}&#xD;
+}&#xD;
+//CHA-CHINA=CHINA,INA-INDIA=INDIA,USA-AMERICA=AMERICA,&#xD;
+//UK-BRITAIN=BRITAIN,FRA-FRANCE=FRANCE&#xD;
+//registeredCapitals  turnovers</ClientEvent>
+      <Property name="creationType">com.kits.inms.bs.domain.Tbcm011</Property>
+      <PropertyDef name="pkCm011">
+        <Property></Property>
+        <Property name="label">PK_CM011_</Property>
+      </PropertyDef>
+      <PropertyDef name="compId">
+        <Property></Property>
+        <Property name="label">公司别</Property>
+        <Property name="defaultValue">WHKnow</Property>
+      </PropertyDef>
+      <PropertyDef name="custNo">
+        <Property></Property>
+        <Property name="label">客户编号</Property>
+        <Property name="required">true</Property>
+      </PropertyDef>
+      <PropertyDef name="version">
+        <Property></Property>
+        <Property name="label">版本</Property>
+      </PropertyDef>
+      <PropertyDef name="nationnality">
+        <Property></Property>
+        <Property name="label">国别</Property>
+        <Property name="mapping">
+          <Property name="mapValues">
+            <Entity>
+              <Property name="CHINA">CHA-CHINA</Property>
+              <Property name="INDIA">INA-INDIA</Property>
+              <Property name="AMERICA">USA-AMERICA</Property>
+              <Property name="BRITAIN">UK-BRITAIN</Property>
+              <Property name="FRANCE">FRA-FRANCE</Property>
+            </Entity>
+          </Property>
+        </Property>
+      </PropertyDef>
+      <PropertyDef name="custCategery">
+        <Property></Property>
+        <Property name="label">厂商类别</Property>
+        <Property name="mapping">
+          <Property name="mapValues">
+            <Entity>
+              <Property name="01">01-金属及五金产品</Property>
+              <Property name="02">02-成衣及流行服饰</Property>
+              <Property name="03">03-农业及养殖业</Property>
+              <Property name="04">04-汽车及零组件</Property>
+              <Property name="05">05-自行车及零组件</Property>
+              <Property name="06">06-建筑材料</Property>
+              <Property name="07">07-化工产品</Property>
+              <Property name="08">08-通讯网络及电信</Property>
+              <Property name="09">09-建筑营造</Property>
+              <Property name="10">10-计算机及软硬件组件</Property>
+              <Property name="11">11-化妆品及美容用品</Property>
+              <Property name="12">12-电机及电器设备</Property>
+              <Property name="13">13-家电用品</Property>
+              <Property name="14">14-电子产品及零组件</Property>
+              <Property name="15">15-环保产品</Property>
+              <Property name="16">16-食品及饮料业</Property>
+              <Property name="17">17-鞋类及材料</Property>
+              <Property name="18">18-家具业</Property>
+              <Property name="19">19-电玩及附件</Property>
+              <Property name="20">20-礼品，工艺品</Property>
+              <Property name="21">21-医院，医疗供应品及设备</Property>
+              <Property name="22">22-包装及印刷业</Property>
+              <Property name="23">23-医药，健康及天然产品</Property>
+              <Property name="24">24-塑料及橡胶制品</Property>
+              <Property name="25">25-水管管线</Property>
+              <Property name="26">26-安全及警报系统</Property>
+              <Property name="27">27-服务业</Property>
+              <Property name="28">28-家庭用品</Property>
+              <Property name="29">29-珠宝及贵重饰品</Property>
+              <Property name="30">30-视听产品</Property>
+            </Entity>
+          </Property>
+        </Property>
+      </PropertyDef>
+      <PropertyDef name="yongyouCustNo">
+        <Property></Property>
+        <Property name="label">用友客户编码</Property>
+      </PropertyDef>
+      <PropertyDef name="custName">
+        <Property></Property>
+        <Property name="label">厂商名称</Property>
+      </PropertyDef>
+      <PropertyDef name="dutyPerson">
+        <Property></Property>
+        <Property name="label">责任人</Property>
+      </PropertyDef>
+      <PropertyDef name="associated">
+        <Property></Property>
+        <Property name="label">关联方</Property>
+        <Property name="mapping">
+          <Property name="mapValues">
+            <Entity/>
+          </Property>
+        </Property>
+      </PropertyDef>
+      <PropertyDef name="assoDate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">关联日期</Property>
+      </PropertyDef>
+      <PropertyDef name="compChin">
+        <Property></Property>
+        <Property name="label">公司中文名</Property>
+      </PropertyDef>
+      <PropertyDef name="compEmg">
+        <Property></Property>
+        <Property name="label">公司英文名</Property>
+      </PropertyDef>
+      <PropertyDef name="registerAmt">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">注册资金</Property>
+      </PropertyDef>
+      <PropertyDef name="regCny">
+        <Property></Property>
+        <Property name="label">注册资金币别</Property>
+        <Property name="mapping">
+          <Property name="mapValues">
+            <Entity>
+              <Property name="CNY">人民币</Property>
+            </Entity>
+          </Property>
+        </Property>
+      </PropertyDef>
+      <PropertyDef name="turnOver">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">营业额</Property>
+      </PropertyDef>
+      <PropertyDef name="turCny">
+        <Property></Property>
+        <Property name="label">营业额币别</Property>
+        <Property name="mapping">
+          <Property name="mapValues">
+            <Entity>
+              <Property name="CNY">人民币</Property>
+            </Entity>
+          </Property>
+        </Property>
+      </PropertyDef>
+      <PropertyDef name="zipCode">
+        <Property></Property>
+        <Property name="label">邮编</Property>
+      </PropertyDef>
+      <PropertyDef name="mailAddress">
+        <Property></Property>
+        <Property name="label">邮寄地址</Property>
+      </PropertyDef>
+      <PropertyDef name="compWeb">
+        <Property></Property>
+        <Property name="label">公司网址</Property>
+      </PropertyDef>
+      <PropertyDef name="loadLine">
+        <Property></Property>
+        <Property name="label">座机号码</Property>
+      </PropertyDef>
+      <PropertyDef name="phoneNumber">
+        <Property></Property>
+        <Property name="label">手机号码</Property>
+      </PropertyDef>
+      <PropertyDef name="faxNumber">
+        <Property></Property>
+        <Property name="label">传真号码</Property>
+      </PropertyDef>
+      <PropertyDef name="email">
+        <Property></Property>
+        <Property name="label">Email</Property>
+      </PropertyDef>
+      <PropertyDef name="qq">
+        <Property></Property>
+        <Property name="label">QQ</Property>
+      </PropertyDef>
+      <PropertyDef name="weChat">
+        <Property></Property>
+        <Property name="label">微信</Property>
+      </PropertyDef>
+      <PropertyDef name="facebook">
+        <Property></Property>
+        <Property name="label">FACEBOOK</Property>
+      </PropertyDef>
+      <PropertyDef name="twitter">
+        <Property></Property>
+        <Property name="label">TWITTER</Property>
+      </PropertyDef>
+      <PropertyDef name="blog">
+        <Property></Property>
+        <Property name="label">微博</Property>
+      </PropertyDef>
+      <PropertyDef name="invoiceName">
+        <Property></Property>
+        <Property name="label">发票名称</Property>
+      </PropertyDef>
+      <PropertyDef name="invoiceBank">
+        <Property></Property>
+        <Property name="label">发票开户行</Property>
+      </PropertyDef>
+      <PropertyDef name="accountNo">
+        <Property></Property>
+        <Property name="label">发票帐号</Property>
+      </PropertyDef>
+      <PropertyDef name="taxNumber">
+        <Property></Property>
+        <Property name="label">税号</Property>
+      </PropertyDef>
+      <PropertyDef name="invoiceAddress">
+        <Property></Property>
+        <Property name="label">发票地址</Property>
+      </PropertyDef>
+      <PropertyDef name="invoicePhone">
+        <Property></Property>
+        <Property name="label">发票电话</Property>
+      </PropertyDef>
+      <PropertyDef name="belongOrg">
+        <Property></Property>
+        <Property name="label">归属机构</Property>
+      </PropertyDef>
+      <PropertyDef name="createEmp">
+        <Property></Property>
+        <Property name="label">创建人</Property>
+      </PropertyDef>
+      <PropertyDef name="createDate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">创建日期</Property>
+      </PropertyDef>
+      <PropertyDef name="updEmp">
+        <Property></Property>
+        <Property name="label">修改人员</Property>
+      </PropertyDef>
+      <PropertyDef name="updDate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">修改日期</Property>
+      </PropertyDef>
+      <PropertyDef name="versionStus">
+        <Property></Property>
+        <Property name="label">版本状态</Property>
+      </PropertyDef>
+      <PropertyDef name="defs01">
+        <Property></Property>
+        <Property name="label">DEFS01_</Property>
+      </PropertyDef>
+      <PropertyDef name="defs02">
+        <Property></Property>
+        <Property name="label">DEFS02_</Property>
+      </PropertyDef>
+      <PropertyDef name="defs03">
+        <Property></Property>
+        <Property name="label">DEFS03_</Property>
+      </PropertyDef>
+      <PropertyDef name="defs04">
+        <Property></Property>
+        <Property name="label">DEFS04_</Property>
+      </PropertyDef>
+      <PropertyDef name="defs05">
+        <Property></Property>
+        <Property name="label">DEFS05_</Property>
+      </PropertyDef>
+      <PropertyDef name="defb01">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">DEFB01_</Property>
+      </PropertyDef>
+      <PropertyDef name="defb02">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">DEFB02_</Property>
+      </PropertyDef>
+      <PropertyDef name="defb03">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">DEFB03_</Property>
+      </PropertyDef>
+      <PropertyDef name="defb04">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">DEFB04_</Property>
+      </PropertyDef>
+      <PropertyDef name="defb05">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">DEFB05_</Property>
+      </PropertyDef>
+      <PropertyDef name="defm01">
+        <Property></Property>
+        <Property name="label">DEFM01_</Property>
+      </PropertyDef>
+      <PropertyDef name="defm02">
+        <Property></Property>
+        <Property name="label">DEFM02_</Property>
+      </PropertyDef>
+    </DataType>
+  </Model>
+  <View>
+    <ClientEvent name="onReady">window.dsQuery1 = view.get(&quot;#dsQuery1&quot;);&#xD;
+window.dsQuery2 = view.get(&quot;#dsQuery2&quot;);&#xD;
+//window.dataSet2 = view.get(&quot;#dataSet2&quot;);&#xD;
+window.dsTbcm011 = view.get(&quot;#dsTbcm011&quot;);&#xD;
+window.dsTbcm012 = view.get(&quot;#dsTbcm012&quot;);&#xD;
+//window.dataSet1 = view.get(&quot;#dataSet1&quot;);//新增的时候数据没有刷新&#xD;
+//window.dsNewVersion = view.get(&quot;#dsNewVersion&quot;);&#xD;
+//window.dataSet1a = view.get(&quot;#dataSet1a&quot;);//新增的时候数据没有刷新&#xD;
+&#xD;
+window.dgTbcm011 = view.get(&quot;#dgTbcm011&quot;);&#xD;
+window.dgTbcm012 = view.get(&quot;#dgTbcm012&quot;);&#xD;
+&#xD;
+window.dialogTbcm011 = view.get(&quot;#dialogTbcm011&quot;);&#xD;
+window.dialogTbcm012 = view.get(&quot;#dialogTbcm012&quot;);&#xD;
+&#xD;
+window.userName='${session.getAttribute(&quot;BDF_LOGIN_USER_&quot;).getCname()}';&#xD;
+&#xD;
+//window.i=1001;&#xD;
+//window.j=2;&#xD;
+//附件参数&#xD;
+attachFile = function(uploadAction){&#xD;
+	uploadAction.set(&quot;parameter&quot;, {&#xD;
+		&quot;id&quot;:view.get(&quot;#dsTbcm011.data:#&quot;).get(&quot;compId&quot;),&#xD;
+	});&#xD;
+};&#xD;
+&#xD;
+///////CHA-CHINA=CHINA,INA-INDIA=INDIA,USA-AMERICA=AMERICA,UK-BRITAIN=BRITAIN,FRA-FRANCE=FRANCE&#xD;
+&#xD;
+</ClientEvent>
+    <ClientEvent name="onCreate">//客户档案作业&#xD;
+functions = {&#xD;
+	&quot;queryOnclick&quot;:function(data){&#xD;
+&#xD;
+		dsTbcm011.set(&quot;parameter&quot;,data).flushAsync(function(returnData){&#xD;
+		//根据数据集的个数设置属性&#xD;
+		if(returnData.entityCount==0){&#xD;
+			//插入一行新数据&#xD;
+			dorado.MessageBox.alert(&quot;当前数据为空！&quot;);&#xD;
+		}else{&#xD;
+			//设置属性&#xD;
+		}&#xD;
+	});&#xD;
+},&#xD;
+&#xD;
+&quot;AddOnClick&quot;: function(msg){&#xD;
+	if(msg==&quot;新增&quot;){&#xD;
+		dsTbcm011.insert({  	&#xD;
+			compId:&quot;WHKnow&quot;,				//公司代码 &#xD;
+			//version:functions[&quot;guid&quot;](),	//版本V1001&#xD;
+			nationnality:&quot;CHINA&quot;,&#xD;
+			verStatus:&quot;0&quot;,					//版本状态&#xD;
+			regCny:&quot;CNY&quot;,&#xD;
+			turCny:&quot;CNY&quot;&#xD;
+			//registeredCapital:0.0,			//资本额&#xD;
+			//turnover:0.0,					//营业额&#xD;
+		});	&#xD;
+		&#xD;
+		dialogTbcm011.show();  //执行dialogTbdm031上的onShow事件&#xD;
+		&#xD;
+	}&#xD;
+			&#xD;
+	/*var data = dsTbcm011.getData(&quot;#&quot;);//中钢印度公司（中印）China Steel Corporation India Pvt. Ltd.&#xD;
+	if(data){&#xD;
+			var createEmpNo = data.get(&quot;createEmpNo&quot;);          //获取建立者&#xD;
+			if(createEmpNo==userName){							//控制编辑权限&#xD;
+				view.set(&quot;^saveButton1.disabled&quot;,false);&#xD;
+				view.set(&quot;^saveButton2.disabled&quot;,true);&#xD;
+				view.set(&quot;^saveButton3.disabled&quot;,true);&#xD;
+				view.set(&quot;^saveButton4.disabled&quot;,true);&#xD;
+				view.set(&quot;^version.readOnly&quot;,true); 			//版本编辑权限editable&#xD;
+				view.set(&quot;^dialogTbcm011.readOnly&quot;,false);&#xD;
+			}else{&#xD;
+				view.set(&quot;^dialogTbcm011.readOnly&quot;,true);&#xD;
+				dorado.MessageBox.alert(&quot;您无此操作权限！&quot;);&#xD;
+			}&#xD;
+		}*/&#xD;
+	},&#xD;
+	&#xD;
+	&quot;saveOrUpdDs&quot;:function(msg){&#xD;
+		debugger&#xD;
+		var state = dsTbcm011.getData(&quot;#&quot;).state;&#xD;
+		var dsTbcm011CD = dsTbcm011.getData(&quot;#&quot;);&#xD;
+		//验证新增必须参数&#xD;
+		if(msg==&quot;新增&quot; &amp;&amp; state!=1){&#xD;
+		//复制新增&#xD;
+		 dsTbcm011CD.setState(1);&#xD;
+		 //将唯一数据置为空&#xD;
+		 dsTbcm011CD.set(&quot;updEmp&quot;,null);&#xD;
+		 dsTbcm011CD.set(&quot;updDate&quot;,null);&#xD;
+		 //其他视情况而定&#xD;
+&#xD;
+		 dsTbcm011.insert(dsTbcm011CD);&#xD;
+	}&#xD;
+&#xD;
+	if(msg==&quot;修改&quot; &amp;&amp; state==0){&#xD;
+		&#xD;
+		dorado.MessageBox.alert(&quot;您没有要修改的数据！&quot;);&#xD;
+		return;&#xD;
+	}&#xD;
+	&#xD;
+	view.get(&quot;#saveTbcm011&quot;).set({&#xD;
+		executingMessage:&quot;正在&quot;+msg+&quot;中 ... &quot;,&#xD;
+		successMessage:msg+&quot;已完成！&quot;&#xD;
+	}).execute(function(){&#xD;
+		//刷新数据集，只显示当天新增数据&#xD;
+		dsTbcm011.set({&#xD;
+			//&quot;createDate&quot;:new Date()&#xD;
+			//其他参数&#xD;
+		}).flushAsync();&#xD;
+	});&#xD;
+},&#xD;
+&#xD;
+	&quot;delOnClick&quot;:function(dataList){&#xD;
+		var section = dgTbcm011.get(&quot;selection&quot;).length;&#xD;
+		if(section==0){&#xD;
+			dorado.MessageBox.alert(&quot;请勾选要删除的数据！&quot;);&#xD;
+			return;&#xD;
+		}else{&#xD;
+			var options = {&#xD;
+				callback:function(){&#xD;
+					dataList.each(function(data){&#xD;
+						data.remove();&#xD;
+					});&#xD;
+					&#xD;
+					view.get(&quot;#saveTbcm011&quot;).set({&#xD;
+						executingMessage:&quot;正在删除中 ... &quot;,&#xD;
+						successMessage:&quot;删除已完成！&quot;&#xD;
+					}).execute();&#xD;
+				}&#xD;
+			};&#xD;
+			dorado.MessageBox.confirm(&quot;您确定要删除所选数据吗？&quot;,options);&#xD;
+		}&#xD;
+	},&#xD;
+	&#xD;
+	&quot;queryCm012&quot;:function(data){&#xD;
+		debugger&#xD;
+		dsTbcm012.set(&quot;parameter&quot;,data).flushAsync(function(returnData){&#xD;
+		//根据数据集的个数设置属性&#xD;
+		if(returnData.entityCount==0){&#xD;
+			//插入一行新数据&#xD;
+			dorado.MessageBox.alert(&quot;当前数据为空！&quot;);&#xD;
+		}else{&#xD;
+			//设置属性&#xD;
+		}&#xD;
+	});&#xD;
+	&#xD;
+	},&#xD;
+	&#xD;
+	&quot;saveOrUpdCm012&quot;:function(msg){&#xD;
+		var state = dsTbcm012.getData(&quot;#&quot;).state;&#xD;
+		var dsTbcm012CD = dsTbcm012.getData(&quot;#&quot;);&#xD;
+		//验证新增必须参数&#xD;
+		if(msg==&quot;新增&quot; &amp;&amp; state!=1){&#xD;
+		//复制新增&#xD;
+		 dsTbcm012CD.setState(1);&#xD;
+		 //将唯一数据置为空&#xD;
+		 dsTbcm012CD.set(&quot;updEmp&quot;,null);&#xD;
+		 dsTbcm012CD.set(&quot;updDate&quot;,null);&#xD;
+		 //其他视情况而定&#xD;
+&#xD;
+		 dsTbcm012.insert(dsTbcm012CD);&#xD;
+	}&#xD;
+&#xD;
+	if(msg==&quot;修改&quot; &amp;&amp; state==0){&#xD;
+		&#xD;
+		dorado.MessageBox.alert(&quot;您没有要修改的数据！&quot;);&#xD;
+		return;&#xD;
+	}&#xD;
+	&#xD;
+	view.get(&quot;#saveTbcm012&quot;).set({&#xD;
+		executingMessage:&quot;正在&quot;+msg+&quot;中 ... &quot;,&#xD;
+		successMessage:msg+&quot;已完成！&quot;&#xD;
+	}).execute(function(){&#xD;
+		//刷新数据集，只显示当天新增数据&#xD;
+		dsTbcm012.set(&quot;parameter&quot;,{&#xD;
+			compId:dsTbcm011.getData(&quot;#&quot;).get(&quot;compId&quot;),&#xD;
+			custNo:dsTbcm011.getData(&quot;#&quot;).get(&quot;custNo&quot;)&#xD;
+			//其他参数&#xD;
+		}).flushAsync();&#xD;
+	});&#xD;
+	},&#xD;
+	&#xD;
+	&quot;delCm012Onclick&quot;:function(dataList){&#xD;
+			var options = {&#xD;
+				callback:function(){&#xD;
+					dataList.each(function(data){&#xD;
+						data.remove();&#xD;
+					});&#xD;
+					&#xD;
+					view.get(&quot;#saveTbcm012&quot;).set({&#xD;
+						executingMessage:&quot;正在删除中 ... &quot;,&#xD;
+						successMessage:&quot;删除已完成！&quot;&#xD;
+					}).execute();&#xD;
+				},&#xD;
+				icon:&quot;WARNING&quot;&#xD;
+			};&#xD;
+			dorado.MessageBox.confirm(&quot;您确定要删除所选数据吗？&quot;,options);&#xD;
+	},&#xD;
+	&#xD;
+	&quot;queryCustNo&quot;:function(data){&#xD;
+		view.get(&quot;#dsTbcm0111&quot;).set(&quot;parameter&quot;,data).flushAsync(function(returnData){&#xD;
+			if(returnData.entityCount==0){&#xD;
+				dorado.MessageBox.alert(&quot;当前数据为空！&quot;);&#xD;
+			}&#xD;
+		});&#xD;
+	}&#xD;
+	,&#xD;
+	//保存&#xD;
+	&quot;saveOnClick&quot;:function(){&#xD;
+		var state = dsTbcm011.getData(&quot;#&quot;).state;&#xD;
+		var dataList = dgTbcm011.get(&quot;selection&quot;).slice(0);&#xD;
+		if(state==0){&#xD;
+			return;&#xD;
+		}else if(dsTbcm011.getData(&quot;#&quot;).validate(&quot;custNo&quot;) != &quot;ok&quot;){&#xD;
+			dorado.MessageBox.alert(&quot;客商编号为空，不能保存数据！&quot;);&#xD;
+			return;&#xD;
+		}else{&#xD;
+			view.get(&quot;#saveTbcm011&quot;).set({&#xD;
+				executingMessage:&quot;正在保存中 ... &quot;,&#xD;
+				successMessage:&quot;保存已完成！&quot;&#xD;
+			}).execute(function(){&#xD;
+				//是否刷新&#xD;
+				if(dataList){&#xD;
+					debugger&#xD;
+					dataList.removeAt(0);&#xD;
+					var len = dataList.length;&#xD;
+					if(len==0){&#xD;
+						view.get(&quot;#dialogTbcm011&quot;).close();&#xD;
+					}else{&#xD;
+						dsTbcm011.getData().setCurrent(dataList[0]);&#xD;
+						view.get(&quot;#dgTbcm011&quot;).set(&quot;selection&quot;,dataList);&#xD;
+					}&#xD;
+				}else{&#xD;
+				view.get(&quot;#dialogTbcm011&quot;).close();&#xD;
+				}&#xD;
+			});&#xD;
+		}&#xD;
+	},&#xD;
+	//保存银行信息&#xD;
+	&quot;saveBankOnClick&quot;:function(){&#xD;
+		var state = dsTbcm012.getData(&quot;#&quot;).state;&#xD;
+		var dataList = dgTbcm012.get(&quot;selection&quot;).slice(0);&#xD;
+		if(state==0){&#xD;
+			return;&#xD;
+		}else if(dsTbcm012.getData(&quot;#&quot;).validate(&quot;bankNo&quot;) != &quot;ok&quot;){&#xD;
+			dorado.MessageBox.alert(&quot;银行代码为空，不能保存数据！&quot;);&#xD;
+			return;&#xD;
+		}else{&#xD;
+			view.get(&quot;#saveTbcm012&quot;).set({&#xD;
+				executingMessage:&quot;正在保存中 ... &quot;,&#xD;
+				successMessage:&quot;保存已完成！&quot;&#xD;
+			}).execute(function(){&#xD;
+				//是否刷新&#xD;
+				if(dataList){&#xD;
+					debugger&#xD;
+					dataList.removeAt(0);&#xD;
+					var len = dataList.length;&#xD;
+					if(len==0){&#xD;
+						view.get(&quot;#dialogTbcm012&quot;).close();&#xD;
+					}else{&#xD;
+						dsTbcm012.getData().setCurrent(dataList[0]);&#xD;
+						view.get(&quot;#dgTbcm012&quot;).set(&quot;selection&quot;,dataList);&#xD;
+					}&#xD;
+				}else{&#xD;
+				view.get(&quot;#dialogTbcm012&quot;).close();&#xD;
+				}&#xD;
+			});&#xD;
+		}&#xD;
+	}&#xD;
+}&#xD;
+</ClientEvent>
+    <Property name="styleSheetFile">com/kits/saas/mw/style1.css</Property>
+    <DataSet id="dsQuery1">
+      <ClientEvent name="onReady">self.insert({&#xD;
+	compId:&quot;WHKnow&quot;&#xD;
+});</ClientEvent>
+      <Property name="dataType">[dtQuery1]</Property>
+    </DataSet>
+    <DataSet id="dsQuery2">
+      <ClientEvent name="onReady">self.insert({&#xD;
+	compId:&quot;WHKnow&quot;&#xD;
+});&#xD;
+</ClientEvent>
+      <Property name="dataType">[dtQuery2]</Property>
+    </DataSet>
+    <DataSet id="dsTbcm011">
+      <Property name="dataType">[dtTbcm011]</Property>
+      <Property name="loadMode">manual</Property>
+      <Property name="pageSize">20</Property>
+      <Property name="dataProvider">bsjc01BO#searchTbcm011</Property>
+    </DataSet>
+    <DataSet id="dsTbcm012">
+      <Property name="dataProvider">bsjc01BO#searchTbcm012</Property>
+      <Property name="dataType">[dtTbcm012]</Property>
+      <Property name="pageSize">20</Property>
+      <Property name="loadMode">manual</Property>
+    </DataSet>
+    <DataSet id="dsTbcm0111">
+      <Property name="dataType">[dtTbcm0111]</Property>
+      <Property name="pageSize">999</Property>
+      <Property name="dataProvider">bsjc01BO#getCustNo</Property>
+    </DataSet>
+    <Panel>
+      <Buttons/>
+      <Children>
+        <FieldSet>
+          <Property name="caption">查询条件</Property>
+          <Buttons/>
+          <Children>
+            <AutoForm>
+              <Property name="cols">250,80,80</Property>
+              <Property name="dataSet">dsQuery1</Property>
+              <AutoFormElement>
+                <Property name="name">custNo</Property>
+                <Property name="property">custNo</Property>
+                <Property name="trigger">trigger1</Property>
+                <Editor/>
+              </AutoFormElement>
+              <Button>
+                <ClientEvent name="onClick">var data = null;&#xD;
+&#xD;
+data = dsQuery1.getData(&quot;#&quot;);&#xD;
+&#xD;
+functions[&quot;queryOnclick&quot;](data);</ClientEvent>
+                <Property name="caption">查询</Property>
+                <Property name="icon">	url(>skin>common/icons.gif) -40px -100px</Property>
+              </Button>
+              <Button layoutConstraint="colSpan:1">
+                <ClientEvent name="onClick">dsQuery1.clear();    //清空输入框&#xD;
+dsQuery1.insert({&#xD;
+	compId:&quot;WHKnow&quot;&#xD;
+});   //输入框可输入</ClientEvent>
+                <Property name="icon">url(>skin>common/icons.gif) -40px -240px</Property>
+                <Property name="caption">重置</Property>
+              </Button>
+            </AutoForm>
+          </Children>
+        </FieldSet>
+        <TabControl id="tabControl">
+          <ControlTab>
+            <Property name="caption">客户资料</Property>
+            <Property name="name">mainTab</Property>
+            <Panel>
+              <Buttons/>
+              <Children>
+                <ToolBar>
+                  <DataPilot>
+                    <Property name="dataSet">dsTbcm011</Property>
+                  </DataPilot>
+                  <Button>
+                    <ClientEvent name="onClick">view.get(&quot;#custNo&quot;).set(&quot;readOnly&quot;,false);&#xD;
+functions[&quot;AddOnClick&quot;](&quot;新增&quot;);&#xD;
+</ClientEvent>
+                    <Property name="icon">url(>skin>common/icons.gif) -120px 0px</Property>
+                    <Property name="caption">资料新增</Property>
+                  </Button>
+                  <ToolBarButton>
+                    <ClientEvent name="onClick">debugger&#xD;
+view.get(&quot;#custNo&quot;).set(&quot;readOnly&quot;,true);&#xD;
+var dataList = dgTbcm011.get(&quot;selection&quot;).slice(0);&#xD;
+if(dataList.length==0){&#xD;
+	dorado.MessageBox.alert(&quot;请至少选择一条要修改的数据！&quot;);&#xD;
+	//return;&#xD;
+	&#xD;
+	//view.get(&quot;#dialogTbcm011&quot;).show();&#xD;
+}else{&#xD;
+		dsTbcm011.getData().setCurrent(dataList[0]);&#xD;
+		view.get(&quot;#dialogTbcm011&quot;).show();&#xD;
+	&#xD;
+	&#xD;
+}&#xD;
+</ClientEvent>
+                    <Property name="caption">资料修改</Property>
+                    <Property name="icon">	url(>skin>common/icons.gif) -200px 0px</Property>
+                  </ToolBarButton>
+                  <Button layoutConstraint="colSpan:1">
+                    <ClientEvent name="onClick">var dataList = dgTbcm011.get(&quot;selection&quot;).slice(0);&#xD;
+functions[&quot;delOnClick&quot;](dataList);</ClientEvent>
+                    <Property name="icon">	url(>skin>common/icons.gif) -140px 0px</Property>
+                    <Property name="caption">资料删除</Property>
+                  </Button>
+                </ToolBar>
+                <DataGrid id="dgTbcm011">
+                  <ClientEvent name="onDataRowClick">if(arg.column.get(&quot;caption&quot;)!=&quot;RowSelector&quot;){&#xD;
+	var selection = self.get(&quot;selection&quot;);&#xD;
+	var entity = self.get(&quot;dataSet&quot;).getData(&quot;#&quot;);&#xD;
+	self.set(&quot;selection&quot;,entity);&#xD;
+}</ClientEvent>
+                  <ClientEvent name="onDataRowDoubleClick">	view.get(&quot;#custNo&quot;).set(&quot;readOnly&quot;,true);&#xD;
+	view.get(&quot;#dialogTbcm011&quot;).show();&#xD;
+&#xD;
+</ClientEvent>
+                  <Property name="dataSet">dsTbcm011</Property>
+                  <Property name="readOnly">true</Property>
+                  <Property name="selectionMode">multiRows</Property>
+                  <RowSelectorColumn/>
+                  <DataColumn name="custNo">
+                    <Property name="property">custNo</Property>
+                    <Property name="align">center</Property>
+                  </DataColumn>
+                  <DataColumn>
+                    <Property name="name">custName</Property>
+                    <Property name="property">custName</Property>
+                    <Property name="align">center</Property>
+                    <Editor/>
+                  </DataColumn>
+                  <DataColumn name="compChin">
+                    <Property name="property">compChin</Property>
+                    <Property name="align">center</Property>
+                  </DataColumn>
+                  <DataColumn>
+                    <Property name="name">dutyPerson</Property>
+                    <Property name="property">dutyPerson</Property>
+                    <Property name="align">center</Property>
+                    <Editor/>
+                  </DataColumn>
+                  <DataColumn>
+                    <Property name="name">phoneNumber</Property>
+                    <Property name="property">phoneNumber</Property>
+                    <Property name="align">center</Property>
+                    <Editor/>
+                  </DataColumn>
+                </DataGrid>
+              </Children>
+              <Tools/>
+            </Panel>
+          </ControlTab>
+          <ControlTab>
+            <ClientEvent name="onClick">var dataList = dgTbcm011.get(&quot;selection&quot;).slice(0);&#xD;
+if(dataList.length>1){&#xD;
+	dorado.MessageBox.alert(&quot;一次只能查看一个客户的银行信息！&quot;,function(){&#xD;
+		view.get(&quot;#tabControl&quot;).set(&quot;currentTab&quot;,&quot;mainTab&quot;);&#xD;
+	});&#xD;
+	return;&#xD;
+}else{&#xD;
+if(dsTbcm011.getData(&quot;#&quot;) &amp;&amp; dsTbcm011.getData(&quot;#&quot;).state==0){&#xD;
+	var compId = dsTbcm011.getData(&quot;#&quot;).get(&quot;compId&quot;);&#xD;
+	var custNo = dsTbcm011.getData(&quot;#&quot;).get(&quot;custNo&quot;);&#xD;
+	&#xD;
+	var data = {&#xD;
+		compId:compId,&#xD;
+		custNo,custNo&#xD;
+	};&#xD;
+	&#xD;
+	functions[&quot;queryCm012&quot;](data);	&#xD;
+}else{&#xD;
+	dorado.MessageBox.alert(&quot;请选择主档信息！&quot;,function(){&#xD;
+		view.get(&quot;#tabControl&quot;).set(&quot;currentTab&quot;,&quot;mainTab&quot;);&#xD;
+	});&#xD;
+}&#xD;
+}&#xD;
+&#xD;
+</ClientEvent>
+            <Property name="caption">银行维护</Property>
+            <Panel>
+              <Buttons/>
+              <Children>
+                <ToolBar>
+                  <DataPilot>
+                    <Property name="dataSet">dsTbcm012</Property>
+                  </DataPilot>
+                  <Button>
+                    <ClientEvent name="onClick">var custNo =dsTbcm011.getData(&quot;#&quot;).get(&quot;custNo&quot;); &#xD;
+var compId =dsTbcm011.getData(&quot;#&quot;).get(&quot;compId&quot;);&#xD;
+&#xD;
+dsTbcm012.insert({&#xD;
+	compId:compId,&#xD;
+	custNo:custNo&#xD;
+});&#xD;
+view.get(&quot;#bankNo&quot;).set(&quot;readOnly&quot;,false);&#xD;
+dialogTbcm012.show();&#xD;
+</ClientEvent>
+                    <Property name="icon">url(>skin>common/icons.gif) -120px 0px</Property>
+                    <Property name="caption">资料新增</Property>
+                    <Property name="width">90</Property>
+                  </Button>
+                  <ToolBarButton>
+                    <ClientEvent name="onClick">view.get(&quot;#bankNo&quot;).set(&quot;readOnly&quot;,true);&#xD;
+var dataList = dgTbcm012.get(&quot;selection&quot;).slice(0);&#xD;
+if(dataList.length==0){&#xD;
+	//dorado.MessageBox.alert(&quot;请至少选择一条要修改的数据！&quot;);&#xD;
+	//return;&#xD;
+	view.get(&quot;#dialogTbcm012&quot;).show();&#xD;
+}else{&#xD;
+		dsTbcm012.getData().setCurrent(dataList[0]);&#xD;
+		view.get(&quot;#dialogTbcm012&quot;).show();&#xD;
+}&#xD;
+</ClientEvent>
+                    <Property name="caption">资料修改</Property>
+                    <Property name="icon">	url(>skin>common/icons.gif) -200px 0px</Property>
+                  </ToolBarButton>
+                  <Button layoutConstraint="colSpan:1">
+                    <ClientEvent name="onClick">var dataList = dgTbcm012.get(&quot;selection&quot;).slice(0);&#xD;
+var len = dataList.length;&#xD;
+if(len==0){&#xD;
+	dorado.MessageBox.alert(&quot;请勾选要删除的数据！&quot;);&#xD;
+}else{&#xD;
+	functions[&quot;delCm012Onclick&quot;](dataList);&#xD;
+}</ClientEvent>
+                    <Property name="icon">	url(>skin>common/icons.gif) -140px 0px</Property>
+                    <Property name="caption">资料删除</Property>
+                    <Property name="tags">saveButton0</Property>
+                  </Button>
+                </ToolBar>
+                <DataGrid id="dgTbcm012">
+                  <ClientEvent name="onDataRowClick">if(arg.column.get(&quot;caption&quot;)!=&quot;RowSelector&quot;){&#xD;
+	var selection = self.get(&quot;selection&quot;);&#xD;
+	var entity = self.get(&quot;dataSet&quot;).getData(&quot;#&quot;);&#xD;
+	self.set(&quot;selection&quot;,entity);&#xD;
+}</ClientEvent>
+                  <ClientEvent name="onDataRowDoubleClick">/*if(view.get(&quot;#dsTbcm012.data:#&quot;)){ //选中有数据行时&#xD;
+	dialogTbcm012.show();&#xD;
+	&#xD;
+	var data = dsTbcm012.getData(&quot;#&quot;);&#xD;
+	if(data){&#xD;
+		var createEmpNo = data.get(&quot;createEmpNo&quot;);          //获取建立者&#xD;
+		if(createEmpNo==userName){							//控制编辑权限&#xD;
+			view.set(&quot;^saveButton1a.disabled&quot;,false);&#xD;
+			view.set(&quot;^saveButton2a.disabled&quot;,false);&#xD;
+			view.set(&quot;^saveButton3a.disabled&quot;,false);&#xD;
+			view.set(&quot;^saveButton4a.disabled&quot;,false);&#xD;
+			view.set(&quot;^dialogTbcm012.readOnly&quot;,false);&#xD;
+		}else{&#xD;
+			view.set(&quot;^dialogTbcm012.readOnly&quot;,true);&#xD;
+			dorado.MessageBox.alert(&quot;您无此操作权限！&quot;);&#xD;
+		}&#xD;
+	}&#xD;
+}else{ //没有选中数据行时&#xD;
+	dorado.MessageBox.alert(&quot;没有数据可以修改!&quot;);&#xD;
+}*/&#xD;
+view.get(&quot;#bankNo&quot;).set(&quot;readOnly&quot;,true);&#xD;
+view.get(&quot;#dialogTbcm012&quot;).show();</ClientEvent>
+                  <Property name="dataSet">dsTbcm012</Property>
+                  <Property name="readOnly">true</Property>
+                  <Property name="selectionMode">multiRows</Property>
+                  <RowSelectorColumn/>
+                  <DataColumn name="custNo">
+                    <Property name="property">custNo</Property>
+                    <Property name="align">center</Property>
+                  </DataColumn>
+                  <DataColumn name="bankNo">
+                    <Property name="property">bankNo</Property>
+                    <Property name="align">center</Property>
+                  </DataColumn>
+                  <DataColumn name="bankName">
+                    <Property name="property">bankName</Property>
+                    <Property name="align">center</Property>
+                  </DataColumn>
+                  <DataColumn name="bankAccount">
+                    <Property name="property">bankAccount</Property>
+                    <Property name="align">center</Property>
+                  </DataColumn>
+                  <DataColumn name="bankHeadNo">
+                    <Property name="property">bankHeadNo</Property>
+                    <Property name="align">center</Property>
+                  </DataColumn>
+                  <DataColumn name="bankHouseNo">
+                    <Property name="property">bankHouseNo</Property>
+                    <Property name="align">center</Property>
+                  </DataColumn>
+                </DataGrid>
+              </Children>
+              <Tools/>
+            </Panel>
+          </ControlTab>
+        </TabControl>
+      </Children>
+      <Tools/>
+    </Panel>
+    <Dialog id="dialogTbcm011">
+      <ClientEvent name="onShow">//functions[&quot;dialogTbdm031OnShow&quot;]();</ClientEvent>
+      <ClientEvent name="onHide">//functions[&quot;dialogTbdm031OnHide&quot;]();</ClientEvent>
+      <Property name="width">60%</Property>
+      <Property name="height">100%</Property>
+      <Property name="caption">客户管理</Property>
+      <Property name="closeable">false</Property>
+      <Buttons>
+        <Button>
+          <ClientEvent name="onClick">//var dataList = null;&#xD;
+//dataList = dgTbcm011.get(&quot;selection&quot;).slice(0);&#xD;
+functions[&quot;saveOnClick&quot;]();&#xD;
+&#xD;
+</ClientEvent>
+          <Property name="caption">保存</Property>
+          <Property name="icon">url(>skin>common/icons.gif) -140px -20px</Property>
+        </Button>
+        <Button>
+          <ClientEvent name="onClick">dsTbcm011.getData(&quot;#&quot;).cancel();&#xD;
+dialogTbcm011.close();&#xD;
+</ClientEvent>
+          <Property name="caption">关闭</Property>
+          <Property name="icon">url(>skin>common/icons.gif) -40px 0px</Property>
+        </Button>
+      </Buttons>
+      <Children>
+        <AutoForm>
+          <Property name="dataSet">dsTbcm011</Property>
+          <Property name="cols">*,*,*</Property>
+          <Property name="labelWidth">90</Property>
+          <AutoFormElement id="custNo">
+            <Property name="name">custNo</Property>
+            <Property name="property">custNo</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">custName</Property>
+            <Property name="property">custName</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">custCategery</Property>
+            <Property name="property">custCategery</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">dutyPerson</Property>
+            <Property name="property">dutyPerson</Property>
+            <Property name="label">联络人姓名</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">phoneNumber</Property>
+            <Property name="property">phoneNumber</Property>
+            <Property name="label">联络人电话</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="showLabel">false</Property>
+            <Property name="visible">false</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">compChin</Property>
+            <Property name="property">compChin</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">compWeb</Property>
+            <Property name="property">compWeb</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">email</Property>
+            <Property name="property">email</Property>
+            <Property name="label">邮箱</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">registerAmt</Property>
+            <Property name="property">registerAmt</Property>
+            <Property name="hint">注：金额单位均为人民币！</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">turnOver</Property>
+            <Property name="property">turnOver</Property>
+            <Property name="hint">注：金额单位均为人民币！</Property>
+            <Property name="hintPosition">right</Property>
+            <Property name="showHintMessage">false</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="showLabel">false</Property>
+            <Property name="visible">false</Property>
+            <Editor>
+              <Label/>
+            </Editor>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">taxNumber</Property>
+            <Property name="property">taxNumber</Property>
+            <Property name="label">纳税人识别号</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">invoiceBank</Property>
+            <Property name="property">invoiceBank</Property>
+            <Property name="label">开户银行</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">accountNo</Property>
+            <Property name="property">accountNo</Property>
+            <Property name="label">开户银行帐号</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement layoutConstraint="colSpan:2">
+            <Property name="name">mailAddress</Property>
+            <Property name="property">mailAddress</Property>
+            <Property name="label">公司地址</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">loadLine</Property>
+            <Property name="property">loadLine</Property>
+            <Property name="label">公司电话</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement layoutConstraint="colSpan:2">
+            <Property name="name">invoiceAddress</Property>
+            <Property name="property">invoiceAddress</Property>
+            <Property name="label">发票地址</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">zipCode</Property>
+            <Property name="property">zipCode</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">createEmp</Property>
+            <Property name="property">createEmp</Property>
+            <Property name="readOnly">true</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">createDate</Property>
+            <Property name="property">createDate</Property>
+            <Property name="readOnly">true</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="showLabel">false</Property>
+            <Property name="visible">false</Property>
+            <Property name="readOnly">true</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">updEmp</Property>
+            <Property name="property">updEmp</Property>
+            <Property name="readOnly">true</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">updDate</Property>
+            <Property name="property">updDate</Property>
+            <Property name="readOnly">true</Property>
+            <Editor/>
+          </AutoFormElement>
+        </AutoForm>
+      </Children>
+      <Tools/>
+    </Dialog>
+    <Dialog id="dialogTbcm0111">
+      <Property name="caption">厂商管理</Property>
+      <Property name="width">80%</Property>
+      <Property name="height">80%</Property>
+      <Buttons>
+        <Button>
+          <ClientEvent name="onClick">functions[&quot;saveOrUpdDs&quot;](&quot;新增&quot;);&#xD;
+</ClientEvent>
+          <Property name="caption">新增</Property>
+        </Button>
+        <Button>
+          <ClientEvent name="onClick">functions[&quot;saveOrUpdDs&quot;](&quot;修改&quot;);&#xD;
+</ClientEvent>
+          <Property name="caption">修改</Property>
+        </Button>
+        <Button>
+          <ClientEvent name="onClick">dsTbcm011.getData(&quot;#&quot;).cancel();&#xD;
+view.get(&quot;#dialogTbcm0111&quot;).close();&#xD;
+</ClientEvent>
+          <Property name="caption">关闭</Property>
+        </Button>
+      </Buttons>
+      <Children>
+        <AutoForm>
+          <Property name="dataSet">dsTbcm011</Property>
+          <Property name="cols">*,*,*,*</Property>
+          <Property name="labelWidth">100</Property>
+          <AutoFormElement>
+            <Property name="name">nationnality</Property>
+            <Property name="property">nationnality</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">custNo</Property>
+            <Property name="property">custNo</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">custName</Property>
+            <Property name="property">custName</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">taxNumber</Property>
+            <Property name="property">taxNumber</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">custCategery</Property>
+            <Property name="property">custCategery</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">belongOrg</Property>
+            <Property name="property">belongOrg</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">dutyPerson</Property>
+            <Property name="property">dutyPerson</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">yongyouCustNo</Property>
+            <Property name="property">yongyouCustNo</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">associated</Property>
+            <Property name="property">associated</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">assoDate</Property>
+            <Property name="property">assoDate</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">compChin</Property>
+            <Property name="property">compChin</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">compEmg</Property>
+            <Property name="property">compEmg</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">turnOver</Property>
+            <Property name="property">turnOver</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">turCny</Property>
+            <Property name="property">turCny</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">registerAmt</Property>
+            <Property name="property">registerAmt</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">regCny</Property>
+            <Property name="property">regCny</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement layoutConstraint="colSpan:2">
+            <Property name="name">invoiceAddress</Property>
+            <Property name="property">invoiceAddress</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">zipCode</Property>
+            <Property name="property">zipCode</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">compWeb</Property>
+            <Property name="property">compWeb</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">mailAddress</Property>
+            <Property name="property">mailAddress</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">loadLine</Property>
+            <Property name="property">loadLine</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">phoneNumber</Property>
+            <Property name="property">phoneNumber</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">faxNumber</Property>
+            <Property name="property">faxNumber</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">email</Property>
+            <Property name="property">email</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">qq</Property>
+            <Property name="property">qq</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">weChat</Property>
+            <Property name="property">weChat</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">facebook</Property>
+            <Property name="property">facebook</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">twitter</Property>
+            <Property name="property">twitter</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">blog</Property>
+            <Property name="property">blog</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">createEmp</Property>
+            <Property name="property">createEmp</Property>
+            <Property name="readOnly">true</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">createDate</Property>
+            <Property name="property">createDate</Property>
+            <Property name="readOnly">true</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">updEmp</Property>
+            <Property name="property">updEmp</Property>
+            <Property name="readOnly">true</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">updDate</Property>
+            <Property name="property">updDate</Property>
+            <Property name="readOnly">true</Property>
+            <Editor/>
+          </AutoFormElement>
+        </AutoForm>
+      </Children>
+      <Tools/>
+    </Dialog>
+    <Dialog id="dialogTbcm012">
+      <Property name="caption">银行维护</Property>
+      <Property name="height">100%</Property>
+      <Property name="width">650</Property>
+      <Buttons>
+        <Button>
+          <ClientEvent name="onClick">functions[&quot;saveBankOnClick&quot;]();&#xD;
+</ClientEvent>
+          <Property name="caption">保存</Property>
+          <Property name="icon">url(>skin>common/icons.gif) -140px -20px</Property>
+        </Button>
+        <Button>
+          <ClientEvent name="onClick">dsTbcm012.getData(&quot;#&quot;).cancel();&#xD;
+dialogTbcm012.close();&#xD;
+</ClientEvent>
+          <Property name="caption">关闭</Property>
+          <Property name="icon">url(>skin>common/icons.gif) -40px 0px</Property>
+        </Button>
+      </Buttons>
+      <Children>
+        <AutoForm>
+          <Property name="tags">dialogTbcm012</Property>
+          <Property name="dataSet">dsTbcm012</Property>
+          <AutoFormElement>
+            <Property name="name">custNo</Property>
+            <Property name="property">custNo</Property>
+            <Property name="readOnly">true</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement id="bankNo">
+            <Property name="name">bankNo</Property>
+            <Property name="property">bankNo</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">bankName</Property>
+            <Property name="property">bankName</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">bankAccount</Property>
+            <Property name="property">bankAccount</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">bankHeadNo</Property>
+            <Property name="property">bankHeadNo</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">bankHouseNo</Property>
+            <Property name="property">bankHouseNo</Property>
+            <Editor/>
+          </AutoFormElement>
+        </AutoForm>
+      </Children>
+      <Tools/>
+    </Dialog>
+    <Dialog id="dialogTbcm0122">
+      <Property name="caption">银行维护</Property>
+      <Property name="height">320</Property>
+      <Property name="width">650</Property>
+      <Buttons>
+        <Button>
+          <ClientEvent name="onClick">functions[&quot;saveOrUpdCm012&quot;](&quot;新增&quot;);&#xD;
+</ClientEvent>
+          <Property name="caption">新增</Property>
+        </Button>
+        <Button>
+          <ClientEvent name="onClick">functions[&quot;saveOrUpdCm012&quot;](&quot;修改&quot;);&#xD;
+</ClientEvent>
+          <Property name="caption">修改</Property>
+        </Button>
+        <Button>
+          <ClientEvent name="onClick">dsTbcm012.getData(&quot;#&quot;).cancel();&#xD;
+view.get(&quot;#dialogTbcm0122&quot;).close();&#xD;
+</ClientEvent>
+          <Property name="caption">关闭</Property>
+        </Button>
+      </Buttons>
+      <Children>
+        <AutoForm>
+          <Property name="tags">dialogTbcm012</Property>
+          <Property name="dataSet">dsTbcm012</Property>
+          <AutoFormElement>
+            <Property name="name">compId</Property>
+            <Property name="property">compId</Property>
+            <Property name="readOnly">true</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">custNo</Property>
+            <Property name="property">custNo</Property>
+            <Property name="readOnly">true</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">bankNo</Property>
+            <Property name="property">bankNo</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">bankHeadNo</Property>
+            <Property name="property">bankHeadNo</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">bankHouseNo</Property>
+            <Property name="property">bankHouseNo</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">bankName</Property>
+            <Property name="property">bankName</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">bankAccount</Property>
+            <Property name="property">bankAccount</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">createEmp</Property>
+            <Property name="property">createEmp</Property>
+            <Property name="readOnly">true</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">createDate</Property>
+            <Property name="property">createDate</Property>
+            <Property name="readOnly">true</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">updEmp</Property>
+            <Property name="property">updEmp</Property>
+            <Property name="readOnly">true</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">updDate</Property>
+            <Property name="property">updDate</Property>
+            <Property name="readOnly">true</Property>
+            <Editor/>
+          </AutoFormElement>
+        </AutoForm>
+      </Children>
+      <Tools/>
+    </Dialog>
+    <Dialog id="dialogGetCustNo">
+      <ClientEvent name="onClose">view.get(&quot;#dsTbcm0111&quot;).clear();&#xD;
+</ClientEvent>
+      <Property name="height">100%</Property>
+      <Property name="width">70%</Property>
+      <Buttons>
+        <Button>
+          <ClientEvent name="onClick">var custNo = view.get(&quot;#dsTbcm0111.data:#&quot;).get(&quot;custNo&quot;);&#xD;
+&#xD;
+dsQuery1.getData(&quot;#&quot;).set(&quot;custNo&quot;,custNo);&#xD;
+&#xD;
+view.get(&quot;#dialogGetCustNo&quot;).close();&#xD;
+</ClientEvent>
+          <Property name="caption">确认</Property>
+        </Button>
+        <Button>
+          <ClientEvent name="onClick">view.get(&quot;#dialogGetCustNo&quot;).close();&#xD;
+</ClientEvent>
+          <Property name="caption">关闭</Property>
+        </Button>
+      </Buttons>
+      <Children>
+        <AutoForm>
+          <Property name="dataSet">dsQuery2</Property>
+          <Property name="cols">230,230,230,60,60</Property>
+          <AutoFormElement>
+            <Property name="name">custNo</Property>
+            <Property name="property">custNo</Property>
+            <Property name="label">客商编号</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">custName</Property>
+            <Property name="property">custName</Property>
+            <Property name="label">客商名称</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">createDate</Property>
+            <Property name="property">createDate</Property>
+            <Property name="label">创建日期</Property>
+            <Editor/>
+          </AutoFormElement>
+          <Button>
+            <ClientEvent name="onClick">var data = null;&#xD;
+data = view.get(&quot;#dsQuery2&quot;).getData(&quot;#&quot;);&#xD;
+if(data.validate(&quot;custNo&quot;) == &quot;ok&quot; &amp;&amp; data.validate(&quot;custName&quot;) == &quot;ok&quot;){&#xD;
+	functions[&quot;queryCustNo&quot;](data);&#xD;
+}&#xD;
+&#xD;
+</ClientEvent>
+            <Property name="caption">查询</Property>
+          </Button>
+          <Button>
+            <ClientEvent name="onClick">dsQuery2.clear();&#xD;
+dsQuery2.insert();&#xD;
+</ClientEvent>
+            <Property name="caption">重置</Property>
+          </Button>
+        </AutoForm>
+        <DataGrid>
+          <ClientEvent name="onDataRowDoubleClick">var custNo = view.get(&quot;#dsTbcm0111.data:#&quot;).get(&quot;custNo&quot;);&#xD;
+dsQuery1.getData(&quot;#&quot;).set(&quot;custNo&quot;,custNo);&#xD;
+&#xD;
+view.get(&quot;#dialogGetCustNo&quot;).close();&#xD;
+</ClientEvent>
+          <Property name="dataSet">dsTbcm0111</Property>
+          <Property name="readOnly">true</Property>
+          <DataColumn name="custNo">
+            <Property name="property">custNo</Property>
+            <Property name="align">center</Property>
+          </DataColumn>
+          <DataColumn name="custName">
+            <Property name="property">custName</Property>
+            <Property name="align">center</Property>
+          </DataColumn>
+          <DataColumn name="createEmp">
+            <Property name="property">createEmp</Property>
+            <Property name="align">center</Property>
+          </DataColumn>
+          <DataColumn name="createDate">
+            <Property name="property">createDate</Property>
+            <Property name="align">center</Property>
+          </DataColumn>
+        </DataGrid>
+      </Children>
+      <Tools/>
+    </Dialog>
+    <UpdateAction id="saveTbcm011">
+      <Property name="dataResolver">bsjc01BO#saveTbcm011</Property>
+      <UpdateItem>
+        <Property name="dataSet">dsTbcm011</Property>
+      </UpdateItem>
+    </UpdateAction>
+    <UpdateAction id="saveTbcm012">
+      <Property name="dataResolver">bsjc01BO#saveTbcm012</Property>
+      <UpdateItem>
+        <Property name="dataSet">dsTbcm012</Property>
+      </UpdateItem>
+    </UpdateAction>
+    <Trigger id="trigger1">
+      <ClientEvent name="onExecute">view.get(&quot;#dialogGetCustNo&quot;).show();&#xD;
+</ClientEvent>
+    </Trigger>
+  </View>
+</ViewConfig>

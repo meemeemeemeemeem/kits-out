@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ViewConfig>
+  <Arguments/>
+  <Context/>
+  <Model>
+    <DataType name="dtNoticeInfo">
+      <PropertyDef name="NOTICE_TYPE">
+        <Property name="dataType">String</Property>
+        <Property name="label">公告级别</Property>
+        <Property name="mapping">
+          <Property name="mapValues">${dorado.getDataProvider(&quot;commonService#getBasicsCodeByType&quot;).getResult(&quot;notice_type&quot;)}</Property>
+        </Property>
+        <Validator type="length" defaultResultState="error" revalidateOldValue="true" runAt="both">
+          <Property name="maxLength">1</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="SENDER_NAME">
+        <Property name="label">发送者</Property>
+        <Property name="dataType">String</Property>
+      </PropertyDef>
+      <PropertyDef name="DEL_ABLE">
+        <Property name="label">可否删除</Property>
+      </PropertyDef>
+      <PropertyDef name="CREATE_DATE">
+        <Property name="dataType">DateTime</Property>
+        <Property name="label">发送时间</Property>
+      </PropertyDef>
+      <PropertyDef name="CONTENT">
+        <Property name="dataType">String</Property>
+        <Property name="label">内容</Property>
+        <Property name="required">true</Property>
+        <Validator type="length" defaultResultState="error" revalidateOldValue="true" runAt="both">
+          <Property name="maxLength">1000</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="APPCONTENT">
+        <Property name="label">公告内容</Property>
+      </PropertyDef>
+      <PropertyDef name="END_DATE">
+        <Property name="dataType">Date</Property>
+        <Property name="label">截止日期</Property>
+        <Property name="required">true</Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="dtCondition">
+      <PropertyDef name="TITLE">
+        <Property name="dataType">String</Property>
+        <Property name="label">标题</Property>
+        <Validator type="length" defaultResultState="error" revalidateOldValue="true" runAt="both">
+          <Property name="maxLength">255</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="CONTENT">
+        <Property name="dataType">String</Property>
+        <Property name="label">内容</Property>
+        <Validator type="length" defaultResultState="error" revalidateOldValue="true" runAt="both">
+          <Property name="maxLength">1000</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="SENDER_NAME">
+        <Property name="dataType">String</Property>
+        <Property name="label">发送者</Property>
+        <Validator type="length" defaultResultState="error" revalidateOldValue="true" runAt="both">
+          <Property name="maxLength">32</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="CREATE_DATE">
+        <Property name="dataType">Date</Property>
+        <Property name="label">发送时间</Property>
+      </PropertyDef>
+      <PropertyDef name="TO_DATE">
+        <Property name="dataType">Date</Property>
+        <Property name="label">至</Property>
+      </PropertyDef>
+      <PropertyDef name="NOTICE_TYPE">
+        <Property name="dataType">String</Property>
+        <Property name="label">公告级别</Property>
+        <Property name="mapping">
+          <Property name="mapValues">${dorado.getDataProvider(&quot;commonService#getBasicsCodeByType&quot;).getResult(&quot;notice_type&quot;)}</Property>
+        </Property>
+        <Validator type="length" defaultResultState="error" revalidateOldValue="true" runAt="both">
+          <Property name="maxLength">1</Property>
+        </Validator>
+      </PropertyDef>
+    </DataType>
+  </Model>
+  <View>
+    <ClientEvent name="onReady">// 针对公告查看链接跳转不允许操作当前页面数据修改内容&#xD;
+var param =&quot;${request.getParameter('i')}&quot;;&#xD;
+if(param){&#xD;
+	view.get(&quot;#btnAdd&quot;).set(&quot;visible&quot;, false);&#xD;
+	view.get(&quot;#btnModify&quot;).set(&quot;visible&quot;, false);&#xD;
+	view.get(&quot;#btnDel&quot;).set(&quot;visible&quot;, false);&#xD;
+}&#xD;
+</ClientEvent>
+    <DataSet id="dsNoticeInfo">
+      <Property name="dataType">[dtNoticeInfo]</Property>
+      <Property name="dataProvider">noticeInfoService#getNoticeByCompanyId</Property>
+      <Property name="pageSize">10</Property>
+    </DataSet>
+    <DataSet id="dsCondition">
+      <Property name="dataType">[dtCondition]</Property>
+    </DataSet>
+    <AutoForm id="afCondition">
+      <Property name="cols">*,*,*,*,100</Property>
+      <Property name="labelSeparator">：</Property>
+      <Property name="dataSet">dsCondition</Property>
+      <Property name="labelWidth">100</Property>
+      <AutoFormElement>
+        <Property name="name">TITLE</Property>
+        <Property name="property">TITLE</Property>
+        <Editor/>
+      </AutoFormElement>
+      <AutoFormElement>
+        <Property name="name">CONTENT</Property>
+        <Property name="property">CONTENT</Property>
+        <Editor/>
+      </AutoFormElement>
+      <AutoFormElement>
+        <Property name="name">SENDER_NAME</Property>
+        <Property name="property">SENDER_NAME</Property>
+        <Editor/>
+      </AutoFormElement>
+      <AutoFormElement>
+        <Property name="name">NOTICE_TYPE</Property>
+        <Property name="property">NOTICE_TYPE</Property>
+        <Editor/>
+      </AutoFormElement>
+      <Button id="btnQuery">
+        <Property name="caption">查询</Property>
+        <Property name="icon">images/icon/query.ico</Property>
+      </Button>
+      <AutoFormElement>
+        <Property name="name">CREATE_DATE</Property>
+        <Property name="property">CREATE_DATE</Property>
+        <Editor/>
+      </AutoFormElement>
+      <AutoFormElement>
+        <Property name="name">TO_DATE</Property>
+        <Property name="property">TO_DATE</Property>
+        <Editor/>
+      </AutoFormElement>
+      <Control/>
+      <Control/>
+      <Button id="btnClear">
+        <Property name="caption">重置</Property>
+        <Property name="icon">images/icon/reset.ico</Property>
+      </Button>
+    </AutoForm>
+    <ToolBar>
+      <ToolBarButton id="btnAdd">
+        <Property name="caption">新增</Property>
+        <Property name="icon">images/icon/new.ico</Property>
+      </ToolBarButton>
+      <ToolBarButton id="btnModify">
+        <Property name="caption">修改</Property>
+        <Property name="icon">images/icon/upd.ico</Property>
+      </ToolBarButton>
+      <ToolBarButton id="btnDel">
+        <Property name="caption">删除</Property>
+        <Property name="icon">images/icon/del.ico</Property>
+      </ToolBarButton>
+      <ToolBarButton id="btnShow">
+        <Property name="caption">查看</Property>
+        <Property name="icon">url(>skin>common/icons.gif) -40px -100px</Property>
+      </ToolBarButton>
+      <Fill/>
+      <DataPilot id="dpNotice">
+        <Property name="itemCodes">pages,pageSize</Property>
+        <Property name="dataSet">dsNoticeInfo</Property>
+      </DataPilot>
+    </ToolBar>
+    <DataGrid id="dgNotice">
+      <Property name="dataSet">dsNoticeInfo</Property>
+      <Property name="readOnly">true</Property>
+      <Property name="selectionMode">multiRows</Property>
+      <RowSelectorColumn/>
+      <RowNumColumn>
+        <Property name="width">40</Property>
+      </RowNumColumn>
+      <DataColumn name="TITLE">
+        <Property name="property">TITLE</Property>
+        <Property name="align">center</Property>
+        <Property name="width">300</Property>
+      </DataColumn>
+      <DataColumn name="CREATE_DATE">
+        <Property name="property">CREATE_DATE</Property>
+        <Property name="align">center</Property>
+      </DataColumn>
+      <DataColumn name="END_DATE">
+        <Property name="property">END_DATE</Property>
+        <Property name="align">center</Property>
+      </DataColumn>
+      <DataColumn>
+        <Property name="property">SENDER_NAME</Property>
+        <Property name="align">center</Property>
+        <Property name="name">SENDER_NAME</Property>
+      </DataColumn>
+      <DataColumn name="NOTICE_TYPE">
+        <Property name="property">NOTICE_TYPE</Property>
+        <Property name="align">center</Property>
+      </DataColumn>
+      <DataColumn>
+        <Property name="property">APPCONTENT</Property>
+        <Property name="align">center</Property>
+        <Property name="name">APPCONTENT</Property>
+        <Property name="visible">true</Property>
+        <Property name="width">300</Property>
+      </DataColumn>
+    </DataGrid>
+    <Dialog id="dialogNotice">
+      <Property name="closeable">false</Property>
+      <Property name="height">100%</Property>
+      <Property name="width">100%</Property>
+      <Property name="caption">公告详情</Property>
+      <Buttons>
+        <Button id="btnSave">
+          <Property name="caption">发送</Property>
+          <Property name="icon">images/icon/sure.ico</Property>
+        </Button>
+        <Button id="btnCancel">
+          <Property name="icon">images/icon/cancel.ico</Property>
+          <Property name="caption">取消</Property>
+        </Button>
+      </Buttons>
+      <Children>
+        <AutoForm id="afNotice">
+          <Property name="labelSeparator">:</Property>
+          <Property name="dataSet">dsNoticeInfo</Property>
+          <Property name="cols">*</Property>
+          <AutoFormElement>
+            <Property name="name">TITLE</Property>
+            <Property name="property">TITLE</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">END_DATE</Property>
+            <Property name="property">END_DATE</Property>
+            <Property name="editable">false</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">CONTENT</Property>
+            <Property name="property">CONTENT</Property>
+            <Editor>
+              <UEditor>
+                <Property name="height">600</Property>
+              </UEditor>
+            </Editor>
+          </AutoFormElement>
+        </AutoForm>
+      </Children>
+      <Tools/>
+    </Dialog>
+    <Dialog id="dialogShow">
+      <Property name="closeable">false</Property>
+      <Property name="height">100%</Property>
+      <Property name="width">100%</Property>
+      <Property name="caption">公告详情</Property>
+      <Buttons>
+        <Button id="btnOK">
+          <Property name="caption">确定</Property>
+          <Property name="icon">images/icon/sure.ico</Property>
+        </Button>
+      </Buttons>
+      <Children>
+        <AutoForm id="afShowNotice">
+          <Property name="cols">*,*</Property>
+          <Property name="dataSet">dsNoticeInfo</Property>
+          <Property name="labelSeparator">:</Property>
+          <Property name="readOnly">true</Property>
+          <AutoFormElement layoutConstraint="colSpan:2">
+            <Property name="name">TITLE</Property>
+            <Property name="property">TITLE</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">CREATE_DATE</Property>
+            <Property name="property">CREATE_DATE</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">SENDER_NAME</Property>
+            <Property name="property">SENDER_NAME</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement layoutConstraint="colSpan:2">
+            <Property name="name">CONTENT</Property>
+            <Property name="property">CONTENT</Property>
+            <Editor>
+              <UEditor>
+                <Property name="height">600</Property>
+              </UEditor>
+            </Editor>
+          </AutoFormElement>
+        </AutoForm>
+      </Children>
+      <Tools/>
+    </Dialog>
+    <UpdateAction id="uatnAddNotice">
+      <Property name="dataResolver">noticeInfoService#addNotice</Property>
+      <Property name="successMessage">保存成功!</Property>
+      <Property name="executingMessage">保存中...</Property>
+      <UpdateItem>
+        <Property name="dataSet">dsNoticeInfo</Property>
+        <Property name="dataPath">[#current]</Property>
+        <Property name="submitOldData">true</Property>
+      </UpdateItem>
+    </UpdateAction>
+    <UpdateAction id="uatnDel">
+      <Property name="dataResolver">noticeInfoService#delNotice</Property>
+      <UpdateItem>
+        <Property name="dataSet">dsNoticeInfo</Property>
+        <Property name="submitOldData">true</Property>
+      </UpdateItem>
+    </UpdateAction>
+  </View>
+</ViewConfig>

@@ -1,0 +1,3950 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ViewConfig>
+  <Arguments/>
+  <Context/>
+  <Model>
+    <DataType name="dtQuery1">
+      <PropertyDef name="compId">
+        <Property name="label">公司别</Property>
+        <Property name="readOnly">true</Property>
+      </PropertyDef>
+      <PropertyDef name="custNo">
+        <Property name="label">客商编号</Property>
+        <Property name="mapping">
+          <Property name="mapValues"></Property>
+        </Property>
+        <Property name="required">true</Property>
+        <Validator name="validator1" type="charLength">
+          <Property name="minLength">0</Property>
+          <Property name="maxLength">10</Property>
+        </Validator>
+      </PropertyDef>
+    </DataType>
+    <DataType name="dtQuery2">
+      <PropertyDef name="custNo">
+        <Property name="label">客户编号</Property>
+        <Property name="mapping">
+          <Property name="mapValues"></Property>
+        </Property>
+        <Validator name="validator1" type="charLength">
+          <Property name="maxLength">20</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="custName">
+        <Property name="label">客户名称</Property>
+        <Property name="mapping">
+          <Property name="mapValues"></Property>
+        </Property>
+        <Validator name="validator1" type="charLength">
+          <Property name="maxLength">20</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="createDate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">创建日期</Property>
+      </PropertyDef>
+      <PropertyDef name="custCategery">
+        <Property></Property>
+        <Property name="label">客商类别</Property>
+        <Property name="mapping">
+          <Property name="mapValues">${dorado.getDataProvider(&quot;commonUtils#getIventoryMappings&quot;).getResult({&quot;refId&quot;:&quot;custCategery&quot;})}</Property>
+          <Property name="keyProperty">name</Property>
+          <Property name="valueProperty">value</Property>
+        </Property>
+      </PropertyDef>
+      <PropertyDef name="email">
+        <Property></Property>
+        <Property name="label">客商所在地区</Property>
+        <Property name="mapping">
+          <Property name="mapValues">${dorado.getDataProvider(&quot;bsjc01BO#getArea&quot;).getResult()}</Property>
+          <Property name="keyProperty">name</Property>
+          <Property name="valueProperty">value</Property>
+        </Property>
+        <Validator name="validator1" type="charLength">
+          <Property name="minLength">0</Property>
+          <Property name="maxLength">50</Property>
+        </Validator>
+      </PropertyDef>
+    </DataType>
+    <DataType name="dtBs012">
+      <Property name="creationType">com.kits.inms.bs.domain.Tbbs012</Property>
+      <PropertyDef name="pkBs012">
+        <Property></Property>
+        <Property name="label">PK_BS012_</Property>
+      </PropertyDef>
+      <PropertyDef name="compId">
+        <Property></Property>
+        <Property name="label">COMP_ID_</Property>
+      </PropertyDef>
+      <PropertyDef name="custNo">
+        <Property></Property>
+        <Property name="label">CUST_NO_</Property>
+      </PropertyDef>
+      <PropertyDef name="custName">
+        <Property></Property>
+        <Property name="label">CUST_NAME_</Property>
+      </PropertyDef>
+      <PropertyDef name="compName">
+        <Property></Property>
+        <Property name="label">公司名称</Property>
+        <Validator name="validator1" type="charLength">
+          <Property name="maxLength">40</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="taxNumber">
+        <Property></Property>
+        <Property name="label">纳税人识别号</Property>
+        <Property name="required">true</Property>
+        <Validator name="validator1" type="charLength">
+          <Property name="maxLength">40</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="compPhone">
+        <Property></Property>
+        <Property name="label">公司电话</Property>
+        <Validator name="validator1" type="charLength">
+          <Property name="maxLength">20</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="compAddr">
+        <Property></Property>
+        <Property name="label">公司地址</Property>
+        <Validator name="validator1" type="charLength">
+          <Property name="maxLength">100</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="bankNo">
+        <Property></Property>
+        <Property name="label">开户银行</Property>
+        <Property name="mapping">
+          <Property name="mapValues"></Property>
+        </Property>
+        <Validator name="validator1" type="charLength">
+          <Property name="maxLength">40</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="bankAccount">
+        <Property></Property>
+        <Property name="label">开户银行帐号</Property>
+        <Validator name="validator1" type="charLength">
+          <Property name="maxLength">40</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="zipeCode">
+        <Property></Property>
+        <Property name="label">邮编</Property>
+        <Validator name="validator1" type="regExp">
+          <Property name="whiteRegExp">^[1-9][0-9]{5}$</Property>
+          <Property name="resultMessage">请输入正确的邮政编码！</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="invoiceAddress">
+        <Property></Property>
+        <Property name="label">发票邮寄地址</Property>
+        <Validator name="validator1" type="charLength">
+          <Property name="maxLength">100</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="memo">
+        <Property></Property>
+        <Property name="label">默认</Property>
+      </PropertyDef>
+      <PropertyDef name="createEmp">
+        <Property></Property>
+        <Property name="label">创建人员</Property>
+      </PropertyDef>
+      <PropertyDef name="createDate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">创建日期</Property>
+      </PropertyDef>
+      <PropertyDef name="modifyEmp">
+        <Property></Property>
+        <Property name="label">修改人员</Property>
+      </PropertyDef>
+      <PropertyDef name="modifyDate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">修改日期</Property>
+      </PropertyDef>
+      <PropertyDef name="defs01">
+        <Property></Property>
+        <Property name="label">DEFS01</Property>
+      </PropertyDef>
+      <PropertyDef name="defs02">
+        <Property></Property>
+        <Property name="label">DEFS02</Property>
+      </PropertyDef>
+      <PropertyDef name="defs03">
+        <Property></Property>
+        <Property name="label">DEFS03</Property>
+      </PropertyDef>
+      <PropertyDef name="defs04">
+        <Property></Property>
+        <Property name="label">DEFS04</Property>
+      </PropertyDef>
+      <PropertyDef name="defs05">
+        <Property></Property>
+        <Property name="label">DEFS05</Property>
+      </PropertyDef>
+      <PropertyDef name="defb01">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">DEFB01</Property>
+      </PropertyDef>
+      <PropertyDef name="defb02">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">DEFB02</Property>
+      </PropertyDef>
+      <PropertyDef name="defb03">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">DEFB03</Property>
+      </PropertyDef>
+      <PropertyDef name="defb04">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">DEFB04</Property>
+      </PropertyDef>
+      <PropertyDef name="defb05">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">DEFB05</Property>
+      </PropertyDef>
+      <PropertyDef name="defm01">
+        <Property></Property>
+        <Property name="label">DEFM01</Property>
+      </PropertyDef>
+      <PropertyDef name="defm02">
+        <Property></Property>
+        <Property name="label">DEFM02</Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="dtBs013">
+      <Property name="creationType">com.kits.inms.bs.domain.Tbbs013</Property>
+      <PropertyDef name="pkBs013">
+        <Property></Property>
+        <Property name="label">PK_BS013_</Property>
+      </PropertyDef>
+      <PropertyDef name="compId">
+        <Property></Property>
+        <Property name="label">COMP_ID_</Property>
+      </PropertyDef>
+      <PropertyDef name="custNo">
+        <Property></Property>
+        <Property name="label">CUST_NO_</Property>
+      </PropertyDef>
+      <PropertyDef name="custName">
+        <Property></Property>
+        <Property name="label">CUST_NAME_</Property>
+      </PropertyDef>
+      <PropertyDef name="recMan">
+        <Property></Property>
+        <Property name="label">收货人</Property>
+        <Property name="required">true</Property>
+        <Validator name="validator1" type="charLength">
+          <Property name="maxLength">40</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="area">
+        <Property></Property>
+        <Property name="label">所在地区</Property>
+        <Property name="mapping">
+          <Property>${dorado.getDataProvider(&quot;bsjc01BO#getArea&quot;).getResult()}</Property>
+          <Property name="keyProperty">name</Property>
+          <Property name="valueProperty">value</Property>
+          <Property name="mapValues">${dorado.getDataProvider(&quot;bsjc01BO#getArea&quot;).getResult()}</Property>
+        </Property>
+        <Validator name="validator1" type="charLength">
+          <Property name="maxLength">40</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="zipeCode">
+        <Property></Property>
+        <Property name="label">邮编</Property>
+        <Validator name="validator1" type="regExp">
+          <Property name="whiteRegExp">^[1-9][0-9]{5}$</Property>
+          <Property name="resultMessage">请输入正确的邮政编码！</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="detailAddress">
+        <Property></Property>
+        <Property name="label">详细地址</Property>
+        <Property name="required">true</Property>
+        <Validator name="validator1" type="charLength">
+          <Property name="maxLength">100</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="mobialPhone">
+        <Property></Property>
+        <Property name="label">手机号</Property>
+        <Property name="required">true</Property>
+        <Validator name="validator1" type="charLength">
+          <Property name="maxLength">20</Property>
+        </Validator>
+        <Validator name="validator2" type="regExp">
+          <Property name="whiteRegExp">^(0\d{2}-\d{8})|(0\d{3}-\d{7})|(1[34578]\d{9})$</Property>
+          <Property name="resultMessage">请输入正确的手机号码！</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="phoneNum">
+        <Property></Property>
+        <Property name="label">固定电话</Property>
+        <Validator name="validator1" type="charLength">
+          <Property name="maxLength">20</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="addr">
+        <Property></Property>
+        <Property name="label">地址别名</Property>
+        <Validator name="validator1" type="charLength">
+          <Property name="maxLength">40</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="memo">
+        <Property></Property>
+        <Property name="label">默认</Property>
+      </PropertyDef>
+      <PropertyDef name="createEmp">
+        <Property></Property>
+        <Property name="label">创建人员</Property>
+      </PropertyDef>
+      <PropertyDef name="createDate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">创建日期</Property>
+      </PropertyDef>
+      <PropertyDef name="modifyEmp">
+        <Property></Property>
+        <Property name="label">修改人员</Property>
+      </PropertyDef>
+      <PropertyDef name="modifyDate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">修改日期</Property>
+      </PropertyDef>
+      <PropertyDef name="defs01">
+        <Property></Property>
+        <Property name="label">DEFS01</Property>
+      </PropertyDef>
+      <PropertyDef name="defs02">
+        <Property></Property>
+        <Property name="label">DEFS02</Property>
+      </PropertyDef>
+      <PropertyDef name="defs03">
+        <Property></Property>
+        <Property name="label">DEFS03</Property>
+      </PropertyDef>
+      <PropertyDef name="defs04">
+        <Property></Property>
+        <Property name="label">DEFS04</Property>
+      </PropertyDef>
+      <PropertyDef name="defs05">
+        <Property></Property>
+        <Property name="label">DEFS05</Property>
+      </PropertyDef>
+      <PropertyDef name="defb01">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">DEFB01</Property>
+      </PropertyDef>
+      <PropertyDef name="defb02">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">DEFB02</Property>
+      </PropertyDef>
+      <PropertyDef name="defb03">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">DEFB03</Property>
+      </PropertyDef>
+      <PropertyDef name="defb04">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">DEFB04</Property>
+      </PropertyDef>
+      <PropertyDef name="defb05">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">DEFB05</Property>
+      </PropertyDef>
+      <PropertyDef name="defm01">
+        <Property></Property>
+        <Property name="label">DEFM01</Property>
+      </PropertyDef>
+      <PropertyDef name="defm02">
+        <Property></Property>
+        <Property name="label">DEFM02</Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="dtBs015">
+      <Property name="creationType">com.kits.inms.bs.domain.Tbbs015</Property>
+      <PropertyDef name="pkBs015">
+        <Property></Property>
+        <Property name="label">PK_BS015_</Property>
+      </PropertyDef>
+      <PropertyDef name="compId">
+        <Property></Property>
+        <Property name="label">COMP_ID_</Property>
+      </PropertyDef>
+      <PropertyDef name="custNo">
+        <Property></Property>
+        <Property name="label">CUST_NO_</Property>
+      </PropertyDef>
+      <PropertyDef name="custName">
+        <Property></Property>
+        <Property name="label">CUST_NAME_</Property>
+      </PropertyDef>
+      <PropertyDef name="recMan">
+        <Property></Property>
+        <Property name="label">联系人</Property>
+        <Property name="required">true</Property>
+        <Validator name="validator1" type="charLength">
+          <Property name="maxLength">40</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="mail">
+        <Property></Property>
+        <Property name="label">电子邮箱</Property>
+        <Validator name="validator1" type="charLength">
+          <Property name="maxLength">40</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="mobilPhone">
+        <Property></Property>
+        <Property name="label">手机号码</Property>
+        <Property name="required">true</Property>
+        <Validator name="validator1" type="charLength">
+          <Property name="maxLength">20</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="phoneNum">
+        <Property></Property>
+        <Property name="label">固定电话</Property>
+        <Validator name="validator1" type="charLength">
+          <Property name="maxLength">40</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="memo">
+        <Property></Property>
+        <Property name="label">默认</Property>
+      </PropertyDef>
+      <PropertyDef name="createEmp">
+        <Property></Property>
+        <Property name="label">创建人员</Property>
+      </PropertyDef>
+      <PropertyDef name="createDate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">创建日期</Property>
+      </PropertyDef>
+      <PropertyDef name="modifyEmp">
+        <Property></Property>
+        <Property name="label">修改人员</Property>
+      </PropertyDef>
+      <PropertyDef name="modifyDate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">修改日期</Property>
+      </PropertyDef>
+      <PropertyDef name="defs01">
+        <Property></Property>
+        <Property name="label">传真</Property>
+        <Validator name="validator1" type="charLength">
+          <Property name="maxLength">40</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="defs02">
+        <Property></Property>
+        <Property name="label">联系人属性</Property>
+        <Property name="mapping">
+          <Property name="mapValues">
+            <Entity>
+              <Property name="A">重要</Property>
+              <Property name="B">一般</Property>
+              <Property name="C">开票</Property>
+            </Entity>
+          </Property>
+        </Property>
+        <Validator name="validator1" type="charLength">
+          <Property name="maxLength">40</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="defs03">
+        <Property></Property>
+        <Property name="label">备注</Property>
+        <Validator name="validator1" type="charLength">
+          <Property name="maxLength">40</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="defs04">
+        <Property></Property>
+        <Property name="label">DEFS04</Property>
+      </PropertyDef>
+      <PropertyDef name="defs05">
+        <Property></Property>
+        <Property name="label">DEFS05</Property>
+      </PropertyDef>
+      <PropertyDef name="defb01">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">DEFB01</Property>
+      </PropertyDef>
+      <PropertyDef name="defb02">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">DEFB02</Property>
+      </PropertyDef>
+      <PropertyDef name="defb03">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">DEFB03</Property>
+      </PropertyDef>
+      <PropertyDef name="defb04">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">DEFB04</Property>
+      </PropertyDef>
+      <PropertyDef name="defb05">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">DEFB05</Property>
+      </PropertyDef>
+      <PropertyDef name="defm01">
+        <Property></Property>
+        <Property name="label">DEFM01</Property>
+      </PropertyDef>
+      <PropertyDef name="defm02">
+        <Property></Property>
+        <Property name="label">DEFM02</Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="dtTbcm011">
+      <Property name="creationType">com.kits.inms.bs.domain.Tbcm011</Property>
+      <PropertyDef name="pkCm011">
+        <Property></Property>
+        <Property name="label">PK_CM011_</Property>
+      </PropertyDef>
+      <PropertyDef name="compId">
+        <Property></Property>
+        <Property name="label">公司别</Property>
+        <Property name="defaultValue">WHKnow</Property>
+      </PropertyDef>
+      <PropertyDef name="custNo">
+        <Property></Property>
+        <Property name="label">客商编号</Property>
+        <Validator name="validator1" type="length">
+          <Property name="maxLength">20</Property>
+          <Property name="minLength">0</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="custName">
+        <Property></Property>
+        <Property name="label">客商简称</Property>
+        <Property name="required">true</Property>
+        <Validator name="validator1" type="charLength">
+          <Property name="minLength">0</Property>
+          <Property name="maxLength">50</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="version">
+        <Property></Property>
+        <Property name="label">版本</Property>
+      </PropertyDef>
+      <PropertyDef name="nationnality">
+        <Property></Property>
+        <Property name="label">国家</Property>
+        <Property name="mapping">
+          <Property name="mapValues">
+            <Entity>
+              <Property name="CHINA">中国</Property>
+              <Property name="INDIA">INA-INDIA</Property>
+              <Property name="AMERICA">USA-AMERICA</Property>
+              <Property name="BRITAIN">UK-BRITAIN</Property>
+              <Property name="FRANCE">FRA-FRANCE</Property>
+            </Entity>
+          </Property>
+        </Property>
+      </PropertyDef>
+      <PropertyDef name="custCategery">
+        <Property></Property>
+        <Property name="label">客商类别</Property>
+        <Property name="mapping">
+          <Property name="mapValues"></Property>
+          <Property name="keyProperty">name</Property>
+          <Property name="valueProperty">value</Property>
+        </Property>
+      </PropertyDef>
+      <PropertyDef name="yongyouCustNo">
+        <Property></Property>
+        <Property name="label">客商属性</Property>
+        <Property name="mapping">
+          <Property name="keyProperty">name</Property>
+          <Property name="valueProperty">value</Property>
+          <Property name="mapValues">
+            <Entity>
+              <Property name="A">集团内客户</Property>
+              <Property name="B">集团外客户</Property>
+            </Entity>
+          </Property>
+        </Property>
+        <Property name="required">true</Property>
+      </PropertyDef>
+      <PropertyDef name="dutyPerson">
+        <Property></Property>
+        <Property name="label">主要联络人</Property>
+        <Validator name="validator1" type="charLength">
+          <Property name="minLength">0</Property>
+          <Property name="maxLength">10</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="associated">
+        <Property></Property>
+        <Property name="label">关联方</Property>
+        <Property name="mapping">
+          <Property name="mapValues">
+            <Entity/>
+          </Property>
+        </Property>
+      </PropertyDef>
+      <PropertyDef name="assoDate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">关联日期</Property>
+      </PropertyDef>
+      <PropertyDef name="compChin">
+        <Property></Property>
+        <Property name="label">公司中文名</Property>
+        <Property name="required">true</Property>
+        <Validator name="validator1" type="charLength">
+          <Property name="minLength">0</Property>
+          <Property name="maxLength">200</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="compEmg">
+        <Property></Property>
+        <Property name="label">公司所在地区</Property>
+        <Property name="mapping">
+          <Property name="mapValues"></Property>
+        </Property>
+        <Validator name="validator1" type="charLength">
+          <Property name="maxLength">100</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="registerAmt">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">注册资金</Property>
+        <Property name="displayFormat">###,###,##0.00</Property>
+        <Validator name="validator1" type="range">
+          <Property name="minValue">0</Property>
+          <Property name="minValueValidateMode">allowEquals</Property>
+          <Property name="maxValue">9999999999</Property>
+          <Property name="maxValueValidateMode">allowEquals</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="regCny">
+        <Property></Property>
+        <Property name="label">注册资金币别</Property>
+        <Property name="mapping">
+          <Property name="mapValues">
+            <Entity>
+              <Property name="CNY">人民币</Property>
+            </Entity>
+          </Property>
+        </Property>
+      </PropertyDef>
+      <PropertyDef name="turnOver">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">营业额</Property>
+        <Validator name="validator1" type="range">
+          <Property name="minValue">0</Property>
+          <Property name="minValueValidateMode">allowEquals</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="turCny">
+        <Property></Property>
+        <Property name="label">营业额币别</Property>
+        <Property name="mapping">
+          <Property name="mapValues">
+            <Entity>
+              <Property name="CNY">人民币</Property>
+            </Entity>
+          </Property>
+        </Property>
+      </PropertyDef>
+      <PropertyDef name="zipCode">
+        <Property></Property>
+        <Property name="label">邮编</Property>
+        <Validator name="validator1" type="charLength">
+          <Property name="minLength">0</Property>
+          <Property name="maxLength">10</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="mailAddress">
+        <Property></Property>
+        <Property name="label">公司地址</Property>
+        <Validator name="validator1" type="regExp">
+          <Property name="whiteRegExp">^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$</Property>
+          <Property name="resultMessage">请输入正确的邮箱格式</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="compWeb">
+        <Property></Property>
+        <Property name="label">公司网址</Property>
+        <Validator name="validator1" type="charLength">
+          <Property name="minLength">0</Property>
+          <Property name="maxLength">30</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="loadLine">
+        <Property></Property>
+        <Property name="label">座机号码</Property>
+        <Validator name="validator1" type="charLength">
+          <Property name="maxLength">20</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="phoneNumber">
+        <Property></Property>
+        <Property name="label">手机号码</Property>
+        <Validator name="validator1" type="charLength">
+          <Property name="minLength">0</Property>
+          <Property name="maxLength">20</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="faxNumber">
+        <Property></Property>
+        <Property name="label">传真号码</Property>
+      </PropertyDef>
+      <PropertyDef name="email">
+        <Property></Property>
+        <Property name="label">Email</Property>
+        <Property name="mapping">
+          <Property name="mapValues">${dorado.getDataProvider(&quot;bsjc01BO#getArea&quot;).getResult()}</Property>
+          <Property name="keyProperty">name</Property>
+          <Property name="valueProperty">value</Property>
+        </Property>
+        <Validator name="validator1" type="charLength">
+          <Property name="minLength">0</Property>
+          <Property name="maxLength">50</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="qq">
+        <Property></Property>
+        <Property name="label">QQ</Property>
+      </PropertyDef>
+      <PropertyDef name="weChat">
+        <Property></Property>
+        <Property name="label">微信</Property>
+      </PropertyDef>
+      <PropertyDef name="facebook">
+        <Property></Property>
+        <Property name="label">FACEBOOK</Property>
+      </PropertyDef>
+      <PropertyDef name="twitter">
+        <Property></Property>
+        <Property name="label">TWITTER</Property>
+      </PropertyDef>
+      <PropertyDef name="accountNo">
+        <Property></Property>
+        <Property name="label">发票帐号</Property>
+        <Validator name="validator1" type="charLength">
+          <Property name="minLength">0</Property>
+          <Property name="maxLength">20</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="blog">
+        <Property></Property>
+        <Property name="label">微博</Property>
+      </PropertyDef>
+      <PropertyDef name="invoiceName">
+        <Property></Property>
+        <Property name="label">发票名称</Property>
+      </PropertyDef>
+      <PropertyDef name="invoiceBank">
+        <Property></Property>
+        <Property name="label">发票开户行</Property>
+        <Validator name="validator1" type="charLength">
+          <Property name="minLength">0</Property>
+          <Property name="maxLength">20</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="taxNumber">
+        <Property></Property>
+        <Property name="label">纳税人识别号</Property>
+        <Property name="required">true</Property>
+        <Validator name="validator1" type="charLength">
+          <Property name="minLength">0</Property>
+          <Property name="maxLength">20</Property>
+        </Validator>
+        <Validator name="validator2" type="regExp">
+          <Property name="whiteRegExp">^[A-Z0-9]{15}$|^[A-Z0-9]{18}$|^[A-Z0-9]{20}$</Property>
+          <Property name="resultMessage">请正确输入税号!</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="invoiceAddress">
+        <Property></Property>
+        <Property name="label">发票地址</Property>
+        <Validator name="validator1" type="charLength">
+          <Property name="minLength">0</Property>
+          <Property name="maxLength">20</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="invoicePhone">
+        <Property></Property>
+        <Property name="label">发票电话</Property>
+        <Validator name="validator1" type="charLength">
+          <Property name="minLength">0</Property>
+          <Property name="maxLength">20</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="belongOrg">
+        <Property></Property>
+        <Property name="label">归属机构</Property>
+      </PropertyDef>
+      <PropertyDef name="createEmp">
+        <Property></Property>
+        <Property name="label">创建人</Property>
+      </PropertyDef>
+      <PropertyDef name="createDate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">创建日期</Property>
+      </PropertyDef>
+      <PropertyDef name="updEmp">
+        <Property></Property>
+        <Property name="label">修改人员</Property>
+      </PropertyDef>
+      <PropertyDef name="updDate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">修改日期</Property>
+      </PropertyDef>
+      <PropertyDef name="versionStus">
+        <Property></Property>
+        <Property name="label">版本状态</Property>
+      </PropertyDef>
+      <PropertyDef name="defs01">
+        <Property></Property>
+        <Property name="label">DEFS01_</Property>
+        <Property name="mapping">
+          <Property name="mapValues">
+            <Entity>
+              <Property name="new">生效</Property>
+              <Property name="del">作废</Property>
+            </Entity>
+          </Property>
+        </Property>
+      </PropertyDef>
+      <PropertyDef name="defs02">
+        <Property></Property>
+        <Property name="label">DEFS02_</Property>
+        <Property name="defaultValue">N</Property>
+      </PropertyDef>
+      <PropertyDef name="defs03">
+        <Property></Property>
+        <Property name="label">DEFS03_</Property>
+      </PropertyDef>
+      <PropertyDef name="defs04">
+        <Property></Property>
+        <Property name="label">DEFS04_</Property>
+      </PropertyDef>
+      <PropertyDef name="defs05">
+        <Property></Property>
+        <Property name="label">DEFS05_</Property>
+      </PropertyDef>
+      <PropertyDef name="defb01">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">DEFB01_</Property>
+      </PropertyDef>
+      <PropertyDef name="defb02">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">DEFB02_</Property>
+      </PropertyDef>
+      <PropertyDef name="defb03">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">DEFB03_</Property>
+      </PropertyDef>
+      <PropertyDef name="defb04">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">DEFB04_</Property>
+      </PropertyDef>
+      <PropertyDef name="defb05">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">DEFB05_</Property>
+      </PropertyDef>
+      <PropertyDef name="defm01">
+        <Property></Property>
+        <Property name="label">DEFM01_</Property>
+      </PropertyDef>
+      <PropertyDef name="defm02">
+        <Property></Property>
+        <Property name="label">DEFM02_</Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="dtTbcm012">
+      <ClientEvent name="onDataChange">/*var property=arg.property;&#xD;
+if(property==&quot;bankName&quot;){&#xD;
+	var data = dsCm012.getData(&quot;#&quot;);&#xD;
+	if(data){&#xD;
+		var bankName = data.get(&quot;bankName&quot;);&#xD;
+		if(bankName==&quot;中国银行&quot;){&#xD;
+			data.set(&quot;bankNo&quot;,&quot;BC&quot;);&#xD;
+		}else if(bankName==&quot;中国农业银行&quot;){&#xD;
+			data.set(&quot;bankNo&quot;,&quot;ABC&quot;);&#xD;
+		}else if(bankName==&quot;中国工商银行&quot;){&#xD;
+			data.set(&quot;bankNo&quot;,&quot;ICBC&quot;);&#xD;
+		}else if(bankName==&quot;中国建设银行&quot;){&#xD;
+			data.set(&quot;bankNo&quot;,&quot;BBC&quot;);&#xD;
+		}else if(bankName==&quot;交通银行&quot;){&#xD;
+			data.set(&quot;bankNo&quot;,&quot;TB&quot;);&#xD;
+		}else if(bankName==&quot;中国邮政储蓄银行&quot;){&#xD;
+			data.set(&quot;bankNo&quot;,&quot;PBC&quot;);&#xD;
+		}else if(bankName==&quot;中国民生银行&quot;){&#xD;
+			data.set(&quot;bankNo&quot;,&quot;MSBC&quot;);&#xD;
+		}else if(bankName==&quot;平安银行&quot;){&#xD;
+			data.set(&quot;bankNo&quot;,&quot;PAB&quot;);&#xD;
+		}else if(bankName==&quot;兴业银行&quot;){&#xD;
+			data.set(&quot;bankNo&quot;,&quot;XYB&quot;);&#xD;
+		}else if(bankName==&quot;华夏银行&quot;){&#xD;
+			data.set(&quot;bankNo&quot;,&quot;HXB&quot;);&#xD;
+		}else if(bankName==&quot;中信银行&quot;){&#xD;
+			data.set(&quot;bankNo&quot;,&quot;ZXB&quot;);&#xD;
+		}&#xD;
+	}&#xD;
+}*/</ClientEvent>
+      <Property name="creationType">com.kits.inms.bs.domain.Tbcm012</Property>
+      <PropertyDef name="pkCm012">
+        <Property></Property>
+        <Property name="label">PK_CM012_</Property>
+      </PropertyDef>
+      <PropertyDef name="compId">
+        <Property></Property>
+        <Property name="label">公司别</Property>
+      </PropertyDef>
+      <PropertyDef name="custNo">
+        <Property></Property>
+        <Property name="label">客户编号</Property>
+      </PropertyDef>
+      <PropertyDef name="bankNo">
+        <Property></Property>
+        <Property name="label">银行代码</Property>
+        <Validator name="validator2" type="charLength">
+          <Property name="maxLength">15</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="version">
+        <Property></Property>
+        <Property name="label">版本</Property>
+      </PropertyDef>
+      <PropertyDef name="bankHeadNo">
+        <Property></Property>
+        <Property name="label">银行账户属性</Property>
+        <Property name="mapping">
+          <Property name="mapValues">
+            <Entity>
+              <Property name="A">基本户</Property>
+              <Property name="B">一般户</Property>
+            </Entity>
+          </Property>
+        </Property>
+        <Property name="required">true</Property>
+        <Property name="defaultValue">A</Property>
+        <Validator name="validator1" type="charLength">
+          <Property name="maxLength">5</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="bankHouseNo">
+        <Property></Property>
+        <Property name="label">备注</Property>
+        <Validator name="validator1" type="charLength">
+          <Property name="maxLength">100</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="bankName">
+        <ClientEvent name="onGet">/*var bankName = arg.value;&#xD;
+if(bankName){&#xD;
+	var data = dsCm012.getData(&quot;#&quot;);&#xD;
+		if(bankName==&quot;中国银行&quot;){&#xD;
+			data.set(&quot;bankNo&quot;,&quot;BC&quot;);&#xD;
+		}else if(bankName==&quot;中国农业银行&quot;){&#xD;
+			data.set(&quot;bankNo&quot;,&quot;ABC&quot;);&#xD;
+		}else if(bankName==&quot;中国工商银行&quot;){&#xD;
+			data.set(&quot;bankNo&quot;,&quot;ICBC&quot;);&#xD;
+		}else if(bankName==&quot;中国建设银行&quot;){&#xD;
+			data.set(&quot;bankNo&quot;,&quot;BBC&quot;);&#xD;
+		}else if(bankName==&quot;交通银行&quot;){&#xD;
+			data.set(&quot;bankNo&quot;,&quot;TB&quot;);&#xD;
+		}else if(bankName==&quot;中国邮政储蓄银行&quot;){&#xD;
+			data.set(&quot;bankNo&quot;,&quot;PBC&quot;);&#xD;
+		}else if(bankName==&quot;中国民生银行&quot;){&#xD;
+			data.set(&quot;bankNo&quot;,&quot;MSBC&quot;);&#xD;
+		}else if(bankName==&quot;平安银行&quot;){&#xD;
+			data.set(&quot;bankNo&quot;,&quot;PAB&quot;);&#xD;
+		}else if(bankName==&quot;兴业银行&quot;){&#xD;
+			data.set(&quot;bankNo&quot;,&quot;XYB&quot;);&#xD;
+		}else if(bankName==&quot;华夏银行&quot;){&#xD;
+			data.set(&quot;bankNo&quot;,&quot;HXB&quot;);&#xD;
+		}else if(bankName==&quot;中信银行&quot;){&#xD;
+			data.set(&quot;bankNo&quot;,&quot;ZXB&quot;);&#xD;
+		}&#xD;
+}&#xD;
+	*/</ClientEvent>
+        <Property></Property>
+        <Property name="label">开户银行名称</Property>
+        <Property name="mapping">
+          <Property name="mapValues"></Property>
+        </Property>
+        <Property name="required">true</Property>
+        <Validator name="validator1" type="charLength">
+          <Property name="maxLength">100</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="bankAccount">
+        <Property></Property>
+        <Property name="label">开户银行帐号</Property>
+        <Property name="required">true</Property>
+        <Validator name="validator1" type="charLength">
+          <Property name="maxLength">40</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="createEmp">
+        <Property></Property>
+        <Property name="label">创建人</Property>
+      </PropertyDef>
+      <PropertyDef name="createDate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">创建日期</Property>
+      </PropertyDef>
+      <PropertyDef name="updEmp">
+        <Property></Property>
+        <Property name="label">修改人</Property>
+      </PropertyDef>
+      <PropertyDef name="updDate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">修改日期</Property>
+      </PropertyDef>
+      <PropertyDef name="versionStus">
+        <Property></Property>
+        <Property name="label">版本状态</Property>
+      </PropertyDef>
+      <PropertyDef name="defs01">
+        <Property></Property>
+        <Property name="label">DEFS01_</Property>
+      </PropertyDef>
+      <PropertyDef name="defs02">
+        <Property></Property>
+        <Property name="label">DEFS02_</Property>
+      </PropertyDef>
+      <PropertyDef name="defs03">
+        <Property></Property>
+        <Property name="label">DEFS03_</Property>
+      </PropertyDef>
+      <PropertyDef name="defs04">
+        <Property></Property>
+        <Property name="label">DEFS04_</Property>
+      </PropertyDef>
+      <PropertyDef name="defs05">
+        <Property></Property>
+        <Property name="label">DEFS05_</Property>
+      </PropertyDef>
+      <PropertyDef name="defb01">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">DEFB01_</Property>
+      </PropertyDef>
+      <PropertyDef name="defb02">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">DEFB02_</Property>
+      </PropertyDef>
+      <PropertyDef name="defb03">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">DEFB03_</Property>
+      </PropertyDef>
+      <PropertyDef name="defb04">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">DEFB04_</Property>
+      </PropertyDef>
+      <PropertyDef name="defb05">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">DEFB05_</Property>
+      </PropertyDef>
+      <PropertyDef name="defm01">
+        <Property></Property>
+        <Property name="label">DEFM01_</Property>
+      </PropertyDef>
+      <PropertyDef name="defm02">
+        <Property></Property>
+        <Property name="label">DEFM02_</Property>
+      </PropertyDef>
+      <PropertyDef name="accountId">
+        <Property></Property>
+        <Property name="label">银行户名</Property>
+        <Property name="required">true</Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="dtBs016">
+      <Property name="creationType">com.kits.inms.bs.domain.Tbbs016</Property>
+      <PropertyDef name="pkBs016">
+        <Property></Property>
+        <Property name="label">PK_BS016_</Property>
+      </PropertyDef>
+      <PropertyDef name="compId">
+        <Property></Property>
+        <Property name="label">COMP_ID_</Property>
+      </PropertyDef>
+      <PropertyDef name="custNo">
+        <Property></Property>
+        <Property name="label">CUST_NO_</Property>
+      </PropertyDef>
+      <PropertyDef name="custName">
+        <Property></Property>
+        <Property name="label">CUST_NAME_</Property>
+      </PropertyDef>
+      <PropertyDef name="industryCode">
+        <ClientEvent name="onGet">var text = arg.value;&#xD;
+&#xD;
+dsBs016.getData(&quot;#&quot;).set(&quot;orgCode&quot;,text);&#xD;
+dsBs016.getData(&quot;#&quot;).set(&quot;creditCode&quot;,text);</ClientEvent>
+        <Property></Property>
+        <Property name="label">工商注册号</Property>
+        <Property name="required">true</Property>
+        <Validator name="validator1" type="charLength">
+          <Property name="maxLength">30</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="orgCode">
+        <Property></Property>
+        <Property name="label">组织机构代码</Property>
+        <Validator name="validator1" type="charLength">
+          <Property name="maxLength">40</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="creditCode">
+        <Property></Property>
+        <Property name="label">统一信用代码</Property>
+        <Validator name="validator1" type="charLength">
+          <Property name="maxLength">40</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="taxNumber">
+        <Property></Property>
+        <Property name="label">纳税人识别号</Property>
+        <Property name="required">true</Property>
+        <Validator name="validator1" type="charLength">
+          <Property name="maxLength">40</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="compType">
+        <Property></Property>
+        <Property name="label">公司类型</Property>
+        <Property name="required">true</Property>
+        <Property name="mapping">
+          <Property name="mapValues">${dorado.getDataProvider(&quot;commonUtils#getIventoryMappings&quot;).getResult({&quot;refId&quot;:&quot;compType&quot;})}</Property>
+          <Property name="keyProperty">name</Property>
+          <Property name="valueProperty">value</Property>
+        </Property>
+        <Validator name="validator1" type="charLength">
+          <Property name="maxLength">40</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="industry">
+        <Property></Property>
+        <Property name="label">行业</Property>
+        <Property name="mapping">
+          <Property name="mapValues">${dorado.getDataProvider(&quot;commonUtils#getIventoryMappings&quot;).getResult({&quot;refId&quot;:&quot;industry&quot;})}</Property>
+          <Property name="keyProperty">name</Property>
+          <Property name="valueProperty">value</Property>
+        </Property>
+        <Validator name="validator1" type="charLength">
+          <Property name="maxLength">40</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="manageTerm">
+        <Property></Property>
+        <Property name="label">营业期限</Property>
+        <Validator name="validator1" type="charLength">
+          <Property name="maxLength">40</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="approDate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">核准日期</Property>
+      </PropertyDef>
+      <PropertyDef name="regisAuth">
+        <Property></Property>
+        <Property name="label">登记机关</Property>
+        <Validator name="validator1" type="charLength">
+          <Property name="maxLength">100</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="engName">
+        <Property></Property>
+        <Property name="label">英文名称</Property>
+        <Validator name="validator1" type="charLength">
+          <Property name="maxLength">40</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="operateScope">
+        <Property></Property>
+        <Property name="label">经营范围</Property>
+        <Validator name="validator1" type="charLength">
+          <Property name="maxLength">200</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="registerAddr">
+        <Property></Property>
+        <Property name="label">注册地址</Property>
+        <Validator name="validator1" type="charLength">
+          <Property name="maxLength">100</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="memo">
+        <Property></Property>
+        <Property name="label">MEMO_</Property>
+      </PropertyDef>
+      <PropertyDef name="createEmp">
+        <Property></Property>
+        <Property name="label">创建人员</Property>
+      </PropertyDef>
+      <PropertyDef name="createDate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">创建日期</Property>
+      </PropertyDef>
+      <PropertyDef name="modifyEmp">
+        <Property></Property>
+        <Property name="label">修改人员</Property>
+      </PropertyDef>
+      <PropertyDef name="modifyDate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">修改日期</Property>
+      </PropertyDef>
+      <PropertyDef name="defs01">
+        <Property></Property>
+        <Property name="label">DEFS01</Property>
+      </PropertyDef>
+      <PropertyDef name="defs02">
+        <Property></Property>
+        <Property name="label">DEFS02</Property>
+      </PropertyDef>
+      <PropertyDef name="defs03">
+        <Property></Property>
+        <Property name="label">DEFS03</Property>
+      </PropertyDef>
+      <PropertyDef name="defs04">
+        <Property></Property>
+        <Property name="label">DEFS04</Property>
+      </PropertyDef>
+      <PropertyDef name="defs05">
+        <Property></Property>
+        <Property name="label">DEFS05</Property>
+      </PropertyDef>
+      <PropertyDef name="defb01">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">DEFB01</Property>
+      </PropertyDef>
+      <PropertyDef name="defb02">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">DEFB02</Property>
+      </PropertyDef>
+      <PropertyDef name="defb03">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">DEFB03</Property>
+      </PropertyDef>
+      <PropertyDef name="defb04">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">DEFB04</Property>
+      </PropertyDef>
+      <PropertyDef name="defb05">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">DEFB05</Property>
+      </PropertyDef>
+      <PropertyDef name="defm01">
+        <Property></Property>
+        <Property name="label">DEFM01</Property>
+      </PropertyDef>
+      <PropertyDef name="defm02">
+        <Property></Property>
+        <Property name="label">DEFM02</Property>
+      </PropertyDef>
+    </DataType>
+  </Model>
+  <View>
+    <ClientEvent name="onCreate">functions = {&#xD;
+	&#xD;
+	&quot;checkBut&quot; : function(){&#xD;
+		var Tbcm011 = view.get(&quot;#dsTbcm011.data:#&quot;);&#xD;
+		if(Tbcm011){&#xD;
+			view.get(&quot;^typ1&quot;).set(&quot;disabled&quot;,false);&#xD;
+			if(Tbcm011.state==1){&#xD;
+				view.get(&quot;^typ1&quot;).set(&quot;disabled&quot;,true);&#xD;
+			}&#xD;
+			var pkCm011 = Tbcm011.get(&quot;pkCm011&quot;);&#xD;
+			if(pkCm011){&#xD;
+				view.get(&quot;^typ1&quot;).set(&quot;disabled&quot;,false);&#xD;
+			}&#xD;
+		}else{&#xD;
+			view.get(&quot;^typ1&quot;).set(&quot;disabled&quot;,true);&#xD;
+		}&#xD;
+	},&#xD;
+&#xD;
+    &quot;queryCm011&quot;: function(data){&#xD;
+        dsCm011.set(&quot;parameter&quot;, data).flushAsync(function(returnData){&#xD;
+            if (returnData == null) {&#xD;
+                dorado.MessageBox.alert(&quot;未找到对应的客商资料！&quot;);&#xD;
+                dsBs016.clear();&#xD;
+                dsBs012.clear();&#xD;
+                dsBs013.clear();&#xD;
+                dsBs015.clear();&#xD;
+                dsCm012.clear();&#xD;
+                &#xD;
+                dsCm011.insert();&#xD;
+                view.set(&quot;^typ61.disabled&quot;, true);&#xD;
+                view.set(&quot;^typ62.disabled&quot;, true);&#xD;
+                view.set(&quot;^typ2.disabled&quot;, true);&#xD;
+                &#xD;
+            }&#xD;
+            else {&#xD;
+                var custNo = dsCm011.getData(&quot;#&quot;).get(&quot;custNo&quot;);&#xD;
+                info.doSet(&quot;text&quot;, &quot;查询客商【&quot; + custNo + &quot;】成功！&quot;);&#xD;
+                view.set(&quot;^typ2.disabled&quot;, false);&#xD;
+                dsBs016.set(&quot;parameter&quot;, {&#xD;
+                    custNo: custNo&#xD;
+                }).flushAsync(function(returnData){&#xD;
+                    if (returnData == null) {&#xD;
+                        dsBs016.insert({&#xD;
+                            custNo: custNo&#xD;
+                        });&#xD;
+                        //设置状态&#xD;
+                        view.set(&quot;^typ61.disabled&quot;, false);&#xD;
+                        view.set(&quot;^typ62.disabled&quot;, true);&#xD;
+                    }&#xD;
+                    else {&#xD;
+                        view.set(&quot;^typ61.disabled&quot;, false);&#xD;
+                        view.set(&quot;^typ62.disabled&quot;, false);&#xD;
+                    }&#xD;
+                });&#xD;
+            }&#xD;
+        });&#xD;
+    },&#xD;
+    &#xD;
+    &quot;saveCm011&quot;: function(msg){&#xD;
+        var state = dsCm011.getData(&quot;#&quot;).state;&#xD;
+        var validate = dsCm011.getData(&quot;#&quot;).validate();&#xD;
+        if (msg == &quot;新增&quot;) {&#xD;
+			var length = check.length;&#xD;
+			if (length > 0) {&#xD;
+				var msg = &quot;&quot;;&#xD;
+				for(i = 0; i &lt; length; i++) {&#xD;
+   					msg += check[i];&#xD;
+				} &#xD;
+				dorado.MessageBox.alert(&quot;已存在相同的&quot;+msg+&quot;请重新输入!&quot;);&#xD;
+				return;&#xD;
+			}&#xD;
+            if (state != 1) {&#xD;
+                var dsCm011CD = dsCm011.getData(&quot;#&quot;);&#xD;
+                dsCm011CD.setState(1);&#xD;
+                dsCm011CD.set(&quot;modifyEmpNo&quot;, null);&#xD;
+                dsCm011CD.set(&quot;modifyDate&quot;, null);&#xD;
+            }&#xD;
+            if (validate != 'invalid') {&#xD;
+                dsBs016.clear();&#xD;
+                view.set(&quot;^typ2.disabled&quot;, false);&#xD;
+                view.set(&quot;^typ61.disabled&quot;, false);&#xD;
+                view.set(&quot;^typ62.disabled&quot;, true);&#xD;
+            }&#xD;
+        }&#xD;
+        else &#xD;
+            if (msg == &quot;修改&quot; &amp;&amp; state == 0) {&#xD;
+				dorado.MessageBox.alert(&quot;您没有要修改的数据!&quot;);&#xD;
+                return;&#xD;
+            }else if (!dsCm011.getData(&quot;#&quot;).get(&quot;pkCm011&quot;)){&#xD;
+				dorado.MessageBox.alert(&quot;您无法保存当前数据!&quot;);&#xD;
+				return;&#xD;
+			}&#xD;
+        &#xD;
+        var data1 = dsCm011.getData(&quot;#&quot;);&#xD;
+        saveTbcm011.set({&#xD;
+            executingMessage: &quot;正在&quot; + msg,&#xD;
+            parameter: {&#xD;
+                data: data1&#xD;
+            }&#xD;
+        }).execute(function(data){&#xD;
+            if (data != null) {&#xD;
+                info.doSet(&quot;text&quot;, msg + &quot;已完成！&quot;);&#xD;
+                dsCm011.set(&quot;parameter&quot;, {&#xD;
+                    custNo: data&#xD;
+                }).flushAsync(function(){&#xD;
+                    if (!dsBs016.getData(&quot;#&quot;)) {&#xD;
+						var entity = dsCm011.getData(&quot;#&quot;);&#xD;
+						var custNo = entity.get(&quot;custNo&quot;);&#xD;
+						var taxNumber = entity.get(&quot;taxNumber&quot;);&#xD;
+                        dsBs016.insert({&#xD;
+                            custNo: custNo,&#xD;
+                            taxNumber: taxNumber&#xD;
+                        });&#xD;
+                    }&#xD;
+                });&#xD;
+            }&#xD;
+            else {&#xD;
+				dorado.MessageBox.alert(&quot;操作出错 ...&quot;);&#xD;
+            }&#xD;
+        });&#xD;
+    },&#xD;
+    &quot;delCm011&quot;: function(){&#xD;
+        var options = {&#xD;
+            callback: function(){&#xD;
+                var data = dsCm011.getData(&quot;#&quot;);&#xD;
+                data.setState(3);&#xD;
+                saveTbcm011.set({&#xD;
+                    executingMessage: &quot;正在删除中 ... &quot;,&#xD;
+                    parameter: data&#xD;
+                }).execute(function(msg){&#xD;
+                    if (msg == null) {&#xD;
+                        info.doSet(&quot;text&quot;, &quot;操作出错 ... &quot;);&#xD;
+                        &#xD;
+                    }&#xD;
+                    else {&#xD;
+                    &#xD;
+                        info.doSet(&quot;text&quot;, &quot;删除已完成！&quot;);&#xD;
+                        view.get(&quot;#dsQuery1&quot;).clear();&#xD;
+                        view.get(&quot;#dsQuery1&quot;).insert();&#xD;
+                        &#xD;
+                        dsCm011.clear();&#xD;
+                        dsBs016.clear();&#xD;
+                        dsCm011.insert();&#xD;
+                        //设置状态&#xD;
+                        view.set(&quot;^typ2.disabled&quot;, true);&#xD;
+                        view.set(&quot;^typ21.disabled&quot;, true);&#xD;
+                        view.set(&quot;^typ22.disabled&quot;, true);&#xD;
+						view.get(&quot;#defs02&quot;).set(&quot;checked&quot;,false);                    }&#xD;
+                   functions[&quot;checkBut&quot;]();&#xD;
+                });&#xD;
+            },&#xD;
+            icon: &quot;WARNING&quot;&#xD;
+        };&#xD;
+        dorado.MessageBox.confirm(&quot;您确定要删除当前资料吗？&quot;, options);&#xD;
+    },&#xD;
+    &#xD;
+    &quot;saveBs012&quot;: function(){&#xD;
+    &#xD;
+        saveTbbs012.set({&#xD;
+            executingMessage: &quot;正在保存 ... &quot;&#xD;
+        &#xD;
+        }).execute(function(){&#xD;
+            dsBs012.set(&quot;parameter&quot;, {&#xD;
+                custNo: dsCm011.getData(&quot;#&quot;).get(&quot;custNo&quot;)&#xD;
+            }).flushAsync(function(){&#xD;
+                info.doSet(&quot;text&quot;, &quot;已保存！&quot;);&#xD;
+                view.set(&quot;^typ22.disabled&quot;, false);&#xD;
+            });&#xD;
+        });&#xD;
+    },&#xD;
+    &#xD;
+    &quot;delBs012&quot;: function(data){&#xD;
+        var options = {&#xD;
+            callback: function(){&#xD;
+            &#xD;
+                data.remove();&#xD;
+                &#xD;
+                &#xD;
+                saveTbbs012.set({&#xD;
+                    executingMessage: &quot;正在删除 ... &quot;&#xD;
+                }).execute(function(){&#xD;
+                    info.doSet(&quot;text&quot;, &quot;删除已完成！&quot;);&#xD;
+                    var data1 = dsBs012.getData(&quot;#&quot;);&#xD;
+                    if (!data1) {&#xD;
+                        view.set(&quot;^typ22.disabled&quot;, true);&#xD;
+                    }&#xD;
+                    else {&#xD;
+                        saveTbbs012.set({&#xD;
+                            executingMessage: null,&#xD;
+                            successMessage: null&#xD;
+                        }).execute();&#xD;
+                    }&#xD;
+                });&#xD;
+            },&#xD;
+            icon: &quot;WARNING&quot;&#xD;
+        };&#xD;
+        dorado.MessageBox.confirm(&quot;您确定要删除所选资料吗？&quot;, options);&#xD;
+    },&#xD;
+    &quot;saveBs013&quot;: function(){&#xD;
+    &#xD;
+        saveTbbs013.set({&#xD;
+            executingMessage: &quot;正在保存 ... &quot;&#xD;
+        &#xD;
+        }).execute(function(){&#xD;
+            dsBs013.set(&quot;parameter&quot;, {&#xD;
+                custNo: dsCm011.getData(&quot;#&quot;).get(&quot;custNo&quot;)&#xD;
+            }).flushAsync(function(){&#xD;
+                info.doSet(&quot;text&quot;, &quot;已保存！&quot;)&#xD;
+                view.set(&quot;^typ32.disabled&quot;, false);&#xD;
+            });&#xD;
+            &#xD;
+        });&#xD;
+    },&#xD;
+    &#xD;
+    &quot;delBs013&quot;: function(data){&#xD;
+        var options = {&#xD;
+            callback: function(){&#xD;
+            &#xD;
+                data.remove();&#xD;
+                &#xD;
+                saveTbbs013.set({&#xD;
+                    executingMessage: &quot;正在删除 ... &quot;&#xD;
+                &#xD;
+                }).execute(function(){&#xD;
+                    info.doSet(&quot;text&quot;, &quot;删除已完成！&quot;);&#xD;
+                    &#xD;
+                    var data1 = dsBs013.getData(&quot;#&quot;);&#xD;
+                    if (!data1) {&#xD;
+                        view.set(&quot;^typ32.disabled&quot;, true);&#xD;
+                    }&#xD;
+                    else {&#xD;
+                        saveTbbs013.set({&#xD;
+                            executingMessage: null,&#xD;
+                            successMessage: null&#xD;
+                        }).execute();&#xD;
+                    }&#xD;
+                });&#xD;
+            },&#xD;
+            icon: &quot;WARNING&quot;&#xD;
+        };&#xD;
+        dorado.MessageBox.confirm(&quot;您确定要删除所选资料吗？&quot;, options);&#xD;
+    },&#xD;
+    &#xD;
+    &quot;saveBs015&quot;: function(){&#xD;
+        saveTbbs015.set({&#xD;
+            executingMessage: &quot;正在保存 ... &quot;&#xD;
+        &#xD;
+        }).execute(function(){&#xD;
+            dsBs015.set(&quot;parameter&quot;, {&#xD;
+                custNo: dsCm011.getData(&quot;#&quot;).get(&quot;custNo&quot;)&#xD;
+            }).flushAsync(function(){&#xD;
+            &#xD;
+                info.doSet(&quot;text&quot;, &quot;已保存！&quot;);&#xD;
+                view.set(&quot;^typ52.disabled&quot;, false);&#xD;
+            });&#xD;
+            &#xD;
+        });&#xD;
+    },&#xD;
+    &#xD;
+    &quot;delBs015&quot;: function(data){&#xD;
+        var options = {&#xD;
+            callback: function(){&#xD;
+            &#xD;
+                data.remove();&#xD;
+                &#xD;
+                saveTbbs015.set({&#xD;
+                    executingMessage: &quot;正在删除 ... &quot;&#xD;
+                &#xD;
+                }).execute(function(){&#xD;
+                &#xD;
+                    info.doSet(&quot;text&quot;, &quot;删除已完成！&quot;);&#xD;
+                    &#xD;
+                    var data1 = dsBs015.getData(&quot;#&quot;);&#xD;
+                    if (!data1) {&#xD;
+                        view.set(&quot;^typ52.disabled&quot;, true);&#xD;
+                    }&#xD;
+                    else {&#xD;
+                        saveTbbs015.set({&#xD;
+                            executingMessage: null,&#xD;
+                            successMessage: null&#xD;
+                        }).execute();&#xD;
+                    }&#xD;
+                });&#xD;
+            },&#xD;
+            icon: &quot;WARNING&quot;&#xD;
+        };&#xD;
+        dorado.MessageBox.confirm(&quot;您确定要删除所选资料吗？&quot;, options);&#xD;
+    },&#xD;
+    &quot;saveCm012&quot;: function(){&#xD;
+        saveTbCm012.set({&#xD;
+            executingMessage: &quot;正在保存 ... &quot;&#xD;
+        &#xD;
+        }).execute(function(){&#xD;
+            dsCm012.set(&quot;parameter&quot;, {&#xD;
+                custNo: dsCm011.getData(&quot;#&quot;).get(&quot;custNo&quot;)&#xD;
+            }).flushAsync(function(){&#xD;
+            &#xD;
+                info.doSet(&quot;text&quot;, &quot;已保存！&quot;);&#xD;
+                view.set(&quot;^typ42.disabled&quot;, false);&#xD;
+            });&#xD;
+            &#xD;
+        });&#xD;
+    },&#xD;
+    &#xD;
+    &quot;delCm012&quot;: function(data){&#xD;
+        var options = {&#xD;
+            callback: function(){&#xD;
+            &#xD;
+                data.remove();&#xD;
+                &#xD;
+                saveTbCm012.set({&#xD;
+                    executingMessage: &quot;正在删除 ... &quot;&#xD;
+                &#xD;
+                }).execute(function(){&#xD;
+                &#xD;
+                    info.doSet(&quot;text&quot;, &quot;删除已完成！&quot;);&#xD;
+                    var data1 = dsCm012.getData(&quot;#&quot;);&#xD;
+                    if (!data1) {&#xD;
+                        view.set(&quot;^typ42.disabled&quot;, true);&#xD;
+                    }&#xD;
+                    else {&#xD;
+                        saveTbCm012.set({&#xD;
+                            executingMessage: null,&#xD;
+                            successMessage: null&#xD;
+                        }).execute();&#xD;
+                    }&#xD;
+                });&#xD;
+            },&#xD;
+            icon: &quot;WARNING&quot;&#xD;
+        };&#xD;
+        dorado.MessageBox.confirm(&quot;您确定要删除所选资料吗？&quot;, options);&#xD;
+    },&#xD;
+    &#xD;
+    &quot;saveBs016&quot;: function(){&#xD;
+    &#xD;
+        saveTbbs016.set({&#xD;
+            executingMessage: &quot;正在保存 ... &quot;&#xD;
+        }).execute(function(){&#xD;
+            dsBs016.set(&quot;parameter&quot;, {&#xD;
+                custNo: dsCm011.getData(&quot;#&quot;).get(&quot;custNo&quot;)&#xD;
+            }).flushAsync(function(){&#xD;
+                info.doSet(&quot;text&quot;, &quot;已保存！&quot;);&#xD;
+                view.set(&quot;^typ62.disabled&quot;, false);&#xD;
+            });&#xD;
+            &#xD;
+        });&#xD;
+    },&#xD;
+    &#xD;
+    &quot;delBs016&quot;: function(data){&#xD;
+        debugger&#xD;
+        var options = {&#xD;
+            callback: function(){&#xD;
+                data.setState(3);&#xD;
+                saveTbbs016.set({&#xD;
+                    executingMessage: &quot;正在删除 ... &quot;&#xD;
+                &#xD;
+                }).execute(function(){&#xD;
+                &#xD;
+                    info.doSet(&quot;text&quot;, &quot;删除已完成！&quot;);&#xD;
+                    view.set(&quot;^typ62.disabled&quot;, true);&#xD;
+                    dsBs016.clear();&#xD;
+                    dsBs016.insert({&#xD;
+                        custNo: dsCm011.getData(&quot;#&quot;).get(&quot;custNo&quot;)&#xD;
+                    });&#xD;
+                });&#xD;
+            },&#xD;
+            icon: &quot;WARNING&quot;&#xD;
+        };&#xD;
+        dorado.MessageBox.confirm(&quot;您确定要删除所选资料吗？&quot;, options);&#xD;
+    }&#xD;
+    &#xD;
+};&#xD;
+</ClientEvent>
+    <ClientEvent name="onReady">window.dsQuery1 = view.get(&quot;#dsQuery1&quot;);&#xD;
+window.dsCm011 = view.get(&quot;#dsTbcm011&quot;);&#xD;
+window.dsCm012 = view.get(&quot;#dsTbcm012&quot;);&#xD;
+&#xD;
+window.dsBs012 = view.get(&quot;#dsBs012&quot;);&#xD;
+window.dsBs013 = view.get(&quot;#dsBs013&quot;);&#xD;
+window.dsBs015 = view.get(&quot;#dsBs015&quot;);&#xD;
+window.dsBs016 = view.get(&quot;#dsBs016&quot;)&#xD;
+&#xD;
+window.saveTbcm011 = view.get(&quot;#saveTbcm011&quot;);&#xD;
+window.saveTbCm012 = view.get(&quot;#saveTbcm012&quot;);&#xD;
+&#xD;
+window.saveTbbs012 = view.get(&quot;#saveBs012&quot;);&#xD;
+window.saveTbbs013 = view.get(&quot;#saveBs013&quot;);&#xD;
+window.saveTbbs015 = view.get(&quot;#saveBs015&quot;);&#xD;
+window.saveTbbs016 = view.get(&quot;#saveBs016&quot;);&#xD;
+&#xD;
+window.dgBs012 = view.get(&quot;#dgBs012&quot;);&#xD;
+window.dgBs013 = view.get(&quot;#dgBs013&quot;);&#xD;
+window.dgBs015 = view.get(&quot;#dgBs015&quot;);&#xD;
+window.dgCm012 = view.get(&quot;#dgCm012&quot;);&#xD;
+&#xD;
+&#xD;
+window.info = view.get(&quot;#info&quot;);&#xD;
+info.doSet(&quot;text&quot;,&quot;欢迎使用本系统 ...&quot;);&#xD;
+&#xD;
+window.check = [];&#xD;
+&#xD;
+functions[&quot;checkBut&quot;]();&#xD;
+&#xD;
+&#xD;
+//console.log(&quot;${loginUsername}&quot;)&#xD;
+</ClientEvent>
+    <Property name="styleSheetFile">com/kits/saas/mw/style1.css</Property>
+    <Panel id="query">
+      <Property name="exClassName">panel0</Property>
+      <Buttons/>
+      <Children>
+        <DataSet id="dsQuery1">
+          <ClientEvent name="onReady">self.insert({&#xD;
+});</ClientEvent>
+          <Property name="dataType">[dtQuery1]</Property>
+        </DataSet>
+        <AutoForm>
+          <Property name="cols">250,80,80</Property>
+          <Property name="dataSet">dsQuery1</Property>
+          <Property name="width">50%</Property>
+          <AutoFormElement>
+            <Property name="name">custNo</Property>
+            <Property name="property">custNo</Property>
+            <Property name="trigger">trigger1</Property>
+            <Editor/>
+          </AutoFormElement>
+          <Button>
+            <ClientEvent name="onClick">var data = null;&#xD;
+data = dsQuery1.getData(&quot;#&quot;);&#xD;
+if(data.get(&quot;custNo&quot;)){&#xD;
+	functions[&quot;queryCm011&quot;](data);&#xD;
+}else{&#xD;
+	dorado.MessageBox.alert(&quot;请选择客商编号 ...&quot;);&#xD;
+}&#xD;
+</ClientEvent>
+            <Property name="caption">查询</Property>
+            <Property name="icon">	url(>skin>common/icons.gif) -40px -100px</Property>
+          </Button>
+          <Button layoutConstraint="colSpan:1">
+            <ClientEvent name="onClick">dsQuery1.clear();  &#xD;
+dsQuery1.insert({&#xD;
+});  </ClientEvent>
+            <Property name="icon">url(>skin>common/icons.gif) -20px -200px</Property>
+            <Property name="caption">重置</Property>
+            <Property name="ignored">true</Property>
+          </Button>
+        </AutoForm>
+        <Panel layoutConstraint="align:center;padding:10">
+          <Property name="background">white</Property>
+          <Property name="border">none</Property>
+          <Property name="width">auto</Property>
+          <Property name="height">100%</Property>
+          <Property name="contentOverflow">visible</Property>
+          <Property name="visible">false</Property>
+          <Property name="hideMode">display</Property>
+          <Buttons/>
+          <Children>
+            <Import src="com.kits.inms.mw.view.info#infoPanel"/>
+          </Children>
+          <Tools/>
+        </Panel>
+      </Children>
+      <Tools/>
+    </Panel>
+    <Panel>
+      <Buttons/>
+      <Children>
+        <Panel>
+          <Buttons/>
+          <Children>
+            <UpdateAction id="saveTbcm011">
+              <ClientEvent name="beforeExecute">var comboxcount=9;&#xD;
+var sql = &quot;&quot;;&#xD;
+var entity = view.get(&quot;#dsTbcm011&quot;).getData(&quot;#&quot;);&#xD;
+&#xD;
+var value = &quot;&quot;;&#xD;
+for(var i=1;i&lt;=comboxcount;i++){&#xD;
+	switch(i){&#xD;
+	case 1:&#xD;
+		value = &quot;A&quot;;&#xD;
+		break;&#xD;
+	&#xD;
+	case 2:&#xD;
+		value = &quot;B&quot;;&#xD;
+		break;&#xD;
+		&#xD;
+	case 3:&#xD;
+		value = &quot;C&quot;;&#xD;
+		break;&#xD;
+		&#xD;
+	case 4:&#xD;
+		value = &quot;D&quot;;&#xD;
+		break;&#xD;
+	&#xD;
+	case 5:&#xD;
+		value = &quot;E&quot;;&#xD;
+		break;&#xD;
+	&#xD;
+	case 9:&#xD;
+		value = &quot;F&quot;;&#xD;
+		break;&#xD;
+	&#xD;
+	case 7:&#xD;
+		value = &quot;G&quot;;&#xD;
+		break;&#xD;
+	&#xD;
+	case 8:&#xD;
+		value = &quot;H&quot;;&#xD;
+		break;&#xD;
+		&#xD;
+}&#xD;
+&#xD;
+    if(view.get(&quot;#combox&quot;+i).get(&quot;checked&quot;)){&#xD;
+            sql=sql+value+&quot;,&quot;;&#xD;
+&#xD;
+    }&#xD;
+&#xD;
+}&#xD;
+if(sql!=entity.get(&quot;custCategery&quot;)){&#xD;
+    entity.set(&quot;custCategery&quot;,sql);&#xD;
+}</ClientEvent>
+              <Property name="dataResolver">bsjc01BO#saveTbcm011</Property>
+              <UpdateItem>
+                <Property name="dataSet">dsTbcm011</Property>
+                <Property name="submitOldData">true</Property>
+              </UpdateItem>
+            </UpdateAction>
+            <DataSet id="dsTbcm011">
+              <ClientEvent name="onReady">self.insert({&#xD;
+	custCategery:&quot;A&quot;&#xD;
+});&#xD;
+/*&#xD;
+new dorado.widget.AjaxAction({&#xD;
+    service: &quot;bsjc01BO#getMyCustNo&quot;&#xD;
+}).execute(function(custNo){&#xD;
+	if (custNo) {&#xD;
+		console.log(view.get(&quot;#defs02&quot;)._checked);&#xD;
+		if (custNo == dsCm011.getData(&quot;#&quot;).get(&quot;custNo&quot;)){&#xD;
+			view.get(&quot;#defs02&quot;).set(&quot;visible&quot;,true);&#xD;
+			view.get(&quot;#defs02&quot;).set(&quot;checked&quot;,true);&#xD;
+		}else {&#xD;
+			view.get(&quot;#defs02&quot;).set(&quot;visible&quot;,false);&#xD;
+		}&#xD;
+	}else {&#xD;
+		view.get(&quot;#defs02&quot;).set(&quot;visible&quot;,true);&#xD;
+	}&#xD;
+});*/&#xD;
+&#xD;
+&#xD;
+</ClientEvent>
+              <ClientEvent name="onLoadData">&#xD;
+if (self.getData(&quot;#&quot;)) {&#xD;
+    var custCategery = self.getData(&quot;#&quot;).get(&quot;custCategery&quot;);&#xD;
+    var comboxcount = 9;&#xD;
+    for (var i = 1; i &lt;= comboxcount; i++) {&#xD;
+        view.get(&quot;#combox&quot; + i).set(&quot;checked&quot;, false);&#xD;
+    }&#xD;
+    &#xD;
+    if (custCategery != null) {&#xD;
+        var custCategerys = custCategery.split(&quot;,&quot;);&#xD;
+        &#xD;
+        var num = 0;&#xD;
+        for (var i = 0; i &lt; custCategerys.length; i++) {&#xD;
+            if (custCategerys[i] != &quot;&quot;) {&#xD;
+            &#xD;
+                switch (custCategerys[i]) {&#xD;
+                    case &quot;A&quot;:&#xD;
+                        num = 1;&#xD;
+                        &#xD;
+                        view.get(&quot;#combox&quot; + num).set(&quot;checked&quot;, true);&#xD;
+                        break;&#xD;
+                        &#xD;
+                    case &quot;B&quot;:&#xD;
+                        num = 2;&#xD;
+                        &#xD;
+                        view.get(&quot;#combox&quot; + num).set(&quot;checked&quot;, true);&#xD;
+                        break;&#xD;
+                        &#xD;
+                    case &quot;C&quot;:&#xD;
+                        num = 3;&#xD;
+                        &#xD;
+                        view.get(&quot;#combox&quot; + num).set(&quot;checked&quot;, true);&#xD;
+                        break;&#xD;
+                        &#xD;
+                    case &quot;D&quot;:&#xD;
+                        num = 4;&#xD;
+                        &#xD;
+                        view.get(&quot;#combox&quot; + num).set(&quot;checked&quot;, true);&#xD;
+                        break;&#xD;
+                        &#xD;
+                    case &quot;E&quot;:&#xD;
+                        num = 5;&#xD;
+                        &#xD;
+                        view.get(&quot;#combox&quot; + num).set(&quot;checked&quot;, true);&#xD;
+                        break;&#xD;
+                        &#xD;
+                    case &quot;F&quot;:&#xD;
+                        num = 9;&#xD;
+                        &#xD;
+                        view.get(&quot;#combox&quot; + num).set(&quot;checked&quot;, true);&#xD;
+                        break;&#xD;
+                        &#xD;
+                    case &quot;G&quot;:&#xD;
+                        num = 7;&#xD;
+                        &#xD;
+                        &#xD;
+                        view.get(&quot;#combox&quot; + num).set(&quot;checked&quot;, true);&#xD;
+                        &#xD;
+                    case &quot;H&quot;:&#xD;
+                        num = 8;&#xD;
+                        &#xD;
+                        &#xD;
+                        view.get(&quot;#combox&quot; + num).set(&quot;checked&quot;, true);&#xD;
+                        break;&#xD;
+                        &#xD;
+                }&#xD;
+            }&#xD;
+        }&#xD;
+    }&#xD;
+}&#xD;
+&#xD;
+functions[&quot;checkBut&quot;]();&#xD;
+&#xD;
+&#xD;
+</ClientEvent>
+              <Property name="dataType">dtTbcm011</Property>
+              <Property name="loadMode">manual</Property>
+              <Property name="dataProvider">bsjc01BO#searchTbcm011</Property>
+            </DataSet>
+            <ToolBar>
+              <ToolBarButton>
+                <ClientEvent name="onClick">	//	functions[&quot;saveCm011&quot;](&quot;新增&quot;);&#xD;
+var entity = view.get(&quot;#dsTbcm011.data:#&quot;);&#xD;
+var state = entity.state;&#xD;
+console.log(state);&#xD;
+if(state==0){&#xD;
+	view.get(&quot;#dsTbcm011&quot;).clear();&#xD;
+	view.get(&quot;#dsBs016&quot;).clear();&#xD;
+	view.get(&quot;#dsTbcm011&quot;).insert();&#xD;
+	view.get(&quot;^typ1&quot;).set(&quot;disabled&quot;,true);&#xD;
+	view.get(&quot;^typ2&quot;).set(&quot;disabled&quot;,true);&#xD;
+}&#xD;
+&#xD;
+&#xD;
+</ClientEvent>
+                <Property name="caption">新建</Property>
+                <Property name="icon">url(>skin>common/icons.gif) -120px 0px</Property>
+                <Property name="tags">typ1</Property>
+              </ToolBarButton>
+              <ToolBarButton>
+                <ClientEvent name="onClick">var dsCm011 = view.get(&quot;#dsTbcm011.data:#&quot;);&#xD;
+if(dsCm011){&#xD;
+	var pkCm011 = dsCm011.get(&quot;pkCm011&quot;);&#xD;
+	if(pkCm011){&#xD;
+		functions[&quot;saveCm011&quot;](&quot;修改&quot;);&#xD;
+	}else{&#xD;
+		functions[&quot;saveCm011&quot;](&quot;新增&quot;);&#xD;
+	}&#xD;
+}else{&#xD;
+	functions[&quot;saveCm011&quot;](&quot;新增&quot;);&#xD;
+}&#xD;
+var state = dsCm011.state;&#xD;
+&#xD;
+&#xD;
+/*var custNoOld = dsCm011.getData(&quot;#&quot;).getOldData().custNo;&#xD;
+var custNo = dsCm011.getData(&quot;#&quot;).get(&quot;custNo&quot;);&#xD;
+&#xD;
+var defs02 = view.get(&quot;#defs02.checked&quot;);&#xD;
+if (defs02) { //勾中&#xD;
+    new dorado.widget.AjaxAction({&#xD;
+        service: &quot;bsjc01BO#getMyCustNos&quot;&#xD;
+    }).execute(function(custNo){&#xD;
+        if (custNo) { //存在我的公司&#xD;
+            console.log(view.get(&quot;#defs02&quot;)._checked);&#xD;
+            if (custNo == dsCm011.getData(&quot;#&quot;).get(&quot;custNo&quot;)) { //是我的公司&#xD;
+                if (custNoOld &amp;&amp; custNoOld != custNo) {&#xD;
+                    dorado.MessageBox.confirm(&quot;您修改了客户编号，是否继续？&quot;, function(){&#xD;
+                        functions[&quot;saveCm011&quot;](&quot;修改&quot;);&#xD;
+                    });&#xD;
+                }&#xD;
+                else {&#xD;
+                    functions[&quot;saveCm011&quot;](&quot;修改&quot;);&#xD;
+                }&#xD;
+            }&#xD;
+            else {  //已经勾选且有  我的公司&#xD;
+                dorado.MessageBox.alert(&quot;我的基本资料已存在!&quot;);&#xD;
+            }&#xD;
+        }&#xD;
+        else {//已经勾选不存在  我的公司&#xD;
+            functions[&quot;saveCm011&quot;](&quot;修改&quot;);&#xD;
+        }&#xD;
+    })&#xD;
+}&#xD;
+else { //没有勾选&#xD;
+    if (custNoOld &amp;&amp; custNoOld != custNo) {&#xD;
+        dorado.MessageBox.confirm(&quot;您修改了客户编号，是否继续？&quot;, function(){&#xD;
+            functions[&quot;saveCm011&quot;](&quot;修改&quot;);&#xD;
+        });&#xD;
+    }&#xD;
+    else {&#xD;
+        functions[&quot;saveCm011&quot;](&quot;修改&quot;);&#xD;
+    }&#xD;
+}&#xD;
+*/&#xD;
+/*&#xD;
+&#xD;
+ var defs02 = view.get(&quot;#defs02.checked&quot;);&#xD;
+&#xD;
+ if (defs02) {&#xD;
+&#xD;
+ new dorado.widget.AjaxAction({&#xD;
+&#xD;
+ service: &quot;bsjc01BO_A#getMyCustNo&quot;&#xD;
+&#xD;
+ }).execute(function(boolean){&#xD;
+&#xD;
+ if (boolean == false) {&#xD;
+&#xD;
+ dorado.MessageBox.alert(&quot;我的基本资料已存在!&quot;);&#xD;
+&#xD;
+ }&#xD;
+&#xD;
+ })&#xD;
+&#xD;
+ }&#xD;
+&#xD;
+ else {&#xD;
+&#xD;
+ if (custNoOld &amp;&amp; custNoOld != custNo) {&#xD;
+&#xD;
+ dorado.MessageBox.confirm(&quot;您修改了客户编号，是否继续？&quot;, function(){&#xD;
+&#xD;
+ functions[&quot;saveCm011&quot;](&quot;修改&quot;);&#xD;
+&#xD;
+ });&#xD;
+&#xD;
+ }&#xD;
+&#xD;
+ else {&#xD;
+&#xD;
+ functions[&quot;saveCm011&quot;](&quot;修改&quot;);&#xD;
+&#xD;
+ }&#xD;
+&#xD;
+ }&#xD;
+&#xD;
+ */&#xD;
+&#xD;
+</ClientEvent>
+                <Property name="caption">保存</Property>
+                <Property name="icon"> url(>skin>common/icons.gif) -60px -0px</Property>
+              </ToolBarButton>
+              <ToolBarButton>
+                <ClientEvent name="onClick">var defs02 = view.get(&quot;#defs02.checked&quot;);&#xD;
+console.log(defs02);&#xD;
+if (defs02) {&#xD;
+    new dorado.widget.AjaxAction({&#xD;
+        service: &quot;bsjc01BO_A#getMyCustNo&quot;&#xD;
+    }).execute(function(boolean){&#xD;
+        if (boolean == false) {&#xD;
+            dorado.MessageBox.alert(&quot;我的基本资料已存在!&quot;);&#xD;
+        }else{&#xD;
+			functions[&quot;saveCm011&quot;](&quot;新增&quot;);&#xD;
+		}&#xD;
+    })&#xD;
+}&#xD;
+else {&#xD;
+    functions[&quot;saveCm011&quot;](&quot;新增&quot;);&#xD;
+}&#xD;
+</ClientEvent>
+                <Property name="caption">保存新增</Property>
+                <Property name="icon"> url(>skin>common/icons.gif) -120px -0px</Property>
+                <Property name="visible">false</Property>
+              </ToolBarButton>
+              <ToolBarButton>
+                <ClientEvent name="onClick">var custNoOld = dsCm011.getData(&quot;#&quot;).getOldData().custNo;&#xD;
+var custNo = dsCm011.getData(&quot;#&quot;).get(&quot;custNo&quot;);&#xD;
+&#xD;
+if(custNoOld &amp;&amp; custNoOld!=custNo){&#xD;
+	dorado.MessageBox.confirm(&quot;您修改了客户编号，是否继续？&quot;,function(){&#xD;
+		functions[&quot;saveCm011&quot;](&quot;修改&quot;);&#xD;
+	});&#xD;
+}else{&#xD;
+	functions[&quot;saveCm011&quot;](&quot;修改&quot;);&#xD;
+}&#xD;
+&#xD;
+</ClientEvent>
+                <Property name="caption">修改</Property>
+                <Property name="tags">typ2</Property>
+                <Property name="disabled">true</Property>
+                <Property name="icon">url(>skin>common/icons.gif) -200px 0px</Property>
+                <Property name="ignored">true</Property>
+              </ToolBarButton>
+              <ToolBarButton>
+                <ClientEvent name="onClick">functions[&quot;delCm011&quot;]();&#xD;
+</ClientEvent>
+                <Property name="caption">删除</Property>
+                <Property name="tags">typ2</Property>
+                <Property name="disabled">true</Property>
+                <Property name="icon">url(>skin>common/icons.gif) -140px 0px</Property>
+              </ToolBarButton>
+              <ToolBarButton>
+                <ClientEvent name="onClick">var pk = view.get(&quot;#dsTbcm011&quot;).getData(&quot;#&quot;).get(&quot;pkCm011&quot;);&#xD;
+if(pk){&#xD;
+	new dorado.widget.AjaxAction({&#xD;
+		parameter:{&#xD;
+			pk:pk&#xD;
+		},&#xD;
+		service:&quot;bsjc01BO#doSynch&quot;&#xD;
+	}).execute(function(msg){&#xD;
+		if(msg==null){&#xD;
+			dorado.MessageBox.alert(&quot;客户编码同步成功！&quot;);&#xD;
+		}else{&#xD;
+			dorado.MessageBox.alert(msg);&#xD;
+		}&#xD;
+	});&#xD;
+}else{&#xD;
+	dorado.MessageBox.alert(&quot;当前资料还未保存，不能进行数据同步操作！&quot;);&#xD;
+}&#xD;
+</ClientEvent>
+                <Property name="caption">客商编码同步</Property>
+                <Property name="icon">url(>skin>common/icons.gif) -40px -240px</Property>
+                <Property name="visible">false</Property>
+              </ToolBarButton>
+              <ToolBarButton>
+                <ClientEvent name="onClick">if(dsCm011.getData(&quot;#&quot;).get(&quot;pkCm011&quot;)){&#xD;
+	view.get(&quot;#dialogUpdFile&quot;).show();&#xD;
+}else{&#xD;
+	dorado.MessageBox.alert(&quot;当前资料还未保存，不能上传附件！&quot;);&#xD;
+}&#xD;
+&#xD;
+</ClientEvent>
+                <Property name="caption">附件上传</Property>
+                <Property name="icon">url(>skin>common/icons.gif) -80px -20px</Property>
+                <Property name="tags">typ2</Property>
+                <Property name="disabled">true</Property>
+              </ToolBarButton>
+              <CheckBox id="defs02">
+                <ClientEvent name="onClick">        if (self._lastPost) {&#xD;
+            dsCm011.getData(&quot;#&quot;).set(&quot;defs02&quot;, &quot;Y&quot;);&#xD;
+        }&#xD;
+        else {&#xD;
+            dsCm011.getData(&quot;#&quot;).set(&quot;defs02&quot;, &quot;N&quot;);&#xD;
+        }&#xD;
+&#xD;
+&#xD;
+console.log(self._lastPost);&#xD;
+</ClientEvent>
+                <Property name="caption">我的公司</Property>
+                <Property name="visible">false</Property>
+              </CheckBox>
+            </ToolBar>
+            <FieldSet>
+              <Property name="caption">客商主档资料</Property>
+              <Property name="contentOverflow">visible</Property>
+              <Buttons/>
+              <Children>
+                <AutoForm layoutConstraint="center">
+                  <Property name="dataSet">dsTbcm011</Property>
+                  <Property name="cols">*,*,*,*</Property>
+                  <Property name="labelWidth">110</Property>
+                  <Property name="labelAlign">right</Property>
+                  <AutoFormElement layoutConstraint="colSpan:1">
+                    <ClientEvent name="onBlur">/*var custNo = dsCm011.getData(&quot;#&quot;).get(&quot;custNo&quot;);&#xD;
+if (custNo) {&#xD;
+    new dorado.widget.AjaxAction({&#xD;
+        parameter: {&#xD;
+            custNo: custNo&#xD;
+        },&#xD;
+        service: &quot;bsjc01BO#getCustNo&quot;&#xD;
+    }).execute(function(flag){&#xD;
+        var index = check.indexOf(&quot;客户编号,&quot;);&#xD;
+        if (flag) {&#xD;
+            if (index == -1) {&#xD;
+                check.push(&quot;客户编号,&quot;);&#xD;
+            }&#xD;
+        }&#xD;
+        else {&#xD;
+            if (index > -1) {&#xD;
+                check.splice(check.indexOf(&quot;客户编号,&quot;), 1);&#xD;
+            }&#xD;
+        }&#xD;
+        var length = check.length;&#xD;
+        if (length > 0) {&#xD;
+            var msg = &quot;&quot;;&#xD;
+            for (i = 0; i &lt; length; i++) {&#xD;
+                msg += check[i];&#xD;
+            }&#xD;
+            //dorado.MessageBox.alert(&quot;已存在相同的&quot; + msg + &quot;请重新输入!&quot;);&#xD;
+        }&#xD;
+    });&#xD;
+}&#xD;
+*/</ClientEvent>
+                    <Property name="name">custNo</Property>
+                    <Property name="property">custNo</Property>
+                    <Property name="readOnly">true</Property>
+                    <Editor/>
+                  </AutoFormElement>
+                  <AutoFormElement layoutConstraint="colSpan:1">
+                    <Property name="name">custName</Property>
+                    <Property name="property">custName</Property>
+                    <Property name="labelAlign">right</Property>
+                    <Editor/>
+                  </AutoFormElement>
+                  <AutoFormElement layoutConstraint="colSpan:1">
+                    <Property name="labelAlign">right</Property>
+                    <Property name="name">yongyouCustNo</Property>
+                    <Property name="property">yongyouCustNo</Property>
+                    <Editor/>
+                  </AutoFormElement>
+                  <AutoFormElement>
+                    <ClientEvent name="onBlur">var taxNumber = dsCm011.getData(&quot;#&quot;).get(&quot;taxNumber&quot;)&#xD;
+if (taxNumber) {&#xD;
+    new dorado.widget.AjaxAction({&#xD;
+        parameter: {&#xD;
+            taxNumber: taxNumber&#xD;
+        },&#xD;
+        service: &quot;bsjc01BO#getTaxNumber&quot;&#xD;
+    }).execute(function(flag){&#xD;
+        var index = check.indexOf(&quot;纳税人识别号,&quot;);&#xD;
+        if (flag) {&#xD;
+            if (index == -1) {&#xD;
+                check.push(&quot;纳税人识别号,&quot;);&#xD;
+            }&#xD;
+        }&#xD;
+        else {&#xD;
+            if (index > -1) {&#xD;
+                check.splice(check.indexOf(&quot;纳税人识别号,&quot;), 1);&#xD;
+            }&#xD;
+        }&#xD;
+        var length = check.length;&#xD;
+        if (length > 0) {&#xD;
+            var msg = &quot;&quot;;&#xD;
+            for (i = 0; i &lt; length; i++) {&#xD;
+                msg += check[i];&#xD;
+            }&#xD;
+           dorado.MessageBox.alert(&quot;已存在相同的&quot; + msg + &quot;请重新输入!&quot;);&#xD;
+            return;&#xD;
+        }&#xD;
+    });&#xD;
+}&#xD;
+</ClientEvent>
+                    <Property name="labelAlign">right</Property>
+                    <Property name="name">taxNumber</Property>
+                    <Property name="property">taxNumber</Property>
+                    <Editor/>
+                  </AutoFormElement>
+                  <FieldSet layout="hbox" layoutConstraint="colSpan:4">
+                    <Property name="caption">客商类别</Property>
+                    <Property name="width">97%</Property>
+                    <Property name="collapseable">false</Property>
+                    <Property name="height">58</Property>
+                    <Property name="contentOverflow">visible</Property>
+                    <Buttons/>
+                    <Children>
+                      <CheckBox id="combox1">
+                        <ClientEvent name="onValueChange">&#xD;
+var data = view.get(&quot;#dsTbcm011&quot;).getData(&quot;#&quot;);&#xD;
+var state = data.state;&#xD;
+if(state==0){&#xD;
+	view.get(&quot;#dsTbcm011&quot;).getData(&quot;#&quot;).setState(2);&#xD;
+}&#xD;
+</ClientEvent>
+                        <Property name="caption">钢材用户</Property>
+                        <Property name="value">true</Property>
+                      </CheckBox>
+                      <CheckBox id="combox2">
+                        <ClientEvent name="onValueChange">&#xD;
+var data = view.get(&quot;#dsTbcm011&quot;).getData(&quot;#&quot;);&#xD;
+var state = data.state;&#xD;
+if(state==0){&#xD;
+	view.get(&quot;#dsTbcm011&quot;).getData(&quot;#&quot;).setState(2);&#xD;
+}&#xD;
+</ClientEvent>
+                        <Property name="property">custCategery</Property>
+                        <Property name="caption">钢材加工厂</Property>
+                        <Property name="value">true</Property>
+                      </CheckBox>
+                      <CheckBox id="combox3">
+                        <ClientEvent name="onValueChange">&#xD;
+var data = view.get(&quot;#dsTbcm011&quot;).getData(&quot;#&quot;);&#xD;
+var state = data.state;&#xD;
+if(state==0){&#xD;
+	view.get(&quot;#dsTbcm011&quot;).getData(&quot;#&quot;).setState(2);&#xD;
+}&#xD;
+</ClientEvent>
+                        <Property name="caption">钢材贸易商</Property>
+                        <Property name="value">true</Property>
+                      </CheckBox>
+                      <CheckBox id="combox4">
+                        <ClientEvent name="onValueChange">&#xD;
+var data = view.get(&quot;#dsTbcm011&quot;).getData(&quot;#&quot;);&#xD;
+var state = data.state;&#xD;
+if(state==0){&#xD;
+	view.get(&quot;#dsTbcm011&quot;).getData(&quot;#&quot;).setState(2);&#xD;
+}&#xD;
+</ClientEvent>
+                        <Property name="caption">钢材厂家</Property>
+                        <Property name="value">true</Property>
+                      </CheckBox>
+                      <CheckBox id="combox5">
+                        <ClientEvent name="onValueChange">&#xD;
+var data = view.get(&quot;#dsTbcm011&quot;).getData(&quot;#&quot;);&#xD;
+var state = data.state;&#xD;
+if(state==0){&#xD;
+	view.get(&quot;#dsTbcm011&quot;).getData(&quot;#&quot;).setState(2);&#xD;
+}&#xD;
+</ClientEvent>
+                        <Property name="caption">仓储商</Property>
+                        <Property name="value">true</Property>
+                      </CheckBox>
+                      <CheckBox id="combox9">
+                        <ClientEvent name="onValueChange">&#xD;
+var data = view.get(&quot;#dsTbcm011&quot;).getData(&quot;#&quot;);&#xD;
+var state = data.state;&#xD;
+if(state==0){&#xD;
+	view.get(&quot;#dsTbcm011&quot;).getData(&quot;#&quot;).setState(2);&#xD;
+}&#xD;
+</ClientEvent>
+                        <Property name="caption">运输商</Property>
+                        <Property name="value">true</Property>
+                      </CheckBox>
+                      <CheckBox id="combox6">
+                        <ClientEvent name="onValueChange">&#xD;
+var data = view.get(&quot;#dsTbcm011&quot;).getData(&quot;#&quot;);&#xD;
+var state = data.state;&#xD;
+if(state==0){&#xD;
+	view.get(&quot;#dsTbcm011&quot;).getData(&quot;#&quot;).setState(2);&#xD;
+}&#xD;
+</ClientEvent>
+                        <Property name="caption">承运商</Property>
+                        <Property name="value">true</Property>
+                        <Property name="visible">false</Property>
+                      </CheckBox>
+                      <CheckBox id="combox7">
+                        <ClientEvent name="onValueChange">&#xD;
+var data = view.get(&quot;#dsTbcm011&quot;).getData(&quot;#&quot;);&#xD;
+var state = data.state;&#xD;
+if(state==0){&#xD;
+	view.get(&quot;#dsTbcm011&quot;).getData(&quot;#&quot;).setState(2);&#xD;
+}&#xD;
+</ClientEvent>
+                        <Property name="caption">原料供应商</Property>
+                        <Property name="value">true</Property>
+                        <Property name="visible">false</Property>
+                      </CheckBox>
+                      <CheckBox id="combox8">
+                        <ClientEvent name="onValueChange">&#xD;
+var data = view.get(&quot;#dsTbcm011&quot;).getData(&quot;#&quot;);&#xD;
+var state = data.state;&#xD;
+if(state==0){&#xD;
+	view.get(&quot;#dsTbcm011&quot;).getData(&quot;#&quot;).setState(2);&#xD;
+}&#xD;
+</ClientEvent>
+                        <Property name="caption">物料供应商</Property>
+                        <Property name="value">true</Property>
+                        <Property name="visible">false</Property>
+                      </CheckBox>
+                      <AutoForm>
+                        <Property name="dataSet">dsTbcm011</Property>
+                        <Property name="cols">*</Property>
+                        <Property name="width">100%</Property>
+                        <Property name="ignored">true</Property>
+                        <AutoFormElement>
+                          <Property name="name">custCategery</Property>
+                          <Property name="property">custCategery</Property>
+                          <Property name="showLabel">false</Property>
+                          <Editor/>
+                        </AutoFormElement>
+                      </AutoForm>
+                    </Children>
+                  </FieldSet>
+                  <AutoFormElement layoutConstraint="colSpan:1">
+                    <Property name="name">compChin</Property>
+                    <Property name="property">compChin</Property>
+                    <Property name="label">公司名称</Property>
+                    <Editor/>
+                  </AutoFormElement>
+                  <AutoFormElement layoutConstraint="colSpan:1">
+                    <Property name="name">dutyPerson</Property>
+                    <Property name="property">dutyPerson</Property>
+                    <Property name="label">法定代表人</Property>
+                    <Property name="ignored">false</Property>
+                    <Editor/>
+                  </AutoFormElement>
+                  <AutoFormElement layoutConstraint="colSpan:1">
+                    <Property name="name">phoneNumber</Property>
+                    <Property name="property">phoneNumber</Property>
+                    <Property name="label">公司联系电话</Property>
+                    <Editor/>
+                  </AutoFormElement>
+                  <AutoFormElement layoutConstraint="colSpan:1">
+                    <Property name="name">mailAddress</Property>
+                    <Property name="property">mailAddress</Property>
+                    <Property name="label">公司邮箱</Property>
+                    <Editor/>
+                  </AutoFormElement>
+                  <AutoFormElement layoutConstraint="colSpan:1">
+                    <Property name="label">公司所在地区</Property>
+                    <Property name="name">email</Property>
+                    <Property name="trigger">autoMappingDropDown1</Property>
+                    <Editor/>
+                  </AutoFormElement>
+                  <AutoFormElement layoutConstraint="colSpan:1">
+                    <Property name="name">compEmg</Property>
+                    <Property name="property">compEmg</Property>
+                    <Property name="label">公司地址</Property>
+                    <Editor/>
+                  </AutoFormElement>
+                  <AutoFormElement layoutConstraint="colSpan:1">
+                    <Property name="name">compWeb</Property>
+                    <Property name="property">compWeb</Property>
+                    <Property name="label">公司网址</Property>
+                    <Editor/>
+                  </AutoFormElement>
+                  <AutoFormElement layoutConstraint="colSpan:1">
+                    <Property name="name">registerAmt</Property>
+                    <Property name="property">registerAmt</Property>
+                    <Property name="label">注册资金(元)</Property>
+                    <Editor/>
+                  </AutoFormElement>
+                </AutoForm>
+              </Children>
+            </FieldSet>
+          </Children>
+          <Tools/>
+        </Panel>
+        <Panel>
+          <Property name="width">100%</Property>
+          <Property name="contentOverflowY">auto</Property>
+          <Buttons/>
+          <Children>
+            <FieldSet>
+              <Property name="caption">客商明细资料</Property>
+              <Buttons/>
+              <Children>
+                <TabControl id="tabControl">
+                  <ControlTab id="main">
+                    <ClientEvent name="onClick">var createEmp = dsCm011.getData(&quot;#&quot;).get(&quot;createEmp&quot;);&#xD;
+if(createEmp){&#xD;
+	view.set(&quot;^typ61.disabled&quot;,false);&#xD;
+	var custNo = dsCm011.getData(&quot;#&quot;).get(&quot;custNo&quot;);&#xD;
+	var taxNumber = dsCm011.getData(&quot;#&quot;).get(&quot;taxNumber&quot;);&#xD;
+	dsBs016.set(&quot;parameter&quot;,{&#xD;
+		custNo:custNo&#xD;
+	}).flushAsync(function(returnData){&#xD;
+		if(returnData==null){&#xD;
+			dsBs016.insert({&#xD;
+				custNo:custNo,&#xD;
+				taxNumber:taxNumber&#xD;
+			});&#xD;
+			view.set(&quot;^typ62.disabled&quot;,true);&#xD;
+		}else{&#xD;
+			view.set(&quot;^typ62.disabled&quot;,false);&#xD;
+		}&#xD;
+	});&#xD;
+}else{&#xD;
+	view.set(&quot;^typ61.disabled&quot;,true);&#xD;
+	view.set(&quot;^typ62.disabled&quot;,true);&#xD;
+	//dorado.MessageBox.alert(&quot;主档资料为空，不能操作明细档！&quot;);&#xD;
+}</ClientEvent>
+                    <Property name="caption">工商信息维护</Property>
+                    <Property name="name">main</Property>
+                    <Panel>
+                      <Buttons/>
+                      <Children>
+                        <DateDropDown id="dateDropDown1">
+                          <ClientEvent name="onValueSelect">if(arg.selectedValue != null &amp;&amp; arg.selectedValue != ''){&#xD;
+	arg.selectedValue=arg.selectedValue.formatDate(&quot;Y-m-d&quot;);&#xD;
+}&#xD;
+&#xD;
+</ClientEvent>
+                        </DateDropDown>
+                        <Panel>
+                          <Property name="contentOverflow">hidden</Property>
+                          <Buttons/>
+                          <Children>
+                            <ToolBar>
+                              <ToolBarButton>
+                                <ClientEvent name="onClick">functions[&quot;saveBs016&quot;]();&#xD;
+&#xD;
+</ClientEvent>
+                                <Property name="caption">保存</Property>
+                                <Property name="disabled">true</Property>
+                                <Property name="tags">typ61</Property>
+                                <Property name="icon">url(>skin>common/icons.gif) -140px -20px</Property>
+                              </ToolBarButton>
+                              <ToolBarButton>
+                                <ClientEvent name="onClick">&#xD;
+var data = dsBs016.getData(&quot;#&quot;);&#xD;
+if(data){&#xD;
+	functions[&quot;delBs016&quot;](data);&#xD;
+}</ClientEvent>
+                                <Property name="caption">删除</Property>
+                                <Property name="disabled">true</Property>
+                                <Property name="tags">typ62</Property>
+                                <Property name="icon">url(>skin>common/icons.gif) -140px 0px</Property>
+                              </ToolBarButton>
+                            </ToolBar>
+                          </Children>
+                          <Tools/>
+                        </Panel>
+                        <Panel>
+                          <Buttons/>
+                          <Children>
+                            <DataSet id="dsBs016">
+                              <Property name="dataProvider">bsjc01BO#searchTbbs016</Property>
+                              <Property name="dataType">dtBs016</Property>
+                              <Property name="loadMode">manual</Property>
+                            </DataSet>
+                            <UpdateAction id="saveBs016">
+                              <Property name="dataResolver">bsjc01BO#saveTbbs016</Property>
+                              <UpdateItem>
+                                <Property name="dataSet">dsBs016</Property>
+                              </UpdateItem>
+                            </UpdateAction>
+                            <AutoForm>
+                              <Property name="dataSet">dsBs016</Property>
+                              <Property name="cols">*,*,*,*</Property>
+                              <Property name="labelAlign">right</Property>
+                              <AutoFormElement layoutConstraint="colSpan:1">
+                                <Property name="name">industryCode</Property>
+                                <Property name="property">industryCode</Property>
+                                <Property name="labelWidth">110</Property>
+                                <Editor/>
+                              </AutoFormElement>
+                              <AutoFormElement layoutConstraint="colSpan:1">
+                                <Property name="name">orgCode</Property>
+                                <Property name="property">orgCode</Property>
+                                <Property name="labelWidth">110</Property>
+                                <Property name="readOnly">false</Property>
+                                <Editor/>
+                              </AutoFormElement>
+                              <AutoFormElement layoutConstraint="colSpan:2">
+                                <Property name="name">creditCode</Property>
+                                <Property name="property">creditCode</Property>
+                                <Property name="labelWidth">110</Property>
+                                <Property name="readOnly">false</Property>
+                                <Editor/>
+                              </AutoFormElement>
+                              <AutoFormElement layoutConstraint="colSpan:1">
+                                <Property name="name">taxNumber</Property>
+                                <Property name="property">taxNumber</Property>
+                                <Property name="labelWidth">110</Property>
+                                <Property name="ignored">false</Property>
+                                <Editor/>
+                              </AutoFormElement>
+                              <AutoFormElement layoutConstraint="colSpan:3">
+                                <Property name="name">compType</Property>
+                                <Property name="property">compType</Property>
+                                <Property name="labelWidth">110</Property>
+                                <Editor/>
+                              </AutoFormElement>
+                              <AutoFormElement layoutConstraint="colSpan:1">
+                                <Property name="name">industry</Property>
+                                <Property name="property">industry</Property>
+                                <Property name="labelWidth">110</Property>
+                                <Editor/>
+                              </AutoFormElement>
+                              <AutoFormElement layoutConstraint="colSpan:0.5">
+                                <Property name="name">manageTerm</Property>
+                                <Property name="property">manageTerm</Property>
+                                <Property name="trigger">dateDropDown1</Property>
+                                <Property name="showLabel">true</Property>
+                                <Property name="labelWidth">110</Property>
+                                <Editor/>
+                              </AutoFormElement>
+                              <AutoFormElement layoutConstraint="colSpan:1">
+                                <Property name="name">defs01</Property>
+                                <Property name="property">defs01</Property>
+                                <Property name="showLabel">true</Property>
+                                <Property name="trigger">dateDropDown1</Property>
+                                <Property name="label">至</Property>
+                                <Editor/>
+                              </AutoFormElement>
+                              <AutoFormElement layoutConstraint="colSpan:1">
+                                <Property name="name">approDate</Property>
+                                <Property name="property">approDate</Property>
+                                <Property name="editorType">TextEditor</Property>
+                                <Editor/>
+                              </AutoFormElement>
+                              <AutoFormElement layoutConstraint="colSpan:3">
+                                <Property name="name">regisAuth</Property>
+                                <Property name="property">regisAuth</Property>
+                                <Property name="labelWidth">110</Property>
+                                <Editor/>
+                              </AutoFormElement>
+                              <AutoFormElement layoutConstraint="colSpan:1">
+                                <Property name="name">engName</Property>
+                                <Property name="property">engName</Property>
+                                <Editor/>
+                              </AutoFormElement>
+                              <AutoFormElement layoutConstraint="colSpan:4">
+                                <Property name="name">registerAddr</Property>
+                                <Property name="property">registerAddr</Property>
+                                <Property name="labelWidth">110</Property>
+                                <Editor/>
+                              </AutoFormElement>
+                              <AutoFormElement layoutConstraint="colSpan:4;rowSpan:2">
+                                <Property name="name">operateScope</Property>
+                                <Property name="property">operateScope</Property>
+                                <Property name="editorType">TextArea</Property>
+                                <Property name="labelWidth">110</Property>
+                                <Editor/>
+                              </AutoFormElement>
+                            </AutoForm>
+                          </Children>
+                          <Tools/>
+                        </Panel>
+                      </Children>
+                      <Tools/>
+                    </Panel>
+                  </ControlTab>
+                  <ControlTab>
+                    <ClientEvent name="onClick">var createEmp = dsCm011.getData(&quot;#&quot;).get(&quot;createEmp&quot;);&#xD;
+if(createEmp){&#xD;
+	view.set(&quot;^typ21.disabled&quot;,false);&#xD;
+	var custNo = dsCm011.getData(&quot;#&quot;).get(&quot;custNo&quot;);&#xD;
+	dsBs012.set(&quot;parameter&quot;,{&#xD;
+		custNo:custNo&#xD;
+	}).flushAsync(function(returnData){&#xD;
+		if(returnData.entityCount==0){&#xD;
+			view.set(&quot;^typ22.disabled&quot;,true);&#xD;
+		}else{&#xD;
+			view.set(&quot;^typ22.disabled&quot;,false);&#xD;
+		}&#xD;
+	});&#xD;
+}else{&#xD;
+	view.set(&quot;^typ21.disabled&quot;,true);&#xD;
+	view.set(&quot;^typ22.disabled&quot;,true);&#xD;
+	dorado.MessageBox.alert(&quot;主档资料为空，不能操作明细档！&quot;);&#xD;
+	/*function(){&#xD;
+		var tab = view.get(&quot;#tabControl&quot;);&#xD;
+		tab.set(&quot;currentTab&quot;,&quot;main&quot;);&#xD;
+	}&#xD;
+	*/&#xD;
+}&#xD;
+</ClientEvent>
+                    <Property name="caption">开票信息维护</Property>
+                    <Panel>
+                      <Property name="height">400</Property>
+                      <Buttons/>
+                      <Children>
+                        <Panel>
+                          <Property name="contentOverflow">hidden</Property>
+                          <Buttons/>
+                          <Children>
+                            <ToolBar>
+                              <ToolBarButton>
+                                <ClientEvent name="onClick">var custNo = dsCm011.getData(&quot;#&quot;).get(&quot;custNo&quot;);&#xD;
+var compName = dsCm011.getData(&quot;#&quot;).get(&quot;compChin&quot;);&#xD;
+var phoneNumber = dsCm011.getData(&quot;#&quot;).get(&quot;phoneNumber&quot;);&#xD;
+var taxNumber =dsCm011.getData(&quot;#&quot;).get(&quot;taxNumber&quot;);&#xD;
+var addr = dsCm011.getData(&quot;#&quot;).get(&quot;compEmg&quot;);&#xD;
+&#xD;
+//公司电话 地址 邮寄地址&#xD;
+var compPhone = dsCm011.getData(&quot;#&quot;).get(&quot;phoneNumber&quot;);&#xD;
+&#xD;
+dsBs012.insert({&#xD;
+	custNo:custNo,&#xD;
+	taxNumber:taxNumber,&#xD;
+	compName:compName,&#xD;
+	compAddr:addr,&#xD;
+	compPhone:phoneNumber,&#xD;
+	invoiceAddress:addr&#xD;
+});&#xD;
+</ClientEvent>
+                                <Property name="caption">增行</Property>
+                                <Property name="tags">typ21</Property>
+                                <Property name="disabled">true</Property>
+                                <Property name="icon">url(>skin>common/icons.gif) -120px 0px</Property>
+                              </ToolBarButton>
+                              <ToolBarButton>
+                                <ClientEvent name="onClick">functions[&quot;saveBs012&quot;]();&#xD;
+</ClientEvent>
+                                <Property name="caption">保存</Property>
+                                <Property name="tags">typ21</Property>
+                                <Property name="disabled">true</Property>
+                                <Property name="icon">url(>skin>common/icons.gif) -140px -20px</Property>
+                              </ToolBarButton>
+                              <ToolBarButton>
+                                <ClientEvent name="onClick">&#xD;
+//var dataList = dgBs012.get(&quot;selection&quot;);&#xD;
+&#xD;
+//if(dataList.length==0){&#xD;
+//	dorado.MessageBox.alert(&quot;请至少选择一条要删除的数据！&quot;);&#xD;
+//}else{&#xD;
+	&#xD;
+			functions[&quot;delBs012&quot;](dsBs012.getData(&quot;#&quot;));&#xD;
+//}&#xD;
+&#xD;
+</ClientEvent>
+                                <Property name="caption">删除</Property>
+                                <Property name="tags">typ22</Property>
+                                <Property name="disabled">true</Property>
+                                <Property name="icon">url(>skin>common/icons.gif) -140px 0px</Property>
+                              </ToolBarButton>
+                              <ToolBarButton>
+                                <ClientEvent name="onClick">var custNo = dsCm011.getData(&quot;#&quot;).get(&quot;custNo&quot;);&#xD;
+var data = dsBs012.getData(&quot;#&quot;);&#xD;
+&#xD;
+var options = {&#xD;
+	callback:function(){&#xD;
+		new dorado.widget.AjaxAction({&#xD;
+			parameter:{&#xD;
+				custNo:custNo,&#xD;
+				data:data&#xD;
+			},&#xD;
+			service:&quot;bsjc01BO#doDef2&quot;&#xD;
+		}).execute(function(){&#xD;
+			dsBs012.set(&quot;parameter&quot;,{&#xD;
+				custNo:custNo&#xD;
+			}).flushAsync();&#xD;
+		});&#xD;
+	},&#xD;
+	icon:&quot;WARNING&quot;&#xD;
+};&#xD;
+&#xD;
+dorado.MessageBox.confirm(&quot;您即将设置当前数据为默认？&quot;,options);&#xD;
+</ClientEvent>
+                                <Property name="caption">设置默认</Property>
+                                <Property name="tags">typ22</Property>
+                                <Property name="disabled">true</Property>
+                                <Property name="icon">url(>skin>common/icons.gif) -60px 0px</Property>
+                              </ToolBarButton>
+                              <ToolBarButton>
+                                <ClientEvent name="onClick">view.get(&quot;#dsBs012&quot;).getData(&quot;#&quot;).cancel();&#xD;
+</ClientEvent>
+                                <Property name="caption">返回</Property>
+                                <Property name="icon">url(>skin>common/icons.gif) -240px -240px</Property>
+                                <Property name="visible">false</Property>
+                                <Property name="ignored">true</Property>
+                              </ToolBarButton>
+                              <Fill/>
+                              <DataPilot>
+                                <Property name="dataSet">dsBs012</Property>
+                              </DataPilot>
+                            </ToolBar>
+                          </Children>
+                          <Tools/>
+                        </Panel>
+                        <Panel>
+                          <Buttons/>
+                          <Children>
+                            <UpdateAction id="saveBs012">
+                              <Property name="dataResolver">bsjc01BO#saveTbBs012</Property>
+                              <UpdateItem>
+                                <Property name="dataSet">dsBs012</Property>
+                                <Property name="dataPath">[#all]</Property>
+                              </UpdateItem>
+                            </UpdateAction>
+                            <DataSet id="dsBs012">
+                              <Property name="dataType">[dtBs012]</Property>
+                              <Property name="dataProvider">bsjc01BO#searchTbbs012</Property>
+                              <Property name="pageSize">5</Property>
+                              <Property name="loadMode">manual</Property>
+                            </DataSet>
+                            <AutoForm>
+                              <Property name="dataSet">dsBs012</Property>
+                              <Property name="cols">*,*,*</Property>
+                              <Property name="ignored">true</Property>
+                              <AutoFormElement layoutConstraint="colSpan:1">
+                                <Property name="name">compName</Property>
+                                <Property name="property">compName</Property>
+                                <Property name="labelWidth">110</Property>
+                                <Editor/>
+                              </AutoFormElement>
+                              <AutoFormElement layoutConstraint="colSpan:1">
+                                <Property name="name">taxNumber</Property>
+                                <Property name="property">taxNumber</Property>
+                                <Property name="labelWidth">110</Property>
+                                <Editor/>
+                              </AutoFormElement>
+                              <AutoFormElement layoutConstraint="colSpan:1">
+                                <Property name="name">compPhone</Property>
+                                <Property name="property">compPhone</Property>
+                                <Property name="labelWidth">110</Property>
+                                <Editor/>
+                              </AutoFormElement>
+                              <AutoFormElement layoutConstraint="colSpan:3">
+                                <Property name="name">compAddr</Property>
+                                <Property name="property">compAddr</Property>
+                                <Property name="labelWidth">110</Property>
+                                <Editor/>
+                              </AutoFormElement>
+                              <AutoFormElement layoutConstraint="colSpan:1">
+                                <Property name="name">bankNo</Property>
+                                <Property name="property">bankNo</Property>
+                                <Property name="labelWidth">110</Property>
+                                <Editor/>
+                              </AutoFormElement>
+                              <AutoFormElement layoutConstraint="colSpan:1">
+                                <Property name="name">bankAccount</Property>
+                                <Property name="property">bankAccount</Property>
+                                <Property name="labelWidth">110</Property>
+                                <Editor/>
+                              </AutoFormElement>
+                              <AutoFormElement layoutConstraint="colSpan:1">
+                                <Property name="name">zipeCode</Property>
+                                <Property name="property">zipeCode</Property>
+                                <Property name="labelWidth">110</Property>
+                                <Editor/>
+                              </AutoFormElement>
+                              <AutoFormElement layoutConstraint="colSpan:3">
+                                <Property name="name">invoiceAddress</Property>
+                                <Property name="property">invoiceAddress</Property>
+                                <Property name="labelWidth">110</Property>
+                                <Editor/>
+                              </AutoFormElement>
+                            </AutoForm>
+                            <DataGrid id="dgBs012">
+                              <Property name="dataSet">dsBs012</Property>
+                              <Property name="selectionMode">multiRows</Property>
+                              <Property name="readOnly">false</Property>
+                              <RowNumColumn/>
+                              <RowSelectorColumn>
+                                <Property name="visible">false</Property>
+                                <Property name="ignored">true</Property>
+                              </RowSelectorColumn>
+                              <DataColumn name="compName">
+                                <Property name="property">compName</Property>
+                              </DataColumn>
+                              <DataColumn name="taxNumber">
+                                <Property name="property">taxNumber</Property>
+                              </DataColumn>
+                              <DataColumn name="compPhone">
+                                <Property name="property">compPhone</Property>
+                              </DataColumn>
+                              <DataColumn name="compAddr">
+                                <Property name="property">compAddr</Property>
+                              </DataColumn>
+                              <DataColumn name="bankNo">
+                                <Property name="property">bankNo</Property>
+                              </DataColumn>
+                              <DataColumn name="bankAccount">
+                                <Property name="property">bankAccount</Property>
+                              </DataColumn>
+                              <DataColumn>
+                                <Property name="name">zipeCode</Property>
+                                <Property name="property">zipeCode</Property>
+                                <Property name="width">60</Property>
+                                <Property name="visible">false</Property>
+                                <Property name="ignored">true</Property>
+                                <Editor/>
+                              </DataColumn>
+                              <DataColumn>
+                                <Property name="name">invoiceAddress</Property>
+                                <Property name="property">invoiceAddress</Property>
+                                <Property name="ignored">true</Property>
+                                <Property name="visible">false</Property>
+                                <Editor/>
+                              </DataColumn>
+                              <DataColumn name="memo">
+                                <ClientEvent name="onRenderCell">	var position = &quot;&quot;;&#xD;
+	var img = $url('>skin>common/icons.gif');&#xD;
+	var memo = arg.data.get(&quot;memo&quot;);&#xD;
+	if(memo==&quot;OK&quot;){&#xD;
+		position = &quot;-20px -0px&quot;;&#xD;
+		}&#xD;
+	jQuery(arg.dom).empty().xCreate({&#xD;
+    	tagName:&quot;span&quot;,&#xD;
+    style:{&#xD;
+        backgroundImage: &quot;url(&quot;+img+&quot;)&quot;,&#xD;
+        backgroundPosition: position,&#xD;
+        backgroundRepeat: &quot;no-repeat&quot;,&#xD;
+        display: &quot;inline-block&quot;,&#xD;
+        paddingLeft: &quot;20px&quot;,&#xD;
+        width: &quot;0&quot;,&#xD;
+        height: &quot;20px&quot;,&#xD;
+        lineHeight: &quot;20px&quot;,&#xD;
+        margin: &quot;0 1px&quot;&#xD;
+    }&#xD;
+});</ClientEvent>
+                                <Property name="property">memo</Property>
+                                <Property name="readOnly">true</Property>
+                              </DataColumn>
+                            </DataGrid>
+                          </Children>
+                          <Tools/>
+                        </Panel>
+                      </Children>
+                      <Tools/>
+                    </Panel>
+                  </ControlTab>
+                  <ControlTab>
+                    <ClientEvent name="onClick">var createEmp = dsCm011.getData(&quot;#&quot;).get(&quot;createEmp&quot;);&#xD;
+if(createEmp){&#xD;
+	view.set(&quot;^typ31.disabled&quot;,false);&#xD;
+	var custNo = dsCm011.getData(&quot;#&quot;).get(&quot;custNo&quot;);&#xD;
+	dsBs013.set(&quot;parameter&quot;,{&#xD;
+		custNo:custNo&#xD;
+	}).flushAsync(function(returnData){&#xD;
+		if(returnData.entityCount==0){&#xD;
+			view.set(&quot;^typ32.disabled&quot;,true);&#xD;
+		}else{&#xD;
+			view.set(&quot;^typ32.disabled&quot;,false);&#xD;
+		}&#xD;
+	});&#xD;
+}else{&#xD;
+	view.set(&quot;^typ31.disabled&quot;,true);&#xD;
+	view.set(&quot;^typ32.disabled&quot;,true);&#xD;
+	dorado.MessageBox.alert(&quot;主档资料为空，不能操作明细档！&quot;);&#xD;
+}</ClientEvent>
+                    <Property name="caption">收货信息维护</Property>
+                    <Panel>
+                      <Property name="height">400</Property>
+                      <Buttons/>
+                      <Children>
+                        <Panel>
+                          <Property name="contentOverflow">hidden</Property>
+                          <Buttons/>
+                          <Children>
+                            <ToolBar>
+                              <ToolBarButton>
+                                <ClientEvent name="onClick">var custNo = dsCm011.getData(&quot;#&quot;).get(&quot;custNo&quot;);&#xD;
+var area = dsCm011.getData(&quot;#&quot;).get(&quot;email&quot;);&#xD;
+var person = dsCm011.getData(&quot;#&quot;).get(&quot;dutyPerson&quot;);&#xD;
+var addr = dsCm011.getData(&quot;#&quot;).get(&quot;compEmg&quot;);&#xD;
+var phone = dsCm011.getData(&quot;#&quot;).get(&quot;phoneNumber&quot;);&#xD;
+&#xD;
+var zipeCode = &quot;&quot;;&#xD;
+if(view.get(&quot;#dsBs012&quot;).getData(&quot;#&quot;)){&#xD;
+	var zipeCode = view.get(&quot;#dsBs012&quot;).getData(&quot;#&quot;).get(&quot;zipeCode&quot;);&#xD;
+}&#xD;
+&#xD;
+dsBs013.insert({&#xD;
+	recMan:person,&#xD;
+	custNo:custNo,&#xD;
+	area:area,&#xD;
+	detailAddress:addr,&#xD;
+	mobialPhone:phone,&#xD;
+	phoneNum:phone,&#xD;
+	zipeCode:zipeCode&#xD;
+	&#xD;
+});&#xD;
+</ClientEvent>
+                                <Property name="caption">增行</Property>
+                                <Property name="tags">typ31</Property>
+                                <Property name="icon">url(>skin>common/icons.gif) -120px 0px</Property>
+                              </ToolBarButton>
+                              <ToolBarButton>
+                                <ClientEvent name="onClick">functions[&quot;saveBs013&quot;]();&#xD;
+</ClientEvent>
+                                <Property name="caption">保存</Property>
+                                <Property name="tags">typ31</Property>
+                                <Property name="icon">url(>skin>common/icons.gif) -140px -20px</Property>
+                              </ToolBarButton>
+                              <ToolBarButton>
+                                <ClientEvent name="onClick">&#xD;
+//var dataList = dgBs013.get(&quot;selection&quot;);&#xD;
+&#xD;
+//if(dataList.length==0){&#xD;
+//	dorado.MessageBox.alert(&quot;请至少选择一条要删除的数据！&quot;);&#xD;
+//}else{&#xD;
+	&#xD;
+	var options = {&#xD;
+		callback:function(){&#xD;
+			functions[&quot;delBs013&quot;](dsBs013.getData(&quot;#&quot;));&#xD;
+		},&#xD;
+		icon:&quot;WARNING&quot;&#xD;
+	};&#xD;
+	&#xD;
+	dorado.MessageBox.confirm(&quot;您确定要删除所勾选数据吗？&quot;,options);&#xD;
+//}&#xD;
+&#xD;
+</ClientEvent>
+                                <Property name="caption">删除</Property>
+                                <Property name="tags">typ32</Property>
+                                <Property name="icon">url(>skin>common/icons.gif) -140px 0px</Property>
+                              </ToolBarButton>
+                              <ToolBarButton>
+                                <ClientEvent name="onClick">var custNo = dsCm011.getData(&quot;#&quot;).get(&quot;custNo&quot;);&#xD;
+var data = dsBs013.getData(&quot;#&quot;);&#xD;
+&#xD;
+var options = {&#xD;
+	callback:function(){&#xD;
+		new dorado.widget.AjaxAction({&#xD;
+			parameter:{&#xD;
+				custNo:custNo,&#xD;
+				data:data&#xD;
+			},&#xD;
+			service:&quot;bsjc01BO#doDef3&quot;&#xD;
+		}).execute(function(){&#xD;
+			dsBs013.set(&quot;parameter&quot;,{&#xD;
+				custNo:custNo&#xD;
+			}).flushAsync();&#xD;
+		});&#xD;
+	},&#xD;
+	icon:&quot;WARNING&quot;&#xD;
+};&#xD;
+&#xD;
+dorado.MessageBox.confirm(&quot;您即将设置当前数据为默认？&quot;,options);&#xD;
+</ClientEvent>
+                                <Property name="caption">设置默认</Property>
+                                <Property name="tags">typ32</Property>
+                                <Property name="icon">url(>skin>common/icons.gif) -60px 0px</Property>
+                              </ToolBarButton>
+                              <ToolBarButton>
+                                <ClientEvent name="onClick">view.get(&quot;#dsBs013&quot;).getData(&quot;#&quot;).cancel();&#xD;
+</ClientEvent>
+                                <Property name="caption">返回</Property>
+                                <Property name="icon">url(>skin>common/icons.gif) -240px -240px</Property>
+                                <Property name="ignored">true</Property>
+                                <Property name="visible">false</Property>
+                              </ToolBarButton>
+                              <Fill/>
+                              <DataPilot>
+                                <Property name="dataSet">dsBs013</Property>
+                              </DataPilot>
+                            </ToolBar>
+                          </Children>
+                          <Tools/>
+                        </Panel>
+                        <Panel>
+                          <Buttons/>
+                          <Children>
+                            <DataSet id="dsBs013">
+                              <Property name="dataType">[dtBs013]</Property>
+                              <Property name="dataProvider">bsjc01BO#searchTbbs013</Property>
+                              <Property name="loadMode">manual</Property>
+                              <Property name="pageSize">5</Property>
+                            </DataSet>
+                            <UpdateAction id="saveBs013">
+                              <Property name="dataResolver">bsjc01BO#saveTbBs013</Property>
+                              <UpdateItem>
+                                <Property name="dataSet">dsBs013</Property>
+                                <Property name="dataPath">[#all]</Property>
+                              </UpdateItem>
+                            </UpdateAction>
+                            <AutoForm>
+                              <Property name="dataSet">dsBs013</Property>
+                              <Property name="cols">*,*,*</Property>
+                              <Property name="ignored">true</Property>
+                              <AutoFormElement>
+                                <Property name="name">recMan</Property>
+                                <Property name="property">recMan</Property>
+                                <Editor/>
+                              </AutoFormElement>
+                              <AutoFormElement>
+                                <Property name="name">area</Property>
+                                <Property name="property">area</Property>
+                                <Property name="trigger">autoMappingDropDown1</Property>
+                                <Editor/>
+                              </AutoFormElement>
+                              <AutoFormElement>
+                                <Property name="name">zipeCode</Property>
+                                <Property name="property">zipeCode</Property>
+                                <Editor/>
+                              </AutoFormElement>
+                              <AutoFormElement layoutConstraint="colSpan:3">
+                                <Property name="name">detailAddress</Property>
+                                <Property name="property">detailAddress</Property>
+                                <Editor/>
+                              </AutoFormElement>
+                              <AutoFormElement>
+                                <Property name="name">mobialPhone</Property>
+                                <Property name="property">mobialPhone</Property>
+                                <Editor/>
+                              </AutoFormElement>
+                              <AutoFormElement>
+                                <Property name="name">phoneNum</Property>
+                                <Property name="property">phoneNum</Property>
+                                <Editor/>
+                              </AutoFormElement>
+                              <AutoFormElement>
+                                <Property name="name">addr</Property>
+                                <Property name="property">addr</Property>
+                                <Editor/>
+                              </AutoFormElement>
+                            </AutoForm>
+                            <DataGrid id="dgBs013">
+                              <Property name="dataSet">dsBs013</Property>
+                              <Property name="selectionMode">multiRows</Property>
+                              <Property name="readOnly">false</Property>
+                              <RowNumColumn/>
+                              <RowSelectorColumn>
+                                <Property name="visible">false</Property>
+                                <Property name="ignored">true</Property>
+                              </RowSelectorColumn>
+                              <DataColumn name="recMan">
+                                <Property name="property">recMan</Property>
+                              </DataColumn>
+                              <DataColumn name="area">
+                                <Property name="property">area</Property>
+                                <Property name="trigger">autoMappingDropDown1</Property>
+                              </DataColumn>
+                              <DataColumn name="detailAddress">
+                                <Property name="property">detailAddress</Property>
+                              </DataColumn>
+                              <DataColumn name="mobialPhone">
+                                <Property name="property">mobialPhone</Property>
+                              </DataColumn>
+                              <DataColumn name="phoneNum">
+                                <Property name="property">phoneNum</Property>
+                              </DataColumn>
+                              <DataColumn name="addr">
+                                <Property name="property">addr</Property>
+                              </DataColumn>
+                              <DataColumn>
+                                <Property name="name">zipeCode</Property>
+                                <Property name="property">zipeCode</Property>
+                                <Property name="visible">false</Property>
+                                <Property name="ignored">true</Property>
+                                <Editor/>
+                              </DataColumn>
+                              <DataColumn name="memo">
+                                <ClientEvent name="onRenderCell">	var position = &quot;&quot;;&#xD;
+	var img = $url('>skin>common/icons.gif');&#xD;
+	var memo = arg.data.get(&quot;memo&quot;);&#xD;
+	if(memo==&quot;OK&quot;){&#xD;
+		position = &quot;-20px -0px&quot;;&#xD;
+		}&#xD;
+	jQuery(arg.dom).empty().xCreate({&#xD;
+    	tagName:&quot;span&quot;,&#xD;
+    style:{&#xD;
+        backgroundImage: &quot;url(&quot;+img+&quot;)&quot;,&#xD;
+        backgroundPosition: position,&#xD;
+        backgroundRepeat: &quot;no-repeat&quot;,&#xD;
+        display: &quot;inline-block&quot;,&#xD;
+        paddingLeft: &quot;20px&quot;,&#xD;
+        width: &quot;0&quot;,&#xD;
+        height: &quot;20px&quot;,&#xD;
+        lineHeight: &quot;20px&quot;,&#xD;
+        margin: &quot;0 1px&quot;&#xD;
+    }&#xD;
+});</ClientEvent>
+                                <Property name="property">memo</Property>
+                                <Property name="readOnly">true</Property>
+                                <Property name="width">40</Property>
+                              </DataColumn>
+                            </DataGrid>
+                          </Children>
+                          <Tools/>
+                        </Panel>
+                      </Children>
+                      <Tools/>
+                    </Panel>
+                  </ControlTab>
+                  <ControlTab>
+                    <ClientEvent name="onClick">var createEmp = dsCm011.getData(&quot;#&quot;).get(&quot;createEmp&quot;);&#xD;
+if(createEmp){&#xD;
+	view.set(&quot;^typ41.disabled&quot;,false);&#xD;
+	var custNo = dsCm011.getData(&quot;#&quot;).get(&quot;custNo&quot;);&#xD;
+	dsCm012.set(&quot;parameter&quot;,{&#xD;
+		custNo:custNo&#xD;
+	}).flushAsync(function(returnData){&#xD;
+		if(returnData.entityCount==0){&#xD;
+			view.set(&quot;^typ42.disabled&quot;,true);&#xD;
+		}else{&#xD;
+			view.set(&quot;^typ42.disabled&quot;,false);&#xD;
+		}&#xD;
+	});&#xD;
+}else{&#xD;
+	view.set(&quot;^typ41.disabled&quot;,true);&#xD;
+	view.set(&quot;^typ42.disabled&quot;,true);&#xD;
+	dorado.MessageBox.alert(&quot;主档资料为空，不能操作明细档！&quot;);&#xD;
+}</ClientEvent>
+                    <Property name="caption">银行信息维护</Property>
+                    <Panel>
+                      <Property name="height">400</Property>
+                      <Buttons/>
+                      <Children>
+                        <Panel>
+                          <Property name="contentOverflow">hidden</Property>
+                          <Buttons/>
+                          <Children>
+                            <ToolBar>
+                              <ToolBarButton>
+                                <ClientEvent name="onClick">var custNo = dsCm011.getData(&quot;#&quot;).get(&quot;custNo&quot;);&#xD;
+var compName = dsCm011.getData(&quot;#&quot;).get(&quot;compChin&quot;);&#xD;
+&#xD;
+var bankName = &quot;&quot;;&#xD;
+var bankAccount = &quot;&quot;;&#xD;
+if(dsBs012.getData(&quot;#&quot;)){&#xD;
+	var bankName = dsBs012.getData(&quot;#&quot;).get(&quot;bankNo&quot;);&#xD;
+	var bankAccount = dsBs012.getData(&quot;#&quot;).get(&quot;bankAccount&quot;);&#xD;
+}&#xD;
+&#xD;
+dsCm012.insert({&#xD;
+	custNo:custNo,&#xD;
+	accountId:compName,&#xD;
+	bankName:bankName,&#xD;
+	bankAccount:bankAccount&#xD;
+	&#xD;
+});</ClientEvent>
+                                <Property name="caption">增行</Property>
+                                <Property name="tags">typ41</Property>
+                                <Property name="icon">url(>skin>common/icons.gif) -120px 0px</Property>
+                              </ToolBarButton>
+                              <ToolBarButton>
+                                <ClientEvent name="onClick">functions[&quot;saveCm012&quot;]();</ClientEvent>
+                                <Property name="caption">保存</Property>
+                                <Property name="tags">typ41</Property>
+                                <Property name="icon">url(>skin>common/icons.gif) -140px -20px</Property>
+                              </ToolBarButton>
+                              <ToolBarButton>
+                                <ClientEvent name="onClick">&#xD;
+//var dataList = dgCm012.get(&quot;selection&quot;);&#xD;
+&#xD;
+//if(dataList.length==0){&#xD;
+//	dorado.MessageBox.alert(&quot;请至少选择一条要删除的数据！&quot;);&#xD;
+//}else{&#xD;
+	&#xD;
+	var options = {&#xD;
+		callback:function(){&#xD;
+			functions[&quot;delCm012&quot;](dsCm012.getData(&quot;#&quot;));&#xD;
+		},&#xD;
+		icon:&quot;WARNING&quot;&#xD;
+	};&#xD;
+	&#xD;
+	dorado.MessageBox.confirm(&quot;您确定要删除所勾选数据吗？&quot;,options);&#xD;
+//}&#xD;
+&#xD;
+</ClientEvent>
+                                <Property name="caption">删除</Property>
+                                <Property name="tags">typ42</Property>
+                                <Property name="icon">url(>skin>common/icons.gif) -140px 0px</Property>
+                              </ToolBarButton>
+                              <ToolBarButton>
+                                <ClientEvent name="onClick">var custNo = dsCm011.getData(&quot;#&quot;).get(&quot;custNo&quot;);&#xD;
+var data = dsCm012.getData(&quot;#&quot;);&#xD;
+&#xD;
+var options = {&#xD;
+	callback:function(){&#xD;
+		new dorado.widget.AjaxAction({&#xD;
+			parameter:{&#xD;
+				custNo:custNo,&#xD;
+				data:data&#xD;
+			},&#xD;
+			service:&quot;bsjc01BO#doDef1&quot;&#xD;
+		}).execute(function(){&#xD;
+			dsCm012.set(&quot;parameter&quot;,{&#xD;
+				custNo:custNo&#xD;
+			}).flushAsync();&#xD;
+		});&#xD;
+	},&#xD;
+	icon:&quot;WARNING&quot;&#xD;
+};&#xD;
+&#xD;
+dorado.MessageBox.confirm(&quot;您即将设置当前数据为默认？&quot;,options);&#xD;
+</ClientEvent>
+                                <Property name="caption">设置默认</Property>
+                                <Property name="tags">typ42</Property>
+                                <Property name="icon">url(>skin>common/icons.gif) -60px 0px</Property>
+                              </ToolBarButton>
+                              <ToolBarButton>
+                                <ClientEvent name="onClick">view.get(&quot;#dsTbcm012&quot;).getData(&quot;#&quot;).cancel();&#xD;
+</ClientEvent>
+                                <Property name="caption">返回</Property>
+                                <Property name="icon">url(>skin>common/icons.gif) -240px -240px</Property>
+                                <Property name="ignored">true</Property>
+                                <Property name="visible">false</Property>
+                              </ToolBarButton>
+                              <Fill/>
+                              <DataPilot>
+                                <Property name="dataSet">dsTbcm012</Property>
+                              </DataPilot>
+                            </ToolBar>
+                          </Children>
+                          <Tools/>
+                        </Panel>
+                        <Panel>
+                          <Buttons/>
+                          <Children>
+                            <DataSet id="dsTbcm012">
+                              <Property name="dataProvider">bsjc01BO#searchTbcm012</Property>
+                              <Property name="dataType">[dtTbcm012]</Property>
+                              <Property name="pageSize">5</Property>
+                              <Property name="loadMode">manual</Property>
+                            </DataSet>
+                            <UpdateAction id="saveTbcm012">
+                              <Property name="dataResolver">bsjc01BO#saveTbcm012</Property>
+                              <UpdateItem>
+                                <Property name="dataSet">dsTbcm012</Property>
+                                <Property name="dataPath">[#all]</Property>
+                              </UpdateItem>
+                            </UpdateAction>
+                            <AutoForm>
+                              <Property name="dataSet">dsTbcm012</Property>
+                              <Property name="cols">*,*,*</Property>
+                              <Property name="ignored">true</Property>
+                              <AutoFormElement>
+                                <Property name="name">bankAccount</Property>
+                                <Property name="property">bankAccount</Property>
+                                <Property name="labelWidth">110</Property>
+                                <Editor/>
+                              </AutoFormElement>
+                              <AutoFormElement layoutConstraint="colSpan:2">
+                                <Property name="name">bankName</Property>
+                                <Property name="property">bankName</Property>
+                                <Property name="labelWidth">110</Property>
+                                <Editor/>
+                              </AutoFormElement>
+                              <AutoFormElement>
+                                <Property name="name">bankNo</Property>
+                                <Property name="property">bankNo</Property>
+                                <Property name="labelWidth">110</Property>
+                                <Editor/>
+                              </AutoFormElement>
+                              <AutoFormElement>
+                                <Property name="name">bankHeadNo</Property>
+                                <Property name="property">bankHeadNo</Property>
+                                <Property name="labelWidth">110</Property>
+                                <Editor/>
+                              </AutoFormElement>
+                              <AutoFormElement>
+                                <Property name="name">bankHouseNo</Property>
+                                <Property name="property">bankHouseNo</Property>
+                                <Editor/>
+                              </AutoFormElement>
+                            </AutoForm>
+                            <DataGrid id="dgCm012">
+                              <Property name="dataSet">dsTbcm012</Property>
+                              <Property name="selectionMode">multiRows</Property>
+                              <Property name="readOnly">false</Property>
+                              <RowNumColumn/>
+                              <RowSelectorColumn>
+                                <Property name="ignored">true</Property>
+                                <Property name="visible">false</Property>
+                              </RowSelectorColumn>
+                              <DataColumn>
+                                <Property name="name">accountId</Property>
+                                <Property name="property">accountId</Property>
+                                <Property name="ignored">true</Property>
+                                <Property name="visible">false</Property>
+                                <Editor/>
+                              </DataColumn>
+                              <DataColumn name="bankAccount">
+                                <Property name="property">bankAccount</Property>
+                              </DataColumn>
+                              <DataColumn name="bankName">
+                                <Property name="property">bankName</Property>
+                              </DataColumn>
+                              <DataColumn name="bankNo">
+                                <Property name="property">bankNo</Property>
+                              </DataColumn>
+                              <DataColumn name="bankHeadNo">
+                                <Property name="property">bankHeadNo</Property>
+                              </DataColumn>
+                              <DataColumn name="bankHouseNo">
+                                <Property name="property">bankHouseNo</Property>
+                              </DataColumn>
+                              <DataColumn>
+                                <ClientEvent name="onRenderCell">	var position = &quot;&quot;;&#xD;
+	var img = $url('>skin>common/icons.gif');&#xD;
+	var memo = arg.data.get(&quot;defs01&quot;);&#xD;
+	if(memo==&quot;OK&quot;){&#xD;
+		position = &quot;-20px -0px&quot;;&#xD;
+		}&#xD;
+	jQuery(arg.dom).empty().xCreate({&#xD;
+    	tagName:&quot;span&quot;,&#xD;
+    style:{&#xD;
+        backgroundImage: &quot;url(&quot;+img+&quot;)&quot;,&#xD;
+        backgroundPosition: position,&#xD;
+        backgroundRepeat: &quot;no-repeat&quot;,&#xD;
+        display: &quot;inline-block&quot;,&#xD;
+        paddingLeft: &quot;20px&quot;,&#xD;
+        width: &quot;0&quot;,&#xD;
+        height: &quot;20px&quot;,&#xD;
+        lineHeight: &quot;20px&quot;,&#xD;
+        margin: &quot;0 1px&quot;&#xD;
+    }&#xD;
+});</ClientEvent>
+                                <Property name="property">defs01</Property>
+                                <Property name="caption">默认</Property>
+                                <Property name="name">defs01</Property>
+                                <Property name="readOnly">true</Property>
+                                <Property name="width">40</Property>
+                              </DataColumn>
+                            </DataGrid>
+                          </Children>
+                          <Tools/>
+                        </Panel>
+                      </Children>
+                      <Tools/>
+                    </Panel>
+                  </ControlTab>
+                  <ControlTab>
+                    <ClientEvent name="onClick">var createEmp = dsCm011.getData(&quot;#&quot;).get(&quot;createEmp&quot;);&#xD;
+if(createEmp){&#xD;
+	view.set(&quot;^typ51.disabled&quot;,false);&#xD;
+	var custNo = dsCm011.getData(&quot;#&quot;).get(&quot;custNo&quot;);&#xD;
+	dsBs015.set(&quot;parameter&quot;,{&#xD;
+		custNo:custNo&#xD;
+	}).flushAsync(function(returnData){&#xD;
+		if(returnData.entityCount==0){&#xD;
+			view.set(&quot;^typ52.disabled&quot;,true);&#xD;
+		}else{&#xD;
+			view.set(&quot;^typ52.disabled&quot;,false);&#xD;
+		}&#xD;
+	});&#xD;
+}else{&#xD;
+	view.set(&quot;^typ51.disabled&quot;,true);&#xD;
+	view.set(&quot;^typ52.disabled&quot;,true);&#xD;
+	dorado.MessageBox.alert(&quot;主档资料为空，不能操作明细档！&quot;);&#xD;
+}</ClientEvent>
+                    <Property name="caption">联系人信息维护</Property>
+                    <Panel>
+                      <Property name="height">400</Property>
+                      <Buttons/>
+                      <Children>
+                        <Panel>
+                          <Property name="contentOverflow">hidden</Property>
+                          <Buttons/>
+                          <Children>
+                            <ToolBar>
+                              <ToolBarButton>
+                                <ClientEvent name="onClick">var custNo = dsCm011.getData(&quot;#&quot;).get(&quot;custNo&quot;);&#xD;
+&#xD;
+var person = dsCm011.getData(&quot;#&quot;).get(&quot;dutyPerson&quot;);&#xD;
+&#xD;
+var phone = dsCm011.getData(&quot;#&quot;).get(&quot;phoneNumber&quot;);&#xD;
+dsBs015.insert({&#xD;
+	custNo:custNo,&#xD;
+	recMan:person,&#xD;
+	mobilPhone:phone,&#xD;
+	phoneNum:phone&#xD;
+});</ClientEvent>
+                                <Property name="caption">增行</Property>
+                                <Property name="tags">typ51</Property>
+                                <Property name="icon">url(>skin>common/icons.gif) -120px 0px</Property>
+                              </ToolBarButton>
+                              <ToolBarButton>
+                                <ClientEvent name="onClick">functions[&quot;saveBs015&quot;]();</ClientEvent>
+                                <Property name="caption">保存</Property>
+                                <Property name="tags">typ51</Property>
+                                <Property name="icon">url(>skin>common/icons.gif) -140px -20px</Property>
+                              </ToolBarButton>
+                              <ToolBarButton>
+                                <ClientEvent name="onClick">&#xD;
+//var dataList = dgBs015.get(&quot;selection&quot;);&#xD;
+&#xD;
+//if(dataList.length==0){&#xD;
+//	dorado.MessageBox.alert(&quot;请至少选择一条要删除的数据！&quot;);&#xD;
+//}else{&#xD;
+	&#xD;
+	var options = {&#xD;
+		callback:function(){&#xD;
+			functions[&quot;delBs015&quot;](dsBs015.getData(&quot;#&quot;));&#xD;
+		},&#xD;
+		icon:&quot;WARNING&quot;&#xD;
+	};&#xD;
+	&#xD;
+	dorado.MessageBox.confirm(&quot;您确定要删除所勾选数据吗？&quot;,options);&#xD;
+//}&#xD;
+&#xD;
+</ClientEvent>
+                                <Property name="caption">删除</Property>
+                                <Property name="tags">typ52</Property>
+                                <Property name="icon">url(>skin>common/icons.gif) -140px 0px</Property>
+                              </ToolBarButton>
+                              <ToolBarButton>
+                                <ClientEvent name="onClick">var custNo = dsCm011.getData(&quot;#&quot;).get(&quot;custNo&quot;);&#xD;
+var data = dsBs015.getData(&quot;#&quot;);&#xD;
+&#xD;
+var options = {&#xD;
+	callback:function(){&#xD;
+		new dorado.widget.AjaxAction({&#xD;
+			parameter:{&#xD;
+				custNo:custNo,&#xD;
+				data:data&#xD;
+			},&#xD;
+			service:&quot;bsjc01BO#doDef4&quot;&#xD;
+		}).execute(function(){&#xD;
+			dsBs015.set(&quot;parameter&quot;,{&#xD;
+				custNo:custNo&#xD;
+			}).flushAsync();&#xD;
+		});&#xD;
+	},&#xD;
+	icon:&quot;WARNING&quot;&#xD;
+};&#xD;
+&#xD;
+dorado.MessageBox.confirm(&quot;您即将设置当前数据为默认？&quot;,options);&#xD;
+</ClientEvent>
+                                <Property name="caption">设置默认</Property>
+                                <Property name="tags">typ52</Property>
+                                <Property name="icon">url(>skin>common/icons.gif) -60px 0px</Property>
+                              </ToolBarButton>
+                              <ToolBarButton>
+                                <ClientEvent name="onClick">view.get(&quot;#dsBs015&quot;).getData(&quot;#&quot;).cancel();&#xD;
+</ClientEvent>
+                                <Property name="caption">返回</Property>
+                                <Property name="icon">url(>skin>common/icons.gif) -240px -240px</Property>
+                                <Property name="ignored">true</Property>
+                                <Property name="visible">false</Property>
+                              </ToolBarButton>
+                              <Fill/>
+                              <DataPilot>
+                                <Property name="dataSet">dsBs015</Property>
+                              </DataPilot>
+                            </ToolBar>
+                          </Children>
+                          <Tools/>
+                        </Panel>
+                        <Panel>
+                          <Buttons/>
+                          <Children>
+                            <DataSet id="dsBs015">
+                              <Property name="dataType">[dtBs015]</Property>
+                              <Property name="dataProvider">bsjc01BO#searchTbbs015</Property>
+                              <Property name="loadMode">manual</Property>
+                              <Property name="pageSize">5</Property>
+                            </DataSet>
+                            <UpdateAction id="saveBs015">
+                              <Property name="dataResolver">bsjc01BO#saveTbBs015</Property>
+                              <UpdateItem>
+                                <Property name="dataSet">dsBs015</Property>
+                                <Property name="dataPath">[#all]</Property>
+                              </UpdateItem>
+                            </UpdateAction>
+                            <AutoForm>
+                              <Property name="dataSet">dsBs015</Property>
+                              <Property name="cols">*,*,*</Property>
+                              <Property name="ignored">true</Property>
+                              <AutoFormElement>
+                                <Property name="name">recMan</Property>
+                                <Property name="property">recMan</Property>
+                                <Editor/>
+                              </AutoFormElement>
+                              <AutoFormElement>
+                                <Property name="name">mobilPhone</Property>
+                                <Property name="property">mobilPhone</Property>
+                                <Editor/>
+                              </AutoFormElement>
+                              <AutoFormElement>
+                                <Property name="name">defs01</Property>
+                                <Property name="property">defs01</Property>
+                                <Property name="labelWidth">110</Property>
+                                <Editor/>
+                              </AutoFormElement>
+                              <AutoFormElement>
+                                <Property name="name">mail</Property>
+                                <Property name="property">mail</Property>
+                                <Editor/>
+                              </AutoFormElement>
+                              <AutoFormElement>
+                                <Property name="name">phoneNum</Property>
+                                <Property name="property">phoneNum</Property>
+                                <Editor/>
+                              </AutoFormElement>
+                              <AutoFormElement>
+                                <Property name="name">defs02</Property>
+                                <Property name="property">defs02</Property>
+                                <Property name="labelWidth">110</Property>
+                                <Editor/>
+                              </AutoFormElement>
+                              <AutoFormElement layoutConstraint="colSpan:3">
+                                <Property name="name">defs03</Property>
+                                <Property name="property">defs03</Property>
+                                <Editor/>
+                              </AutoFormElement>
+                            </AutoForm>
+                            <DataGrid id="dgBs015">
+                              <Property name="dataSet">dsBs015</Property>
+                              <Property name="selectionMode">multiRows</Property>
+                              <Property name="readOnly">false</Property>
+                              <RowNumColumn/>
+                              <RowSelectorColumn>
+                                <Property name="ignored">true</Property>
+                              </RowSelectorColumn>
+                              <DataColumn name="recMan">
+                                <Property name="property">recMan</Property>
+                              </DataColumn>
+                              <DataColumn name="mobilPhone">
+                                <Property name="property">mobilPhone</Property>
+                              </DataColumn>
+                              <DataColumn name="defs01">
+                                <Property name="property">defs01</Property>
+                              </DataColumn>
+                              <DataColumn name="mail">
+                                <Property name="property">mail</Property>
+                              </DataColumn>
+                              <DataColumn name="phoneNum">
+                                <Property name="property">phoneNum</Property>
+                              </DataColumn>
+                              <DataColumn name="defs02">
+                                <Property name="property">defs02</Property>
+                              </DataColumn>
+                              <DataColumn name="defs03">
+                                <Property name="property">defs03</Property>
+                              </DataColumn>
+                              <DataColumn name="memo">
+                                <ClientEvent name="onRenderCell">	var position = &quot;&quot;;&#xD;
+	var img = $url('>skin>common/icons.gif');&#xD;
+	var memo = arg.data.get(&quot;memo&quot;);&#xD;
+	if(memo==&quot;OK&quot;){&#xD;
+		position = &quot;-20px -0px&quot;;&#xD;
+		}&#xD;
+	jQuery(arg.dom).empty().xCreate({&#xD;
+    	tagName:&quot;span&quot;,&#xD;
+    style:{&#xD;
+        backgroundImage: &quot;url(&quot;+img+&quot;)&quot;,&#xD;
+        backgroundPosition: position,&#xD;
+        backgroundRepeat: &quot;no-repeat&quot;,&#xD;
+        display: &quot;inline-block&quot;,&#xD;
+        paddingLeft: &quot;20px&quot;,&#xD;
+        width: &quot;0&quot;,&#xD;
+        height: &quot;20px&quot;,&#xD;
+        lineHeight: &quot;20px&quot;,&#xD;
+        margin: &quot;0 1px&quot;&#xD;
+    }&#xD;
+});</ClientEvent>
+                                <Property name="property">memo</Property>
+                                <Property name="width">40</Property>
+                              </DataColumn>
+                            </DataGrid>
+                          </Children>
+                          <Tools/>
+                        </Panel>
+                      </Children>
+                      <Tools/>
+                    </Panel>
+                  </ControlTab>
+                </TabControl>
+              </Children>
+            </FieldSet>
+          </Children>
+          <Tools/>
+        </Panel>
+      </Children>
+      <Tools/>
+    </Panel>
+    <Dialog id="dialogGetCustNo">
+      <ClientEvent name="onShow">view.get(&quot;#dsCm0111&quot;).flushAsync();</ClientEvent>
+      <ClientEvent name="onClose">view.get(&quot;#dsCm0111&quot;).clear();&#xD;
+&#xD;
+new dorado.widget.AjaxAction({&#xD;
+    service: &quot;bsjc01BO#getMyCustNo&quot;&#xD;
+}).execute(function(custNo){&#xD;
+	if (custNo) {&#xD;
+		console.log(view.get(&quot;#defs02&quot;)._checked);&#xD;
+		if (custNo == dsCm011.getData(&quot;#&quot;).get(&quot;custNo&quot;)){&#xD;
+			view.get(&quot;#defs02&quot;).set(&quot;visible&quot;,true);&#xD;
+			view.get(&quot;#defs02&quot;).set(&quot;checked&quot;,true);&#xD;
+		}else {&#xD;
+			//view.get(&quot;#defs02&quot;).set(&quot;visible&quot;,false);&#xD;
+			view.get(&quot;#defs02&quot;).set(&quot;checked&quot;,false);&#xD;
+		}&#xD;
+	}else {&#xD;
+		view.get(&quot;#defs02&quot;).set(&quot;visible&quot;,true);&#xD;
+		view.get(&quot;#defs02&quot;).set(&quot;checked&quot;,false);&#xD;
+	}&#xD;
+});</ClientEvent>
+      <Property name="width">80%</Property>
+      <Property name="height">80%</Property>
+      <Property name="caption">客商信息</Property>
+      <Buttons/>
+      <Children>
+        <Trigger id="trigger1">
+          <ClientEvent name="onExecute">view.get(&quot;#dialogGetCustNo&quot;).show();&#xD;
+</ClientEvent>
+        </Trigger>
+        <DataSet id="dsQuery2">
+          <ClientEvent name="onReady">self.insert();&#xD;
+</ClientEvent>
+          <Property name="dataType">[dtQuery2]</Property>
+        </DataSet>
+        <Panel>
+          <Property name="exClassName">panel0</Property>
+          <Buttons/>
+          <Children>
+            <AutoForm>
+              <Property name="dataSet">dsQuery2</Property>
+              <Property name="cols">*,*,*</Property>
+              <AutoFormElement>
+                <Property name="name">custName</Property>
+                <Property name="property">custName</Property>
+                <Property name="label">客商简称</Property>
+                <Editor/>
+              </AutoFormElement>
+              <AutoFormElement>
+                <Property name="name">custCategery</Property>
+                <Property name="property">custCategery</Property>
+                <Editor/>
+              </AutoFormElement>
+              <AutoFormElement>
+                <Property name="name">email</Property>
+                <Property name="property">email</Property>
+                <Property name="labelWidth">110</Property>
+                <Property name="trigger">autoMappingDropDown1</Property>
+                <Editor/>
+              </AutoFormElement>
+            </AutoForm>
+          </Children>
+          <Tools/>
+        </Panel>
+        <ToolBar>
+          <Button>
+            <ClientEvent name="onClick">var data = null;&#xD;
+data = view.get(&quot;#dsQuery2&quot;).getData(&quot;#&quot;);&#xD;
+view.get(&quot;#dsCm0111&quot;).set(&quot;parameter&quot;,data).flushAsync();&#xD;
+</ClientEvent>
+            <Property name="caption">查询</Property>
+            <Property name="icon">	url(>skin>common/icons.gif) -40px -100px</Property>
+          </Button>
+          <Button>
+            <ClientEvent name="onClick">view.get(&quot;#dsQuery2&quot;).clear();&#xD;
+view.get(&quot;#dsQuery2&quot;).insert();</ClientEvent>
+            <Property name="caption">重置</Property>
+            <Property name="icon">url(>skin>common/icons.gif) -20px -200px</Property>
+          </Button>
+          <Fill/>
+          <DataPilot>
+            <Property name="dataSet">dsCm0111</Property>
+          </DataPilot>
+        </ToolBar>
+        <DataSet id="dsCm0111">
+          <Property name="dataType">[dtTbcm011]</Property>
+          <Property name="pageSize">10</Property>
+          <Property name="dataProvider">bsjc01BO#getCustNo</Property>
+          <Property name="loadMode">manual</Property>
+        </DataSet>
+        <DataGrid>
+          <ClientEvent name="onDataRowDoubleClick">view.set(&quot;^typ2.disabled&quot;,false);&#xD;
+var custNo = view.get(&quot;#dsCm0111&quot;).getData(&quot;#&quot;).get(&quot;custNo&quot;);&#xD;
+var taxNumber = view.get(&quot;#dsCm0111&quot;).getData(&quot;#&quot;).get(&quot;taxNumber&quot;);&#xD;
+dsCm011.set(&quot;parameter&quot;,{&#xD;
+	custNo:custNo&#xD;
+}).flushAsync(function(){&#xD;
+	dsBs016.set(&quot;parameter&quot;,{&#xD;
+	custNo:custNo&#xD;
+}).flushAsync(function(returnData){&#xD;
+		view.get(&quot;#dsQuery1&quot;).getData(&quot;#&quot;).set(&quot;custNo&quot;,custNo);&#xD;
+		info.doSet(&quot;text&quot;,&quot;查询客商【&quot;+custNo+&quot;】成功！&quot;);&#xD;
+		view.get(&quot;#tabControl&quot;).set(&quot;currentTab&quot;,&quot;main&quot;);&#xD;
+	if(returnData==null){&#xD;
+		dsBs016.insert({&#xD;
+			custNo:custNo,&#xD;
+			taxNumber : taxNumber&#xD;
+		});&#xD;
+		//设置状态&#xD;
+		view.set(&quot;^typ61.disabled&quot;,false);&#xD;
+		view.set(&quot;^typ62.disabled&quot;,true);&#xD;
+	}else{&#xD;
+		view.set(&quot;^typ61.disabled&quot;,false);&#xD;
+		view.set(&quot;^typ62.disabled&quot;,false);&#xD;
+	}&#xD;
+});&#xD;
+});&#xD;
+&#xD;
+view.get(&quot;#dialogGetCustNo&quot;).close();&#xD;
+</ClientEvent>
+          <Property name="dataSet">dsCm0111</Property>
+          <Property name="readOnly">true</Property>
+          <DataColumn name="custNo">
+            <Property name="property">custNo</Property>
+            <Property name="caption">客商编码</Property>
+          </DataColumn>
+          <DataColumn name="custName">
+            <Property name="property">custName</Property>
+            <Property name="caption">客商简称</Property>
+          </DataColumn>
+          <DataColumn name="dutyPerson">
+            <Property name="property">dutyPerson</Property>
+            <Property name="caption">责任人</Property>
+          </DataColumn>
+          <DataColumn name="compChin">
+            <Property name="property">compChin</Property>
+            <Property name="caption">公司名称</Property>
+            <Property name="width">300</Property>
+          </DataColumn>
+          <DataColumn>
+            <ClientEvent name="onRenderCell">var data = arg.data.get(&quot;custCategery&quot;);&#xD;
+&#xD;
+if(data){&#xD;
+	var datas = data.split(&quot;,&quot;);&#xD;
+	&#xD;
+	var name = datas[0];&#xD;
+	var names = &quot;&quot;;&#xD;
+	switch(name){&#xD;
+	case &quot;1&quot;:&#xD;
+		break;&#xD;
+	&#xD;
+	case &quot;2&quot;:&#xD;
+		arg.dom.style.background = null;&#xD;
+		break;&#xD;
+		&#xD;
+	case &quot;3&quot;:&#xD;
+		arg.dom.style.background = null;&#xD;
+		break;&#xD;
+		&#xD;
+	case &quot;4&quot;:&#xD;
+		arg.dom.style.background = null;&#xD;
+		break;&#xD;
+	case &quot;5&quot;:&#xD;
+		arg.dom.style.background = null;&#xD;
+		break;&#xD;
+	case &quot;6&quot;:&#xD;
+		arg.dom.style.background = null;&#xD;
+		break;&#xD;
+	case &quot;7&quot;:&#xD;
+		arg.dom.style.background = null;&#xD;
+		break;&#xD;
+	case &quot;8&quot;:&#xD;
+		arg.dom.style.background = null;&#xD;
+		break;	&#xD;
+		&#xD;
+	default:&#xD;
+		arg.dom.style.background = null;&#xD;
+		break;&#xD;
+	&#xD;
+}&#xD;
+for(var i=1;i&lt;datas.length;i++){&#xD;
+	var value = datas[i];&#xD;
+	if(value!=&quot;&quot;){&#xD;
+		&#xD;
+	}&#xD;
+}&#xD;
+&#xD;
+}&#xD;
+</ClientEvent>
+            <Property name="name">custCategery</Property>
+            <Property name="property">custCategery</Property>
+            <Property name="caption">客商类别</Property>
+            <Property name="ignored">true</Property>
+            <Editor/>
+          </DataColumn>
+          <DataColumn>
+            <Property name="name">email</Property>
+            <Property name="property">email</Property>
+            <Property name="caption">公司所在地</Property>
+            <Editor/>
+          </DataColumn>
+        </DataGrid>
+      </Children>
+      <Tools/>
+    </Dialog>
+    <Dialog id="dialogUpdFile">
+      <ClientEvent name="onShow">view.get(&quot;#dsTbdr01&quot;).set(&quot;parameter&quot;,{&#xD;
+	id:dsCm011.getData(&quot;#&quot;).get(&quot;pkCm011&quot;)&#xD;
+}).flushAsync();&#xD;
+</ClientEvent>
+      <Property name="width">60%</Property>
+      <Property name="height">70%</Property>
+      <Buttons/>
+      <Children>
+        <Panel id="panelUploadFile">
+          <Property name="caption">附件管理</Property>
+          <Buttons/>
+          <Children>
+            <ToolBar>
+              <ToolBarButton id="tbb_uploadFile">
+                <Property name="caption">上传附件</Property>
+                <Property name="action">uploadAction</Property>
+                <Property name="icon">url(>skin>common/icons.gif) -140px -120px</Property>
+              </ToolBarButton>
+              <ToolBarButton id="tbb_deleteFile">
+                <ClientEvent name="onClick">var fileList = view.get(&quot;#dgFile.selection&quot;);&#xD;
+if(fileList.length>0){&#xD;
+	dorado.MessageBox.confirm(&quot;是否确定删除？&quot;,function(){&#xD;
+		fileList.each(function(ent){&#xD;
+			ent.remove();&#xD;
+		});&#xD;
+		view.get(&quot;#deleteFileAction&quot;).execute(function(){&#xD;
+			view.get(&quot;#dsTbdr01&quot;).flushAsync();&#xD;
+		});&#xD;
+	});&#xD;
+}else{&#xD;
+	dorado.MessageBox.alert(&quot;请勾选需要删除的附件！&quot;);&#xD;
+}&#xD;
+</ClientEvent>
+                <Property name="caption">删除附件</Property>
+                <Property name="icon">url(>skin>common/icons.gif) -140px -0px</Property>
+              </ToolBarButton>
+              <ToolBarButton id="tbb_downloadFile">
+                <Property name="caption">下载文件</Property>
+                <Property name="icon">url(>skin>common/icons.gif) -80px -20px</Property>
+                <Property name="visible">false</Property>
+              </ToolBarButton>
+              <ToolBarButton id="tbb_close">
+                <ClientEvent name="onClick">	view.get(&quot;#dialogUpdFile&quot;).close();&#xD;
+</ClientEvent>
+                <Property name="caption">关闭</Property>
+              </ToolBarButton>
+            </ToolBar>
+            <Panel>
+              <Property name="caption">已上传的附件</Property>
+              <Buttons/>
+              <Children>
+                <DataSet id="dsTbdr01">
+                  <Property name="dataType">[dtTbdr01]</Property>
+                  <Property name="dataProvider">tbdr01BO#loadFiles</Property>
+                  <Property name="loadMode">manual</Property>
+                  <Property name="pageSize">20</Property>
+                </DataSet>
+                <ProgressBar id="pbUpload"/>
+                <DataGrid id="dgFile">
+                  <Property name="dataSet">dsTbdr01</Property>
+                  <Property name="selectionMode">multiRows</Property>
+                  <RowSelectorColumn/>
+                  <RowNumColumn/>
+                  <DataColumn name="linkId">
+                    <Property name="property">linkId</Property>
+                    <Property name="caption">文件编号</Property>
+                  </DataColumn>
+                  <DataColumn>
+                    <Property name="property">fileName</Property>
+                    <Property name="caption">文件名</Property>
+                    <Property name="name">fileName</Property>
+                    <Property name="editable">false</Property>
+                    <Property name="readOnly">true</Property>
+                  </DataColumn>
+                  <DataColumn>
+                    <Property name="property">upTime</Property>
+                    <Property name="caption">上传时间</Property>
+                    <Property name="name">upTime</Property>
+                    <Property name="editable">false</Property>
+                    <Property name="readOnly">true</Property>
+                  </DataColumn>
+                  <DataColumn>
+                    <ClientEvent name="onRenderCell">var entity =arg.data;&#xD;
+if(entity){&#xD;
+	var fileName = entity.get(&quot;fileName&quot;);&#xD;
+	var upFileName = entity.get(&quot;upFileName&quot;);&#xD;
+	var filePath = entity.get(&quot;filePath&quot;);&#xD;
+	var strs= new Array();&#xD;
+	strs = fileName.split(&quot;.&quot;);&#xD;
+	var type = strs[strs.length-1];&#xD;
+	&#xD;
+	jQuery(arg.dom).empty();&#xD;
+	jQuery(arg.dom).xCreate([{&#xD;
+	    tagName: &quot;A&quot;,&#xD;
+	    href: &quot;#&quot;,&#xD;
+	    content: &quot;点击预览&quot;,&#xD;
+	    onclick: function(){&#xD;
+			if (type == 'jpg' || type == 'bmp' || type == 'png' || type == 'gif' || type == 'tiff') {&#xD;
+				var src = &quot;http://localhost:8080/kits/showImg.do?filePath=&quot; + filePath + &quot;&amp;fileName=&quot; + fileName;&#xD;
+				var src1 = src.replace(/\s+/g,&quot;&quot;);&#xD;
+				view.get(&quot;#qqqqq&quot;).show();&#xD;
+				document.getElementById(&quot;images&quot;).src = src1;&#xD;
+			}else{&#xD;
+			dorado.MessageBox.alert(&quot;您所选的文件不是图片,无法在线预览！&quot;);&#xD;
+			}		&#xD;
+		}&#xD;
+	},{&#xD;
+		tagName: &quot;A&quot;,&#xD;
+    	href: &quot;${pageContext.request.contextPath}/downloadFile?type=a&amp;id=&quot;+entity.get('dr01Id'),&#xD;
+    	content: &quot;点击下载&quot;,&#xD;
+		style:&quot;padding-left:20px&quot;&#xD;
+	}]);&#xD;
+}&#xD;
+&#xD;
+&#xD;
+</ClientEvent>
+                    <Property name="caption">附件管理</Property>
+                    <Property name="align">center</Property>
+                  </DataColumn>
+                </DataGrid>
+                <UploadAction id="uploadAction">
+                  <ClientEvent name="beforeFileUpload">view.set('#pbUpload.value',1);&#xD;
+//附件参数&#xD;
+//attachFile(self);&#xD;
+self.set(&quot;parameter&quot;,{&#xD;
+	&quot;id&quot;:view.get(&quot;#dsTbcm011&quot;).getData(&quot;#&quot;).get(&quot;pkCm011&quot;),&#xD;
+	&quot;pathRef&quot;:&quot;poFilePath&quot;&#xD;
+});&#xD;
+</ClientEvent>
+                  <ClientEvent name="onUploadProgress">view.set('#pbUpload.value',arg.total.percent);</ClientEvent>
+                  <ClientEvent name="onUploadComplete">view.get(&quot;#dsTbdr01&quot;).set(&quot;parameter&quot;,{&#xD;
+	id:dsCm011.getData(&quot;#&quot;).get(&quot;pkCm011&quot;)&#xD;
+}).flushAsync();&#xD;
+</ClientEvent>
+                  <ClientEvent name="onFileUploaded"> //var returnValue = arg.returnValue;//获取FileResolver方法返回的信息&#xD;
+   //dorado.MessageBox.alert(returnValue);</ClientEvent>
+                  <Property name="fileResolver">uploadFiles#process</Property>
+                  <Property name="selectionMode">multiFiles</Property>
+                  <Property name="maxFileSize">5MB</Property>
+                  <Filters/>
+                </UploadAction>
+                <UpdateAction id="deleteFileAction">
+                  <Property name="dataResolver">tbdr01BO#deleteAttachedFile</Property>
+                  <Property name="successMessage">删除成功!</Property>
+                  <UpdateItem>
+                    <Property name="dataSet">dsTbdr01</Property>
+                  </UpdateItem>
+                </UpdateAction>
+              </Children>
+              <Tools/>
+            </Panel>
+            <Dialog id="qqqqq">
+              <Property name="visible">false</Property>
+              <Property name="hideMode">display</Property>
+              <Property name="height">400</Property>
+              <Property name="width">600</Property>
+              <Buttons/>
+              <Children>
+                <HtmlContainer id="picture">
+                  <Property name="height">100%</Property>
+                  <Property name="hideMode">display</Property>
+                  <Property name="content">&lt;div>&lt;img id=&quot;images&quot; src=&quot;?&quot;z-index=&quot;-1&quot; style=&quot;width:100%;height:100%&quot;&lt;/div></Property>
+                  <Property name="width">100%</Property>
+                </HtmlContainer>
+              </Children>
+              <Tools/>
+            </Dialog>
+          </Children>
+          <Tools/>
+        </Panel>
+      </Children>
+      <Tools/>
+    </Dialog>
+  </View>
+</ViewConfig>

@@ -1,0 +1,785 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ViewConfig>
+  <Arguments/>
+  <Context/>
+  <Model>
+    <DataType name="dtQuery">
+      <PropertyDef name="processCode">
+        <Property></Property>
+        <Property name="label">工序代码</Property>
+        <Validator name="validator1" type="length">
+          <Property name="maxLength">10</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="processName">
+        <Property></Property>
+        <Property name="label">工序名称</Property>
+        <Validator name="validator1" type="length">
+          <Property name="maxLength">100</Property>
+        </Validator>
+      </PropertyDef>
+    </DataType>
+    <DataType name="dtTbpr01">
+      <Property name="creationType">com.kits.inms.bs.domain.Tbpr01</Property>
+      <PropertyDef name="pkPr01">
+        <Property></Property>
+        <Property name="label">工序主键</Property>
+      </PropertyDef>
+      <PropertyDef name="compId">
+        <Property></Property>
+        <Property name="label">公司别</Property>
+      </PropertyDef>
+      <PropertyDef name="processCode">
+        <Property></Property>
+        <Property name="label">工序代码</Property>
+        <Property name="required">true</Property>
+        <Validator name="validator1" type="length">
+          <Property name="minLength">1</Property>
+          <Property name="maxLength">10</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="processName">
+        <Property></Property>
+        <Property name="label">工序名称</Property>
+        <Property name="required">true</Property>
+        <Validator name="validator1" type="length">
+          <Property name="minLength">1</Property>
+          <Property name="maxLength">100</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="processRemark">
+        <Property></Property>
+        <Property name="label">工序备注</Property>
+        <Validator name="validator1" type="length">
+          <Property name="maxLength">200</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="createEmpNo">
+        <Property></Property>
+        <Property name="label">创建人员</Property>
+        <Property name="mapping">
+          <Property name="mapValues">${dorado.getDataProvider(&quot;commonUtils#getLoginUser&quot;).getResult()}</Property>
+        </Property>
+      </PropertyDef>
+      <PropertyDef name="createDate">
+        <Property name="dataType">Date</Property>
+        <Property name="displayFormat">Y-m-d H:i:s</Property>
+        <Property name="label">创建时间</Property>
+      </PropertyDef>
+      <PropertyDef name="modifyEmpNo">
+        <Property></Property>
+        <Property name="label">修改人员</Property>
+        <Property name="mapping">
+          <Property name="mapValues">${dorado.getDataProvider(&quot;commonUtils#getLoginUser&quot;).getResult()}</Property>
+        </Property>
+      </PropertyDef>
+      <PropertyDef name="modifyDate">
+        <Property name="dataType">Date</Property>
+        <Property name="displayFormat">Y-m-d H:i:s</Property>
+        <Property name="label">修改时间</Property>
+      </PropertyDef>
+      <PropertyDef name="defs01">
+        <Property></Property>
+        <Property name="label">自定义字符1</Property>
+      </PropertyDef>
+      <PropertyDef name="defs02">
+        <Property></Property>
+        <Property name="label">自定义字符2</Property>
+      </PropertyDef>
+      <PropertyDef name="defs03">
+        <Property></Property>
+        <Property name="label">自定义字符3</Property>
+      </PropertyDef>
+      <PropertyDef name="defs04">
+        <Property></Property>
+        <Property name="label">自定义字符4</Property>
+      </PropertyDef>
+      <PropertyDef name="defs05">
+        <Property></Property>
+        <Property name="label">自定义字符5</Property>
+      </PropertyDef>
+      <PropertyDef name="defb01">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">自定义数值1</Property>
+      </PropertyDef>
+      <PropertyDef name="defb02">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">自定义数值2</Property>
+      </PropertyDef>
+      <PropertyDef name="defb03">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">自定义数值3</Property>
+      </PropertyDef>
+      <PropertyDef name="defb04">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">自定义数值4</Property>
+      </PropertyDef>
+      <PropertyDef name="defb05">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">自定义数值5</Property>
+      </PropertyDef>
+      <PropertyDef name="defm01">
+        <Property></Property>
+        <Property name="label">自定义备注1</Property>
+      </PropertyDef>
+      <PropertyDef name="defm02">
+        <Property></Property>
+        <Property name="label">自定义备注2</Property>
+      </PropertyDef>
+    </DataType>
+  </Model>
+  <View>
+    <ClientEvent name="onReady">window.dsQuery = view.get(&quot;#dsQuery&quot;);&#xD;
+window.dataSet2 = view.get(&quot;#dataSet2&quot;);&#xD;
+window.dsTbpr01 = view.get(&quot;#dsTbpr01&quot;);&#xD;
+window.dataSet1 = view.get(&quot;#dataSet1&quot;);//新增的时候数据没有刷新&#xD;
+&#xD;
+window.dgTbpr01 = view.get(&quot;#dgTbpr01&quot;);&#xD;
+window.dgDataSet2 = view.get(&quot;#dgDataSet2&quot;);&#xD;
+&#xD;
+window.dialogTbpr01 = view.get(&quot;#dialogTbpr01&quot;);&#xD;
+window.dialogDataSet2 = view.get(&quot;#dialogDataSet2&quot;);&#xD;
+&#xD;
+//window.userName='${session.getAttribute(&quot;BDF_LOGIN_USER_&quot;).getCname()}';&#xD;
+window.userName=&quot;${loginUsername}&quot;;			//登录人&#xD;
+&#xD;
+//window.info = view.get(&quot;#info&quot;);&#xD;
+//info.doSet(&quot;text&quot;,&quot;欢迎使用本系统 ...&quot;);</ClientEvent>
+    <ClientEvent name="onCreate">functions = {&#xD;
+	/****************************准备工作*********************************************************/&#xD;
+	/**&#xD;
+	 * 0.准备工作&#xD;
+	 */&#xD;
+	/** 0-1.获取长度32的唯一字符串*/&#xD;
+	&quot;guid&quot;:function () { &#xD;
+	   return ((((1+Math.random())*0x10000)|0).toString(16).substring(1)+(((1+Math.random())*0x10000)|0).toString(16).substring(1)+&quot;-&quot;+(((1+Math.random())*0x10000)|0).toString(16).substring(1)+&quot;-&quot;+(((1+Math.random())*0x10000)|0).toString(16).substring(1)+&quot;-&quot;+(((1+Math.random())*0x10000)|0).toString(16).substring(1)+&quot;-&quot;+(((1+Math.random())*0x10000)|0).toString(16).substring(1)+(((1+Math.random())*0x10000)|0).toString(16).substring(1)+(((1+Math.random())*0x10000)|0).toString(16).substring(1));&#xD;
+	   //return (&quot;A&quot;+(((1+Math.random())*10000).toString(5).substring(0,5)));&#xD;
+	},&#xD;
+	&#xD;
+	/** 0-2.获取公司别*/&#xD;
+	&quot;getCompId&quot;:function () { &#xD;
+		var compId = &quot;${loginUser.companyId}&quot;;&#xD;
+	    return compId;&#xD;
+	},&#xD;
+	&#xD;
+	/** 0-3.获取当前时间yyyyMMddHHmmss*/&#xD;
+	&quot;getNowFormatDate&quot;: function(){&#xD;
+	    var date = new Date();&#xD;
+	    var seperator1 = &quot;-&quot;;&#xD;
+	    var seperator2 = &quot;:&quot;;&#xD;
+	    var month = date.getMonth() + 1;&#xD;
+	    var strDate = date.getDate();&#xD;
+	    if (month >= 1 &amp;&amp; month &lt;= 9) {&#xD;
+	        month = &quot;0&quot; + month;&#xD;
+	    }&#xD;
+	    if (strDate >= 0 &amp;&amp; strDate &lt;= 9) {&#xD;
+	        strDate = &quot;0&quot; + strDate;&#xD;
+	    }&#xD;
+	    var currentdate = date.getFullYear() + seperator1 + month + seperator1 + strDate&#xD;
+	            + &quot; &quot; + date.getHours() + seperator2 + date.getMinutes()&#xD;
+	            + seperator2 + date.getSeconds();&#xD;
+	    return currentdate;&#xD;
+	},   &#xD;
+	&#xD;
+	/****************************查询*********************************************************/&#xD;
+	/**&#xD;
+     * 1.“查询”按钮---Onclick事件---searchOnclick函数&#xD;
+     * 修改内容：日期查询条件做校验，不通过给出页面提示信息。&#xD;
+     */&#xD;
+    &quot;searchOnclick&quot;: function(){&#xD;
+		var entity = view.get(&quot;#dsQuery.data:#&quot;);&#xD;
+		if(entity){&#xD;
+			view.get(&quot;#dsTbpr01&quot;).set(&quot;parameter&quot;,{&#xD;
+				&quot;compId&quot;: functions[&quot;getCompId&quot;](),			//公司别&#xD;
+				&quot;processCode&quot;: entity.get(&quot;processCode&quot;),	//工序代码&#xD;
+				&quot;processName&quot;: entity.get(&quot;processName&quot;)	//工序名称&#xD;
+			}).flushAsync(function(datas){&#xD;
+				if(datas.entityCount&lt;=0){&#xD;
+					dorado.MessageBox.alert(&quot;没有您要查询的数据！&quot;);&#xD;
+					//info.doSet(&quot;text&quot;,&quot;没有您要查询的数据！&quot;);&#xD;
+				}else{&#xD;
+					view.set(&quot;^saveButton0.disabled&quot;,false);&#xD;
+					//info.doSet(&quot;text&quot;,&quot;查询资料成功！&quot;);&#xD;
+				}&#xD;
+			});&#xD;
+		}&#xD;
+    },&#xD;
+	&#xD;
+	/****************************重置*********************************************************/&#xD;
+	/**&#xD;
+     * 2.“重置”按钮---Onclick事件---直接执行代码&#xD;
+     */&#xD;
+	&#xD;
+	/****************************资料新增*********************************************************/&#xD;
+	/**&#xD;
+     * 3.“资料新增”按钮---Onclick事件---insertOnclick函数(---dialogTbpr01.show()函数)&#xD;
+     * 修改内容：新增的数据“修改人员”“修改时间”不能有值&#xD;
+     */&#xD;
+    &quot;insertOnclick&quot;: function(){&#xD;
+		dsTbpr01.insert({&#xD;
+			//pkDf06:functions[&quot;guid&quot;](),		//键值&#xD;
+			//compId:functions[&quot;getCompId&quot;](),  //公司别&#xD;
+			//createEmpNo:userName,       		//创建者&#xD;
+			//createDate:new Date()      		//创建时间&#xD;
+			//modifyUser:userName,     			//修改者&#xD;
+			//modifyDate:new Date(),   			//修改时间&#xD;
+		});&#xD;
+		dialogTbpr01.show();  &#xD;
+		&#xD;
+		//控制编辑权限&#xD;
+		view.set(&quot;^saveButton1.disabled&quot;,false);&#xD;
+		view.set(&quot;^saveButton2.disabled&quot;,true);&#xD;
+		view.set(&quot;^saveButton3.disabled&quot;,true);		&#xD;
+    },&#xD;
+	&#xD;
+	/****************************删除*********************************************************/&#xD;
+	/**&#xD;
+     * 4.“删除”按钮---Onclick事件---delOnclick函数&#xD;
+     * dgTbpr01.get(&quot;selection&quot;).slice(0).each(function(entity){})&#xD;
+	 * var entitys = dgTbpr01.get(&quot;selection&quot;).slice(0);&#xD;
+     */&#xD;
+    &quot;delOnclick&quot;: function(){&#xD;
+		var selections = dgTbpr01.get(&quot;selection&quot;).slice(0);&#xD;
+		if(selections.length>=1){&#xD;
+			dorado.MessageBox.confirm(&quot;您确定要删除勾选的数据吗？&quot;, function(){&#xD;
+				selections.each(function(selection){&#xD;
+					selection.remove();&#xD;
+				});&#xD;
+				&#xD;
+				view.get(&quot;#saveTbpr01&quot;).execute(function(){&#xD;
+					//info.doSet(&quot;text&quot;,&quot;删除成功！&quot;);&#xD;
+					//view.set(&quot;^saveButton2.disabled&quot;,true);&#xD;
+					//dsTbpr01.set(&quot;parameter&quot;,null).flushAsync();	//刷新数据&#xD;
+				});&#xD;
+			});&#xD;
+		}else{&#xD;
+			dorado.MessageBox.alert(&quot;请勾选要删除的数据!&quot;);&#xD;
+			//info.doSet(&quot;text&quot;,&quot;请勾选要删除的数据！&quot;);&#xD;
+		}		&#xD;
+    },&#xD;
+	&#xD;
+	/****************************新增*********************************************************/&#xD;
+	/**&#xD;
+     * 5.dialogTbpr01弹出框中“新增”(相当于保存)按钮---Onclick事件---addSaveOnclick函数&#xD;
+     */&#xD;
+    &quot;addSaveOnclick&quot;: function(){&#xD;
+		var data = dsTbpr01.getData(&quot;#&quot;);&#xD;
+		if(data){&#xD;
+			if(data.getOldData()){&#xD;
+				data.set(&quot;pkPr01&quot;,functions[&quot;guid&quot;]());				//键值&#xD;
+				//data.set(&quot;compId&quot;,functions[&quot;getCompId&quot;]());		//公司别&#xD;
+				data.set(&quot;createEmpNo&quot;,userName);					//创建人员&#xD;
+				data.set(&quot;createDate&quot;,new Date());					//创建时间&#xD;
+				data.set(&quot;modifyEmpNo&quot;,null);     					//修改人员&#xD;
+				data.set(&quot;modifyDate&quot;,null);						//修改时间&#xD;
+				&#xD;
+				dsTbpr01.insert(data);&#xD;
+			}else{&#xD;
+				data.set(&quot;pkPr01&quot;,functions[&quot;guid&quot;]());			//键值&#xD;
+				data.set(&quot;compId&quot;,functions[&quot;getCompId&quot;]());	//公司别&#xD;
+				data.set(&quot;createEmpNo&quot;,userName);				//创建人员&#xD;
+				data.set(&quot;createDate&quot;,new Date());				//创建时间&#xD;
+				//data.set(&quot;modifyEmpNo&quot;,null);     			//修改人员&#xD;
+				//data.set(&quot;modifyDate&quot;,null);					//修改时间&#xD;
+			}&#xD;
+			&#xD;
+			var processCode = data.get(&quot;processCode&quot;);			//工序代码&#xD;
+			var processName = data.get(&quot;processName&quot;);			//工序名称&#xD;
+			if(processCode==null || processCode==&quot;&quot;){&#xD;
+				dorado.MessageBox.alert(&quot;工序代码不能为空！&quot;); //valueA Can not be null&#xD;
+				//info.doSet(&quot;text&quot;,&quot;工序代码不能为空！&quot;);&#xD;
+				return;&#xD;
+			}else if(processName==null || processName==&quot;&quot;){&#xD;
+				dorado.MessageBox.alert(&quot;工序名称不能为空！&quot;);&#xD;
+				//info.doSet(&quot;text&quot;,&quot;工序名称不能为空！&quot;);&#xD;
+				return;&#xD;
+			}else{&#xD;
+				var flag = 0;&#xD;
+				var compId = data.get(&quot;compId&quot;);&#xD;
+				dataSet1.set(&quot;parameter&quot;,{&#xD;
+					&quot;compId&quot;: compId,				//公司别&#xD;
+					&quot;processCode&quot;: processCode		//工序代码&#xD;
+				}).flushAsync(function(entitys){&#xD;
+					//var entitys = dataSet1.getData();&#xD;
+					entitys.each(function(entity){&#xD;
+						var compIds = entity.get(&quot;compId&quot;);&#xD;
+						var processCodes = entity.get(&quot;processCode&quot;);&#xD;
+						if(compIds==compId &amp;&amp; processCodes==processCode){&#xD;
+							flag++;&#xD;
+							return;&#xD;
+						}&#xD;
+					});&#xD;
+					&#xD;
+					if(flag&lt;=0){&#xD;
+						//dorado.MessageBox.confirm(&quot;您确认要新增该数据吗？&quot;,function(){ &#xD;
+							//保存数据操作&#xD;
+							view.get(&quot;#saveTbpr01&quot;).execute(function(){&#xD;
+								var oldSaveButton2 = view.id(&quot;button2&quot;).get(&quot;disabled&quot;);&#xD;
+								var oldSaveButton3 = view.id(&quot;button3&quot;).get(&quot;disabled&quot;);&#xD;
+								if(oldSaveButton2==false &amp;&amp; oldSaveButton3==false){&#xD;
+									dsTbpr01.set(&quot;parameter&quot;,null).flushAsync();	//刷新数据&#xD;
+								}else{&#xD;
+									view.set(&quot;^saveButton1.disabled&quot;,false);&#xD;
+									view.set(&quot;^saveButton2.disabled&quot;,false);&#xD;
+									view.set(&quot;^saveButton3.disabled&quot;,false);&#xD;
+								}&#xD;
+								&#xD;
+								//info.doSet(&quot;text&quot;,&quot;新增成功！&quot;);&#xD;
+								//dataSet2.set(&quot;parameter&quot;,null).flushAsync();		//刷新数据&#xD;
+							});&#xD;
+						//})&#xD;
+					}else{&#xD;
+						dorado.MessageBox.alert(&quot;该工序代码已存在！&quot;);&#xD;
+						//info.doSet(&quot;text&quot;,&quot;该工序代码已存在！&quot;);&#xD;
+						return;&#xD;
+					}&#xD;
+				});&#xD;
+			}	&#xD;
+		}&#xD;
+    },&#xD;
+	&#xD;
+	/****************************修改*********************************************************/&#xD;
+	/**&#xD;
+     * 6.dialogTbpr01弹出框中“修改”(相当于保存)按钮---Onclick事件---updateSaveOnclick函数&#xD;
+     */&#xD;
+	&quot;updateSaveOnclick&quot;: function(){&#xD;
+		var data = dsTbpr01.getData(&quot;#&quot;);&#xD;
+		if(data.state==2){&#xD;
+			var processCode = data.get(&quot;processCode&quot;);			//工序代码&#xD;
+			var processName = data.get(&quot;processName&quot;);			//工序名称&#xD;
+			if(processCode==null || processCode==&quot;&quot;){&#xD;
+				dorado.MessageBox.alert(&quot;工序代码不能为空！&quot;); //valueA Can not be null&#xD;
+				//info.doSet(&quot;text&quot;,&quot;工序代码不能为空！&quot;);&#xD;
+				return;&#xD;
+			}else if(processName==null || processName==&quot;&quot;){&#xD;
+				dorado.MessageBox.alert(&quot;工序名称不能为空！&quot;);&#xD;
+				//info.doSet(&quot;text&quot;,&quot;工序名称不能为空！&quot;);&#xD;
+				return;&#xD;
+			}else{&#xD;
+				var flag=0;&#xD;
+				if(data.getOldData().processCode != processCode){&#xD;
+					flag++;&#xD;
+				}&#xD;
+				if(flag&lt;=0){&#xD;
+					//dorado.MessageBox.confirm(&quot;您确认要修改该数据吗？&quot;,function(){&#xD;
+						//设置修改者和修改时间&#xD;
+						data.set(&quot;modifyEmpNo&quot;,userName);     	//修改人员&#xD;
+						data.set(&quot;modifyDate&quot;,new Date());		//修改时间&#xD;
+						&#xD;
+						//保存数据操作&#xD;
+						view.get(&quot;#saveTbpr01&quot;).execute(function(){&#xD;
+							view.set(&quot;^saveButton1.disabled&quot;,false);&#xD;
+							view.set(&quot;^saveButton2.disabled&quot;,false);&#xD;
+							view.set(&quot;^saveButton3.disabled&quot;,false);&#xD;
+							&#xD;
+							//info.doSet(&quot;text&quot;,&quot;修改成功！&quot;);&#xD;
+						});&#xD;
+					//})&#xD;
+				}else{&#xD;
+					//dorado.MessageBox.alert(&quot;工序代码不可修改！&quot;);&#xD;
+					info.doSet(&quot;text&quot;,&quot;工序代码不可修改！&quot;);&#xD;
+					return;&#xD;
+				}&#xD;
+			}&#xD;
+		}else{&#xD;
+			dorado.MessageBox.alert(&quot;没有数据需要修改！&quot;);&#xD;
+			//info.doSet(&quot;text&quot;,&quot;没有数据需要修改！&quot;);&#xD;
+		}&#xD;
+    },&#xD;
+	&#xD;
+	/****************************删除*********************************************************/&#xD;
+	/**&#xD;
+     * 7.dialogTbpr01弹出框中“删除”按钮---Onclick事件---delCurrentOnclick函数&#xD;
+     */&#xD;
+	&quot;delCurrentOnclick&quot;: function(){&#xD;
+		var data = view.get(&quot;#dsTbpr01.data:#&quot;);&#xD;
+		if(data){&#xD;
+			dorado.MessageBox.confirm(&quot;您确定要删除该数据吗？&quot;, function(){&#xD;
+				data.remove();&#xD;
+		        view.get(&quot;#saveTbpr01&quot;).execute(function(){&#xD;
+					//view.set(&quot;^saveButton2.disabled&quot;,true);&#xD;
+					//view.set(&quot;^saveButton3.disabled&quot;,true);&#xD;
+					//dsTbdf06.set(&quot;parameter&quot;,null).flushAsync();	//刷新数据&#xD;
+					//dataSet2.set(&quot;parameter&quot;,null).flushAsync();	//刷新数据&#xD;
+					//info.doSet(&quot;text&quot;,&quot;删除成功！&quot;);&#xD;
+					&#xD;
+					if(!dsTbpr01.getData(&quot;#&quot;)){&#xD;
+						dsTbpr01.insert();&#xD;
+					}&#xD;
+				});&#xD;
+			});&#xD;
+		}else{&#xD;
+			dorado.MessageBox.alert(&quot;没有数据可以删除啦!&quot;);&#xD;
+			//info.doSet(&quot;text&quot;,&quot;没有数据可以删除啦！&quot;);&#xD;
+		}&#xD;
+    }&#xD;
+	&#xD;
+	/****************************清空*********************************************************/&#xD;
+	/**&#xD;
+     * 8.“清空”按钮---Onclick事件---直接执行代码&#xD;
+     */&#xD;
+	&#xD;
+	/****************************返回*********************************************************/&#xD;
+	/**&#xD;
+     * 9.“返回”按钮---Onclick事件---直接执行代码&#xD;
+     */&#xD;
+&#xD;
+}&#xD;
+</ClientEvent>
+    <Property name="styleSheetFile">com/kits/saas/mw/style1.css</Property>
+    <DataSet id="dsQuery">
+      <ClientEvent name="onReady">self.insert(); //自己可输入</ClientEvent>
+      <Property name="dataType">[dtQuery]</Property>
+      <Property name="loadMode">manual</Property>
+    </DataSet>
+    <DataSet id="dataSet2">
+      <Property name="dataProvider">bsjc32BO#loadTbpr01</Property>
+      <Property name="dataType">[dtTbpr01]</Property>
+      <Property name="loadMode">lazy</Property>
+      <Property name="pageSize">10</Property>
+    </DataSet>
+    <DataSet id="dsTbpr01">
+      <Property name="dataType">[dtTbpr01]</Property>
+      <Property name="loadMode">manual</Property>
+      <Property name="pageSize">20</Property>
+      <Property name="dataProvider">bsjc32BO#loadTbpr01</Property>
+    </DataSet>
+    <DataSet id="dataSet1">
+      <Property name="dataProvider">bsjc32BO#loadTbpr01</Property>
+      <Property name="dataType">[dtTbpr01]</Property>
+      <Property name="loadMode">manual</Property>
+      <Property name="pageSize">10</Property>
+    </DataSet>
+    <Panel>
+      <Buttons/>
+      <Children>
+        <AutoForm>
+          <Property name="cols">200,200,90,90</Property>
+          <Property name="dataSet">dsQuery</Property>
+          <Property name="width">60%</Property>
+          <AutoFormElement>
+            <Property name="name">processCode</Property>
+            <Property name="property">processCode</Property>
+            <Property name="labelAlign">center</Property>
+            <Property name="labelWidth">60</Property>
+            <Property name="trigger">trigger1</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">processName</Property>
+            <Property name="property">processName</Property>
+            <Property name="labelAlign">center</Property>
+            <Property name="labelWidth">60</Property>
+            <Editor/>
+          </AutoFormElement>
+          <Button>
+            <ClientEvent name="onClick">functions[&quot;searchOnclick&quot;]();</ClientEvent>
+            <Property name="caption">查询</Property>
+            <Property name="icon">	url(>skin>common/icons.gif) -40px -100px</Property>
+          </Button>
+          <Button>
+            <ClientEvent name="onClick">dsQuery.clear();    //清空输入框&#xD;
+dsQuery.insert();   //输入框可输入&#xD;
+&#xD;
+//info.doSet(&quot;text&quot;,&quot;重置成功！&quot;);</ClientEvent>
+            <Property name="icon">url(>skin>common/icons.gif) -40px -240px</Property>
+            <Property name="caption">重置</Property>
+          </Button>
+        </AutoForm>
+      </Children>
+      <Tools/>
+    </Panel>
+    <Panel>
+      <Buttons/>
+      <Children>
+        <ToolBar>
+          <Button>
+            <ClientEvent name="onClick">functions[&quot;insertOnclick&quot;]();</ClientEvent>
+            <Property name="icon">url(>skin>common/icons.gif) -120px 0px</Property>
+            <Property name="caption">资料新增</Property>
+            <Property name="width">90</Property>
+          </Button>
+          <Button layoutConstraint="colSpan:1">
+            <ClientEvent name="onClick">functions[&quot;delOnclick&quot;]();</ClientEvent>
+            <Property name="icon">	url(>skin>common/icons.gif) -140px 0px</Property>
+            <Property name="caption">删除</Property>
+            <Property name="width">60</Property>
+            <Property name="tags">saveButton0</Property>
+            <Property name="disabled">true</Property>
+          </Button>
+          <Fill/>
+          <DataPilot>
+            <Property name="dataSet">dsTbpr01</Property>
+          </DataPilot>
+        </ToolBar>
+        <DataGrid id="dgTbpr01">
+          <ClientEvent name="onDataRowClick">if(arg.column.get(&quot;caption&quot;)!=&quot;RowSelector&quot;){&#xD;
+	var selection = self.get(&quot;selection&quot;);&#xD;
+	var entity = self.get(&quot;dataSet&quot;).getData(&quot;#&quot;);&#xD;
+	self.set(&quot;selection&quot;,entity);&#xD;
+}</ClientEvent>
+          <ClientEvent name="onDataRowDoubleClick">if(view.get(&quot;#dsTbpr01.data:#&quot;)){ //选中有数据行时&#xD;
+	dialogTbpr01.show();&#xD;
+	view.set(&quot;^saveButton2.disabled&quot;,false);&#xD;
+	view.set(&quot;^saveButton3.disabled&quot;,false);&#xD;
+}else{ //没有选中数据行时&#xD;
+	dorado.MessageBox.alert(&quot;没有数据可以修改!&quot;);&#xD;
+}</ClientEvent>
+          <Property name="dataSet">dsTbpr01</Property>
+          <Property name="readOnly">true</Property>
+          <Property name="selectionMode">multiRows</Property>
+          <RowSelectorColumn/>
+          <RowNumColumn id="rowNum">
+            <Property name="caption">项次</Property>
+          </RowNumColumn>
+          <DataColumn name="processCode">
+            <Property name="property">processCode</Property>
+          </DataColumn>
+          <DataColumn name="processName">
+            <Property name="property">processName</Property>
+          </DataColumn>
+          <DataColumn name="processRemark">
+            <Property name="property">processRemark</Property>
+          </DataColumn>
+          <DataColumn name="createEmpNo">
+            <Property name="property">createEmpNo</Property>
+            <Property name="trigger">autoMappingDropDown1</Property>
+          </DataColumn>
+          <DataColumn name="createDate">
+            <Property name="property">createDate</Property>
+          </DataColumn>
+          <DataColumn name="modifyEmpNo">
+            <Property name="property">modifyEmpNo</Property>
+            <Property name="trigger">autoMappingDropDown1</Property>
+          </DataColumn>
+          <DataColumn name="modifyDate">
+            <Property name="property">modifyDate</Property>
+          </DataColumn>
+        </DataGrid>
+      </Children>
+      <Tools/>
+    </Panel>
+    <Dialog id="dialogTbpr01">
+      <ClientEvent name="onShow">//functions[&quot;dialogTbdm031OnShow&quot;]();</ClientEvent>
+      <ClientEvent name="onHide">//functions[&quot;dialogTbdm031OnHide&quot;]();</ClientEvent>
+      <Property name="caption">工序维护</Property>
+      <Property name="height">250</Property>
+      <Property name="width">500</Property>
+      <Buttons/>
+      <Children>
+        <AutoForm>
+          <Property name="dataSet">dsTbpr01</Property>
+          <Property name="tags">dialogTbdf06</Property>
+          <ToolBar layoutConstraint="colSpan:2">
+            <Property name="width">307</Property>
+            <Button>
+              <ClientEvent name="onClick">functions[&quot;addSaveOnclick&quot;]();</ClientEvent>
+              <Property name="caption">新增</Property>
+              <Property name="icon">url(>skin>common/icons.gif) -120px 0px</Property>
+              <Property name="tags">saveButton1</Property>
+            </Button>
+            <ToolBarButton id="button2">
+              <ClientEvent name="onClick">functions[&quot;updateSaveOnclick&quot;]();&#xD;
+&#xD;
+&#xD;
+/*&#xD;
+if(view.get(&quot;^saveButton1.disabled&quot;)==true){ //新增为灰色时&#xD;
+	functions[&quot;saveOnclick&quot;]();&#xD;
+}else{  //新增为亮时&#xD;
+	if(view.get(&quot;#dsTbcr011.data:#&quot;)){ //选中有数据行时&#xD;
+		dialogTbcr011.show();&#xD;
+		&#xD;
+		var data = dsTbcr011.getData(&quot;#&quot;);&#xD;
+		if(data){&#xD;
+			var createEmpNo = data.get(&quot;createEmpNo&quot;);          //获取建立者&#xD;
+			if(createEmpNo==userName){							//控制编辑权限&#xD;
+				view.set(&quot;^saveButton1.disabled&quot;,true);&#xD;
+				view.set(&quot;^saveButton2.disabled&quot;,false);&#xD;
+				view.set(&quot;^dialogTbcr011.readOnly&quot;,false);&#xD;
+			}else{&#xD;
+				view.set(&quot;^dialogTbcr011.readOnly&quot;,true);&#xD;
+				dorado.MessageBox.alert(&quot;您无此操作权限！&quot;);&#xD;
+			}&#xD;
+		}&#xD;
+	&#xD;
+	}else{ //没有选中数据行时&#xD;
+		dorado.MessageBox.alert(&quot;没有数据可以修改!&quot;);&#xD;
+	}&#xD;
+}*/&#xD;
+&#xD;
+</ClientEvent>
+              <Property name="icon">url(>skin>common/icons.gif) -200px 0px</Property>
+              <Property name="caption">修改</Property>
+              <Property name="tags">saveButton2</Property>
+            </ToolBarButton>
+            <Button id="button3" layoutConstraint="colSpan:1">
+              <ClientEvent name="onClick">functions[&quot;delCurrentOnclick&quot;]();</ClientEvent>
+              <Property name="icon">	url(>skin>common/icons.gif) -140px 0px</Property>
+              <Property name="caption">删除</Property>
+              <Property name="tags">saveButton3</Property>
+            </Button>
+            <Button>
+              <ClientEvent name="onClick">view.get(&quot;#dsTbpr01.data:#&quot;).cancel();		//清空输入框主页面不变&#xD;
+//view.get(&quot;#dsTbdf06&quot;).clear();    		//清空输入框主页面为空   &#xD;
+dsTbpr01.insert({  	  &#xD;
+	//pkPr01:functions[&quot;guid&quot;](),			//键值&#xD;
+	//compId:functions[&quot;getCompId&quot;](),   	//公司别&#xD;
+	//createEmpNo:userName,       			//创建者&#xD;
+	//createDate:new Date(),      			//创建时间&#xD;
+	//modifyUser:userName,     				//修改者&#xD;
+	//modifyDate:new Date()   				//修改时间&#xD;
+});&#xD;
+&#xD;
+view.set(&quot;^saveButton1.disabled&quot;,false);&#xD;
+view.set(&quot;^saveButton2.disabled&quot;,true);&#xD;
+view.set(&quot;^saveButton3.disabled&quot;,true);	</ClientEvent>
+              <Property name="icon"> url(>skin>common/icons.gif) -40px -0px</Property>
+              <Property name="caption">清空</Property>
+            </Button>
+            <Button>
+              <ClientEvent name="onClick">view.get(&quot;#dsTbpr01.data:#&quot;).cancel();&#xD;
+dialogTbpr01.hide();</ClientEvent>
+              <Property name="icon"> url(>skin>common/icons.gif) -240px -240px</Property>
+              <Property name="caption">返回</Property>
+            </Button>
+          </ToolBar>
+          <AutoFormElement layoutConstraint="colSpan:2">
+            <Property name="name">processCode</Property>
+            <Property name="property">processCode</Property>
+            <Property name="labelAlign">center</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement layoutConstraint="colSpan:2">
+            <Property name="name">processName</Property>
+            <Property name="property">processName</Property>
+            <Property name="labelAlign">center</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement layoutConstraint="colSpan:2;rowSpan:2">
+            <Property name="name">processRemark</Property>
+            <Property name="property">processRemark</Property>
+            <Property name="labelAlign">center</Property>
+            <Editor>
+              <TextArea/>
+            </Editor>
+          </AutoFormElement>
+        </AutoForm>
+      </Children>
+      <Tools/>
+    </Dialog>
+    <Dialog id="dialogDataSet2">
+      <ClientEvent name="onShow">//functions[&quot;dialogTbdm031OnShow&quot;]();</ClientEvent>
+      <ClientEvent name="onHide">//functions[&quot;dialogTbdm031OnHide&quot;]();</ClientEvent>
+      <Property name="caption">工序维护</Property>
+      <Property name="height">350</Property>
+      <Property name="width">600</Property>
+      <Buttons/>
+      <Children>
+        <ToolBar layoutConstraint="colSpan:2">
+          <Button>
+            <ClientEvent name="onClick">var query = dsQuery.getData(&quot;#&quot;);&#xD;
+var entity = dataSet2.getData(&quot;#&quot;);&#xD;
+&#xD;
+if(entity){&#xD;
+	query.set(&quot;processCode&quot;,entity.get(&quot;processCode&quot;));	//工序代码&#xD;
+	query.set(&quot;processName&quot;,entity.get(&quot;processName&quot;));	//工序名称&#xD;
+	&#xD;
+	view.get(&quot;#dsTbpr01&quot;).set(&quot;parameter&quot;,{&#xD;
+		&quot;compId&quot;: functions[&quot;getCompId&quot;](),			//公司别&#xD;
+		&quot;processCode&quot;: entity.get(&quot;processCode&quot;),	//工序代码&#xD;
+		&quot;processName&quot;: entity.get(&quot;processName&quot;)	//工序名称&#xD;
+	}).flushAsync(function(datas){&#xD;
+		if(datas.entityCount&lt;=0){&#xD;
+			dorado.MessageBox.alert(&quot;没有您要查询的数据！&quot;);&#xD;
+			//info.doSet(&quot;text&quot;,&quot;没有您要查询的数据！&quot;);&#xD;
+		}else{&#xD;
+			view.set(&quot;^saveButton0.disabled&quot;,false);&#xD;
+			//info.doSet(&quot;text&quot;,&quot;查询资料成功！&quot;);&#xD;
+			//view.get(&quot;#dataSet2.data:#&quot;).cancel();&#xD;
+			dialogDataSet2.hide();&#xD;
+		}&#xD;
+	});&#xD;
+}else{&#xD;
+	dorado.MessageBox.alert(&quot;工序维护数据为空！&quot;);&#xD;
+	//info.doSet(&quot;text&quot;,&quot;工序维护数据为空！&quot;);&#xD;
+}&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+</ClientEvent>
+            <Property name="caption">确定</Property>
+            <Property name="icon">url(>skin>common/icons.gif) -20px 0px</Property>
+            <Property name="tags">saveButton1</Property>
+          </Button>
+          <Button>
+            <ClientEvent name="onClick">view.get(&quot;#dataSet2.data:#&quot;).cancel();&#xD;
+dialogDataSet2.hide();</ClientEvent>
+            <Property name="icon"> url(>skin>common/icons.gif) -240px -240px</Property>
+            <Property name="caption">返回</Property>
+          </Button>
+          <Fill/>
+          <DataPilot>
+            <Property name="dataSet">dataSet2</Property>
+          </DataPilot>
+        </ToolBar>
+        <DataGrid id="dgDataSet2">
+          <ClientEvent name="onDataRowClick">//if(arg.column.get(&quot;caption&quot;)!=&quot;RowSelector&quot;){&#xD;
+//	var selection = self.get(&quot;selection&quot;);&#xD;
+//	var entity = self.get(&quot;dataSet&quot;).getData(&quot;#&quot;);&#xD;
+//	self.set(&quot;selection&quot;,entity);&#xD;
+//}</ClientEvent>
+          <ClientEvent name="onDataRowDoubleClick">var query = dsQuery.getData(&quot;#&quot;);&#xD;
+var entity = dataSet2.getData(&quot;#&quot;);&#xD;
+&#xD;
+if(entity){&#xD;
+	query.set(&quot;processCode&quot;,entity.get(&quot;processCode&quot;));	//工序代码&#xD;
+	query.set(&quot;processName&quot;,entity.get(&quot;processName&quot;));	//工序名称&#xD;
+	&#xD;
+	view.get(&quot;#dsTbpr01&quot;).set(&quot;parameter&quot;,{&#xD;
+		&quot;compId&quot;: functions[&quot;getCompId&quot;](),			//公司别&#xD;
+		&quot;processCode&quot;: entity.get(&quot;processCode&quot;),	//工序代码&#xD;
+		&quot;processName&quot;: entity.get(&quot;processName&quot;)	//工序名称&#xD;
+	}).flushAsync(function(datas){&#xD;
+		if(datas.entityCount&lt;=0){&#xD;
+			dorado.MessageBox.alert(&quot;没有您要查询的数据！&quot;);&#xD;
+			//info.doSet(&quot;text&quot;,&quot;没有您要查询的数据！&quot;);&#xD;
+		}else{&#xD;
+			view.set(&quot;^saveButton0.disabled&quot;,false);&#xD;
+			//info.doSet(&quot;text&quot;,&quot;查询资料成功！&quot;);&#xD;
+			//view.get(&quot;#dataSet2.data:#&quot;).cancel();&#xD;
+			dialogDataSet2.hide();&#xD;
+		}&#xD;
+	});&#xD;
+}else{&#xD;
+	dorado.MessageBox.alert(&quot;工序维护数据为空！&quot;);&#xD;
+	//info.doSet(&quot;text&quot;,&quot;工序维护数据为空！&quot;);&#xD;
+}</ClientEvent>
+          <Property name="dataSet">dataSet2</Property>
+          <Property name="readOnly">true</Property>
+          <DataColumn name="processCode">
+            <Property name="property">processCode</Property>
+            <Property name="align">center</Property>
+          </DataColumn>
+          <DataColumn name="processName">
+            <Property name="property">processName</Property>
+          </DataColumn>
+          <DataColumn name="processRemark">
+            <Property name="property">processRemark</Property>
+          </DataColumn>
+        </DataGrid>
+      </Children>
+      <Tools/>
+    </Dialog>
+    <UpdateAction id="saveTbpr01">
+      <Property name="dataResolver">bsjc32BO#saveTbpr01</Property>
+      <UpdateItem>
+        <Property name="dataSet">dsTbpr01</Property>
+      </UpdateItem>
+    </UpdateAction>
+    <Trigger id="trigger1">
+      <ClientEvent name="onExecute">dialogDataSet2.show();&#xD;
+</ClientEvent>
+    </Trigger>
+  </View>
+</ViewConfig>

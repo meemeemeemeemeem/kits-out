@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:bdf="http://www.bstek.com/bdf/schema"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+	                    http://www.bstek.com/bdf/schema http://www.bstek.com/dorado/schema/bdf2.0.xsd">
+
+    <import resource="components-context.xml"/>
+    <import resource="classpath:ureport-console-context.xml"/>
+
+    <import resource="servlet-context.xml"/>
+    <bean id="defaultReportProvider" class="com.kits.platform.impl.DefaultReportProvider"/>
+    <bean class="com.kits.platform.impl.DefaultJobDataService"></bean>
+
+    <bean id="bdf2.companyService" class="com.kits.platform.service.DefaultCompanyService"></bean>
+    <bean id="bdf2.deptService" class="com.kits.platform.service.DefaultDeptService"></bean>
+    <bean id="bdf2.roleService" class="com.kits.platform.service.DefaultRoleService">
+        <property name="userService" ref="bdf2.userService"/>
+        <property name="deptService" ref="bdf2.deptService"/>
+        <property name="positionService" ref="bdf2.positionService"/>
+    </bean>
+    <bean id="bdf2.userService" class="com.kits.platform.service.DefaultUserService">
+        <property name="passwordEncoder" ref="bdf2.passwordEncoder"></property>
+    </bean>
+    <bean id="bdf2.frameworkService" class="com.kits.platform.service.Bdf2FrameworkService">
+        <property name="deptService" ref="bdf2.deptService"></property>
+        <property name="positionService" ref="bdf2.positionService"></property>
+        <property name="groupService" ref="bdf2.groupService"></property>
+        <property name="passwordEncoder" ref="bdf2.passwordEncoder"/>
+    </bean>
+
+    <bean class="com.bstek.ureport.font.fangsong.FangSongFontRegister"></bean>
+    <bean class="com.bstek.ureport.font.heiti.HeiTiFontRegister"></bean>
+    <bean class="com.bstek.ureport.font.kaiti.KaiTiFontRegister"></bean>
+    <bean class="com.bstek.ureport.font.songti.SongTiFontRegister"></bean>
+    <bean class="com.bstek.ureport.font.yahei.YaheiFontRegister"></bean>
+    <bean class="com.bstek.ureport.font.comicsansms.ComicSansMSFontRegister"></bean>
+    <bean class="com.bstek.ureport.font.couriernew.CourierNewFontRegister"></bean>
+    <bean class="com.bstek.ureport.font.impact.ImpactFontRegister"></bean>
+    <bean class="com.bstek.ureport.font.timesnewroman.TimesNewRomanFontRegister"></bean>
+
+    <bdf:anonymous-url urlPattern="/libraries/**"/>
+    <bdf:anonymous-url urlPattern="/style1/**"/>
+    <bdf:anonymous-url urlPattern="/style1/css/*.*"/>
+    <bdf:anonymous-url urlPattern="/ureport/**"/>
+    <bdf:anonymous-url urlPattern="/index.jsp"/>
+    <bdf:anonymous-url urlPattern="/css/*.*"/>
+    <bdf:anonymous-url urlPattern="/images/*.*"/>
+    <bdf:anonymous-url urlPattern="/images/login/*.*"/>
+    <bdf:anonymous-url urlPattern="/login/**"/>
+    <bdf:anonymous-url urlPattern="/images/img/*.*"/>
+    <bdf:anonymous-url urlPattern="/images/skin/*.*"/>
+    <bdf:anonymous-url urlPattern="/images/backgroundImage/*.*"/>
+    <bdf:anonymous-url urlPattern="/favicon.ico"/>
+    <bdf:anonymous-url urlPattern="/login.jsp"/>
+    <bdf:anonymous-url urlPattern="/html/scanning.html"/>
+    <bdf:anonymous-url urlPattern="/bdf2.core.view.frame.Login.d"/>
+    <bdf:anonymous-url urlPattern="/bdf2.core.view.frame.ResetPW.d"/>
+    <bdf:anonymous-url urlPattern="/itf/**"/>
+    <bdf:anonymous-url urlPattern="/api/**"/>
+</beans>

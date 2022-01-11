@@ -1,0 +1,758 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ViewConfig>
+  <Arguments/>
+  <Context/>
+  <Model>
+    <DataType name="dtDf01">
+      <Property name="creationType">com.kits.saas.df.domain.Tbdf01</Property>
+      <PropertyDef name="pkDf01">
+        <Property></Property>
+        <Property name="label">PK_DF01_</Property>
+      </PropertyDef>
+      <PropertyDef name="compId">
+        <Property></Property>
+        <Property name="label">公司别</Property>
+      </PropertyDef>
+      <PropertyDef name="refId">
+        <Property></Property>
+        <Property name="label">参数代码</Property>
+        <Property name="required">true</Property>
+        <Property name="readOnly">true</Property>
+        <Validator name="validator1" type="charLength">
+          <Property name="minLength">0</Property>
+          <Property name="maxLength">20</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="refName">
+        <Property></Property>
+        <Property name="label">参数名称</Property>
+        <Validator name="validator1" type="charLength">
+          <Property name="minLength">0</Property>
+          <Property name="maxLength">20</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="refA">
+        <Property></Property>
+        <Property name="label">REF_A_</Property>
+        <Property name="defaultValue">name</Property>
+      </PropertyDef>
+      <PropertyDef name="refB">
+        <Property></Property>
+        <Property name="label">REF_B_</Property>
+        <Property name="defaultValue">value</Property>
+      </PropertyDef>
+      <PropertyDef name="def1">
+        <Property></Property>
+        <Property name="label">DEF1_</Property>
+      </PropertyDef>
+      <PropertyDef name="def2">
+        <Property></Property>
+        <Property name="label">DEF2_</Property>
+      </PropertyDef>
+      <PropertyDef name="def3">
+        <Property></Property>
+        <Property name="label">DEF3_</Property>
+      </PropertyDef>
+      <PropertyDef name="def4">
+        <Property></Property>
+        <Property name="label">DEF4_</Property>
+      </PropertyDef>
+      <PropertyDef name="def5">
+        <Property></Property>
+        <Property name="label">DEF5_</Property>
+      </PropertyDef>
+      <PropertyDef name="createEmp">
+        <Property></Property>
+        <Property name="label">创建人员</Property>
+        <Property name="mapping">
+          <Property name="mapValues">${dorado.getDataProvider(&quot;commonUtils#getLoginUser&quot;).getResult()}</Property>
+        </Property>
+      </PropertyDef>
+      <PropertyDef name="createDate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">创建日期</Property>
+      </PropertyDef>
+      <PropertyDef name="updEmp">
+        <Property></Property>
+        <Property name="label">修改人员</Property>
+        <Property name="mapping">
+          <Property name="mapValues">${dorado.getDataProvider(&quot;commonUtils#getLoginUser&quot;).getResult()}</Property>
+        </Property>
+      </PropertyDef>
+      <PropertyDef name="updDate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">修改日期</Property>
+      </PropertyDef>
+      <PropertyDef name="refPid">
+        <Property></Property>
+        <Property name="label">父亲级Id</Property>
+      </PropertyDef>
+      <Reference name="children ">
+        <Property name="dataType">[SELF]</Property>
+        <Property name="parameter">$${this.refId}</Property>
+        <Property name="dataProvider">dfjc01BO#queryDf01</Property>
+        <Property name="pageSize">999999</Property>
+      </Reference>
+      <PropertyDef name="type">
+        <Property></Property>
+        <Property name="label">页面类型</Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="dtDf02">
+      <Property name="creationType">com.kits.saas.df.domain.Tbdf02</Property>
+      <PropertyDef name="pkDf02">
+        <Property></Property>
+        <Property name="label">PK_DF02_</Property>
+      </PropertyDef>
+      <PropertyDef name="compId">
+        <Property></Property>
+        <Property name="label">COMP_ID_</Property>
+      </PropertyDef>
+      <PropertyDef name="refId">
+        <Property></Property>
+        <Property name="label">REF_ID_</Property>
+      </PropertyDef>
+      <PropertyDef name="valueA">
+        <Property></Property>
+        <Property name="label">参数值</Property>
+        <Property name="required">true</Property>
+        <Validator name="validator1" type="charLength">
+          <Property name="minLength">0</Property>
+          <Property name="maxLength">20</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="valueB">
+        <Property></Property>
+        <Property name="label">参数简称</Property>
+        <Validator name="validator1" type="charLength">
+          <Property name="minLength">0</Property>
+          <Property name="maxLength">200</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="def1">
+        <Property></Property>
+        <Property name="label">参数名称</Property>
+      </PropertyDef>
+      <PropertyDef name="def2">
+        <Property></Property>
+        <Property name="label">pId</Property>
+      </PropertyDef>
+      <PropertyDef name="def3">
+        <Property></Property>
+        <Property name="label">DEF3_</Property>
+      </PropertyDef>
+      <PropertyDef name="def4">
+        <Property></Property>
+        <Property name="label">参数全称</Property>
+        <Validator name="validator1" type="charLength">
+          <Property name="minLength">0</Property>
+          <Property name="maxLength">40</Property>
+        </Validator>
+        <Validator name="validator2" type="length">
+          <Property name="maxLength">100</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="def5">
+        <Property></Property>
+        <Property name="label">DEF5_</Property>
+      </PropertyDef>
+      <PropertyDef name="createEmp">
+        <Property></Property>
+        <Property name="label">创建人员</Property>
+      </PropertyDef>
+      <PropertyDef name="createDate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">创建日期</Property>
+      </PropertyDef>
+      <PropertyDef name="updEmp">
+        <Property></Property>
+        <Property name="label">更新人员</Property>
+      </PropertyDef>
+      <PropertyDef name="updDate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">更新日期</Property>
+      </PropertyDef>
+      <PropertyDef name="type">
+        <Property></Property>
+        <Property name="label">页面类型</Property>
+      </PropertyDef>
+      <PropertyDef name="orderNum">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">排序</Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="dtQuery1">
+      <PropertyDef name="refId">
+        <Property></Property>
+        <Property name="label">参数代码</Property>
+        <Property name="required">true</Property>
+        <Validator name="validator1" type="charLength">
+          <Property name="minLength">0</Property>
+          <Property name="maxLength">20</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="refName">
+        <Property></Property>
+        <Property name="label">参数名称</Property>
+        <Validator name="validator1" type="charLength">
+          <Property name="minLength">0</Property>
+          <Property name="maxLength">20</Property>
+        </Validator>
+      </PropertyDef>
+    </DataType>
+  </Model>
+  <View>
+    <ClientEvent name="onReady">self.buildOrder=function(nodes){&#xD;
+  var order=1;&#xD;
+  //nodes.each(function(node){&#xD;
+    var entityOrder=nodes.get(&quot;data.order&quot;);&#xD;
+    order=entityOrder+1;&#xD;
+  //});&#xD;
+  return order;&#xD;
+}&#xD;
+&#xD;
+&#xD;
+window.menu1 = view.get(&quot;#menu1&quot;);&#xD;
+&#xD;
+window.refForm = view.get(&quot;#refForm&quot;);&#xD;
+window.dialogAddRoot = view.get(&quot;#dialogAddRoot&quot;);&#xD;
+&#xD;
+window.dsDf02 = view.get(&quot;#dsDf02&quot;);&#xD;
+window.saveDf02 = view.get(&quot;#dsDf02&quot;);&#xD;
+&#xD;
+window.dsDf01 = view.get(&quot;#dsDf01&quot;);&#xD;
+window.saveDf01 = view.get(&quot;#saveDf01&quot;);&#xD;
+&#xD;
+window.info = view.get(&quot;#info&quot;);&#xD;
+info.doSet(&quot;text&quot;,&quot;欢迎使用本系统 ...&quot;);&#xD;
+&#xD;
+&#xD;
+</ClientEvent>
+    <ClientEvent name="onCreate">functions = {&#xD;
+	&quot;addOnClick&quot;: function(msg){&#xD;
+		if (msg == &quot;新增&quot;) {&#xD;
+			var currentNode = view.get(&quot;#tree.currentNode&quot;);&#xD;
+			if(!currentNode){&#xD;
+				dorado.MessageBox.alert(&quot;请选中一个父节点！&quot;);&#xD;
+				return;&#xD;
+			}&#xD;
+			var currentEntity = currentNode.get(&quot;data&quot;);&#xD;
+			/*currentNode.expandAsync(function(){&#xD;
+				currentEntity.createChild(&quot;children &quot;,{&#xD;
+					refId:&quot;参数代码&quot;,&#xD;
+					def2: currentEntity.get(&quot;refId&quot;),&#xD;
+					refName: &quot;新参数&quot;&#xD;
+				});&#xD;
+				&#xD;
+			});*/&#xD;
+			&#xD;
+		var newEntity=currentEntity.createChild(&quot;children &quot;,{&#xD;
+       		refId:&quot;参数代码&quot;,&#xD;
+			def2: currentEntity.get(&quot;refId&quot;),&#xD;
+		    refName: &quot;新参数&quot;&#xD;
+      });  &#xD;
+      view.get(&quot;#tree&quot;).set(&quot;currentEntity&quot;,newEntity); &#xD;
+	    &#xD;
+		}	&#xD;
+	},&#xD;
+	&#xD;
+	&quot;saveOnClick&quot;:function(){&#xD;
+		if(view.get(&quot;#tree.currentEntity&quot;).state==0){&#xD;
+			return;&#xD;
+		}else if(view.get(&quot;#tree.currentEntity&quot;).state==1){&#xD;
+			new dorado.widget.AjaxAction({&#xD;
+				parameter:{&#xD;
+					refId:view.get(&quot;#refForm.entity&quot;).get(&quot;refId&quot;)&#xD;
+				},&#xD;
+				service:&quot;dfjc01BO#getRefId&quot;&#xD;
+			}).execute(function(flag){&#xD;
+				if(flag==false){&#xD;
+					dorado.MessageBox.alert(&quot;已存在相同的参数代码，请修改&quot;);&#xD;
+					return;&#xD;
+				}else{&#xD;
+					saveDf01.set({&#xD;
+			executingMessage:&quot;正在保存中 ... &quot;&#xD;
+			&#xD;
+		}).execute(function(){&#xD;
+			//view.set(&quot;^tag.readOnly&quot;,true);&#xD;
+			saveDf01.set({&#xD;
+			successMessage:&quot;保存成功! &quot;})&#xD;
+			//dorado.MessageBox.alert(&quot;保存成功！&quot;);&#xD;
+		});&#xD;
+	}&#xD;
+});&#xD;
+}else if(view.get(&quot;#tree.currentEntity&quot;).state==2){&#xD;
+	debugger&#xD;
+	var oldData = view.get(&quot;#tree.currentEntity&quot;)._oldData.refId;&#xD;
+	var needata = view.get(&quot;#tree.currentEntity&quot;).get(&quot;refId&quot;);&#xD;
+	&#xD;
+	if(oldData!=needata){&#xD;
+			new dorado.widget.AjaxAction({&#xD;
+				parameter:{&#xD;
+					refId:view.get(&quot;#refForm.entity&quot;).get(&quot;refId&quot;)&#xD;
+				},&#xD;
+				service:&quot;dfjc01BO#getRefId&quot;&#xD;
+			}).execute(function(flag){&#xD;
+				if(flag==false){&#xD;
+					dorado.MessageBox.alert(&quot;已存在相同的参数代码，请修改&quot;);&#xD;
+					return;&#xD;
+				}else{&#xD;
+					saveDf01.set({&#xD;
+			executingMessage:&quot;正在保存中 ... &quot;&#xD;
+		}).execute(function(){&#xD;
+			dsDf02.set(&quot;parameter&quot;,{&#xD;
+				refId:newData&#xD;
+			}).flushAsync(function(){&#xD;
+				&#xD;
+			});&#xD;
+		});&#xD;
+	}&#xD;
+});&#xD;
+}else{&#xD;
+		saveDf01.set({&#xD;
+			executingMessage:&quot;正在保存中 ... &quot;&#xD;
+		}).execute(function(){&#xD;
+				dsDf02.set(&quot;parameter&quot;,{&#xD;
+				refId:view.get(&quot;#tree.currentEntity&quot;).get(&quot;refId&quot;)&#xD;
+			}).flushAsync(function(){&#xD;
+				info.doSet(&quot;text&quot;,&quot;保存成功！&quot;);&#xD;
+			});&#xD;
+		});&#xD;
+	}&#xD;
+}&#xD;
+		&#xD;
+},&#xD;
+	&#xD;
+&quot;saveDf02&quot;:function(dataList){&#xD;
+		&#xD;
+		var df01 = view.get(&quot;#tree&quot;).getCurrentItem()._data._data;&#xD;
+		var compId = df01.compId;&#xD;
+		var refId = df01.refId&#xD;
+		&#xD;
+		view.get(&quot;#saveDf02&quot;).execute(function(){&#xD;
+			dsDf02.set(&quot;parameter&quot;,{&#xD;
+				compId:compId,&#xD;
+				refId:refId&#xD;
+			}).flushAsync();&#xD;
+		});&#xD;
+	}&#xD;
+}&#xD;
+</ClientEvent>
+    <Property name="styleSheetFile">com/kits/saas/mw/style1.css</Property>
+    <DataSet id="dsDf01">
+      <ClientEvent name="onLoadData">if(!self.getData(&quot;#&quot;)){&#xD;
+	&#xD;
+	self.insert({&#xD;
+		refId:&quot;common_setting&quot;,&#xD;
+		def2:null,&#xD;
+		refName:&quot;公共参数设置&quot;,&#xD;
+	});&#xD;
+	//view.get(&quot;#tree.currentEntity&quot;).setState(1);&#xD;
+	&#xD;
+	/*saveDf01.execute(function(){&#xD;
+		dsDf01.flush();&#xD;
+	});*/&#xD;
+}else{&#xD;
+	//&#xD;
+	//debugger&#xD;
+	//var data = self.getData(&quot;#&quot;);&#xD;
+	//alert(data.get(&quot;refId&quot;));&#xD;
+	/*dsDf02.set(&quot;parameter&quot;,{&#xD;
+		compId:compId,&#xD;
+		refId:refId&#xD;
+	}).flushAsync();&#xD;
+	*/&#xD;
+		&#xD;
+}&#xD;
+</ClientEvent>
+      <Property name="dataProvider">dfjc01BO#queryDf01</Property>
+      <Property name="pageSize">999</Property>
+      <Property name="dataType">[dtDf01]</Property>
+    </DataSet>
+    <DataSet id="dsDf02">
+      <Property name="dataType">[dtDf02]</Property>
+      <Property name="pageSize">999</Property>
+      <Property name="dataProvider">dfjc02BO#queryDf02</Property>
+      <Property name="loadMode">lazy</Property>
+    </DataSet>
+    <SplitPanel>
+      <Property name="position">20%</Property>
+      <Property name="minPosition">20%</Property>
+      <MainControl>
+        <Panel>
+          <Property name="background">white</Property>
+          <Property name="border">none</Property>
+          <Property name="contentOverflowX">visible</Property>
+          <Buttons/>
+          <Children>
+            <FieldSet layout="vbox">
+              <Property name="caption">参数信息</Property>
+              <Property name="collapseable">false</Property>
+              <Property name="contentOverflow">visible</Property>
+              <Buttons>
+                <Button>
+                  <ClientEvent name="onClick">view.get(&quot;#tree.currentEntity&quot;).cancel();</ClientEvent>
+                  <Property name="caption">取消</Property>
+                  <Property name="ignored">true</Property>
+                </Button>
+              </Buttons>
+              <Children>
+                <ToolBar>
+                  <Button>
+                    <ClientEvent name="onClick">functions[&quot;saveOnClick&quot;]();&#xD;
+</ClientEvent>
+                    <Property name="caption">保存</Property>
+                    <Property name="icon">url(>skin>common/icons.gif) -140px -20px</Property>
+                  </Button>
+                </ToolBar>
+                <Panel layout="hbox">
+                  <Property name="contentOverflow">visible</Property>
+                  <Property name="exClassName">panel0</Property>
+                  <Property name="border">none</Property>
+                  <Buttons/>
+                  <Children>
+                    <AutoForm id="refForm">
+                      <Property name="dataSet">dsDf01</Property>
+                      <Property name="dataPath">!current</Property>
+                      <Property name="cols">*,*</Property>
+                      <Property name="width">100%</Property>
+                      <AutoFormElement>
+                        <Property name="name">refId</Property>
+                        <Property name="property">refId</Property>
+                        <Property name="label">参数代码</Property>
+                        <Property name="tags">tag</Property>
+                        <Editor/>
+                      </AutoFormElement>
+                      <AutoFormElement>
+                        <Property name="name">refName</Property>
+                        <Property name="property">refName</Property>
+                        <Property name="label">参数名称</Property>
+                        <Editor/>
+                      </AutoFormElement>
+                      <AutoFormElement>
+                        <Property name="name">createEmp</Property>
+                        <Property name="property">createEmp</Property>
+                        <Property name="readOnly">true</Property>
+                        <Property name="ignored">false</Property>
+                        <Property name="visible">true</Property>
+                        <Editor/>
+                      </AutoFormElement>
+                      <AutoFormElement>
+                        <Property name="name">createDate</Property>
+                        <Property name="property">createDate</Property>
+                        <Property name="readOnly">true</Property>
+                        <Property name="ignored">false</Property>
+                        <Property name="visible">true</Property>
+                        <Editor/>
+                      </AutoFormElement>
+                      <AutoFormElement>
+                        <Property name="name">updEmp</Property>
+                        <Property name="property">updEmp</Property>
+                        <Property name="readOnly">true</Property>
+                        <Property name="ignored">false</Property>
+                        <Property name="visible">true</Property>
+                        <Editor/>
+                      </AutoFormElement>
+                      <AutoFormElement>
+                        <Property name="name">updDate</Property>
+                        <Property name="property">updDate</Property>
+                        <Property name="readOnly">true</Property>
+                        <Property name="ignored">false</Property>
+                        <Property name="visible">true</Property>
+                        <Editor/>
+                      </AutoFormElement>
+                    </AutoForm>
+                    <Panel layoutConstraint="align:center">
+                      <Property name="background">white</Property>
+                      <Property name="border">none</Property>
+                      <Property name="height">100%</Property>
+                      <Property name="contentOverflow">visible</Property>
+                      <Property name="width">auto</Property>
+                      <Property name="visible">false</Property>
+                      <Property name="hideMode">display</Property>
+                      <Buttons/>
+                      <Children>
+                        <Import src="com.kits.saas.mw.view.info#infoPanel"/>
+                      </Children>
+                      <Tools/>
+                    </Panel>
+                  </Children>
+                  <Tools/>
+                </Panel>
+              </Children>
+            </FieldSet>
+            <FieldSet>
+              <Property name="caption">参数值信息</Property>
+              <Buttons>
+                <Button>
+                  <ClientEvent name="onClick">dsDf02.getData(&quot;#&quot;).cancel();&#xD;
+</ClientEvent>
+                  <Property name="caption">取消</Property>
+                  <Property name="ignored">true</Property>
+                </Button>
+              </Buttons>
+              <Children>
+                <GroupBox>
+                  <Property name="caption">查询条件</Property>
+                  <Property name="ignored">true</Property>
+                  <Buttons/>
+                  <Children>
+                    <DataSet id="dsQuery1">
+                      <Property name="dataType">[dtQuery1]</Property>
+                    </DataSet>
+                    <AutoForm>
+                      <Property name="dataSet">dsQuery1</Property>
+                      <Property name="cols">*,*,*,*</Property>
+                      <AutoFormElement>
+                        <Property name="name">refId</Property>
+                        <Property name="property">refId</Property>
+                        <Editor/>
+                      </AutoFormElement>
+                      <AutoFormElement>
+                        <Property name="name">refName</Property>
+                        <Property name="property">refName</Property>
+                        <Editor/>
+                      </AutoFormElement>
+                      <Button>
+                        <Property name="caption">查询</Property>
+                      </Button>
+                      <Button>
+                        <Property name="caption">重置</Property>
+                      </Button>
+                    </AutoForm>
+                  </Children>
+                </GroupBox>
+                <ToolBar>
+                  <Button>
+                    <ClientEvent name="onClick">var dataList = dsDf02.getData();&#xD;
+functions[&quot;saveDf02&quot;](dataList);&#xD;
+functions[&quot;saveOnClick&quot;]();</ClientEvent>
+                    <Property name="caption">保存</Property>
+                    <Property name="icon">url(>skin>common/icons.gif) -140px -20px</Property>
+                  </Button>
+                  <ToolBarButton>
+                    <ClientEvent name="onClick">		var df01 = view.get(&quot;#tree&quot;).getCurrentItem()._data._data;&#xD;
+		var refId = df01.refId		&#xD;
+		dsDf02.insert({&#xD;
+			refId:refId&#xD;
+		});&#xD;
+		&#xD;
+</ClientEvent>
+                    <Property name="caption">增行</Property>
+                    <Property name="icon">url(>skin>common/icons.gif) -120px 0px</Property>
+                  </ToolBarButton>
+                  <ToolBarButton>
+                    <ClientEvent name="onClick">var selection = view.get(&quot;#dgDf02&quot;).get(&quot;selection&quot;);&#xD;
+if(selection.length==0){&#xD;
+	dorado.MessageBox.alert(&quot;请勾选一条要删除的数据！&quot;);&#xD;
+	return;&#xD;
+}else{&#xD;
+	&#xD;
+	var options = {&#xD;
+		callback:function(){&#xD;
+			selection.each(function(data){&#xD;
+				data.remove();&#xD;
+				&#xD;
+			});&#xD;
+			if(data.get(&quot;pkDf02&quot;)){&#xD;
+					saveDf02.execute(function(){&#xD;
+					});&#xD;
+				}&#xD;
+			&#xD;
+			&#xD;
+		},&#xD;
+		icon:&quot;WARNING&quot;&#xD;
+	};&#xD;
+	dorado.MessageBox.confirm(&quot;您确定要删除勾选的所有数据吗？&quot;,options);&#xD;
+}&#xD;
+</ClientEvent>
+                    <Property name="caption">删除</Property>
+                    <Property name="icon">url(>skin>common/icons.gif) -140px 0px</Property>
+                  </ToolBarButton>
+                </ToolBar>
+                <DataGrid id="dgDf02">
+                  <ClientEvent name="onDataRowClick">if(arg.column.get(&quot;caption&quot;)!=&quot;RowSelector&quot;){&#xD;
+	var selection = self.get(&quot;selection&quot;);&#xD;
+	var entity = self.get(&quot;dataSet&quot;).getData(&quot;#&quot;);&#xD;
+	self.set(&quot;selection&quot;,entity);&#xD;
+}</ClientEvent>
+                  <ClientEvent name="onCurrentChange">/*var pk = view.get(&quot;#dsDf02&quot;).getData(&quot;#&quot;).get(&quot;pkDf02&quot;);&#xD;
+if(pk){&#xD;
+	view.set(&quot;^tag1.readOnly&quot;,true);&#xD;
+}else{&#xD;
+	view.set(&quot;^tag1.readOnly&quot;,false);&#xD;
+}*/&#xD;
+</ClientEvent>
+                  <ClientEvent name="onRenderRow">/*if(view.get(&quot;#dsDf02&quot;).getData(&quot;#&quot;)){&#xD;
+	var pk = view.get(&quot;#dsDf02&quot;).getData(&quot;#&quot;).get(&quot;pkDf02&quot;);&#xD;
+if(pk){&#xD;
+	view.set(&quot;^tag1.readOnly&quot;,true);&#xD;
+}else{&#xD;
+	view.set(&quot;^tag1.readOnly&quot;,false);&#xD;
+}&#xD;
+}&#xD;
+*/</ClientEvent>
+                  <Property name="dataSet">dsDf02</Property>
+                  <Property name="readOnly">false</Property>
+                  <Property name="selectionMode">multiRows</Property>
+                  <RowNumColumn/>
+                  <RowSelectorColumn/>
+                  <DataColumn name="valueA">
+                    <Property name="tags">tag1</Property>
+                  </DataColumn>
+                  <DataColumn name="valueB">
+                    <Property name="property">valueB</Property>
+                  </DataColumn>
+                  <DataColumn name="def4">
+                    <Property name="property">def4</Property>
+                    <Property name="caption">参数说明</Property>
+                  </DataColumn>
+                  <DataColumn>
+                    <Property name="name">def1</Property>
+                    <Property name="caption">参数1</Property>
+                    <Property name="ignored">true</Property>
+                    <Editor/>
+                  </DataColumn>
+                  <DataColumn>
+                    <Property name="name">def2</Property>
+                    <Property name="caption">参数2</Property>
+                    <Property name="ignored">true</Property>
+                    <Editor/>
+                  </DataColumn>
+                  <DataColumn name="orderNum">
+                    <Property name="property">orderNum</Property>
+                  </DataColumn>
+                </DataGrid>
+              </Children>
+            </FieldSet>
+          </Children>
+          <Tools/>
+        </Panel>
+      </MainControl>
+      <SideControl>
+        <DataTree id="tree">
+          <ClientEvent name="onContextMenu">menu1.show({&#xD;
+  position: {&#xD;
+    left: arg.event.pageX,&#xD;
+    top: arg.event.pageY&#xD;
+  }&#xD;
+});</ClientEvent>
+          <ClientEvent name="onCurrentChange">&#xD;
+		var df01 = view.get(&quot;#tree&quot;).getCurrentItem()._data._data;&#xD;
+		var compId = df01.compId;&#xD;
+		var refId = df01.refId&#xD;
+		&#xD;
+		/*var pk = df01.pkDf01;&#xD;
+		if(pk){&#xD;
+			view.set(&quot;^tag.readOnly&quot;,true);&#xD;
+		}else{&#xD;
+			view.set(&quot;^tag.readOnly&quot;,false);&#xD;
+		}*/&#xD;
+		if(refId==&quot;common_setting&quot;){&#xD;
+			view.set(&quot;^typ.visible&quot;,false);&#xD;
+		}else{&#xD;
+			view.set(&quot;^typ.visible&quot;,true);&#xD;
+		}&#xD;
+		//alert(refId);&#xD;
+		dsDf02.set(&quot;parameter&quot;,{&#xD;
+			compId:compId,&#xD;
+			refId:refId&#xD;
+		}).flush();&#xD;
+</ClientEvent>
+          <ClientEvent name="onDraggingSourceDrop">debugger&#xD;
+var draggingInfo=arg.draggingInfo;&#xD;
+	if(!draggingInfo){&#xD;
+		return true;&#xD;
+	}&#xD;
+	var parentNode=draggingInfo.get(&quot;targetObject&quot;);&#xD;
+	if(!parentNode){&#xD;
+		return true;&#xD;
+	}&#xD;
+	var parentId=parentNode.get(&quot;data.refId&quot;);&#xD;
+	&#xD;
+	parentNode.get(&quot;nodes&quot;).each(function(node){&#xD;
+		var data=node.get(&quot;data&quot;);&#xD;
+		data.set(&quot;def2&quot;,parentId);&#xD;
+		data.setState(2);&#xD;
+	});&#xD;
+	&#xD;
+	saveDf01.set({&#xD;
+		executingMessage:&quot;正在保存中 ...&quot;,&#xD;
+		successMessage:&quot;已保存！&quot;&#xD;
+	}).execute();&#xD;
+</ClientEvent>
+          <Property name="dataSet">dsDf01</Property>
+          <Property name="currentNodeDataPath">current</Property>
+          <Property name="dropMode">onOrInsertItems</Property>
+          <Property name="droppable">true</Property>
+          <Property name="draggable">true</Property>
+          <Property name="dragTags">map</Property>
+          <Property name="droppableTags">map</Property>
+          <BindingConfigs>
+            <BindingConfig>
+              <Property name="labelProperty">refName</Property>
+              <Property name="recursive">true</Property>
+              <Property name="expandLevel">1</Property>
+              <Property name="childrenProperty">children </Property>
+              <Property name="hasChild">false</Property>
+            </BindingConfig>
+          </BindingConfigs>
+        </DataTree>
+      </SideControl>
+    </SplitPanel>
+    <UpdateAction id="saveDf02">
+      <Property name="dataResolver">dfjc02BO#saveDf02</Property>
+      <Property name="successMessage">保存成功!</Property>
+      <UpdateItem>
+        <Property name="dataSet">dsDf02</Property>
+      </UpdateItem>
+    </UpdateAction>
+    <UpdateAction id="saveDf01">
+      <Property name="dataResolver">dfjc01BO#saveDf01</Property>
+      <UpdateItem>
+        <Property name="dataSet">dsDf01</Property>
+        <Property name="dataPath">!current</Property>
+        <Property name="submitOldData">true</Property>
+      </UpdateItem>
+    </UpdateAction>
+    <Menu id="menu1">
+      <MenuItem>
+        <ClientEvent name="onClick">functions[&quot;addOnClick&quot;](&quot;新增&quot;);</ClientEvent>
+        <Property name="caption">新增节点</Property>
+      </MenuItem>
+      <MenuItem>
+        <ClientEvent name="onClick">//view.get(&quot;#tree&quot;).getCurrentItem().remove();&#xD;
+//&#xD;
+&#xD;
+&#xD;
+&#xD;
+var options = {&#xD;
+	callback:function(){&#xD;
+		var compId = view.get(&quot;#tree.currentEntity&quot;).get(&quot;compId&quot;);&#xD;
+		var pk = view.get(&quot;#tree.currentEntity&quot;).get(&quot;refId&quot;);&#xD;
+		view.get(&quot;#tree.currentEntity&quot;).remove();&#xD;
+		&#xD;
+		new dorado.widget.AjaxAction({&#xD;
+			parameter:{&#xD;
+				refId:pk,&#xD;
+				compId:compId&#xD;
+			},&#xD;
+			service:&quot;dfjc01BO#delNodes&quot;&#xD;
+		}).execute(function(flag){&#xD;
+			if(flag){&#xD;
+				dorado.MessageBox.alert(&quot;删除已完成！&quot;);&#xD;
+			}&#xD;
+		});&#xD;
+		&#xD;
+	},&#xD;
+	icon:&quot;WARNING&quot;&#xD;
+};&#xD;
+dorado.MessageBox.confirm(&quot;您确认要删除当前节点吗？&quot;,options);&#xD;
+</ClientEvent>
+        <Property name="caption">删除节点</Property>
+        <Property name="visible">false</Property>
+      </MenuItem>
+    </Menu>
+    <DataSetDropDown id="dataSetDropDown1"/>
+  </View>
+</ViewConfig>

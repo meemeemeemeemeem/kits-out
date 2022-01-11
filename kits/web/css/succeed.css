@@ -1,0 +1,89 @@
+@charset "utf-8";
+body, button, dd, dl, dt, form, h1, h2, h3, h4, h5, h6, hr, input, li, ol, p, pre, td, textarea, th, ul{margin:0; padding:0; list-style:none;}
+
+body{ font:12px/1.5 "微软雅黑";background: #fff;}
+.top{width: 100%;height: 132px;}
+.top .middle{width: 401px; height: 132px;margin: 0 auto 0;}
+.top .middle img{float: left;margin-right: 30px;}
+.top .middle p{float: left;line-height: 132px;font-size: 50px;color:#0f7f0f; }
+.center{width: 100%; }
+.center-middle{width: 500px;margin: 30px auto 0;color: #999;font-size: 16px;font-weight: bold;text-align:  			left;}
+.center-middle .txt{margin-bottom: 0px;}
+.center-middle .txt span{color:#4388cb; }
+.center-middle .txt2{margin-right: 20px;}
+.bottom{width: 100%;height: 600px;color: #666;font-size: 16px;font-weight: bold;}
+.bottom-middle{width: 400px;height: 600px;margin:30px auto 0; }
+.footer-top{width: 258px;height: 110px;background:#e5e7e9;margin:0 auto; padding: 15px 0;}
+.footer-top .gaoliang{color:#4388cb; margin-right: 10px;}
+.footer-top .gaoliang{color:#4388cb; margin-right: 10px;margin: 20px 0;}
+.footer-top .gaoliang span{color: #0f7f0f;}
+ .overday{float: left;margin-top: -5px;}
+ img{float: left;margin-right: 10px;}
+
+.footer-bottom{width: 263px;height: 50px;background: #4388cb;margin:0 auto;color: #fff;}
+.bottom-left{width: 104px;float: left;margin-left: 20px;margin-top: 10px;}
+.bottom-left img{float: left;margin-top: -3px;}
+.bottom-left p{float: right;color: #fff;margin-top: 3px;}
+.bottom-right{float: right;margin-right: 20px;text-align: center;margin-top: 3px;height: 44px;border-left: 2px solid #ccc;padding-left: 15px;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

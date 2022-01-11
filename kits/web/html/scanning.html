@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<link href="../css/scanning.css" rel="stylesheet" type="text/css">
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport"
+	content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+<title>运单跟踪</title>
+<script type="text/javascript" src="../libraries/js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="../libraries/js/scanning.js"></script>
+</head>
+<body>
+	<header> <span id="first"
+		onclick="ChangeDiv('0','viewDiv_',1)" class="selected">实时跟踪</span> <span
+		id="second" onclick="ChangeDiv('1','viewDiv_',1)">发现更多</span> </header>
+
+	<div class="centerbox">
+    <div id="viewDiv_0"><!--第一页-->
+
+        <table width="100%" style="border-radius:6px; box-shadow:#9B9B9B 0 3px 6px; overflow:hidden;" border="0"
+               cellspacing="0" cellpadding="0">
+            <tr style="background-color:#387ef5;" width="100%" height="26px">
+                <td colspan="2">
+                    <span class="sm_cydh">承运单号：<span id="cydh"></span></span>
+                    <span class="sm_zt">状态：<span id="zt"></span></span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" width="100%" height="30px" style="border-bottom:#999 solid 1px; ">
+                    <div class="mudidi">
+                        <div class="fanwei1"><span id="sfz"></span></div>
+                        <div class="fanwei2"><span id="ddz"></span></div>
+                    </div>
+                </td>
+            </tr>
+            <tr  class="neirong">
+                <td width="50%" height="26px" style="border-right:#999 solid 1px; padding:5px; min-width:143px;"valign="top" >
+                    <div>发货人：<span id="fhrmc"></span></div>
+                    <div><div class="kongge">货</div>名：<span id="hwmc"></span></div>
+                    <div><div class="kongge">件</div>数：<span id="hwsl"></span></div>
+                    <div><div class="kongge">电</div>话：<span><span id="fhrdh"></span></span></div>
+                    <div><div class="kongge">地</div>址：
+                      <span id="fhrdz"></span>
+                    </div>
+                </td>
+                <td width="50%" height="26px" style="padding:5px; min-width:143px;"valign="top">
+                    <div>收货人：<span id="shrmc"></span></div>
+                    <br><br>
+                    <div><div class="kongge">电</div>话：<span id="shrdh"></span></div>
+                    <div><div class="kongge">地</div>址：
+                      <span id="shrdz"></span>
+                    </div>
+                </td>
+            </tr>
+        </table>
+
+        <div class="track-rcol"><!--进度-->
+            <div class="track-list">
+                <ul class="jindu">
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+	<div id="viewDiv_1">
+		<!--第二页-->
+		<ul class="good">
+			<li><img src="../images/truck_black.png" /> 实时跟踪，一手掌控
+				<div class="triangle-down"></div></li>
+			<li><img src="../images/excel.png" /> 账务明细，一目了然
+				<div class="triangle-down"></div></li>
+			<li><img src="../images/shield.png" /> 货运承保，一路护航
+				<div class="triangle-down"></div></li>
+			<li><img src="../images/link.png" /> 好运畅通，天下任行
+				<div class="triangle-down-last"></div></li>
+		</ul>
+		<div class="erweima">
+			<div class="erweima_top">物流从未如此简单</div>
+			<div class="erweima_bottom">
+				<!--<div class="erweima_contant"><p>长按二维码</p>
+            关注微信/<br>
+            下载手机APP
+            </div>-->
+				<div class="erweima_saomiao">
+					<img src="../images/hytAppDownload.png" width="80" height="80" alt="" /> <span>公司端</span>
+				</div>
+				<div class="erweima_jieshao">
+					<img width="80" height="80" alt="" 
+						src="../images/ownerAppDownload.png" /> <span>客户端</span>
+				</div>
+				<div class="erweima_gzh">
+					<img width="80" height="80" alt="" 
+						src="../images/weixin.jpg" /> <span>微信公众号</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,8 @@
+@charset "utf-8";
+body,ul,li,h1,h2,h3,h4,h5,h6,p,dl,dt,dd,input,img{margin:0; padding:0; list-style:none; border:0; outline:none;}
+
+body{ font:12px/1.5 "微软雅黑";background: #575757;}
+a{text-decoration: none;color: #fff;}
+.box{width: 100%;margin-top: 17%}
+.box p{color: #fff;font-size: 30px;text-align: center;line-height:50px }
+.bgc{width: 100%;text-align: center;margin-top: 50px;background: #fff}

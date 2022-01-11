@@ -1,0 +1,103 @@
+/*新闻滚动页*/
+/*.rounded{
+	border-radius: 20px;
+}*/
+
+
+.size1{
+	height: 30px;
+	overflow: hidden;
+}
+
+.smarticker .sec1, .smarticker .sec1-2, .smarticker .sec2, .smarticker .sec3, .smarticker .sec4, .smarticker .sec5, .smarticker .sec6, .smarticker .sec7{
+	float: left;
+}
+
+.smarticker .sec1-2{
+	
+}
+
+.smarticker ul{
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+
+.smarticker .smarticker-cats, .smarticker-cats .catlist, .smarticker .smarticker-category, .smarticker .smarticker-news{
+	height: 100%;
+	overflow: hidden;
+}
+
+.smarticker li{
+	height: 30px;
+	line-height: 30px;
+}
+
+.smarticker a{
+	text-decoration: none;
+}
+
+.smarticker .smarticker-news{
+	text-align: left;
+	position: relative;
+}
+
+.smarticker .smarticker-news ul{
+	margin-left: 15px;
+	display: none;
+}
+
+.smarticker .smarticker-news ul li{
+	position: absolute;
+	display: none;
+	height: 100%;
+	top: 0px;
+}
+
+.smarticker-category a{
+	font-size: 16px;
+}
+
+.cover{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 4px;
+	left: 0px;
+	z-index: 2;
+	float: right;
+}
+
+
+/* ------------- Theme 4 ------------ */
+.theme4{
+	background: #fff;
+}
+
+.theme4 .smarticker-news a{
+	color: #333;
+	font-family:Microsoft Yahei;
+	font-size: 14px;
+	/*white-space:nowrap;
+	overflow:hidden;
+	text-overflow:ellipsis;*/
+}
+
+.theme4 .smarticker-cats .left, .theme4 .smarticker-cats .right{
+	display: none;
+}
+
+.theme4 .smarticker-cats a{
+	color: #fff;
+	text-decoration: none;
+	font-family: Calibri, Tahoma;
+	font-weight: bold;
+	font-size: 14px;
+}
+.tickertitle{
+	height:100%;
+	line-height:30px;
+	text-align:center;
+	font-weight:bold;
+	font-family:Microsoft Yahei;
+}

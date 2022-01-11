@@ -1,0 +1,1899 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ViewConfig>
+  <Arguments/>
+  <Context/>
+  <Model>
+    <DataType name="dtQuery">
+      <PropertyDef name="compId">
+        <Property></Property>
+        <Property name="label">公司别</Property>
+        <Property name="dataType">String</Property>
+      </PropertyDef>
+      <PropertyDef name="noId">
+        <Property name="label">单号代码</Property>
+        <Property name="dataType">String</Property>
+      </PropertyDef>
+      <PropertyDef name="noDesc">
+        <Property name="dataType">String</Property>
+        <Property name="label">单号名称</Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="dtTbdf03">
+      <Property name="creationType">com.kits.inms.bs.domain.Tbdf03</Property>
+      <PropertyDef name="compId">
+        <Property></Property>
+        <Property name="label">公司别</Property>
+      </PropertyDef>
+      <PropertyDef name="noId">
+        <Property></Property>
+        <Property name="label">单号代码</Property>
+        <Property name="required">true</Property>
+      </PropertyDef>
+      <PropertyDef name="noDesc">
+        <Property></Property>
+        <Property name="label">单号名称</Property>
+      </PropertyDef>
+      <PropertyDef name="groupId">
+        <Property></Property>
+        <Property name="label">资料授权群组</Property>
+      </PropertyDef>
+      <PropertyDef name="createEmpNo">
+        <Property></Property>
+        <Property name="label">创建人员</Property>
+        <Property name="mapping">
+          <Property name="mapValues">${dorado.getDataProvider(&quot;commonUtils#getLoginUser&quot;).getResult()}</Property>
+          <Property name="keyProperty">name</Property>
+          <Property name="valueProperty">value</Property>
+        </Property>
+      </PropertyDef>
+      <PropertyDef name="createDate">
+        <Property></Property>
+        <Property name="label">创建时间</Property>
+        <Property name="dataType">Date</Property>
+        <Property name="displayFormat">Y-m-d H:i:s</Property>
+      </PropertyDef>
+      <PropertyDef name="modifyEmpNo">
+        <ClientEvent name="onGet">/*&#xD;
+var userName = arg.value;&#xD;
+if(userName){&#xD;
+	new dorado.widget.AjaxAction({&#xD;
+		parameter:{&#xD;
+			userName:userName&#xD;
+		},&#xD;
+		service:&quot;commonUtils#getCName&quot;&#xD;
+	}).execute(function(cname){&#xD;
+		if(cname!=null){&#xD;
+			dsTbdf03.getData(&quot;#&quot;).set(&quot;modifyEmpNo&quot;,cname);&#xD;
+			//dsTbdf03.getData().each(function(every){&#xD;
+			//	every.set(&quot;modifyEmpNo&quot;,cname);&#xD;
+			//});&#xD;
+		}&#xD;
+	});	&#xD;
+}&#xD;
+*/</ClientEvent>
+        <Property></Property>
+        <Property name="label">修改人员</Property>
+        <Property name="mapping">
+          <Property name="mapValues">${dorado.getDataProvider(&quot;commonUtils#getLoginUser&quot;).getResult()}</Property>
+          <Property name="keyProperty">name</Property>
+          <Property name="valueProperty">value</Property>
+        </Property>
+      </PropertyDef>
+      <PropertyDef name="modifyDate">
+        <Property></Property>
+        <Property name="label">修改时间</Property>
+        <Property name="dataType">Date</Property>
+        <Property name="displayFormat">Y-m-d H:i:s</Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="dtTbdf04">
+      <ClientEvent name="onDataChange">var property = arg.property;&#xD;
+&#xD;
+/*规则类别改变时*/&#xD;
+if(property==&quot;ruleType&quot;){&#xD;
+	view.set(&quot;^ruleConstant.readOnly&quot;,false);						//字串常数可读写&#xD;
+	view.set(&quot;^ruleLength.readOnly&quot;,false);							//规则长度可读写&#xD;
+	&#xD;
+	//规则类别为变数&#xD;
+	if(view.get(&quot;#form2.entity&quot;).get(&quot;ruleType&quot;)==&quot;p&quot;){ &#xD;
+		view.get(&quot;#form2.entity&quot;).set(&quot;ruleDesc&quot;,&quot;变数(p)&quot;);			//规则说明&#xD;
+		view.set(&quot;^ruleConstant.readOnly&quot;,true);					//字串常数只读&#xD;
+		view.get(&quot;#form2.entity&quot;).set(&quot;ruleConstant&quot;,null);			//字串常数为null&#xD;
+		&#xD;
+	}&#xD;
+	//规则类别为西洋年&#xD;
+	if(view.get(&quot;#form2.entity&quot;).get(&quot;ruleType&quot;)==&quot;y&quot;){&#xD;
+		view.get(&quot;#form2.entity&quot;).set(&quot;ruleDesc&quot;,&quot;西洋年(y)&quot;);		//规则说明&#xD;
+		view.set(&quot;^ruleConstant.readOnly&quot;,true);					//字串常数只读&#xD;
+		view.get(&quot;#form2.entity&quot;).set(&quot;ruleConstant&quot;,null);			//字串常数为null&#xD;
+		&#xD;
+	}&#xD;
+	//规则类别为月份&#xD;
+	if(view.get(&quot;#form2.entity&quot;).get(&quot;ruleType&quot;)==&quot;m&quot;){&#xD;
+		view.get(&quot;#form2.entity&quot;).set(&quot;ruleDesc&quot;,&quot;月份(m)&quot;);			//规则说明&#xD;
+		view.set(&quot;^ruleConstant.readOnly&quot;,true);					//字串常数只读&#xD;
+		view.set(&quot;^ruleLength.readOnly&quot;,true);						//规则长度只读&#xD;
+		view.get(&quot;#form2.entity&quot;).set(&quot;ruleLength&quot;,2);				//规则长度为2&#xD;
+		view.get(&quot;#form2.entity&quot;).set(&quot;ruleConstant&quot;,null);			//字串常数为null&#xD;
+	}&#xD;
+	//规则类别为日&#xD;
+	if(view.get(&quot;#form2.entity&quot;).get(&quot;ruleType&quot;)==&quot;d&quot;){&#xD;
+		view.get(&quot;#form2.entity&quot;).set(&quot;ruleDesc&quot;,&quot;日(d)&quot;);			//规则说明&#xD;
+		view.set(&quot;^ruleConstant.readOnly&quot;,true);					//字串常数只读&#xD;
+		view.set(&quot;^ruleLength.readOnly&quot;,true);						//规则长度只读&#xD;
+		view.get(&quot;#form2.entity&quot;).set(&quot;ruleLength&quot;,2);				//规则长度为2&#xD;
+		view.get(&quot;#form2.entity&quot;).set(&quot;ruleConstant&quot;,null);			//字串常数为null&#xD;
+	}&#xD;
+	//规则类别为流水号&#xD;
+	if(view.get(&quot;#form2.entity&quot;).get(&quot;ruleType&quot;)==&quot;s&quot;){&#xD;
+		view.get(&quot;#form2.entity&quot;).set(&quot;ruleDesc&quot;,&quot;流水号(s)&quot;);		//规则说明&#xD;
+		view.set(&quot;^ruleConstant.readOnly&quot;,true);					//字串常数只读&#xD;
+		view.get(&quot;#form2.entity&quot;).set(&quot;ruleConstant&quot;,null);			//字串常数为null&#xD;
+	}&#xD;
+	//规则类别为字串常数&#xD;
+	if(view.get(&quot;#form2.entity&quot;).get(&quot;ruleType&quot;)==&quot;c&quot;){&#xD;
+		view.get(&quot;#form2.entity&quot;).set(&quot;ruleDesc&quot;,&quot;字串常数(c)&quot;);		//规则说明&#xD;
+		//view.set(&quot;^ruleConstant.required&quot;,true);					//字串常数必填&#xD;
+		view.set(&quot;^ruleLength.readOnly&quot;,true);						//规则长度只读&#xD;
+	}&#xD;
+}&#xD;
+&#xD;
+/*字串常数改变时*/&#xD;
+if(property==&quot;ruleConstant&quot;){&#xD;
+	var length = view.get(&quot;#form2.entity&quot;).get(&quot;ruleConstant&quot;).length;&#xD;
+	view.get(&quot;#form2.entity&quot;).set(&quot;ruleLength&quot;,length);			//规则长度&#xD;
+}&#xD;
+</ClientEvent>
+      <Property name="creationType">com.kits.inms.bs.domain.Tbdf04</Property>
+      <PropertyDef name="compId">
+        <Property></Property>
+        <Property name="label">公司别</Property>
+      </PropertyDef>
+      <PropertyDef name="noId">
+        <Property></Property>
+        <Property name="label">单号代码</Property>
+      </PropertyDef>
+      <PropertyDef name="ruleId">
+        <Property></Property>
+        <Property name="label">规则序号</Property>
+        <Property name="required">true</Property>
+      </PropertyDef>
+      <PropertyDef name="ruleDesc">
+        <Property></Property>
+        <Property name="label">规则说明</Property>
+        <Property name="required">true</Property>
+        <Property name="mapping">
+          <Property name="mapValues"></Property>
+        </Property>
+      </PropertyDef>
+      <PropertyDef name="ruleType">
+        <Property></Property>
+        <Property name="label">规则类别</Property>
+        <Property name="mapping">
+          <Property name="mapValues">
+            <Entity>
+              <Property name="p">变数</Property>
+              <Property name="c">字串常数</Property>
+              <Property name="y">西洋年</Property>
+              <Property name="m">月份</Property>
+              <Property name="d">日</Property>
+              <Property name="s">流水号</Property>
+            </Entity>
+          </Property>
+        </Property>
+        <Property name="required">true</Property>
+      </PropertyDef>
+      <PropertyDef name="ruleLength">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">规则长度</Property>
+        <Property name="required">true</Property>
+      </PropertyDef>
+      <PropertyDef name="ruleConstant">
+        <Property></Property>
+        <Property name="label">字串常数</Property>
+      </PropertyDef>
+      <PropertyDef name="ruleRenew">
+        <Property></Property>
+        <Property name="label">规则计数影响</Property>
+        <Property name="mapping">
+          <Property name="mapValues">
+            <Entity>
+              <Property name="N">N 否</Property>
+              <Property name="Y">Y 是</Property>
+            </Entity>
+          </Property>
+        </Property>
+      </PropertyDef>
+      <PropertyDef name="createEmpNo">
+        <Property></Property>
+        <Property name="label">创建人员</Property>
+        <Property name="mapping">
+          <Property name="mapValues">${dorado.getDataProvider(&quot;commonUtils#getLoginUser&quot;).getResult()}</Property>
+          <Property name="keyProperty">name</Property>
+          <Property name="valueProperty">value</Property>
+        </Property>
+      </PropertyDef>
+      <PropertyDef name="createDate">
+        <Property></Property>
+        <Property name="label">创建时间</Property>
+        <Property name="displayFormat">Y-m-d H:i:s</Property>
+        <Property name="dataType">Date</Property>
+      </PropertyDef>
+      <PropertyDef name="modifyEmpNo">
+        <Property></Property>
+        <Property name="label">修改人员</Property>
+        <Property name="mapping">
+          <Property name="mapValues">${dorado.getDataProvider(&quot;commonUtils#getLoginUser&quot;).getResult()}</Property>
+          <Property name="keyProperty">name</Property>
+          <Property name="valueProperty">value</Property>
+        </Property>
+      </PropertyDef>
+      <PropertyDef name="modifyDate">
+        <Property></Property>
+        <Property name="label">修改时间</Property>
+        <Property name="displayFormat">Y-m-d H:i:s</Property>
+        <Property name="dataType">Date</Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="dtTbdf05">
+      <Property name="creationType">com.kits.inms.bs.domain.Tbdf05</Property>
+      <PropertyDef name="compId">
+        <Property></Property>
+        <Property name="label">公司别</Property>
+      </PropertyDef>
+      <PropertyDef name="noId">
+        <Property></Property>
+        <Property name="label">单号代码</Property>
+      </PropertyDef>
+      <PropertyDef name="noStyle">
+        <Property></Property>
+        <Property name="label">单号格式</Property>
+      </PropertyDef>
+      <PropertyDef name="noCount">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">当前计数</Property>
+      </PropertyDef>
+      <PropertyDef name="createEmpNo">
+        <Property></Property>
+        <Property name="label">创建人员</Property>
+        <Property name="mapping">
+          <Property name="mapValues">${dorado.getDataProvider(&quot;commonUtils#getLoginUser&quot;).getResult()}</Property>
+          <Property name="keyProperty">name</Property>
+          <Property name="valueProperty">value</Property>
+        </Property>
+      </PropertyDef>
+      <PropertyDef name="createDate">
+        <Property></Property>
+        <Property name="label">创建时间</Property>
+        <Property name="displayFormat">Y-m-d H:i:s</Property>
+        <Property name="dataType">Date</Property>
+      </PropertyDef>
+      <PropertyDef name="modifyEmpNo">
+        <Property></Property>
+        <Property name="label">修改人员</Property>
+        <Property name="mapping">
+          <Property name="mapValues">${dorado.getDataProvider(&quot;commonUtils#getLoginUser&quot;).getResult()}</Property>
+          <Property name="keyProperty">name</Property>
+          <Property name="valueProperty">value</Property>
+        </Property>
+      </PropertyDef>
+      <PropertyDef name="modifyDate">
+        <Property></Property>
+        <Property name="label">修改时间</Property>
+        <Property name="displayFormat">Y-m-d H:i:s</Property>
+        <Property name="dataType">Date</Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="dtOrderNo">
+      <PropertyDef name="noId">
+        <Property name="label">单号代码</Property>
+        <Property name="dataType">String</Property>
+        <Property name="required">true</Property>
+      </PropertyDef>
+      <PropertyDef name="variable">
+        <Property name="label">变量</Property>
+      </PropertyDef>
+    </DataType>
+  </Model>
+  <View>
+    <ClientEvent name="onReady">window.dsQuery = view.get(&quot;#dsQuery&quot;);&#xD;
+window.dsTbdf03 = view.get(&quot;#dsTbdf03&quot;);&#xD;
+window.dataSet3 = view.get(&quot;#dataSet3&quot;);&#xD;
+window.dsTbdf04 = view.get(&quot;#dsTbdf04&quot;);&#xD;
+window.dsTbdf05 = view.get(&quot;#dsTbdf05&quot;);&#xD;
+&#xD;
+window.dgTbdf03 = view.get(&quot;#dgTbdf03&quot;);&#xD;
+window.dgTbdf04 = view.get(&quot;#dgTbdf04&quot;);&#xD;
+window.dgTbdf05 = view.get(&quot;#dgTbdf05&quot;);&#xD;
+&#xD;
+window.dialogQuery = view.get(&quot;#dialogQuery&quot;);&#xD;
+&#xD;
+window.form1 = view.get(&quot;#form1&quot;);&#xD;
+window.form2 = view.get(&quot;#form2&quot;);&#xD;
+window.form3 = view.get(&quot;#form3&quot;);&#xD;
+window.form4 = view.get(&quot;#form4&quot;);&#xD;
+window.form5 = view.get(&quot;#from5&quot;);&#xD;
+&#xD;
+//window.info = view.get(&quot;#info&quot;);&#xD;
+//info.doSet(&quot;text&quot;,&quot;欢迎使用本系统 ...&quot;);</ClientEvent>
+    <Property name="styleSheetFile">com/kits/saas/mw/style1.css</Property>
+    <DataSet id="dsQuery">
+      <ClientEvent name="onReady">self.insert();&#xD;
+</ClientEvent>
+      <Property name="dataType">[dtQuery]</Property>
+      <Property name="loadMode">manual</Property>
+    </DataSet>
+    <DataSet id="dsTbdf03">
+      <ClientEvent name="onReady">//var data = self.getData();&#xD;
+//if(data.entityCount == 0){&#xD;
+	self.insert();&#xD;
+//}&#xD;
+&#xD;
+&#xD;
+</ClientEvent>
+      <ClientEvent name="onLoadData">/*&#xD;
+var datas = self.getData();&#xD;
+&#xD;
+if(datas.entityCount>0){&#xD;
+	datas.each(function(data){&#xD;
+		var createEmpNo = data.get(&quot;createEmpNo&quot;);&#xD;
+		if(createEmpNo){&#xD;
+			new dorado.widget.AjaxAction({&#xD;
+				parameter:{userName:createEmpNo},&#xD;
+				service:&quot;commonUtils#getCName&quot;&#xD;
+			}).execute(function(cname){&#xD;
+				if(cname!=null){&#xD;
+					data.set(&quot;createEmpNo&quot;,cname);&#xD;
+				}&#xD;
+			});	&#xD;
+		}&#xD;
+		&#xD;
+		var modifyEmpNo = data.get(&quot;modifyEmpNo&quot;);&#xD;
+		if(modifyEmpNo){&#xD;
+			new dorado.widget.AjaxAction({&#xD;
+				parameter:{userName:modifyEmpNo},&#xD;
+				service:&quot;commonUtils#getCName&quot;&#xD;
+			}).execute(function(cname){&#xD;
+				if(cname!=null){&#xD;
+					data.set(&quot;modifyEmpNo&quot;,cname);&#xD;
+				}&#xD;
+			});	&#xD;
+		}&#xD;
+	});&#xD;
+}&#xD;
+*/&#xD;
+</ClientEvent>
+      <Property name="dataType">[dtTbdf03]</Property>
+      <Property name="loadMode">manual</Property>
+      <Property name="pageSize">20</Property>
+      <Property name="dataProvider">bsjc30BO#loadTbdf03</Property>
+    </DataSet>
+    <DataSet id="dataSet3">
+      <Property name="dataType">[dtTbdf03]</Property>
+      <Property name="loadMode">lazy</Property>
+      <Property name="pageSize">10</Property>
+      <Property name="dataProvider">bsjc30BO#loadTbdf03</Property>
+    </DataSet>
+    <DataSet id="dsTbdf04">
+      <Property name="dataType">[dtTbdf04]</Property>
+      <Property name="loadMode">manual</Property>
+      <Property name="pageSize">20</Property>
+      <Property name="dataProvider">bsjc30BO#loadTbdf04</Property>
+    </DataSet>
+    <DataSet id="dsTbdf05">
+      <Property name="dataType">[dtTbdf05]</Property>
+      <Property name="loadMode">manual</Property>
+      <Property name="pageSize">20</Property>
+      <Property name="dataProvider">bsjc30BO#loadTbdf05</Property>
+    </DataSet>
+    <DataSet id="dsOrderNo">
+      <ClientEvent name="onReady">//var data = self.getData();&#xD;
+//if(data.entityCount == 0){&#xD;
+	self.insert();&#xD;
+//}&#xD;
+</ClientEvent>
+      <Property name="dataType">[dtOrderNo]</Property>
+      <Property name="loadMode">manual</Property>
+    </DataSet>
+    <Panel>
+      <Buttons/>
+      <Children>
+        <AutoForm>
+          <Property name="dataSet">dsQuery</Property>
+          <Property name="cols">200,200,90,90</Property>
+          <Property name="width">60%</Property>
+          <AutoFormElement>
+            <Property name="name">noId</Property>
+            <Property name="property">noId</Property>
+            <Property name="labelWidth">60</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">noDesc</Property>
+            <Property name="property">noDesc</Property>
+            <Property name="labelWidth">60</Property>
+            <Editor/>
+          </AutoFormElement>
+          <Button layoutConstraint="align:center">
+            <ClientEvent name="onClick">var entity = view.get(&quot;#dsQuery.data:#&quot;);&#xD;
+if(entity){&#xD;
+	view.get(&quot;#dsTbdf03&quot;).set(&#xD;
+		&quot;parameter&quot;,entity&#xD;
+	).flushAsync(function(df03s){&#xD;
+		if(df03s.entityCount>0){&#xD;
+			//info.doSet(&quot;text&quot;,&quot;查询资料成功！&quot;);&#xD;
+		}else{&#xD;
+			dorado.MessageBox.alert(&quot;没有您要查询的资料！&quot;);&#xD;
+			//info.doSet(&quot;text&quot;,&quot;没有您要查询的资料！&quot;);&#xD;
+			view.get(&quot;#dsTbdf03&quot;).insert();&#xD;
+		}&#xD;
+	});&#xD;
+}&#xD;
+&#xD;
+&#xD;
+</ClientEvent>
+            <Property name="caption">查询</Property>
+            <Property name="icon">url(>skin>common/icons.gif) -40px -100px</Property>
+          </Button>
+          <Button layoutConstraint="align:center">
+            <ClientEvent name="onClick">view.get(&quot;#dsQuery&quot;).clear();&#xD;
+view.get(&quot;#dsQuery&quot;).insert();&#xD;
+&#xD;
+//info.doSet(&quot;text&quot;,&quot;重置成功！&quot;);</ClientEvent>
+            <Property name="caption">重置</Property>
+            <Property name="icon">url(>skin>common/icons.gif) -40px -240px</Property>
+          </Button>
+        </AutoForm>
+      </Children>
+      <Tools/>
+    </Panel>
+    <Panel>
+      <Buttons/>
+      <Children>
+        <SplitPanel>
+          <Property name="position">50%</Property>
+          <MainControl>
+            <TabControl>
+              <Property name="height">225</Property>
+              <ControlTab>
+                <Property name="caption">单号定义</Property>
+                <Panel>
+                  <Buttons/>
+                  <Children>
+                    <ToolBar>
+                      <Button>
+                        <ClientEvent name="onClick">var data = dsTbdf03.getData(&quot;#&quot;);&#xD;
+var action = this.id(&quot;updateActionSaveTbdf03&quot;);&#xD;
+&#xD;
+if(data){&#xD;
+	var noId = data.get(&quot;noId&quot;);	//单号代码&#xD;
+	//先判断是否为空再判断键值是否重复&#xD;
+	if(noId==null || noId==&quot;&quot;){&#xD;
+		//dorado.MessageBox.alert(&quot;单号代码不能为空！&quot;);&#xD;
+		info.doSet(&quot;text&quot;,&quot;单号代码不能为空！&quot;);&#xD;
+		return;&#xD;
+	}else{&#xD;
+		dataSet3.set(&quot;parameter&quot;,{&#xD;
+			&quot;compId&quot;:data.get(&quot;compId&quot;),&#xD;
+			&quot;noId&quot;:noId&#xD;
+		}).flushAsync(function(df03s){&#xD;
+			if(df03s.entityCount>0){&#xD;
+				//dorado.MessageBox.alert(&quot;该单号代码已存在，请重新设置！&quot;);&#xD;
+				info.doSet(&quot;text&quot;,&quot;该单号代码已存在，请重新设置！&quot;);&#xD;
+			}else{&#xD;
+				dorado.MessageBox.confirm(&quot;您确认新增该数据吗？&quot;,function(){&#xD;
+					if(data.getOldData()){&#xD;
+						dsTbdf03.insert(data);&#xD;
+					}&#xD;
+					&#xD;
+					//保存数据&#xD;
+					//action.set({&#xD;
+					//	executingMessage:&quot;正在保存...&quot;,&#xD;
+					//	successMessage:&quot;保存成功！&quot;&#xD;
+					//}).execute();&#xD;
+					action.execute(function(){&#xD;
+						info.doSet(&quot;text&quot;,&quot;新增成功！&quot;);&#xD;
+						&#xD;
+						view.set(&quot;^update1.disabled&quot;,false);&#xD;
+						view.set(&quot;^delete1.disabled&quot;,false);&#xD;
+						view.set(&quot;^add2.disabled&quot;,false);&#xD;
+					});&#xD;
+				});&#xD;
+			}&#xD;
+		});&#xD;
+	}&#xD;
+}&#xD;
+</ClientEvent>
+                        <Property name="caption">新增</Property>
+                        <Property name="icon"> url(>skin>common/icons.gif) -120px 0px</Property>
+                        <Property name="tags">add1</Property>
+                      </Button>
+                      <Button>
+                        <ClientEvent name="onClick">var data = dsTbdf03.getData(&quot;#&quot;);&#xD;
+var action = this.id(&quot;updateActionSaveTbdf03&quot;);&#xD;
+var flag = -1;//用于判断键值是否被修改&#xD;
+var noIds = view.get(&quot;#form1.entity&quot;).get(&quot;noId&quot;);&#xD;
+var noId = data.getOldData().noId;&#xD;
+if(data){&#xD;
+	var options = {&#xD;
+		callback:function(){&#xD;
+			if(flag == -1){&#xD;
+				if(noIds!=noId){&#xD;
+					//flag ++;&#xD;
+					dorado.MessageBox.alert(&quot;单号代码不能修改！&quot;);&#xD;
+					return;&#xD;
+				}&#xD;
+			}&#xD;
+			if(flag&lt;=0){&#xD;
+				//data.set(&quot;modifyDate&quot;,new Date().toISOString().substring(0,10));&#xD;
+				action.execute(function(){&#xD;
+					&#xD;
+				});&#xD;
+			}&#xD;
+		},&#xD;
+		icon:&quot;WARNING&quot;,&#xD;
+		title:&quot;修改确认&quot;&#xD;
+	}&#xD;
+	dorado.MessageBox.confirm(&quot;确认修改数据？&quot;,options);&#xD;
+}&#xD;
+</ClientEvent>
+                        <Property name="caption">修改</Property>
+                        <Property name="icon">url(>skin>common/icons.gif) -200px 0px</Property>
+                        <Property name="tags">update1</Property>
+                        <Property name="disabled">true</Property>
+                      </Button>
+                      <Button>
+                        <ClientEvent name="onClick">var data = dsTbdf03.getData(&quot;#&quot;);&#xD;
+var action = this.id(&quot;updateActionSaveTbdf03&quot;);&#xD;
+if(data){&#xD;
+	dorado.MessageBox.confirm(&quot;您确认删除该数据吗？&quot;,function(){&#xD;
+		data.remove();&#xD;
+		action.execute(function(){&#xD;
+			info.doSet(&quot;text&quot;,&quot;删除成功！&quot;);&#xD;
+		});&#xD;
+	});&#xD;
+}else{&#xD;
+	info.doSet(&quot;text&quot;,&quot;没有数据可以删除啦！&quot;);&#xD;
+}</ClientEvent>
+                        <Property name="caption">删除</Property>
+                        <Property name="icon"> url(>skin>common/icons.gif) -140px 0px</Property>
+                        <Property name="tags">delete1</Property>
+                        <Property name="disabled">true</Property>
+                      </Button>
+                    </ToolBar>
+                    <AutoForm id="form1">
+                      <Property name="cols">*,*</Property>
+                      <Property name="dataSet">dsTbdf03</Property>
+                      <AutoFormElement layoutConstraint="colSpan:2">
+                        <Property name="label">单号代码</Property>
+                        <Property name="labelWidth">90</Property>
+                        <Property name="name">noId</Property>
+                        <Property name="property">noId</Property>
+                        <Property name="labelAlign">center</Property>
+                        <Property name="width">60%</Property>
+                        <Editor/>
+                      </AutoFormElement>
+                      <AutoFormElement layoutConstraint="colSpan:2">
+                        <Property name="label">单号名称</Property>
+                        <Property name="labelWidth">90</Property>
+                        <Property name="name">noDesc</Property>
+                        <Property name="property">noDesc</Property>
+                        <Property name="labelAlign">center</Property>
+                        <Property name="width">60%</Property>
+                        <Editor/>
+                      </AutoFormElement>
+                      <AutoFormElement layoutConstraint="colSpan:2">
+                        <Property name="label">资料授权群组</Property>
+                        <Property name="labelWidth">90</Property>
+                        <Property name="name">groupId</Property>
+                        <Property name="property">groupId</Property>
+                        <Property name="labelAlign">center</Property>
+                        <Property name="width">60%</Property>
+                        <Editor/>
+                      </AutoFormElement>
+                      <AutoFormElement>
+                        <Property name="labelWidth">90</Property>
+                        <Property name="name">createEmpNo</Property>
+                        <Property name="property">createEmpNo</Property>
+                        <Property name="labelAlign">center</Property>
+                        <Property name="trigger">autoMappingDropDown1</Property>
+                        <Property name="readOnly">true</Property>
+                        <Editor/>
+                      </AutoFormElement>
+                      <AutoFormElement>
+                        <Property name="labelWidth">90</Property>
+                        <Property name="readOnly">true</Property>
+                        <Property name="property">createDate</Property>
+                        <Property name="labelAlign">center</Property>
+                        <Property name="name">createDate</Property>
+                        <Editor/>
+                      </AutoFormElement>
+                      <AutoFormElement>
+                        <Property name="labelWidth">90</Property>
+                        <Property name="readOnly">true</Property>
+                        <Property name="name">modifyEmpNo</Property>
+                        <Property name="property">modifyEmpNo</Property>
+                        <Property name="labelAlign">center</Property>
+                        <Property name="trigger">autoMappingDropDown1</Property>
+                        <Editor/>
+                      </AutoFormElement>
+                      <AutoFormElement>
+                        <Property name="labelWidth">90</Property>
+                        <Property name="readOnly">true</Property>
+                        <Property name="property">modifyDate</Property>
+                        <Property name="labelAlign">center</Property>
+                        <Property name="name">modifyDate</Property>
+                        <Editor/>
+                      </AutoFormElement>
+                    </AutoForm>
+                  </Children>
+                  <Tools/>
+                </Panel>
+              </ControlTab>
+              <ControlTab>
+                <ClientEvent name="onClick">var entity = view.get(&quot;#dsTbdf03.data:#&quot;);&#xD;
+if(entity){&#xD;
+	if(entity.get(&quot;compId&quot;)!=null){&#xD;
+		view.get(&quot;#dsTbdf04&quot;).set(&quot;parameter&quot;,{&quot;compId&quot;:entity.get(&quot;compId&quot;),&quot;noId&quot;:entity.get(&quot;noId&quot;)}).flushAsync(function(){&#xD;
+		if(view.get(&quot;#dsTbdf04&quot;).getData().entityCount==0){&#xD;
+			view.get(&quot;#dsTbdf04&quot;).insert({&#xD;
+				&quot;noId&quot;:view.get(&quot;#dsTbdf03.data:#&quot;).get(&quot;noId&quot;)&#xD;
+			});&#xD;
+			}&#xD;
+		});&#xD;
+	}&#xD;
+}</ClientEvent>
+                <Property name="caption">单号规则</Property>
+                <SplitPanel>
+                  <Property name="position">57%</Property>
+                  <MainControl>
+                    <Panel>
+                      <Buttons/>
+                      <Children>
+                        <ToolBar>
+                          <Button>
+                            <ClientEvent name="onClick">var data = dsTbdf04.getData(&quot;#&quot;);&#xD;
+var action = this.id(&quot;updateActionSaveTbdf04&quot;);&#xD;
+if(data){&#xD;
+	var ruleId = data.get(&quot;ruleId&quot;);//规则序&#xD;
+	if(ruleId==null || ruleId==&quot;&quot;){//先判断是否为空再判断键值是否重复&#xD;
+		dorado.MessageBox.alert(&quot;规则序不能为空&quot;);&#xD;
+		return;&#xD;
+	}else{&#xD;
+		var flag = -1;//用于判断键值是否重复.flag>0键值重复;flag&lt;=0键值不重复&#xD;
+		if(flag==-1){&#xD;
+			var compId = data.get(&quot;compId&quot;);&#xD;
+			var noId = data.get(&quot;noId&quot;);&#xD;
+			var ruleId = data.get(&quot;ruleId&quot;);&#xD;
+			if(ruleId==&quot;&quot; || ruleId==null || ruleId==undefined){&#xD;
+				flag = 0;&#xD;
+			}&#xD;
+			if(flag&lt;=0){&#xD;
+				flag = 0;&#xD;
+			}&#xD;
+			dsTbdf04.set(&quot;parameter&quot;,{&#xD;
+				&quot;compId&quot;:compId,&#xD;
+				&quot;noId&quot;:noId,&#xD;
+				&quot;ruleId&quot;:ruleId&#xD;
+			}).flushAsync(function(){&#xD;
+				var entitys = dsTbdf04.getData();&#xD;
+				entitys.each(function(entity){&#xD;
+					var ruleIds = data.get(&quot;ruleId&quot;);&#xD;
+					if(ruleIds == ruleId){&#xD;
+						flag ++ ;&#xD;
+						return;&#xD;
+					}&#xD;
+				});&#xD;
+				if(flag&lt;=0){&#xD;
+					data.set(&quot;compId&quot;,view.get(&quot;#dsTbdf03.data:#&quot;).get(&quot;compId&quot;));&#xD;
+					data.set(&quot;noId&quot;,view.get(&quot;#dsTbdf03.data:#&quot;).get(&quot;noId&quot;));&#xD;
+					//data.set(&quot;createDate&quot;,new Date().toISOString().substring(0,10));&#xD;
+					/*单号规则新增时*/&#xD;
+					if(data.state == 1){&#xD;
+						if(data.get(&quot;ruleType&quot;)==2){ //校验月&#xD;
+							if(data.get(&quot;ruleLength&quot;)!=2){&#xD;
+								dorado.MessageBox.alert(&quot;月份规则长度只能为2!请重新设置&quot;);&#xD;
+								dsTbdf04.insert(data);&#xD;
+								return ;&#xD;
+							}&#xD;
+						}&#xD;
+						if(data.get(&quot;ruleType&quot;)==1){ //校验年&#xD;
+							if(data.get(&quot;ruleLength&quot;)!=2){&#xD;
+								if(data.get(&quot;ruleLength&quot;)!=4){&#xD;
+									dorado.MessageBox.alert(&quot;年份规则长度只能为2或4!请重新设置&quot;);&#xD;
+									dsTbdf04.insert(data);&#xD;
+									return ;&#xD;
+								}&#xD;
+							}&#xD;
+						}&#xD;
+						if(data.get(&quot;ruleType&quot;)==4){ //校验字串常数(规则长度为字串常数的长度，可以为0)&#xD;
+							if(data.get(&quot;ruleConstant&quot;)==null||data.get(&quot;ruleConstant&quot;)==&quot;&quot;){&#xD;
+								dorado.MessageBox.alert(&quot;字串常数不能为空!请重新填写&quot;);&#xD;
+								dsTbdf04.insert(data);&#xD;
+								return;&#xD;
+							}else{&#xD;
+								if(data.get(&quot;ruleLength&quot;)!=0){&#xD;
+									if(data.get(&quot;ruleLength&quot;)!=data.get(&quot;ruleConstant&quot;).length){&#xD;
+										dorado.MessageBox.alert(&quot;字串常数不符合规定长度!请重新设置&quot;);&#xD;
+										dsTbdf04.insert(data);&#xD;
+										return ;&#xD;
+									}&#xD;
+								}&#xD;
+							}&#xD;
+						}&#xD;
+						dsTbdf04.insert(data);&#xD;
+					}&#xD;
+					&#xD;
+					/*单号规则修改时*/&#xD;
+					if(data.state!=1){&#xD;
+						data.setState(1);//设置实体对象状态为新建状态&#xD;
+						&#xD;
+						if(data.get(&quot;ruleType&quot;)==2){ //校验月&#xD;
+							if(data.get(&quot;ruleLength&quot;)!=2){&#xD;
+								dorado.MessageBox.alert(&quot;月份规则长度只能为2!请重新设置&quot;);&#xD;
+								dsTbdf04.insert(data);&#xD;
+								return ;&#xD;
+							}&#xD;
+						}&#xD;
+						if(data.get(&quot;ruleType&quot;)==1){ //校验西洋年&#xD;
+							if(data.get(&quot;ruleLength&quot;)!=2){&#xD;
+								if(data.get(&quot;ruleLength&quot;)!=4){&#xD;
+									dorado.MessageBox.alert(&quot;年份规则长度只能为2或4!请重新设置&quot;);&#xD;
+									dsTbdf04.insert(data);&#xD;
+									return ;&#xD;
+								}&#xD;
+							}&#xD;
+						}&#xD;
+						if(data.get(&quot;ruleType&quot;)==4){ //校验字串常数(规则长度为字串常数的长度，可以为0)&#xD;
+							if(data.get(&quot;ruleConstant&quot;)==null||data.get(&quot;ruleConstant&quot;)==&quot;&quot;){&#xD;
+								dorado.MessageBox.alert(&quot;字串常数不能为空!请重新填写&quot;);&#xD;
+								dsTbdf04.insert(data);&#xD;
+								return;&#xD;
+							}else{&#xD;
+								if(data.get(&quot;ruleLength&quot;)!=0){&#xD;
+									if(data.get(&quot;ruleLength&quot;)!=data.get(&quot;ruleConstant&quot;).length){&#xD;
+										dorado.MessageBox.alert(&quot;字串常数不符合规定长度!请重新设置&quot;);&#xD;
+										dsTbdf04.insert(data);&#xD;
+										return ;&#xD;
+									}&#xD;
+								}&#xD;
+							}&#xD;
+						}&#xD;
+						dsTbdf04.insert(data);&#xD;
+					}&#xD;
+					dorado.MessageBox.confirm(&quot;确认保存数据？&quot;,function(){&#xD;
+						action.set({&#xD;
+							executingMessage:&quot;正在保存...&quot;,&#xD;
+							successMessage:&quot;保存成功！&quot;&#xD;
+						}).execute(function(){&#xD;
+							view.get(&quot;#dsTbdf04&quot;).set(&quot;parameter&quot;,{&#xD;
+								&quot;compId&quot;:data.get(&quot;compId&quot;),&#xD;
+								&quot;noId&quot;:data.get(&quot;noId&quot;)&#xD;
+							}).flushAsync();&#xD;
+						});&#xD;
+					});&#xD;
+				}else{&#xD;
+					dorado.MessageBox.alert(&quot;规则序已存在!请重新设置!&quot;,function(){&#xD;
+						view.get(&quot;#dsTbdf04&quot;).set(&quot;parameter&quot;,{&#xD;
+							&quot;compId&quot;:data.get(&quot;compId&quot;),&#xD;
+							&quot;noId&quot;:data.get(&quot;noId&quot;)&#xD;
+						}).flushAsync();&#xD;
+					});&#xD;
+				}&#xD;
+			});&#xD;
+		}&#xD;
+	}&#xD;
+}&#xD;
+&#xD;
+		</ClientEvent>
+                            <Property name="caption">新增</Property>
+                            <Property name="icon"> url(>skin>common/icons.gif) -120px -0px</Property>
+                            <Property name="tags">add2</Property>
+                            <Property name="disabled">true</Property>
+                          </Button>
+                          <Button>
+                            <ClientEvent name="onClick">var data = dsTbdf04.getData(&quot;#&quot;);&#xD;
+var action = this.id(&quot;updateActionSaveTbdf04&quot;);&#xD;
+var flag = -1;//用于判断规则序是否被修改&#xD;
+var ruleIds = view.get(&quot;#form2.entity&quot;).get(&quot;ruleId&quot;);&#xD;
+var ruleId = data.getOldData().ruleId;&#xD;
+if(data){&#xD;
+	var options = {&#xD;
+		callback:function(){&#xD;
+			if(flag = -1){&#xD;
+				if(ruleIds!=ruleId){&#xD;
+					dorado.MessageBox.alert(&quot;规则序不能修改！&quot;);&#xD;
+					flag ++;&#xD;
+					return;&#xD;
+				}&#xD;
+			}&#xD;
+			if(flag&lt;=0){&#xD;
+				if(data.state!=1){&#xD;
+					if(data.get(&quot;ruleType&quot;)==2){ //校验月份&#xD;
+						if(data.get(&quot;ruleLength&quot;)!=2){&#xD;
+							dorado.MessageBox.alert(&quot;月份规则长度只能为2!请重新设置&quot;);&#xD;
+							return ;&#xD;
+						}&#xD;
+					}&#xD;
+					if(data.get(&quot;ruleType&quot;)==1){ //校验西洋年&#xD;
+						if(data.get(&quot;ruleLength&quot;)!=2){&#xD;
+								if(data.get(&quot;ruleLength&quot;)!=4){&#xD;
+									dorado.MessageBox.alert(&quot;年份规则长度只能为2或4!请重新设置&quot;);&#xD;
+									return ;&#xD;
+								}&#xD;
+						}&#xD;
+					}&#xD;
+					if(data.get(&quot;ruleType&quot;)==4){ //校验字串常数&#xD;
+						if(data.get(&quot;ruleConstant&quot;)==null || data.get(&quot;ruleConstant&quot;)==&quot;&quot;){&#xD;
+							dorado.MessageBox.alert(&quot;字串常数不能为空!请重新填写&quot;);&#xD;
+							return;&#xD;
+						}else{&#xD;
+							if(data.get(&quot;ruleLength&quot;)!=0){&#xD;
+								if(data.get(&quot;ruleLength&quot;)!=data.get(&quot;ruleConstant&quot;).length){&#xD;
+									dorado.MessageBox.alert(&quot;字串常数不符合规定长度!请重新设置&quot;);&#xD;
+									return ;&#xD;
+								}&#xD;
+							}&#xD;
+						}&#xD;
+					}&#xD;
+				}&#xD;
+				//data.set(&quot;modifyDate&quot;,new Date().toISOString().substring(0,10));	&#xD;
+				action.execute(function(){&#xD;
+				});&#xD;
+			}&#xD;
+		},&#xD;
+		icon:&quot;WARNING&quot;,&#xD;
+		title:&quot;删除确认&quot;&#xD;
+	}&#xD;
+	dorado.MessageBox.confirm(&quot;确认修改数据？&quot;,options);&#xD;
+}&#xD;
+&#xD;
+&#xD;
+							</ClientEvent>
+                            <Property name="caption">修改</Property>
+                            <Property name="icon">url(>skin>common/icons.gif) -200px -0px</Property>
+                            <Property name="tags">update2</Property>
+                            <Property name="disabled">true</Property>
+                          </Button>
+                          <Button>
+                            <ClientEvent name="onClick">var data = dsTbdf04.getData(&quot;#&quot;);&#xD;
+var action = this.id(&quot;updateActionSaveTbdf04&quot;);&#xD;
+if(data){&#xD;
+	var options = {&#xD;
+		callback:function(){&#xD;
+			data.remove();&#xD;
+			action.execute(function(){&#xD;
+				view.get(&quot;#dsTbdf04&quot;).set(&quot;parameter&quot;,{&#xD;
+					&quot;compId&quot;:data.get(&quot;compId&quot;),&#xD;
+					&quot;noId&quot;:data.get(&quot;noId&quot;)&#xD;
+				}).flushAsync(function(){&#xD;
+					if(view.get(&quot;#dsTbdf04&quot;).getData().entityCount==0){&#xD;
+						view.get(&quot;#dsTbdf04&quot;).insert({&#xD;
+							noId:view.get(&quot;#dsTbdf03.data:#&quot;).get(&quot;noId&quot;)&#xD;
+						});&#xD;
+					}&#xD;
+				});&#xD;
+			});&#xD;
+		},&#xD;
+		icon:&quot;WARNING&quot;,&#xD;
+		title:&quot;删除确认&quot;&#xD;
+	}&#xD;
+	dorado.MessageBox.confirm(&quot;确认删除数据？&quot;,options);&#xD;
+}&#xD;
+&#xD;
+&#xD;
+</ClientEvent>
+                            <Property name="caption">删除</Property>
+                            <Property name="icon"> url(>skin>common/icons.gif) -140px -0px</Property>
+                            <Property name="tags">delete2</Property>
+                            <Property name="disabled">true</Property>
+                          </Button>
+                        </ToolBar>
+                        <AutoForm id="form2">
+                          <Property name="dataSet">dsTbdf04</Property>
+                          <AutoFormElement layoutConstraint="colSpan:2">
+                            <Property name="name">noId</Property>
+                            <Property name="property">noId</Property>
+                            <Property name="labelWidth">90</Property>
+                            <Property name="readOnly">true</Property>
+                            <Property name="dataSet">dsTbdf03</Property>
+                            <Property name="labelAlign">center</Property>
+                            <Editor/>
+                          </AutoFormElement>
+                          <AutoFormElement id="ruleId" layoutConstraint="colSpan:2">
+                            <Property name="name">ruleId</Property>
+                            <Property name="property">ruleId</Property>
+                            <Property name="labelWidth">90</Property>
+                            <Property name="labelAlign">center</Property>
+                            <Editor/>
+                          </AutoFormElement>
+                          <AutoFormElement layoutConstraint="colSpan:2">
+                            <Property name="name">ruleType</Property>
+                            <Property name="property">ruleType</Property>
+                            <Property name="labelWidth">90</Property>
+                            <Property name="labelAlign">center</Property>
+                            <Editor/>
+                          </AutoFormElement>
+                          <AutoFormElement layoutConstraint="colSpan:2">
+                            <Property name="name">ruleDesc</Property>
+                            <Property name="property">ruleDesc</Property>
+                            <Property name="labelWidth">90</Property>
+                            <Property name="labelAlign">center</Property>
+                            <Editor/>
+                          </AutoFormElement>
+                          <AutoFormElement layoutConstraint="colSpan:2">
+                            <Property name="name">ruleConstant</Property>
+                            <Property name="property">ruleConstant</Property>
+                            <Property name="labelWidth">90</Property>
+                            <Property name="labelAlign">center</Property>
+                            <Property name="tags">ruleConstant</Property>
+                            <Editor/>
+                          </AutoFormElement>
+                          <AutoFormElement layoutConstraint="colSpan:2">
+                            <Property name="name">ruleLength</Property>
+                            <Property name="property">ruleLength</Property>
+                            <Property name="labelWidth">90</Property>
+                            <Property name="labelAlign">center</Property>
+                            <Property name="tags">ruleLength</Property>
+                            <Editor/>
+                          </AutoFormElement>
+                          <AutoFormElement layoutConstraint="colSpan:2">
+                            <Property name="name">ruleRenew</Property>
+                            <Property name="property">ruleRenew</Property>
+                            <Property name="labelWidth">90</Property>
+                            <Property name="labelAlign">center</Property>
+                            <Editor/>
+                          </AutoFormElement>
+                          <AutoFormElement layoutConstraint="colSpan:2">
+                            <Property name="name">createEmpNo</Property>
+                            <Property name="property">createEmpNo</Property>
+                            <Property name="label">创建人员/时间</Property>
+                            <Property name="labelPosition">left</Property>
+                            <Property name="labelWidth">90</Property>
+                            <Property name="readOnly">true</Property>
+                            <Property name="width">210</Property>
+                            <Property name="labelAlign">center</Property>
+                            <Property name="trigger">autoMappingDropDown1</Property>
+                            <Editor/>
+                          </AutoFormElement>
+                          <AutoFormElement layoutConstraint="colSpan:2">
+                            <Property name="name">createDate</Property>
+                            <Property name="property">createDate</Property>
+                            <Property name="showLabel">true</Property>
+                            <Property name="readOnly">true</Property>
+                            <Property name="labelWidth">90</Property>
+                            <Property name="label"> </Property>
+                            <Editor/>
+                          </AutoFormElement>
+                          <AutoFormElement layoutConstraint="colSpan:2">
+                            <Property name="label">修改人员/时间</Property>
+                            <Property name="name">modifyEmpNo</Property>
+                            <Property name="property">modifyEmpNo</Property>
+                            <Property name="labelWidth">90</Property>
+                            <Property name="readOnly">true</Property>
+                            <Property name="width">210</Property>
+                            <Property name="labelAlign">center</Property>
+                            <Property name="trigger">autoMappingDropDown1</Property>
+                            <Editor/>
+                          </AutoFormElement>
+                          <AutoFormElement layoutConstraint="colSpan:2">
+                            <Property name="name">modifyDate</Property>
+                            <Property name="property">modifyDate</Property>
+                            <Property name="readOnly">true</Property>
+                            <Property name="label"> </Property>
+                            <Property name="labelWidth">90</Property>
+                            <Editor/>
+                          </AutoFormElement>
+                        </AutoForm>
+                      </Children>
+                      <Tools/>
+                    </Panel>
+                  </MainControl>
+                  <SideControl>
+                    <Panel>
+                      <Buttons/>
+                      <Children>
+                        <AutoForm id="form3">
+                          <AutoFormElement>
+                            <Property name="labelWidth">60</Property>
+                            <Property name="labelAlign">center</Property>
+                            <Property name="name">compId</Property>
+                            <Property name="property">compId</Property>
+                            <Property name="readOnly">true</Property>
+                            <Property name="dataSet">dsTbdf03</Property>
+                            <Property name="hideMode">display</Property>
+                            <Property name="visible">false</Property>
+                            <Editor/>
+                          </AutoFormElement>
+                          <AutoFormElement>
+                            <Property name="labelWidth">60</Property>
+                            <Property name="labelAlign">center</Property>
+                            <Property name="name">noId</Property>
+                            <Property name="property">noId</Property>
+                            <Property name="readOnly">true</Property>
+                            <Property name="dataSet">dsTbdf03</Property>
+                            <Editor/>
+                          </AutoFormElement>
+                        </AutoForm>
+                        <ToolBar>
+                          <DataPilot>
+                            <Property name="dataSet">dsTbdf04</Property>
+                          </DataPilot>
+                          <Button>
+                            <ClientEvent name="onClick">var datas = view.get(&quot;#dsTbdf04.data&quot;);&#xD;
+dorado.MessageBox.confirm(&quot;确认删除数据?&quot;,function(){&#xD;
+	datas.each(function(data){&#xD;
+		data.remove();&#xD;
+	});&#xD;
+	view.get(&quot;#updateActionSaveTbdf04&quot;).execute();&#xD;
+	var entity = view.get(&quot;#dsTbdf03.data:#&quot;);&#xD;
+	if(entity){&#xD;
+		view.get(&quot;#dsTbdf04&quot;).set(&quot;parameter&quot;,{&#xD;
+			&quot;compId&quot;:entity.get(&quot;compId&quot;),&#xD;
+			&quot;noId&quot;:entity.get(&quot;noId&quot;)&#xD;
+		}).flushAsync(function(){&#xD;
+			view.get(&quot;#dsTbdf04&quot;).flushAsync(function(){&#xD;
+				if(view.get(&quot;#dsTbdf04&quot;).getData().entityCount==0){&#xD;
+					view.get(&quot;#dsTbdf04&quot;).insert({&#xD;
+						noId:view.get(&quot;#dsTbdf03.data:#&quot;).get(&quot;noId&quot;)&#xD;
+					});&#xD;
+				}&#xD;
+			});&#xD;
+		});&#xD;
+	}&#xD;
+});&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+</ClientEvent>
+                            <Property name="icon"> url(>skin>common/icons.gif) -140px 0px</Property>
+                            <Property name="caption">删除全部</Property>
+                            <Property name="tags">deleteAll2</Property>
+                            <Property name="disabled">true</Property>
+                          </Button>
+                        </ToolBar>
+                        <DataGrid id="dgTbdf04">
+                          <Property name="dataSet">dsTbdf04</Property>
+                          <Property name="rowHeight">22</Property>
+                          <Property name="readOnly">true</Property>
+                          <DataColumn name="ruleId">
+                            <Property name="property">ruleId</Property>
+                            <Property name="readOnly">true</Property>
+                            <Property name="align">center</Property>
+                          </DataColumn>
+                          <DataColumn name="ruleType">
+                            <Property name="property">ruleType</Property>
+                            <Property name="readOnly">true</Property>
+                            <Property name="align">center</Property>
+                          </DataColumn>
+                          <DataColumn name="ruleDesc">
+                            <Property name="property">ruleDesc</Property>
+                            <Property name="readOnly">true</Property>
+                            <Property name="align">center</Property>
+                          </DataColumn>
+                        </DataGrid>
+                      </Children>
+                      <Tools/>
+                    </Panel>
+                  </SideControl>
+                </SplitPanel>
+              </ControlTab>
+              <ControlTab>
+                <ClientEvent name="onClick">var entity = view.get(&quot;#dsTbdf03.data:#&quot;);&#xD;
+if(entity){&#xD;
+	if(entity.get(&quot;compId&quot;)!=null){&#xD;
+		view.get(&quot;#dsTbdf05&quot;).set(&quot;parameter&quot;,{&quot;compId&quot;:entity.get(&quot;compId&quot;),&quot;noId&quot;:entity.get(&quot;noId&quot;)}).flushAsync();&#xD;
+	}&#xD;
+}</ClientEvent>
+                <Property name="caption">单号</Property>
+                <SplitPanel>
+                  <Property name="position">57%</Property>
+                  <MainControl>
+                    <Panel>
+                      <Buttons/>
+                      <Children>
+                        <ToolBar>
+                          <Button>
+                            <ClientEvent name="onClick">var data = dsTbdf05.getData(&quot;#&quot;);&#xD;
+var action = this.id(&quot;updateActionSaveTbdf05&quot;);&#xD;
+if(data){&#xD;
+	var options = {&#xD;
+		callback:function(){&#xD;
+			data.remove();&#xD;
+			action.set({&#xD;
+				executingMessage:&quot;正在删除... &quot;,&#xD;
+				successMessage:&quot;删除成功！&quot;&#xD;
+			}).execute(function(){&#xD;
+				view.get(&quot;#dsTbdf05&quot;).flushAsync();&#xD;
+			});&#xD;
+		},&#xD;
+		icon:&quot;WARNING&quot;,&#xD;
+		title:&quot;删除确认&quot;&#xD;
+	};&#xD;
+	dorado.MessageBox.confirm(&quot;确认删除数据？&quot;,options);&#xD;
+}else{&#xD;
+	var df03 = dsTbdf03.getData(&quot;#&quot;);&#xD;
+	if(df03){&#xD;
+		dorado.MessageBox.confirm(&quot;没有单号可以删除啦！&quot;);&#xD;
+	}else{&#xD;
+		dorado.MessageBox.alert(&quot;请先选择要删除的单号代码！&quot;);&#xD;
+		return;&#xD;
+	}&#xD;
+}&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+</ClientEvent>
+                            <Property name="caption">删除</Property>
+                            <Property name="icon"> url(>skin>common/icons.gif) -140px -0px</Property>
+                            <Property name="tags">delete3</Property>
+                            <Property name="disabled">true</Property>
+                          </Button>
+                          <Button>
+                            <ClientEvent name="onClick">var df05 = dsTbdf05.getData(&quot;#&quot;);&#xD;
+var action = this.id(&quot;updateActionSaveTbdf05&quot;);&#xD;
+var compId = &quot;&quot;;&#xD;
+var noId = &quot;&quot;;&#xD;
+if(df05){&#xD;
+	compId = df05.get(&quot;compId&quot;);					//公司别&#xD;
+	noId = df05.get(&quot;noId&quot;);							//单号代码&#xD;
+	//var  noStyle = df05.get(&quot;noStyle&quot;);			//单号格式&#xD;
+	//var noCount = df05.get(&quot;noCount&quot;);		//当前计数&#xD;
+	&#xD;
+	view.get(&quot;#ajax1&quot;).set(&quot;parameter&quot;,{&#xD;
+		//&quot;compId&quot;:compId,				//公司别&#xD;
+		&quot;noId&quot;:noId,							//单号代码&#xD;
+		&quot;flag&quot;:&quot;+1&quot;							//用于判断增减号&#xD;
+	}).execute(function(tbdf05){&#xD;
+		var options = {&#xD;
+			callback:function(){&#xD;
+				dsTbdf05.insert({&#xD;
+					&quot;compId&quot;:compId,&#xD;
+					&quot;noId&quot;:noId,&#xD;
+					&quot;noCount&quot;:tbdf05.noCount,		//noCount+1&#xD;
+					&quot;noStyle&quot;:tbdf05.noStyle&#xD;
+				});&#xD;
+			&#xD;
+				//data.set(&quot;compId&quot;,compId);&#xD;
+				//data.set(&quot;noId&quot;,noId);&#xD;
+				//data.set(&quot;noCount&quot;,noCount + 1);&#xD;
+				//data.set(&quot;noStyle&quot;,no);&#xD;
+				action.set({&#xD;
+					executingMessage:&quot;正在增号... &quot;,&#xD;
+					successMessage:&quot;增号成功！&quot;&#xD;
+				}).execute(function(){&#xD;
+					view.get(&quot;#dsTbdf05&quot;).flushAsync();&#xD;
+				});&#xD;
+			},&#xD;
+			icon:&quot;WARNING&quot;,&#xD;
+			title:&quot;增号确认&quot;&#xD;
+		}&#xD;
+		dorado.MessageBox.confirm(&quot;确认增号？&quot;,options);&#xD;
+	})&#xD;
+}else{&#xD;
+	var df03 = dsTbdf03.getData(&quot;#&quot;);&#xD;
+	if(df03){&#xD;
+		dsTbdf04.set(&quot;parameter&quot;,{&#xD;
+			&quot;compId&quot;:df03.get(&quot;compId&quot;),			//公司别&#xD;
+			&quot;noId&quot;:df03.get(&quot;noId&quot;)						//单号代码&#xD;
+		}).flushAsync(function(df04){&#xD;
+			if(df04){&#xD;
+				compId = df03.get(&quot;compId&quot;);		//公司别&#xD;
+				noId = df03.get(&quot;noId&quot;);				//单号代码&#xD;
+				&#xD;
+				view.get(&quot;#ajax1&quot;).set(&quot;parameter&quot;,{ &#xD;
+					//&quot;compId&quot;:compId,				//公司别&#xD;
+					&quot;noId&quot;:noId,							//单号代码&#xD;
+					&quot;flag&quot;:&quot;+1&quot;							//用于判断增减号&#xD;
+				}).execute(function(tbdf05){&#xD;
+					var options = {&#xD;
+						callback:function(){&#xD;
+							dsTbdf05.insert({&#xD;
+								&quot;compId&quot;:compId,&#xD;
+								&quot;noId&quot;:noId,&#xD;
+								&quot;noCount&quot;:tbdf05.noCount,		//noCount+1&#xD;
+								&quot;noStyle&quot;:tbdf05.noStyle&#xD;
+							});&#xD;
+						&#xD;
+							//data.set(&quot;compId&quot;,compId);&#xD;
+							//data.set(&quot;noId&quot;,noId);&#xD;
+							//data.set(&quot;noCount&quot;,noCount + 1);&#xD;
+							//data.set(&quot;noStyle&quot;,no);&#xD;
+							action.set({&#xD;
+								executingMessage:&quot;正在增号... &quot;,&#xD;
+								successMessage:&quot;增号成功！&quot;&#xD;
+							}).execute(function(){&#xD;
+								view.get(&quot;#dsTbdf05&quot;).flushAsync();&#xD;
+							});&#xD;
+						},&#xD;
+						icon:&quot;WARNING&quot;,&#xD;
+						title:&quot;增号确认&quot;&#xD;
+					}&#xD;
+					dorado.MessageBox.confirm(&quot;确认增号？&quot;,options);&#xD;
+				})&#xD;
+			}else{&#xD;
+				dorado.MessageBox.alert(&quot;请先定义好单号规则！&quot;);&#xD;
+				return;&#xD;
+			}&#xD;
+		});&#xD;
+	}else{&#xD;
+		dorado.MessageBox.alert(&quot;请先选择要增号的单号代码！&quot;);&#xD;
+		return;&#xD;
+	}&#xD;
+}&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+/*&#xD;
+view.get(&quot;#ajax1&quot;).set(&quot;parameter&quot;,{ //view.get(&quot;#newNoCount&quot;).set(&quot;parameter&quot;,{&#xD;
+	//&quot;compId&quot;:compId,				//公司别&#xD;
+	&quot;noId&quot;:noId,							//单号代码&#xD;
+	&quot;flag&quot;:&quot;+1&quot;							//用于判断增减号&#xD;
+}).execute(function(tbdf05){&#xD;
+	//dorado.MessageBox.alert(tbdf05.noStyle);&#xD;
+	var options = {&#xD;
+		callback:function(){&#xD;
+			dsTbdf05.insert({&#xD;
+				&quot;compId&quot;:compId,&#xD;
+				&quot;noId&quot;:noId,&#xD;
+				&quot;noCount&quot;:tbdf05.noCount,		//noCount+1&#xD;
+				&quot;noStyle&quot;:tbdf05.noStyle&#xD;
+			});&#xD;
+		&#xD;
+			//data.set(&quot;compId&quot;,compId);&#xD;
+			//data.set(&quot;noId&quot;,noId);&#xD;
+			//data.set(&quot;noCount&quot;,noCount + 1);&#xD;
+			//data.set(&quot;noStyle&quot;,no);&#xD;
+			action.set({&#xD;
+				executingMessage:&quot;正在增号... &quot;,&#xD;
+				successMessage:&quot;增号成功！&quot;&#xD;
+			}).execute(function(){&#xD;
+				view.get(&quot;#dsTbdf05&quot;).flushAsync();&#xD;
+			});&#xD;
+		},&#xD;
+		icon:&quot;WARNING&quot;,&#xD;
+		title:&quot;增号确认&quot;&#xD;
+	}&#xD;
+	dorado.MessageBox.confirm(&quot;确认增号？&quot;,options);&#xD;
+})&#xD;
+*/&#xD;
+</ClientEvent>
+                            <Property name="caption">增号</Property>
+                            <Property name="icon">url(>skin>common/icons.gif) -280px -280px</Property>
+                            <Property name="tags">add3</Property>
+                            <Property name="disabled">true</Property>
+                          </Button>
+                          <Button>
+                            <ClientEvent name="onClick">var df05 = dsTbdf05.getData(&quot;#&quot;);&#xD;
+var action = this.id(&quot;updateActionSaveTbdf05&quot;);&#xD;
+//var compId = &quot;&quot;;&#xD;
+//var noId = &quot;&quot;;&#xD;
+if(df05){&#xD;
+	/*&#xD;
+	compId = df05.get(&quot;compId&quot;);					//公司别&#xD;
+	noId = df05.get(&quot;noId&quot;);							//单号代码&#xD;
+	//var  noStyle = df05.get(&quot;noStyle&quot;);			//单号格式&#xD;
+	//var noCount = df05.get(&quot;noCount&quot;);		//当前计数&#xD;
+	&#xD;
+	view.get(&quot;#ajax1&quot;).set(&quot;parameter&quot;,{ //view.get(&quot;#newNoCount&quot;).set(&quot;parameter&quot;,{&#xD;
+		//&quot;compId&quot;:compId,				//公司别&#xD;
+		&quot;noId&quot;:noId,							//单号代码&#xD;
+		&quot;flag&quot;:&quot;-1&quot;							//用于判断增减号&#xD;
+	}).execute(function(tbdf05){&#xD;
+	*/&#xD;
+		var options = {&#xD;
+			callback:function(){&#xD;
+				df05.remove();&#xD;
+				//data.set(&quot;compId&quot;,compId);&#xD;
+				//data.set(&quot;noId&quot;,noId);&#xD;
+				//data.set(&quot;noCount&quot;,noCount + 1);&#xD;
+				//data.set(&quot;noStyle&quot;,no);&#xD;
+				action.set({&#xD;
+					executingMessage:&quot;正在减号... &quot;,&#xD;
+					successMessage:&quot;减号成功！&quot;&#xD;
+				}).execute(function(){&#xD;
+					//view.get(&quot;#dsTbdf05&quot;).flushAsync();&#xD;
+				});&#xD;
+			},&#xD;
+			icon:&quot;WARNING&quot;,&#xD;
+			title:&quot;减号确认&quot;&#xD;
+		}&#xD;
+		dorado.MessageBox.confirm(&quot;确认减号？&quot;,options);&#xD;
+	//})&#xD;
+}else{&#xD;
+	var df03 = dsTbdf03.getData(&quot;#&quot;);&#xD;
+	if(df03){&#xD;
+		dorado.MessageBox.confirm(&quot;单号为空，无法减号！&quot;);&#xD;
+	}else{&#xD;
+		dorado.MessageBox.alert(&quot;请先选择要减号的单号代码！&quot;);&#xD;
+		return;&#xD;
+	}&#xD;
+}&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+/*&#xD;
+var data = dsTbdf05.getData(&quot;#&quot;);&#xD;
+var action = this.id(&quot;updateActionSaveTbdf05&quot;);&#xD;
+if(data){&#xD;
+	var compId = data.get(&quot;compId&quot;);			//公司别&#xD;
+	var noId = data.get(&quot;noId&quot;);					//单号代码&#xD;
+	//var noStyle = data.get(&quot;noStyle&quot;);			//单号格式&#xD;
+	//var noCount = data.get(&quot;noCount&quot;);		//当前计数&#xD;
+	&#xD;
+	view.get(&quot;#ajax1&quot;).set(&quot;parameter&quot;,{&#xD;
+		&quot;noId&quot;:noId,&#xD;
+		&quot;flag&quot;:&quot;-1&quot;&#xD;
+	}).execute(function(no){&#xD;
+		var options = {&#xD;
+			callback:function(){&#xD;
+				&#xD;
+				//data.set(&quot;compId&quot;,compId);&#xD;
+				//data.set(&quot;noId&quot;,noId);&#xD;
+				//data.set(&quot;noCount&quot;,noCount - 1);&#xD;
+				//data.set(&quot;noStyle&quot;,no);&#xD;
+				action.execute(function(){&#xD;
+					view.get(&quot;#dsTbdf05&quot;).flushAsync();&#xD;
+				});&#xD;
+			},&#xD;
+			icon:&quot;WARNING&quot;,&#xD;
+			title:&quot;减号确认&quot;&#xD;
+		}&#xD;
+		dorado.MessageBox.confirm(&quot;确认减号？&quot;,options);&#xD;
+	});&#xD;
+}&#xD;
+*/</ClientEvent>
+                            <Property name="caption">减号</Property>
+                            <Property name="icon">url(>skin>common/icons.gif) -300px -280px</Property>
+                            <Property name="tags">minus3</Property>
+                            <Property name="disabled">true</Property>
+                          </Button>
+                        </ToolBar>
+                        <AutoForm id="form4">
+                          <Property name="dataSet">dsTbdf05</Property>
+                          <Property name="readOnly">true</Property>
+                          <AutoFormElement layoutConstraint="colSpan:2">
+                            <Property name="name">noId</Property>
+                            <Property name="property">noId</Property>
+                            <Property name="labelWidth">90</Property>
+                            <Property name="dataSet">dsTbdf03</Property>
+                            <Property name="labelAlign">center</Property>
+                            <Editor/>
+                          </AutoFormElement>
+                          <AutoFormElement layoutConstraint="colSpan:2">
+                            <Property name="name">noStyle</Property>
+                            <Property name="property">noStyle</Property>
+                            <Property name="labelWidth">90</Property>
+                            <Property name="labelAlign">center</Property>
+                            <Editor/>
+                          </AutoFormElement>
+                          <AutoFormElement layoutConstraint="colSpan:2">
+                            <Property name="name">noCount</Property>
+                            <Property name="property">noCount</Property>
+                            <Property name="labelWidth">90</Property>
+                            <Property name="labelAlign">center</Property>
+                            <Editor/>
+                          </AutoFormElement>
+                          <AutoFormElement layoutConstraint="colSpan:2">
+                            <Property name="name">createEmpNo</Property>
+                            <Property name="property">createEmpNo</Property>
+                            <Property name="label">创建人员/时间</Property>
+                            <Property name="labelPosition">left</Property>
+                            <Property name="labelWidth">90</Property>
+                            <Property name="width">210</Property>
+                            <Property name="labelAlign">center</Property>
+                            <Property name="trigger">autoMappingDropDown1</Property>
+                            <Editor/>
+                          </AutoFormElement>
+                          <AutoFormElement layoutConstraint="colSpan:2">
+                            <Property name="name">createDate</Property>
+                            <Property name="property">createDate</Property>
+                            <Property name="showLabel">true</Property>
+                            <Property name="labelWidth">90</Property>
+                            <Property name="label"> </Property>
+                            <Editor/>
+                          </AutoFormElement>
+                          <AutoFormElement layoutConstraint="colSpan:2">
+                            <Property name="label">修改人员/时间</Property>
+                            <Property name="name">modifyEmpNo</Property>
+                            <Property name="property">modifyEmpNo</Property>
+                            <Property name="labelWidth">90</Property>
+                            <Property name="width">210</Property>
+                            <Property name="labelAlign">center</Property>
+                            <Property name="trigger">autoMappingDropDown1</Property>
+                            <Editor/>
+                          </AutoFormElement>
+                          <AutoFormElement layoutConstraint="colSpan:2">
+                            <Property name="name">modifyDate</Property>
+                            <Property name="property">modifyDate</Property>
+                            <Property name="label"> </Property>
+                            <Property name="labelWidth">90</Property>
+                            <Editor/>
+                          </AutoFormElement>
+                        </AutoForm>
+                      </Children>
+                      <Tools/>
+                    </Panel>
+                  </MainControl>
+                  <SideControl>
+                    <Panel>
+                      <Buttons/>
+                      <Children>
+                        <AutoForm id="form5">
+                          <AutoFormElement>
+                            <Property name="labelWidth">60</Property>
+                            <Property name="labelAlign">center</Property>
+                            <Property name="name">compId</Property>
+                            <Property name="property">compId</Property>
+                            <Property name="readOnly">true</Property>
+                            <Property name="dataSet">dsTbdf03</Property>
+                            <Property name="hideMode">display</Property>
+                            <Property name="visible">false</Property>
+                            <Editor/>
+                          </AutoFormElement>
+                          <AutoFormElement>
+                            <Property name="labelWidth">60</Property>
+                            <Property name="labelAlign">center</Property>
+                            <Property name="name">noId</Property>
+                            <Property name="property">noId</Property>
+                            <Property name="readOnly">true</Property>
+                            <Property name="dataSet">dsTbdf03</Property>
+                            <Editor/>
+                          </AutoFormElement>
+                        </AutoForm>
+                        <ToolBar>
+                          <DataPilot>
+                            <Property name="dataSet">dsTbdf05</Property>
+                          </DataPilot>
+                          <Button>
+                            <ClientEvent name="onClick">var data = view.get(&quot;#dsTbdf05.data&quot;);&#xD;
+if(data){&#xD;
+	var options = {&#xD;
+		callback:function(){&#xD;
+			data.each(function(entity){&#xD;
+			entity.remove();&#xD;
+		});&#xD;
+		view.get(&quot;#updateActionSaveTbdf05&quot;).execute();&#xD;
+		},&#xD;
+		icon:&quot;WARNING&quot;,&#xD;
+		title:&quot;删除确认&quot;&#xD;
+	}&#xD;
+	dorado.MessageBox.confirm(&quot;确认删除数据？&quot;,options);&#xD;
+}&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+</ClientEvent>
+                            <Property name="icon"> url(>skin>common/icons.gif) -140px 0px</Property>
+                            <Property name="caption">删除全部</Property>
+                            <Property name="tags">deleteAll3</Property>
+                            <Property name="disabled">true</Property>
+                          </Button>
+                        </ToolBar>
+                        <DataGrid id="dgTbdf05">
+                          <Property name="dataSet">dsTbdf05</Property>
+                          <Property name="rowHeight">22</Property>
+                          <Property name="readOnly">true</Property>
+                          <DataColumn name="noStyle">
+                            <Property name="property">noStyle</Property>
+                            <Property name="align">center</Property>
+                          </DataColumn>
+                          <DataColumn name="noCount">
+                            <Property name="property">noCount</Property>
+                            <Property name="align">center</Property>
+                          </DataColumn>
+                        </DataGrid>
+                      </Children>
+                      <Tools/>
+                    </Panel>
+                  </SideControl>
+                </SplitPanel>
+              </ControlTab>
+              <ControlTab>
+                <Property name="caption">测试</Property>
+                <Panel>
+                  <Buttons/>
+                  <Children>
+                    <AutoForm>
+                      <Property name="dataSet">dsOrderNo</Property>
+                      <Property name="cols">*,*,*,*,*,*,*,*</Property>
+                      <AutoFormElement layoutConstraint="colSpan:3">
+                        <Property name="name">noId</Property>
+                        <Property name="property">noId</Property>
+                        <Property name="labelWidth">60</Property>
+                        <Property name="labelAlign">center</Property>
+                        <Editor/>
+                      </AutoFormElement>
+                      <AutoFormElement layoutConstraint="colSpan:3">
+                        <Property name="name">variable</Property>
+                        <Property name="property">variable</Property>
+                        <Property name="labelAlign">center</Property>
+                        <Property name="labelWidth">60</Property>
+                        <Editor/>
+                      </AutoFormElement>
+                      <Button layoutConstraint="align:center">
+                        <ClientEvent name="onClick">var entity = view.get(&quot;#dsOrderNo.data:#&quot;);&#xD;
+var action = this.id(&quot;updateActionSaveTbdf05&quot;);&#xD;
+if(entity){&#xD;
+	if(entity.get(&quot;noId&quot;)){&#xD;
+		dsTbdf03.set(&quot;parameter&quot;,{&#xD;
+			&quot;noId&quot;:entity.get(&quot;noId&quot;)					//单号代码&#xD;
+		}).flushAsync(function(){&#xD;
+			var df03 = view.get(&quot;#dsTbdf03.data:#&quot;);&#xD;
+			var compId = df03.get(&quot;compId&quot;);&#xD;
+			//dorado.MessageBox.alert(compId);&#xD;
+			&#xD;
+			view.get(&quot;#ajax1&quot;).set(&quot;parameter&quot;,{&#xD;
+				//&quot;compId&quot;:compId,						//公司别&#xD;
+				&quot;noId&quot;:entity.get(&quot;noId&quot;),				//单号代码&#xD;
+				&quot;variable&quot;:entity.get(&quot;variable&quot;),		//变量&#xD;
+				&quot;flag&quot;:&quot;+1&quot;									//用于判断增减号&#xD;
+			}).execute(function(tbdf05){&#xD;
+				//dorado.MessageBox.alert(&quot;单号:&quot;+tbdf05.noStyle);&#xD;
+				var options = {&#xD;
+					callback:function(){&#xD;
+						dsTbdf05.insert({&#xD;
+							&quot;compId&quot;:compId,&#xD;
+							&quot;noId&quot;:entity.get(&quot;noId&quot;),&#xD;
+							&quot;noCount&quot;:tbdf05.noCount,&#xD;
+							&quot;noStyle&quot;:tbdf05.noStyle&#xD;
+						});&#xD;
+						action.set({&#xD;
+							executingMessage:&quot;正在增号... &quot;,&#xD;
+							successMessage:&quot;增号成功！&quot;&#xD;
+						}).execute(function(){&#xD;
+							view.get(&quot;#dsTbdf05&quot;).set(&quot;parameter&quot;,{&#xD;
+								&quot;compId&quot;:compId,					//公司别&#xD;
+								&quot;noId&quot;:entity.get(&quot;noId&quot;),		//单号代码&#xD;
+								&quot;noStyle&quot;:tbdf05.noStyle		//单号格式&#xD;
+							}).flushAsync();&#xD;
+						});&#xD;
+					},&#xD;
+					icon:&quot;WARNING&quot;,&#xD;
+					title:&quot;增号确认&quot;&#xD;
+				};&#xD;
+				dorado.MessageBox.confirm(&quot;确认增号？&quot;,options);&#xD;
+			});&#xD;
+		});&#xD;
+	}else{&#xD;
+		dorado.MessageBox.alert(&quot;请填写单号代码！&quot;);&#xD;
+	}&#xD;
+}else{&#xD;
+	dorado.MessageBox.alert(&quot;请填写测试数据，变量可不填！&quot;);&#xD;
+}&#xD;
+&#xD;
+/*&#xD;
+}else{&#xD;
+	var df03 = dsTbdf03.getData(&quot;#&quot;);&#xD;
+	if(df03){&#xD;
+		dsTbdf04.set(&quot;parameter&quot;,{&#xD;
+			&quot;compId&quot;:df03.get(&quot;compId&quot;),			//公司别&#xD;
+			&quot;noId&quot;:df03.get(&quot;noId&quot;)						//单号代码&#xD;
+		}).flushAsync(function(df04){&#xD;
+			if(df04){&#xD;
+				compId = df03.get(&quot;compId&quot;);		//公司别&#xD;
+				noId = df03.get(&quot;noId&quot;);				//单号代码&#xD;
+				&#xD;
+				view.get(&quot;#ajax1&quot;).set(&quot;parameter&quot;,{ &#xD;
+					//&quot;compId&quot;:compId,				//公司别&#xD;
+					&quot;noId&quot;:noId,							//单号代码&#xD;
+					&quot;flag&quot;:&quot;+1&quot;							//用于判断增减号&#xD;
+				}).execute(function(tbdf05){&#xD;
+					var options = {&#xD;
+						callback:function(){&#xD;
+							dsTbdf05.insert({&#xD;
+								&quot;compId&quot;:compId,&#xD;
+								&quot;noId&quot;:noId,&#xD;
+								&quot;noCount&quot;:tbdf05.noCount,		//noCount+1&#xD;
+								&quot;noStyle&quot;:tbdf05.noStyle&#xD;
+							});&#xD;
+						&#xD;
+							//data.set(&quot;compId&quot;,compId);&#xD;
+							//data.set(&quot;noId&quot;,noId);&#xD;
+							//data.set(&quot;noCount&quot;,noCount + 1);&#xD;
+							//data.set(&quot;noStyle&quot;,no);&#xD;
+							action.set({&#xD;
+								executingMessage:&quot;正在增号... &quot;,&#xD;
+								successMessage:&quot;增号成功！&quot;&#xD;
+							}).execute(function(){&#xD;
+								//view.get(&quot;#dsTbdf05&quot;).flushAsync();&#xD;
+							});&#xD;
+						},&#xD;
+						icon:&quot;WARNING&quot;,&#xD;
+						title:&quot;增号确认&quot;&#xD;
+					}&#xD;
+					dorado.MessageBox.confirm(&quot;确认增号？&quot;,options);&#xD;
+				})&#xD;
+			}else{&#xD;
+				dorado.MessageBox.alert(&quot;请先定义好单号规则！&quot;);&#xD;
+				return;&#xD;
+			}&#xD;
+		});&#xD;
+	}else{&#xD;
+		dorado.MessageBox.alert(&quot;请先选择要增号的单号代码！&quot;);&#xD;
+		return;&#xD;
+	}&#xD;
+}&#xD;
+*/&#xD;
+</ClientEvent>
+                        <Property name="icon">url(>skin>common/icons.gif) -240px -20px</Property>
+                        <Property name="caption">测试</Property>
+                      </Button>
+                      <Button layoutConstraint="align:center">
+                        <ClientEvent name="onClick">view.get(&quot;#dsOrderNo&quot;).clear();&#xD;
+view.get(&quot;#dsOrderNo&quot;).insert();&#xD;
+&#xD;
+info.doSet(&quot;text&quot;,&quot;重置成功！&quot;);</ClientEvent>
+                        <Property name="caption">重置</Property>
+                        <Property name="icon">url(>skin>common/icons.gif) -40px -240px</Property>
+                      </Button>
+                    </AutoForm>
+                  </Children>
+                  <Tools/>
+                </Panel>
+              </ControlTab>
+            </TabControl>
+          </MainControl>
+          <SideControl>
+            <Panel>
+              <Buttons/>
+              <Children>
+                <ToolBar>
+                  <Fill/>
+                  <DataPilot>
+                    <Property name="dataSet">dsTbdf03</Property>
+                  </DataPilot>
+                </ToolBar>
+                <DataGrid id="dgTbdf03">
+                  <ClientEvent name="onDataRowClick">var df03 = view.get(&quot;#dsTbdf03.data:#&quot;);&#xD;
+if(df03){&#xD;
+	view.get(&quot;#dsTbdf04&quot;).set(&quot;parameter&quot;,{&#xD;
+		&quot;compId&quot;:df03.get(&quot;compId&quot;),&#xD;
+		&quot;noId&quot;:df03.get(&quot;noId&quot;)&#xD;
+	}).flushAsync(function(df04s){&#xD;
+		if(df04s.entityCount>0){&#xD;
+			view.get(&quot;#dsTbdf05&quot;).set(&quot;parameter&quot;,{&#xD;
+				&quot;compId&quot;:df03.get(&quot;compId&quot;),&#xD;
+				&quot;noId&quot;:df03.get(&quot;noId&quot;)&#xD;
+			}).flushAsync(function(df05s){&#xD;
+				if(df05s.entityCount>0){&#xD;
+					view.set(&quot;^update1.disabled&quot;,false);	//单号定义修改&#xD;
+					view.set(&quot;^delete1.disabled&quot;,false);	//单号定义删除&#xD;
+					&#xD;
+					view.set(&quot;^add2.disabled&quot;,false);		//单号规则新增&#xD;
+					view.set(&quot;^update2.disabled&quot;,false);	//单号规则修改&#xD;
+					view.set(&quot;^delete2.disabled&quot;,false);	//单号规则删除&#xD;
+					view.set(&quot;^deleteAll2.disabled&quot;,false);	//单号规则删除全部&#xD;
+					&#xD;
+					view.set(&quot;^delete3.disabled&quot;,false);	//单号删除&#xD;
+					view.set(&quot;^add3.disabled&quot;,false);		//单号增号&#xD;
+					view.set(&quot;^minus3.disabled&quot;,false);		//单号减号&#xD;
+					view.set(&quot;^deleteAll3.disabled&quot;,false);	//单号删除全部&#xD;
+				}else{&#xD;
+					view.set(&quot;^update1.disabled&quot;,false);	//单号定义修改&#xD;
+					view.set(&quot;^delete1.disabled&quot;,false);	//单号定义删除&#xD;
+					&#xD;
+					view.set(&quot;^add2.disabled&quot;,false);		//单号规则新增&#xD;
+					view.set(&quot;^update2.disabled&quot;,false);	//单号规则修改&#xD;
+					view.set(&quot;^delete2.disabled&quot;,false);	//单号规则删除&#xD;
+					view.set(&quot;^deleteAll2.disabled&quot;,false);	//单号规则删除全部&#xD;
+					&#xD;
+					view.set(&quot;^delete3.disabled&quot;,true);		//单号删除&#xD;
+					view.set(&quot;^add3.disabled&quot;,false);		//单号增号&#xD;
+					view.set(&quot;^minus3.disabled&quot;,true);		//单号减号&#xD;
+					view.set(&quot;^deleteAll3.disabled&quot;,true);	//单号删除全部&#xD;
+				}&#xD;
+			});&#xD;
+		}else{&#xD;
+			view.get(&quot;#dsTbdf04&quot;).insert({&#xD;
+				&quot;compId&quot;:df03.get(&quot;compId&quot;),&#xD;
+				&quot;noId&quot;:df03.get(&quot;noId&quot;)&#xD;
+			});&#xD;
+			&#xD;
+			view.set(&quot;^update1.disabled&quot;,false);	//单号定义修改&#xD;
+			view.set(&quot;^delete1.disabled&quot;,false);	//单号定义删除&#xD;
+			&#xD;
+			view.set(&quot;^add2.disabled&quot;,false);		//单号规则新增&#xD;
+			view.set(&quot;^update2.disabled&quot;,true);		//单号规则修改&#xD;
+			view.set(&quot;^delete2.disabled&quot;,true);		//单号规则删除&#xD;
+			view.set(&quot;^deleteAll2.disabled&quot;,true);	//单号规则删除全部&#xD;
+			&#xD;
+			view.set(&quot;^delete3.disabled&quot;,true);		//单号删除&#xD;
+			view.set(&quot;^add3.disabled&quot;,true);		//单号增号&#xD;
+			view.set(&quot;^minus3.disabled&quot;,true);		//单号减号&#xD;
+			view.set(&quot;^deleteAll3.disabled&quot;,true);	//单号删除全部&#xD;
+		}&#xD;
+	});&#xD;
+}</ClientEvent>
+                  <Property name="dataSet">dsTbdf03</Property>
+                  <Property name="readOnly">true</Property>
+                  <Property name="rowHeight">22</Property>
+                  <RowNumColumn/>
+                  <DataColumn name="noId">
+                    <Property name="property">noId</Property>
+                    <Property name="align">center</Property>
+                  </DataColumn>
+                  <DataColumn name="noDesc">
+                    <Property name="property">noDesc</Property>
+                    <Property name="align">center</Property>
+                  </DataColumn>
+                  <DataColumn name="groupId">
+                    <Property name="property">groupId</Property>
+                    <Property name="align">center</Property>
+                  </DataColumn>
+                  <DataColumn name="createEmpNo">
+                    <Property name="property">createEmpNo</Property>
+                    <Property name="align">center</Property>
+                    <Property name="readOnly">true</Property>
+                    <Property name="trigger">autoMappingDropDown1</Property>
+                  </DataColumn>
+                  <DataColumn name="createDate">
+                    <Property name="property">createDate</Property>
+                    <Property name="align">center</Property>
+                  </DataColumn>
+                  <DataColumn name="modifyEmpNo">
+                    <Property name="property">modifyEmpNo</Property>
+                    <Property name="align">center</Property>
+                    <Property name="trigger">autoMappingDropDown1</Property>
+                  </DataColumn>
+                  <DataColumn name="modifyDate">
+                    <Property name="property">modifyDate</Property>
+                    <Property name="align">center</Property>
+                  </DataColumn>
+                </DataGrid>
+              </Children>
+              <Tools/>
+            </Panel>
+          </SideControl>
+        </SplitPanel>
+      </Children>
+      <Tools/>
+    </Panel>
+    <UpdateAction id="updateActionSaveTbdf03">
+      <Property name="dataResolver">bsjc30BO#saveTbdf03</Property>
+      <UpdateItem>
+        <Property name="dataSet">dsTbdf03</Property>
+      </UpdateItem>
+    </UpdateAction>
+    <UpdateAction id="updateActionSaveTbdf04">
+      <Property name="dataResolver">bsjc30BO#saveTbdf04</Property>
+      <UpdateItem>
+        <Property name="dataSet">dsTbdf04</Property>
+      </UpdateItem>
+    </UpdateAction>
+    <UpdateAction id="updateActionSaveTbdf05">
+      <Property name="dataResolver">bsjc30BO#saveTbdf05</Property>
+      <UpdateItem>
+        <Property name="dataSet">dsTbdf05</Property>
+      </UpdateItem>
+    </UpdateAction>
+    <AjaxAction id="ajax1">
+      <Property name="service">bsjc30BO#generateNoStyle</Property>
+    </AjaxAction>
+    <Dialog id="dialogQuery">
+      <ClientEvent name="onShow">//functions[&quot;dialogTbdm031OnShow&quot;]();</ClientEvent>
+      <ClientEvent name="onHide">//functions[&quot;dialogTbdm031OnHide&quot;]();</ClientEvent>
+      <Property name="caption">单号代码查询</Property>
+      <Property name="height">450</Property>
+      <Property name="width">600</Property>
+      <Buttons/>
+      <Children>
+        <ToolBar layoutConstraint="colSpan:2">
+          <Button>
+            <ClientEvent name="onClick">var query = dsQuery.getData(&quot;#&quot;);&#xD;
+var entity = dataSet3.getData(&quot;#&quot;);&#xD;
+&#xD;
+if(entity){&#xD;
+	query.set(&quot;noId&quot;,entity.get(&quot;noId&quot;));		//单号代码&#xD;
+	query.set(&quot;noDesc&quot;,entity.get(&quot;noDesc&quot;));	//单号名称&#xD;
+	&#xD;
+	view.get(&quot;#dsTbdf03&quot;).set(&quot;parameter&quot;,{&#xD;
+		&quot;compId&quot;:entity.get(&quot;compId&quot;),		//公司别&#xD;
+		&quot;noId&quot;:entity.get(&quot;noId&quot;),			//单号代码&#xD;
+		&quot;noDesc&quot;:entity.get(&quot;noDesc&quot;)		//单号名称&#xD;
+	}).flushAsync(function(df03s){&#xD;
+		if(df03s.entityCount>0){&#xD;
+			info.doSet(&quot;text&quot;,&quot;查询资料成功！&quot;);&#xD;
+			&#xD;
+			view.set(&quot;^update1.disabled&quot;,false);&#xD;
+			view.set(&quot;^delete1.disabled&quot;,false);&#xD;
+			view.set(&quot;^add2.disabled&quot;,false);&#xD;
+			//dsTbdf04.insert({&#xD;
+			//	&quot;compId&quot;:entity.get(&quot;compId&quot;),&#xD;
+			//	&quot;noId&quot;:entity.get(&quot;noId&quot;)&#xD;
+			//});&#xD;
+			&#xD;
+			//view.get(&quot;#dataSet3.data:#&quot;).cancel();&#xD;
+			dialogQuery.hide();&#xD;
+		}else{&#xD;
+			//dorado.MessageBox.alert(&quot;没有您要查询的数据！&quot;);&#xD;
+			info.doSet(&quot;text&quot;,&quot;没有您要查询的资料！&quot;);&#xD;
+			view.get(&quot;#dsTbdf03&quot;).insert();&#xD;
+			&#xD;
+			view.set(&quot;^update1.disabled&quot;,true);&#xD;
+			view.set(&quot;^delete1.disabled&quot;,true);&#xD;
+			view.set(&quot;^add2.disabled&quot;,true);&#xD;
+		}&#xD;
+	});&#xD;
+}else{&#xD;
+	//dorado.MessageBox.alert(&quot;单号代码数据为空！&quot;);&#xD;
+	info.doSet(&quot;text&quot;,&quot;单号代码数据为空！&quot;);&#xD;
+}</ClientEvent>
+            <Property name="caption">确定</Property>
+            <Property name="icon">url(>skin>common/icons.gif) -20px 0px</Property>
+          </Button>
+          <Button>
+            <ClientEvent name="onClick">view.get(&quot;#dataSet3.data:#&quot;).cancel();&#xD;
+dialogQuery.hide();</ClientEvent>
+            <Property name="icon"> url(>skin>common/icons.gif) -240px -240px</Property>
+            <Property name="caption">返回</Property>
+          </Button>
+          <Fill/>
+          <DataPilot>
+            <Property name="dataSet">dataSet3</Property>
+          </DataPilot>
+        </ToolBar>
+        <DataGrid id="dgDataSet3">
+          <ClientEvent name="onDataRowDoubleClick">var query = dsQuery.getData(&quot;#&quot;);&#xD;
+var entity = dataSet2.getData(&quot;#&quot;);&#xD;
+&#xD;
+if(entity){&#xD;
+	query.set(&quot;processCode&quot;,entity.get(&quot;processCode&quot;));	//工序代码&#xD;
+	query.set(&quot;processName&quot;,entity.get(&quot;processName&quot;));	//工序名称&#xD;
+	&#xD;
+	view.get(&quot;#dsTbpr01&quot;).set(&quot;parameter&quot;,{&#xD;
+		&quot;compId&quot;: functions[&quot;getCompId&quot;](),			//公司别&#xD;
+		&quot;processCode&quot;: entity.get(&quot;processCode&quot;),	//工序代码&#xD;
+		&quot;processName&quot;: entity.get(&quot;processName&quot;)	//工序名称&#xD;
+	}).flushAsync(function(datas){&#xD;
+		if(datas.entityCount&lt;=0){&#xD;
+			//dorado.MessageBox.alert(&quot;没有您要查询的数据！&quot;);&#xD;
+			info.doSet(&quot;text&quot;,&quot;没有您要查询的数据！&quot;);&#xD;
+		}else{&#xD;
+			view.set(&quot;^saveButton0.disabled&quot;,false);&#xD;
+			info.doSet(&quot;text&quot;,&quot;查询资料成功！&quot;);&#xD;
+			//view.get(&quot;#dataSet2.data:#&quot;).cancel();&#xD;
+			dialogDataSet2.hide();&#xD;
+		}&#xD;
+	});&#xD;
+}else{&#xD;
+	dorado.MessageBox.alert(&quot;工序维护数据为空！&quot;);&#xD;
+	//info.doSet(&quot;text&quot;,&quot;工序维护数据为空！&quot;);&#xD;
+}</ClientEvent>
+          <ClientEvent name="onDataRowClick">//if(arg.column.get(&quot;caption&quot;)!=&quot;RowSelector&quot;){&#xD;
+//	var selection = self.get(&quot;selection&quot;);&#xD;
+//	var entity = self.get(&quot;dataSet&quot;).getData(&quot;#&quot;);&#xD;
+//	self.set(&quot;selection&quot;,entity);&#xD;
+//}</ClientEvent>
+          <Property name="dataSet">dataSet3</Property>
+          <Property name="readOnly">true</Property>
+          <DataColumn name="noId">
+            <Property name="property">noId</Property>
+          </DataColumn>
+          <DataColumn name="noDesc">
+            <Property name="property">noDesc</Property>
+          </DataColumn>
+          <DataColumn name="groupId">
+            <Property name="property">groupId</Property>
+          </DataColumn>
+        </DataGrid>
+      </Children>
+      <Tools/>
+    </Dialog>
+    <Trigger id="trigger1">
+      <ClientEvent name="onExecute">dialogQuery.show();</ClientEvent>
+    </Trigger>
+  </View>
+</ViewConfig>

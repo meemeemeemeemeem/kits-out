@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ViewConfig>
+  <Arguments/>
+  <Context/>
+  <Model>
+    <DataType name="dtTbqualitygrade">
+      <Property name="creationType">com.kits.inms.bs.domain.Tbqualitygrade</Property>
+      <PropertyDef name="pkQualityGrade">
+        <Property></Property>
+        <Property name="label">质量等级主键</Property>
+      </PropertyDef>
+      <PropertyDef name="compId">
+        <Property></Property>
+        <Property name="label">公司别</Property>
+      </PropertyDef>
+      <PropertyDef name="qualityGradeCode">
+        <Property></Property>
+        <Property name="label">质量等级代码</Property>
+        <Property name="required">true</Property>
+        <Validator name="validator1" type="length">
+          <Property name="maxLength">10</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="qualityGradeName">
+        <Property></Property>
+        <Property name="label">质量等级名称</Property>
+        <Property name="required">true</Property>
+        <Validator name="validator1" type="length">
+          <Property name="maxLength">100</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="createEmpNo">
+        <Property></Property>
+        <Property name="label">创建人员</Property>
+        <Property name="readOnly">true</Property>
+      </PropertyDef>
+      <PropertyDef name="createDate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">创建日期</Property>
+        <Property name="readOnly">true</Property>
+      </PropertyDef>
+      <PropertyDef name="modifyEmpNo">
+        <Property></Property>
+        <Property name="label">修改人员</Property>
+        <Property name="readOnly">true</Property>
+      </PropertyDef>
+      <PropertyDef name="modifyDate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">修改日期</Property>
+        <Property name="readOnly">true</Property>
+      </PropertyDef>
+      <PropertyDef name="defs01">
+        <Property></Property>
+        <Property name="label">自定义字符1</Property>
+      </PropertyDef>
+      <PropertyDef name="defs02">
+        <Property></Property>
+        <Property name="label">自定义字符2</Property>
+      </PropertyDef>
+      <PropertyDef name="defs03">
+        <Property></Property>
+        <Property name="label">自定义字符3</Property>
+      </PropertyDef>
+      <PropertyDef name="defs04">
+        <Property></Property>
+        <Property name="label">自定义字符4</Property>
+      </PropertyDef>
+      <PropertyDef name="defs05">
+        <Property></Property>
+        <Property name="label">自定义字符5</Property>
+      </PropertyDef>
+      <PropertyDef name="defb01">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">自定义数值1</Property>
+      </PropertyDef>
+      <PropertyDef name="defb02">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">自定义数值2</Property>
+      </PropertyDef>
+      <PropertyDef name="defb03">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">自定义数值3</Property>
+      </PropertyDef>
+      <PropertyDef name="defb04">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">自定义数值4</Property>
+      </PropertyDef>
+      <PropertyDef name="defb05">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">自定义数值5</Property>
+      </PropertyDef>
+      <PropertyDef name="defm01">
+        <Property></Property>
+        <Property name="label">自定义备注1</Property>
+      </PropertyDef>
+      <PropertyDef name="defm02">
+        <Property></Property>
+        <Property name="label">自定义备注2</Property>
+      </PropertyDef>
+      <PropertyDef name="memo">
+        <Property></Property>
+        <Property name="label">质量等级备注</Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="dtQuery">
+      <PropertyDef name="qualityGradeCode">
+        <Property></Property>
+        <Property name="label">质量等级代码</Property>
+        <Validator name="validator1" type="length">
+          <Property name="maxLength">10</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="qualityGradeName">
+        <Property></Property>
+        <Property name="label">质量等级名称</Property>
+        <Validator name="validator1" type="length">
+          <Property name="maxLength">100</Property>
+        </Validator>
+      </PropertyDef>
+    </DataType>
+  </Model>
+  <View>
+    <ClientEvent name="onCreate">functions = {&#xD;
+	&#xD;
+	&quot;insertOnclick&quot; : function(){&#xD;
+		var ds = view.get(&quot;#dsTbqualitygrade&quot;);&#xD;
+		ds.insert();&#xD;
+		var af = view.get(&quot;#afTbqualitygrade&quot;);&#xD;
+		af.getElement(&quot;qualityGradeCode&quot;).set(&quot;readOnly&quot;,false);&#xD;
+		view.get(&quot;#dlTbqualitygrade&quot;).show();&#xD;
+	},&#xD;
+	&#xD;
+	&quot;saveOnclick&quot; : function(operate){&#xD;
+		var entity = view.get(&quot;#dsTbqualitygrade.data:#&quot;);&#xD;
+		var pk = entity.get(&quot;pkQualityGrade&quot;);&#xD;
+		 view.get(&quot;#saveTbqualitygrade&quot;).set({&#xD;
+            executingMessage: &quot;正在保存...&quot;,&#xD;
+            successMessage: &quot;保存成功！&quot;&#xD;
+        }).execute(function(){&#xD;
+			functions[&quot;checkButton&quot;]();&#xD;
+			view.get(&quot;#dlTbqualitygrade&quot;).hide();&#xD;
+			if (pk != null){&#xD;
+				functions[&quot;modifyOnclick&quot;]();&#xD;
+			}&#xD;
+        });&#xD;
+	},&#xD;
+	&#xD;
+	&quot;cancelOnclick&quot; : function(){&#xD;
+		var entity = view.get(&quot;#dsTbqualitygrade.data:#&quot;);&#xD;
+		var pk = entity.get(&quot;pkQualityGrade&quot;);&#xD;
+		if (pk == null){&#xD;
+			entity.cancel();&#xD;
+			view.get(&quot;#dlTbqualitygrade&quot;).hide();&#xD;
+		}else {&#xD;
+			view.get(&quot;#dlTbqualitygrade&quot;).hide();&#xD;
+			functions[&quot;modifyOnclick&quot;]();&#xD;
+		}&#xD;
+	},&#xD;
+	&#xD;
+	&quot;deleteOnclick&quot; : function(){&#xD;
+		var entity=view.get(&quot;#dsTbqualitygrade.data:#&quot;);&#xD;
+		var selection = view.get(&quot;#dgTbqualitygrade&quot;).get(&quot;selection&quot;);&#xD;
+		if(selection.length >= 1){&#xD;
+			if(entity){&#xD;
+				var options = {&#xD;
+				    callback: function(){&#xD;
+						if(selection.length >= 1){&#xD;
+							selection.each(function(data){&#xD;
+								data.remove();&#xD;
+							});&#xD;
+						}else{&#xD;
+							dorado.MessageBox.alert(&quot;请勾选需要删除的数据！&quot;);&#xD;
+						}&#xD;
+				        view.get(&quot;#saveTbqualitygrade&quot;).set({&#xD;
+							executingMessage:&quot;正在删除...&quot;,&#xD;
+							successMessage:&quot;删除成功！&quot;&#xD;
+						}).execute(function(){&#xD;
+							functions[&quot;checkButton&quot;]();&#xD;
+						});&#xD;
+			    	},&#xD;
+					icon : &quot;WARNING&quot;,&#xD;
+					title : &quot;删除确认&quot;&#xD;
+			    }&#xD;
+				dorado.MessageBox.confirm(&quot;您确定要删除此数据吗？&quot;, options);//删除数据&#xD;
+	&#xD;
+			}else{&#xD;
+				dorado.MessageBox.alert(&quot;没有数据可以删除!&quot;);&#xD;
+			}&#xD;
+		}else{&#xD;
+			dorado.MessageBox.alert(&quot;请勾选需要删除的数据！&quot;);&#xD;
+		}&#xD;
+		&#xD;
+	},&#xD;
+	&#xD;
+	&quot;modifyOnclick&quot; : function(){&#xD;
+		var selection = view.get(&quot;#dgTbqualitygrade&quot;).get(&quot;selection&quot;);&#xD;
+		if(selection.length > 0){&#xD;
+			var af = view.get(&quot;#afTbqualitygrade&quot;);&#xD;
+			af.getElement(&quot;qualityGradeCode&quot;).set(&quot;readOnly&quot;,true);&#xD;
+			selection[0].setCurrent();&#xD;
+			view.get(&quot;#dlTbqualitygrade&quot;).show();&#xD;
+			selection.removeAt(0);&#xD;
+			view.set((&quot;#dgTbqualitygrade.selection&quot;),selection);&#xD;
+		}else {&#xD;
+			//dorado.MessageBox.alert(&quot;请勾选要修改的数据!&quot;);&#xD;
+		}&#xD;
+	},&#xD;
+	&#xD;
+	&quot;queryOnclick&quot; : function(){&#xD;
+		var entity = view.get(&quot;#dsQuery.data:#&quot;);&#xD;
+		var qualityGradeCode = entity.get(&quot;qualityGradeCode&quot;);&#xD;
+		var qualityGradeName = entity.get(&quot;qualityGradeName&quot;);&#xD;
+		view.get(&quot;#dsTbqualitygrade&quot;).set(&quot;parameter&quot;,{&#xD;
+			&quot;qualityGradeCode&quot; : qualityGradeCode,&#xD;
+			&quot;qualityGradeName&quot; : qualityGradeName&#xD;
+		}).flushAsync(function(result){&#xD;
+			var size = result.entityCount;&#xD;
+			functions[&quot;checkButton&quot;]();&#xD;
+			if(size == 0){&#xD;
+				dorado.MessageBox.alert(&quot;未查到数据!&quot;);&#xD;
+			}&#xD;
+		});&#xD;
+	},&#xD;
+	&quot;checkButton&quot; : function(){&#xD;
+		var btModify = view.get(&quot;#modify&quot;);&#xD;
+		var btDelete = view.get(&quot;#delete&quot;);&#xD;
+		var data = view.get(&quot;#dsTbqualitygrade.data&quot;);&#xD;
+		var size = data.entityCount;&#xD;
+		if (size > 0){&#xD;
+			btDelete.set(&quot;disabled&quot;,false);&#xD;
+			btModify.set(&quot;disabled&quot;,false);&#xD;
+		}else {&#xD;
+			btDelete.set(&quot;disabled&quot;,true);&#xD;
+			btModify.set(&quot;disabled&quot;,true);&#xD;
+		}&#xD;
+	}&#xD;
+	&#xD;
+}&#xD;
+</ClientEvent>
+    <Property name="styleSheetFile">com/kits/saas/mw/style1.css</Property>
+    <Panel>
+      <Buttons/>
+      <Children>
+        <Panel>
+          <Property name="exClassName">panel0</Property>
+          <Buttons/>
+          <Children>
+            <AutoForm id="afQuery">
+              <Property name="dataSet">dsQuery</Property>
+              <Property name="cols">180,250,80,80</Property>
+              <Property name="labelWidth">100</Property>
+              <AutoFormElement>
+                <Property name="name">qualityGradeCode</Property>
+                <Property name="property">qualityGradeCode</Property>
+                <Editor/>
+              </AutoFormElement>
+              <AutoFormElement>
+                <Property name="name">qualityGradeName</Property>
+                <Property name="property">qualityGradeName</Property>
+                <Editor/>
+              </AutoFormElement>
+              <Button id="query">
+                <ClientEvent name="onClick">functions[&quot;queryOnclick&quot;]();&#xD;
+</ClientEvent>
+                <Property name="caption">查询</Property>
+                <Property name="icon">url(>skin>common/icons.gif) -40px -100px</Property>
+              </Button>
+              <Button id="reset">
+                <ClientEvent name="onClick">var ds = view.get(&quot;#dsQuery&quot;);&#xD;
+var data = ds.getData(&quot;#&quot;);&#xD;
+data.cancel();&#xD;
+ds.insert();&#xD;
+</ClientEvent>
+                <Property name="caption">重置</Property>
+                <Property name="icon">url(>skin>common/icons.gif) -40px -240px</Property>
+              </Button>
+            </AutoForm>
+          </Children>
+          <Tools/>
+        </Panel>
+        <Panel>
+          <Buttons/>
+          <Children>
+            <ToolBar>
+              <Button id="insert">
+                <ClientEvent name="onClick">functions[&quot;insertOnclick&quot;]();&#xD;
+</ClientEvent>
+                <Property name="caption">资料新增</Property>
+                <Property name="icon">url(>skin>common/icons.gif) -120px 0px</Property>
+              </Button>
+              <Button id="modify">
+                <ClientEvent name="onClick">functions[&quot;modifyOnclick&quot;]();&#xD;
+</ClientEvent>
+                <Property name="caption">资料修改</Property>
+                <Property name="icon">url(>skin>common/icons.gif) -200px 0px</Property>
+              </Button>
+              <Button id="delete">
+                <ClientEvent name="onClick">functions[&quot;deleteOnclick&quot;]();&#xD;
+</ClientEvent>
+                <Property name="caption">资料删除</Property>
+                <Property name="icon">	url(>skin>common/icons.gif) -140px 0px</Property>
+              </Button>
+              <Fill/>
+              <DataPilot>
+                <Property name="dataSet">dsTbqualitygrade</Property>
+              </DataPilot>
+            </ToolBar>
+            <DataGrid id="dgTbqualitygrade">
+              <ClientEvent name="onDataRowClick">if(arg.column.get(&quot;caption&quot;)!=&quot;RowSelector&quot;){&#xD;
+	var selection = self.get(&quot;selection&quot;);&#xD;
+	var entity = self.get(&quot;dataSet&quot;).getData(&quot;#&quot;);&#xD;
+	self.set(&quot;selection&quot;,entity);&#xD;
+}</ClientEvent>
+              <ClientEvent name="onDataRowDoubleClick">functions[&quot;modifyOnclick&quot;]();</ClientEvent>
+              <Property name="dataSet">dsTbqualitygrade</Property>
+              <Property name="selectionMode">multiRows</Property>
+              <Property name="readOnly">true</Property>
+              <RowSelectorColumn/>
+              <DataColumn name="qualityGradeCode">
+                <Property name="property">qualityGradeCode</Property>
+              </DataColumn>
+              <DataColumn name="qualityGradeName">
+                <Property name="property">qualityGradeName</Property>
+              </DataColumn>
+              <DataColumn name="memo">
+                <Property name="property">memo</Property>
+              </DataColumn>
+            </DataGrid>
+          </Children>
+          <Tools/>
+        </Panel>
+      </Children>
+      <Tools/>
+    </Panel>
+    <DataSet id="dsTbqualitygrade">
+      <ClientEvent name="onLoadData">functions[&quot;checkButton&quot;]();&#xD;
+</ClientEvent>
+      <Property name="dataType">[dtTbqualitygrade]</Property>
+      <Property name="pageSize">20</Property>
+      <Property name="dataProvider">bsjc12BO#queryTbqualitygrade</Property>
+    </DataSet>
+    <DataSet id="dsQuery">
+      <ClientEvent name="onReady">self.insert();&#xD;
+</ClientEvent>
+      <Property name="dataType">[dtQuery]</Property>
+    </DataSet>
+    <UpdateAction id="saveTbqualitygrade">
+      <Property name="dataResolver">bsjc12BO#saveTbqualitygrade</Property>
+      <UpdateItem>
+        <Property name="dataSet">dsTbqualitygrade</Property>
+      </UpdateItem>
+    </UpdateAction>
+    <Dialog id="dlTbqualitygrade">
+      <Property name="width">630</Property>
+      <Property name="height">250</Property>
+      <Property name="closeable">false</Property>
+      <Buttons>
+        <Button id="save">
+          <ClientEvent name="onClick">functions[&quot;saveOnclick&quot;]();&#xD;
+</ClientEvent>
+          <Property name="caption">保存</Property>
+          <Property name="icon">url(>skin>common/icons.gif) -140px -20px</Property>
+        </Button>
+        <Button id="cancel">
+          <ClientEvent name="onClick">functions[&quot;cancelOnclick&quot;]();&#xD;
+</ClientEvent>
+          <Property name="caption">取消</Property>
+          <Property name="icon">url(>skin>common/icons.gif) -40px -0px</Property>
+        </Button>
+      </Buttons>
+      <Children>
+        <AutoForm id="afTbqualitygrade">
+          <Property name="dataSet">dsTbqualitygrade</Property>
+          <Property name="labelWidth">100</Property>
+          <AutoFormElement layoutConstraint="colSpan:2">
+            <Property name="name">qualityGradeCode</Property>
+            <Property name="property">qualityGradeCode</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement layoutConstraint="colSpan:2">
+            <Property name="name">qualityGradeName</Property>
+            <Property name="property">qualityGradeName</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">createEmpNo</Property>
+            <Property name="property">createEmpNo</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">createDate</Property>
+            <Property name="property">createDate</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">modifyEmpNo</Property>
+            <Property name="property">modifyEmpNo</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">modifyDate</Property>
+            <Property name="property">modifyDate</Property>
+            <Editor/>
+          </AutoFormElement>
+        </AutoForm>
+      </Children>
+      <Tools/>
+    </Dialog>
+  </View>
+</ViewConfig>

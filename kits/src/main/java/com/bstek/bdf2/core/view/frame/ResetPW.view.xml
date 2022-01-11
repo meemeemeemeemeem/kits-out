@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ViewConfig>
+  <Arguments/>
+  <Context/>
+  <Model>
+    <DataType name="dtResetPW">
+      <PropertyDef name="username">
+        <Property name="label">用户名</Property>
+        <Validator name="validator1" type="regExp">
+          <Property name="whiteRegExp">^1(3|4|5|7|8)\d{9}$</Property>
+          <Property name="resultMessage">用户账号格式不正确！</Property>
+        </Validator>
+        <Validator name="validator2" type="required"/>
+      </PropertyDef>
+      <PropertyDef name="code">
+        <Property name="label">验证码</Property>
+        <Validator name="validator1" type="required"/>
+      </PropertyDef>
+    </DataType>
+  </Model>
+  <View>
+    <ClientEvent name="onCreate">var countdown = 60;&#xD;
+var t;&#xD;
+window.settime = function(){&#xD;
+    var btn = view.get(&quot;#btnCode&quot;);&#xD;
+    if (countdown == 0) {&#xD;
+        btn.set(&quot;disabled&quot;, false);&#xD;
+        btn.set(&quot;caption&quot;, &quot;免费获取验证码&quot;);&#xD;
+    }&#xD;
+    else {&#xD;
+        btn.set(&quot;disabled&quot;, true);&#xD;
+        btn.set(&quot;caption&quot;, &quot;重新发送(&quot; + countdown + &quot;)&quot;);&#xD;
+        countdown--;&#xD;
+    }&#xD;
+    t = setTimeout(function(){&#xD;
+        settime()&#xD;
+    }, 1000)&#xD;
+}&#xD;
+&#xD;
+window.closeWindows = function(){&#xD;
+    var userAgent = navigator.userAgent;&#xD;
+    if (userAgent.indexOf(&quot;Firefox&quot;) != -1 ||&#xD;
+    userAgent.indexOf(&quot;Chrome&quot;) != -1) {&#xD;
+        close();//直接调用JQUERY close方法关闭&#xD;
+    }&#xD;
+    else {&#xD;
+        window.opener = null;&#xD;
+        window.open(&quot;&quot;, &quot;_self&quot;);&#xD;
+        window.close();&#xD;
+    }&#xD;
+};&#xD;
+&#xD;
+// 获取短信验证码&#xD;
+verificationCode = function(){&#xD;
+    var username = document.getElementById(&quot;username&quot;).value;&#xD;
+    if (username != &quot;&quot; &amp;&amp; username != null) {&#xD;
+		  view.get(&quot;#aatnGenCode&quot;).set(&quot;parameter&quot;, username).execute(function(returnValue){&#xD;
+            if (returnValue) {&#xD;
+                document.getElementById(&quot;username&quot;).readOnly = &quot;true&quot;;&#xD;
+            }&#xD;
+        });&#xD;
+        settime();&#xD;
+    }&#xD;
+    else {&#xD;
+        dorado.MessageBox.alert(&quot;用户名不允许为空！&quot;);&#xD;
+    }&#xD;
+};&#xD;
+&#xD;
+// 重置密码&#xD;
+resetPwd = function(){&#xD;
+    var aatnVerify = view.get(&quot;#aatnVerify&quot;);&#xD;
+    var username = document.getElementById(&quot;username&quot;).value;&#xD;
+    var code = document.getElementById(&quot;code&quot;).value;&#xD;
+    var pwd = document.getElementById(&quot;pwd&quot;).value;&#xD;
+    var aatnVerify = view.get(&quot;#aatnVerify&quot;);&#xD;
+    if (username!=&quot;&quot; &amp;&amp; username!=null) {&#xD;
+        if (code!=&quot;&quot; &amp;&amp; code!=null) {&#xD;
+            if (pwd!=&quot;&quot; &amp;&amp; pwd!=null) {&#xD;
+                aatnVerify.set(&quot;parameter&quot;, {&#xD;
+                    username: username,&#xD;
+                    code: code&#xD;
+                }).execute(function(returnValue){&#xD;
+                    if (returnValue) {&#xD;
+                        dorado.MessageBox.alert(returnValue);&#xD;
+                    }&#xD;
+                    else {&#xD;
+                        var aatnReset = view.get(&quot;#aatnReset&quot;);&#xD;
+                        aatnReset.set(&quot;parameter&quot;, {&#xD;
+							&quot;username&quot;: username,&#xD;
+							&quot;password&quot;: pwd&#xD;
+						});&#xD;
+                        aatnReset.execute(function(returnValue){&#xD;
+                            dorado.MessageBox.alert(returnValue);&#xD;
+                            closeWindows();&#xD;
+                        });&#xD;
+                    }&#xD;
+                });&#xD;
+            }&#xD;
+            else {&#xD;
+                dorado.MessageBox.alert(&quot;密码不允许为空！&quot;);&#xD;
+            }&#xD;
+        }&#xD;
+        else {&#xD;
+            dorado.MessageBox.alert(&quot;验证码不允许为空！&quot;);&#xD;
+        }&#xD;
+    }&#xD;
+    else {&#xD;
+        dorado.MessageBox.alert(&quot;用户名不允许为空！&quot;);&#xD;
+    } &#xD;
+    &#xD;
+};&#xD;
+</ClientEvent>
+    <Property name="title">重置密码</Property>
+    <AjaxAction id="aatnGenCode">
+      <Property name="service">resetPWService#genCode</Property>
+      <Property name="async">false</Property>
+    </AjaxAction>
+    <AjaxAction id="aatnVerify">
+      <Property name="service">resetPWService#verfiyCode</Property>
+      <Property name="async">false</Property>
+    </AjaxAction>
+    <AjaxAction id="aatnReset">
+      <Property name="service">resetPWService#resetPassword</Property>
+      <Property name="async">false</Property>
+    </AjaxAction>
+  </View>
+</ViewConfig>

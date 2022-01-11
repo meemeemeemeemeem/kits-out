@@ -1,0 +1,964 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ViewConfig>
+  <Arguments/>
+  <Context/>
+  <Model>
+    <DataType name="dataTypeUrl" parent="global:$dataTypeUrl">
+      <PropertyDef name="children">
+        <Property name="dataType">[SELF]</Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="dataTypeChangePassword">
+      <PropertyDef name="originPassword">
+        <Property name="label">${res[&quot;bdf2.core/originPassword&quot;]}</Property>
+        <Property name="required">true</Property>
+        <Validator type="length">
+          <Property name="maxLength">60</Property>
+          <Property name="minLength">5</Property>
+          <Property name="resultMessage">${res[&quot;bdf2.core/originPasswordResultMessage&quot;]}</Property>
+        </Validator>
+        <Validator type="ajax">
+          <Property name="service">bdf2.changePassword#checkPassword</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="newPassword">
+        <Property name="label">${res[&quot;bdf2.core/newPassword&quot;]}</Property>
+        <Property name="required">true</Property>
+        <Validator type="length">
+          <Property name="maxLength">60</Property>
+          <Property name="minLength">5</Property>
+          <Property name="resultMessage">${res[&quot;bdf2.core/newPasswordResultMessage&quot;]}</Property>
+        </Validator>
+        <Validator type="custom">
+          <ClientEvent name="onValidate">if (arg.entity.get(&quot;repeatNewPassword&quot;)){
+	arg.entity.validate(&quot;repeatNewPassword&quot;);
+}</ClientEvent>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="repeatNewPassword">
+        <Property name="label">${res[&quot;bdf2.core/repeatNewPassword&quot;]}</Property>
+        <Property name="required">true</Property>
+        <Validator type="length">
+          <Property name="maxLength">60</Property>
+          <Property name="minLength">5</Property>
+          <Property name="resultMessage">${res[&quot;bdf2.core/repeatNewPasswordResultMessage&quot;]}</Property>
+        </Validator>
+        <Validator type="custom">
+          <ClientEvent name="onValidate">var password=arg.entity.get(&quot;newPassword&quot;);&#xD;
+if(arg.data!=password){&#xD;
+	arg.result={text:&quot;${res['bdf2.core/newPasswordIncorrect']}&quot;};&#xD;
+}&#xD;
+</ClientEvent>
+        </Validator>
+      </PropertyDef>
+    </DataType>
+    <DataType name="dataTypeMessage" parent="$dataTypeMessage">
+      <PropertyDef name="id">
+        <Property></Property>
+      </PropertyDef>
+      <PropertyDef name="title">
+        <Property></Property>
+        <Property name="label">${res[&quot;bdf2.core/messageTitle&quot;]}</Property>
+      </PropertyDef>
+      <PropertyDef name="content">
+        <Property></Property>
+        <Property name="label">${res[&quot;bdf2.core/messageContent&quot;]}</Property>
+      </PropertyDef>
+      <PropertyDef name="sendDate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">${res[&quot;bdf2.core/messageSendDate&quot;]}</Property>
+      </PropertyDef>
+      <PropertyDef name="sender">
+        <Property></Property>
+        <Property name="label">${res[&quot;bdf2.core/messageSender&quot;]}</Property>
+      </PropertyDef>
+      <PropertyDef name="receiver">
+        <Property></Property>
+        <Property name="label">${res[&quot;bdf2.core/messageReceiver&quot;]}</Property>
+      </PropertyDef>
+      <PropertyDef name="read">
+        <Property name="dataType">boolean</Property>
+        <Property name="label">${res[&quot;bdf2.core/messageRead&quot;]}</Property>
+      </PropertyDef>
+      <PropertyDef name="reply">
+        <Property name="dataType">boolean</Property>
+        <Property name="label">${res[&quot;bdf2.core/messageReply&quot;]}</Property>
+      </PropertyDef>
+    </DataType>
+  </Model>
+  <View listener="spring:changeSkinService#onInitView">
+    <ClientEvent name="onCreate">var loginUser = null;&#xD;
+&#xD;
+window.openUrlInFrameTab=function(url,caption,icon,double){&#xD;
+	if(!url){&#xD;
+		dorado.MessageBox.alert(&quot;Url不能空&quot;);&#xD;
+		return;&#xD;
+	}&#xD;
+	if(!caption){&#xD;
+		dorado.MessageBox.alert(&quot;caption不能空&quot;);&#xD;
+		return;&#xD;
+	}&#xD;
+	if(!icon){&#xD;
+		icon=&quot;url(skin>common/icons.gif) -40px -120px&quot;;&#xD;
+	}&#xD;
+	var tabControl=view.id(&quot;tabControlWorkarea&quot;);&#xD;
+	var tab=tabControl.getTab(url);&#xD;
+	if(!tab){&#xD;
+		tab=new dorado.widget.tab.IFrameTab({&#xD;
+			name:url,&#xD;
+			path:url,&#xD;
+			caption:caption,&#xD;
+			//icon:icon,&#xD;
+			closeable:true&#xD;
+		});&#xD;
+		if(tab.get(&quot;caption&quot;)==&quot;营运管理&quot;){&#xD;
+			tab.set(&quot;closeable&quot;, false);&#xD;
+		}&#xD;
+		tabControl.addTab(tab);&#xD;
+	}else{&#xD;
+		if (url !=  tab.get(&quot;path&quot;)){&#xD;
+			tab.set(&quot;path&quot;, url);&#xD;
+		}else{&#xD;
+			tab.getControl().reload();&#xD;
+		}&#xD;
+		if(caption){&#xD;
+			tab.set(&quot;caption&quot;,caption);&#xD;
+		}&#xD;
+	}&#xD;
+	tabControl.set(&quot;currentTab&quot;,tab);&#xD;
+}&#xD;
+&#xD;
+// 退出&#xD;
+logout = function(){&#xD;
+	dorado.MessageBox.confirm(&quot;确定退出当前系统？&quot;, function(){&#xD;
+		var logoutUrl=&quot;${request.getContextPath()}&quot;+&quot;${configure.getString(&quot;bdf2.logoutURL&quot;)}&quot;;&#xD;
+		open(logoutUrl,&quot;_self&quot;);&#xD;
+	});&#xD;
+}&#xD;
+&#xD;
+// 修改密码&#xD;
+changePassword = function(){&#xD;
+	view.get(&quot;#dialogChangePassword&quot;).show();&#xD;
+}&#xD;
+&#xD;
+// 发送消息&#xD;
+sendMessage = function(){&#xD;
+	view.id(&quot;$dialogSendMessage&quot;).show();&#xD;
+}&#xD;
+&#xD;
+// 查看消息&#xD;
+seeMessage = function(){&#xD;
+	view.id(&quot;$dialogSeeMessage&quot;).show();&#xD;
+}&#xD;
+&#xD;
+// 样式&#xD;
+changeStyle = function(){&#xD;
+	view.id(&quot;dialogStyle&quot;).show();&#xD;
+}&#xD;
+&#xD;
+&#xD;
+//皮肤&#xD;
+changeSkin = function(){&#xD;
+	view.id(&quot;dialogSkin&quot;).show();&#xD;
+}&#xD;
+&#xD;
+// 站点切换&#xD;
+changeDept = function(){&#xD;
+	view.id(&quot;dialogDept&quot;).show();&#xD;
+}&#xD;
+&#xD;
+&#xD;
+// 定时器，页面在3分钟内未访问，退出登录&#xD;
+logoutAfter3Min = function(){  &#xD;
+	var logoutUrl=&quot;${request.getContextPath()}&quot;+&quot;${configure.getString(&quot;bdf2.logoutURL&quot;)}&quot;;&#xD;
+	open(logoutUrl,&quot;_self&quot;);&#xD;
+} &#xD;
+&#xD;
+&#xD;
+// 打开我的工作台&#xD;
+openWelcome = function(){&#xD;
+	var tabControl = window.parent.$id(&quot;tabControlWorkarea&quot;).objects[0];&#xD;
+	var currentTab = tabControl.get(&quot;currentTab&quot;);&#xD;
+	var tabs = tabControl.get(&quot;tabs&quot;);&#xD;
+	var viewPage = tabs.get(&quot;com.kits.platform.view.Welcome.d&quot;);&#xD;
+	if (viewPage) {&#xD;
+	    var wdw = viewPage.getControl().get(&quot;iFrameWindow&quot;);&#xD;
+	    var workarea = window.parent.$id(&quot;tabControlWorkarea&quot;);&#xD;
+	    workarea.set(&quot;currentTab&quot;, viewPage);&#xD;
+	}else{&#xD;
+		window.openUrlInFrameTab(&quot;com.kits.platform.view.Welcome.d&quot;, &quot;我的工作台&quot;);&#xD;
+	}&#xD;
+}&#xD;
+&#xD;
+imgOver = function(x){&#xD;
+    $('#' + x).attr(&quot;src&quot;, &quot;style3/img/&quot; + x + &quot;1.png&quot;);&#xD;
+}&#xD;
+imgOut = function(x){&#xD;
+    $('#' + x).attr(&quot;src&quot;, &quot;style3/img/&quot; + x + &quot;.png&quot;);&#xD;
+}</ClientEvent>
+    <ClientEvent name="onReady">var path=&quot;${configure.getString(&quot;bdf2.mainFrame.welcomePath&quot;)}&quot;;&#xD;
+var icon=&quot;${configure.getString(&quot;bdf2.mainFrame.welcomeIcon&quot;)}&quot;;&#xD;
+var title=&quot;${configure.getString(&quot;bdf2.mainFrame.welcomeTitle&quot;)}&quot;;&#xD;
+if(path){&#xD;
+	var loginUserDeptId = &quot;${loginUserCurrentDept.getId()}&quot;;&#xD;
+	if(loginUserDeptId){&#xD;
+		window.openUrlInFrameTab(path,title,icon);&#xD;
+	}&#xD;
+}&#xD;
+&#xD;
+</ClientEvent>
+    <Property name="packages">tree</Property>
+    <HtmlContainer>
+      <Property name="content">&lt;link rel=&quot;stylesheet&quot; href=&quot;style3/css/top.css&quot;>&#xD;
+	&lt;div class=&quot;box&quot;>&#xD;
+		&lt;div class=&quot;top-left&quot;>&#xD;
+			&lt;img src=&quot;style3/img/logos.png&quot;  class=&quot;logos&quot;>&#xD;
+			&lt;!--&lt;h2>&lt;img src=&quot;style3/img/logo.png&quot; alt=&quot;&quot; width=&quot;118&quot; height=&quot;44&quot;>&lt;/h2>-->&#xD;
+			&lt;!--&lt;a href=&quot;javascript:openWelcome()&quot; class=&quot;gaoliang&quot;>我的工作台&lt;/a>-->&#xD;
+		&lt;/div>&#xD;
+		&#xD;
+		&#xD;
+		&#xD;
+		&lt;div class=&quot;top-center&quot;>&#xD;
+			&#xD;
+		&lt;/div>&#xD;
+		&#xD;
+		&#xD;
+		&#xD;
+		&lt;div class=&quot;top-right&quot;>&#xD;
+			&lt;ul class=&quot;list&quot;>&#xD;
+	&lt;!--&#xD;
+				&lt;li  onmouseover=&quot;imgOver('fengge')&quot; onmouseout=&quot;imgOut('fengge')&quot;>&#xD;
+					&lt;a href=&quot;javascript:changeStyle()&quot;>&#xD;
+						&lt;img id=&quot;fengge&quot; src=&quot;style3/img/fengge.png&quot;> &#xD;
+						&lt;div class=&quot;character&quot;>风格&lt;/div>&#xD;
+					&lt;/a>&#xD;
+				&lt;/li>&#xD;
+	-->&#xD;
+			&lt;!--&#xD;
+				&lt;li  onmouseover=&quot;imgOver('skin')&quot; onmouseout=&quot;imgOut('skin')&quot;>&#xD;
+					&lt;a href=&quot;javascript:changeSkin()&quot;>&#xD;
+						&lt;img id=&quot;skin&quot; src=&quot;style3/img/skin.png&quot;>&#xD;
+						&lt;div class=&quot;character&quot;>皮肤&lt;/div> &#xD;
+					&lt;/a>&#xD;
+				&lt;/li>-->&#xD;
+				&lt;li  onmouseover=&quot;imgOver('32')&quot; onmouseout=&quot;imgOut('32')&quot;>&#xD;
+					&lt;a href=&quot;javascript:seeMessage()&quot;>&#xD;
+						&lt;img id=&quot;mail&quot; src=&quot;style3/img/32.png&quot; >&#xD;
+						&lt;div class=&quot;character&quot;>查看消息&lt;/div>&#xD;
+					&lt;/a>&#xD;
+				&lt;/li>&#xD;
+				&lt;li  onmouseover=&quot;imgOver('password')&quot; onmouseout=&quot;imgOut('password')&quot;>&#xD;
+					&lt;a href=&quot;javascript:changePassword()&quot;>&#xD;
+						&lt;img id=&quot;password&quot; src=&quot;style3/img/password.png&quot;>&#xD;
+						&lt;div class=&quot;character&quot;>修改密码&lt;/div>&#xD;
+					&lt;/a>&#xD;
+				&lt;/li>&#xD;
+				&lt;li  onmouseover=&quot;imgOver('35')&quot; onmouseout=&quot;imgOut('35')&quot;>&#xD;
+					&lt;a href=&quot;javascript:logout()&quot;>&#xD;
+						&lt;img id=&quot;quit&quot; src=&quot;style3/img/35.png&quot;>&#xD;
+						&lt;div class=&quot;character&quot;>退出&lt;/div>&#xD;
+					&lt;/a>&#xD;
+				&lt;/li>&#xD;
+			&lt;/ul>&#xD;
+	  &lt;/div>&#xD;
+	&lt;/div></Property>
+      <Property name="height">75px</Property>
+    </HtmlContainer>
+    <DataSet id="dataSetUrl">
+      <ClientEvent name="onReady">String.prototype.replaceAll = function(reallyDo, replaceWith, ignoreCase) {&#xD;
+	if (!RegExp.prototype.isPrototypeOf(reallyDo)) {&#xD;
+	    return this.replace(new RegExp(reallyDo, (ignoreCase ? &quot;gi&quot;: &quot;g&quot;)), replaceWith);&#xD;
+	} else {&#xD;
+	    return this.replace(reallyDo, replaceWith);&#xD;
+	}&#xD;
+}&#xD;
+var expanded=&quot;${configure.getBoolean(&quot;bdf2.mainFrameMenuExpanded&quot;)}&quot;;&#xD;
+var accordionNav=view.id(&quot;accordionNav&quot;);&#xD;
+var listArray = [];&#xD;
+var treeJson={};&#xD;
+var data=self.getData();&#xD;
+if(!data){&#xD;
+	return;&#xD;
+}&#xD;
+data.each(function(url){&#xD;
+	var section=new dorado.widget.Section();&#xD;
+	section.set(&quot;caption&quot;,url.get(&quot;name&quot;));&#xD;
+	if(url.get(&quot;desc&quot;)){&#xD;
+		section.set(&quot;tip&quot;,url.get(&quot;desc&quot;));	&#xD;
+	}&#xD;
+	if(url.get(&quot;icon&quot;)){&#xD;
+		section.set(&quot;icon&quot;,url.get(&quot;icon&quot;));	&#xD;
+	}&#xD;
+	section.set(&quot;name&quot;,url.get(&quot;id&quot;));&#xD;
+	section.set(&quot;control&quot;,new dorado.widget.Tree());&#xD;
+	section.set(&quot;userData&quot;,url);&#xD;
+	accordionNav.addSection(section);&#xD;
+});&#xD;
+&#xD;
+accordionNav.set(&quot;onCurrentSectionChange&quot;,function(accrodion,arg){&#xD;
+	var section=arg.newSection;&#xD;
+	var id=section.get(&quot;name&quot;);&#xD;
+	if(treeJson[id]){&#xD;
+		return;&#xD;
+	}&#xD;
+	treeJson[id]=&quot;tree&quot;;&#xD;
+	var url=section.get(&quot;userData&quot;);&#xD;
+	var cdata=url.get(&quot;children&quot;);&#xD;
+	if(!cdata){&#xD;
+		return;&#xD;
+	}&#xD;
+	&#xD;
+	/*&#xD;
+	// 点击主菜单显示菜单&#xD;
+	section.set(&quot;onClick&quot;,function(self, arg){&#xD;
+		var  url = section.get(&quot;userData&quot;);&#xD;
+		if(url.get(&quot;url&quot;)){&#xD;
+			window.openUrlInFrameTab(url.get(&quot;url&quot;),url.get(&quot;name&quot;),url.get(&quot;icon&quot;),true);&#xD;
+		}	&#xD;
+	});&#xD;
+	*/&#xD;
+	&#xD;
+	var tree=section.get(&quot;control&quot;);&#xD;
+	tree.set(&quot;onDataRowClick&quot;,function(self,arg){&#xD;
+		var node=self.get(&quot;currentNode&quot;);&#xD;
+		var data=node.get(&quot;userData&quot;);&#xD;
+		if(data.get(&quot;url&quot;)){&#xD;
+			window.openUrlInFrameTab(data.get(&quot;url&quot;),data.get(&quot;name&quot;),data.get(&quot;icon&quot;));&#xD;
+		}&#xD;
+	});&#xD;
+	tree.set(&quot;onDataRowDoubleClick&quot;,function(self,arg){&#xD;
+		var node=self.get(&quot;currentNode&quot;);&#xD;
+		var data=node.get(&quot;userData&quot;);&#xD;
+		if(data.get(&quot;url&quot;)){&#xD;
+			window.openUrlInFrameTab(data.get(&quot;url&quot;),data.get(&quot;name&quot;),data.get(&quot;icon&quot;),true);&#xD;
+		}&#xD;
+	});		&#xD;
+	var rootNode=tree.get(&quot;root&quot;);&#xD;
+	cdata.each(function(d){&#xD;
+		buildTree(rootNode,d);&#xD;
+	});&#xD;
+});&#xD;
+&#xD;
+function buildTree(topNode,url){&#xD;
+	var node=new dorado.widget.tree.Node();&#xD;
+	if(expanded==&quot;true&quot;){&#xD;
+		node.set(&quot;expanded&quot;,true);&#xD;
+	}&#xD;
+	node.set(&quot;label&quot;,url.get(&quot;name&quot;));&#xD;
+	if(url.get(&quot;desc&quot;)){&#xD;
+		node.set(&quot;tip&quot;,url.get(&quot;desc&quot;));&#xD;
+	}&#xD;
+	if(url.get(&quot;icon&quot;)){&#xD;
+		node.set(&quot;icon&quot;,url.get(&quot;icon&quot;));&#xD;
+	}&#xD;
+	node.set(&quot;userData&quot;,url);&#xD;
+	topNode.addNode(node);&#xD;
+	var cdata=url.get(&quot;children&quot;);&#xD;
+	if(!cdata){&#xD;
+		return;&#xD;
+	}&#xD;
+	cdata.each(function(d){&#xD;
+		buildTree(node,d);&#xD;
+	});&#xD;
+}&#xD;
+</ClientEvent>
+      <Property name="dataProvider">bdf2.mainFrame#loadMeunUrls</Property>
+      <Property name="dataType">[dataTypeUrl]</Property>
+      <Property name="loadMode">onReady</Property>
+    </DataSet>
+    <SplitPanel layoutConstraint="center">
+      <Property name="position">240</Property>
+      <MainControl>
+        <Panel id="panelWorkarea">
+          <Property name="border">none</Property>
+          <Property name="maximizeable">true</Property>
+          <Buttons/>
+          <Children>
+            <TabControl id="tabControlWorkarea">
+              <ClientEvent name="onTabContextMenu">view.id(&quot;menuForTab&quot;).show({&#xD;
+	position:{&#xD;
+		left:arg.event.pageX,&#xD;
+		top:arg.event.pageY&#xD;
+	}&#xD;
+});&#xD;
+</ClientEvent>
+              <ClientEvent name="onCreate">//self.addRightToolButton(new dorado.widget.TextEditor({&#xD;
+    //&quot;id&quot;: &quot;wayBillNo&quot;,&#xD;
+    //&quot;trigger&quot;: view.getComponentReference(&quot;trigger2&quot;),&#xD;
+    //&quot;blankText&quot;: &quot;请输入承运单号&quot;,&#xD;
+    //&quot;width&quot;: 200,&#xD;
+	//&quot;onKeyPress&quot;:function(self, arg){&#xD;
+	//	var wayBillNo = view.get(&quot;#wayBillNo&quot;).get(&quot;text&quot;);&#xD;
+	//	if(arg.keyCode==&quot;13&quot; &amp;&amp; wayBillNo ){&#xD;
+	//		view.get(&quot;#trigger2&quot;).execute();&#xD;
+	//	}&#xD;
+	//}&#xD;
+//}), 100);&#xD;
+window.openUrlInFrameTab(&quot;com.kits.metalwork.fr.view.index.d&quot;, &quot;首页&quot;);&#xD;
+self.addRightToolButton(new dorado.widget.Button({&#xD;
+    icon: &quot;images/icon/close.ico&quot;,&#xD;
+    &quot;caption&quot;: &quot;全部关闭&quot;,&#xD;
+    onClick: function(){&#xD;
+        var tabControl = view.get(&quot;#tabControlWorkarea&quot;);&#xD;
+        tabControl.closeAllTabs();&#xD;
+		//window.openUrlInFrameTab(&quot;com.xyt.business.view.business.d&quot;, &quot;营运管理&quot;);&#xD;
+    }&#xD;
+}));&#xD;
+</ClientEvent>
+              <Property name="showMenuButton">true</Property>
+            </TabControl>
+          </Children>
+          <Tools/>
+        </Panel>
+      </MainControl>
+      <SideControl>
+        <Container>
+          <Accordion id="accordionNav"/>
+        </Container>
+      </SideControl>
+    </SplitPanel>
+    <Trigger id="trigger2">
+      <ClientEvent name="onExecute">var wayBillNo = view.get(&quot;#wayBillNo&quot;).get(&quot;text&quot;);&#xD;
+view.get(&quot;#ajaxBillInfo&quot;).set(&quot;parameter&quot;, wayBillNo).execute(function(result){&#xD;
+    if (result) {&#xD;
+        window.parent.openUrlInFrameTab(&quot;business.view.operating.WaybillDetails.d?id=&quot; + result, &quot;运单详情&quot;);&#xD;
+    }&#xD;
+    else {&#xD;
+        dorado.MessageBox.alert(&quot;未检索到对应的承运单号！&quot;);&#xD;
+    }&#xD;
+});&#xD;
+</ClientEvent>
+      <Property name="iconClass">d-trigger-icon-search</Property>
+    </Trigger>
+    <AjaxAction id="ajaxBillInfo">
+      <Property name="service">waybillService#getWayBillInfoByNo</Property>
+    </AjaxAction>
+    <DataSet id="dataSetChangePassword">
+      <ClientEvent name="onReady">self.insert({});&#xD;
+</ClientEvent>
+      <Property name="dataType">dataTypeChangePassword</Property>
+    </DataSet>
+    <Dialog id="dialogChangePassword">
+      <Property name="center">true</Property>
+      <Property name="width">300</Property>
+      <Property name="height">220</Property>
+      <Property name="caption">修改密码</Property>
+      <Buttons>
+        <Button>
+          <Property name="caption">${res[&quot;bdf2.core/changePasswordOK&quot;]}</Property>
+          <Property name="icon">url(skin>common/icons.gif) -140px -20px</Property>
+          <Property name="action">updateActionChangePassword</Property>
+        </Button>
+        <Button>
+          <ClientEvent name="onClick">view.id(&quot;dialogChangePassword&quot;).hide();&#xD;
+</ClientEvent>
+          <Property name="caption">${res[&quot;bdf2.core/changePasswordCancel&quot;]}</Property>
+          <Property name="icon">url(skin>common/icons.gif) -40px 0px</Property>
+        </Button>
+      </Buttons>
+      <Children>
+        <AutoForm>
+          <Property name="cols">*</Property>
+          <Property name="dataSet">dataSetChangePassword</Property>
+          <Property name="labelWidth">100</Property>
+          <AutoFormElement>
+            <Property name="name">originPassword</Property>
+            <Property name="property">originPassword</Property>
+            <Property name="editorType">PasswordEditor</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">newPassword</Property>
+            <Property name="property">newPassword</Property>
+            <Property name="editorType">PasswordEditor</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">repeatNewPassword</Property>
+            <Property name="property">repeatNewPassword</Property>
+            <Property name="editorType">PasswordEditor</Property>
+            <Editor/>
+          </AutoFormElement>
+        </AutoForm>
+      </Children>
+      <Tools/>
+    </Dialog>
+    <UpdateAction id="updateActionChangePassword">
+      <ClientEvent name="onSuccess">view.id(&quot;dialogChangePassword&quot;).hide();&#xD;
+</ClientEvent>
+      <Property name="dataResolver">bdf2.changePassword#changePassword</Property>
+      <Property name="successMessage">${res[&quot;bdf2.core/changePasswordSuccessMessage&quot;]}</Property>
+      <Property name="confirmMessage">${res[&quot;bdf2.core/changePasswordConfirmMessage&quot;]}</Property>
+      <UpdateItem>
+        <Property name="dataSet">dataSetChangePassword</Property>
+        <Property name="alias">data</Property>
+      </UpdateItem>
+    </UpdateAction>
+    <DataSet id="$dataSetMessageForSend">
+      <ClientEvent name="onReady">self.insert({});&#xD;
+</ClientEvent>
+      <Property name="dataType">$dataTypeMessage</Property>
+    </DataSet>
+    <Dialog id="$dialogSendMessage">
+      <Property name="center">true</Property>
+      <Property name="width">600</Property>
+      <Property name="height">400</Property>
+      <Property name="caption">${res[&quot;bdf2.core/dialogSendMessageCaption&quot;]}</Property>
+      <Buttons>
+        <Button>
+          <Property name="caption">${res[&quot;bdf2.core/sendMessageButtonCaption&quot;]}</Property>
+          <Property name="icon">url(skin>common/icons.gif) -140px -80px</Property>
+          <Property name="action">$updateActionSendMessage</Property>
+        </Button>
+        <Button>
+          <ClientEvent name="onClick">view.id(&quot;$dialogSendMessage&quot;).hide();&#xD;
+</ClientEvent>
+          <Property name="caption">${res[&quot;bdf2.core/cancelSendMessageButtonCaption&quot;]}</Property>
+          <Property name="icon">url(skin>common/icons.gif) -40px 0px</Property>
+        </Button>
+      </Buttons>
+      <Children>
+        <AutoForm>
+          <Property name="dataSet">$dataSetMessageForSend</Property>
+          <Property name="cols">*</Property>
+          <Property name="showHint">false</Property>
+          <AutoFormElement>
+            <Property name="name">title</Property>
+            <Property name="property">title</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">receiver</Property>
+            <Property name="property">receiver</Property>
+            <Editor>
+              <TagEditor>
+                <Property name="dataSet">$dataSetMessageForSend</Property>
+                <Property name="property">receiver</Property>
+                <Property name="trigger">$triggerSelectReceivers</Property>
+              </TagEditor>
+            </Editor>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">content</Property>
+            <Property name="property">content</Property>
+            <Property name="editorType">TextArea</Property>
+            <Editor>
+              <TextArea>
+                <Property name="height">200</Property>
+              </TextArea>
+            </Editor>
+          </AutoFormElement>
+        </AutoForm>
+        <Trigger id="$triggerSelectReceivers">
+          <ClientEvent name="onExecute">var dialog=view.id(&quot;$dialogUserSelect&quot;);&#xD;
+var config={caption:&quot;${res['bdf2.core/dialogUserSelectCaption']}&quot;,callback:function(data){&#xD;
+	var usernames=&quot;&quot;;&#xD;
+	for(var i=0;i&lt;data.length;i++){&#xD;
+		var json=data[i];&#xD;
+		if(i==0){&#xD;
+			usernames=json.username;&#xD;
+		}else{&#xD;
+			usernames=usernames+&quot;,&quot;+json.username;			&#xD;
+		}&#xD;
+	}&#xD;
+	var data=view.id(&quot;$dataSetMessageForSend&quot;).getData(&quot;#&quot;);&#xD;
+	data.set(&quot;receiver&quot;,usernames);&#xD;
+	dialog.hide();&#xD;
+}};&#xD;
+dialog.$show(config);&#xD;
+</ClientEvent>
+        </Trigger>
+        <Import src="bdf2.core.view.global.UserSelect#$dialogUserSelect"/>
+      </Children>
+      <Tools/>
+    </Dialog>
+    <UpdateAction id="$updateActionSendMessage">
+      <ClientEvent name="onSuccess">view.id(&quot;$dialogSendMessage&quot;).hide();&#xD;
+view.id(&quot;$dataSetSendMessage&quot;).flushAsync();&#xD;
+</ClientEvent>
+      <Property name="dataResolver">bdf2.sendMessage#send</Property>
+      <Property name="successMessage">${res[&quot;bdf2.core/updateActionSendMessageSuccessMessage&quot;]}</Property>
+      <Property name="confirmMessage">${res[&quot;bdf2.core/updateActionSendMessageConfirmMessage&quot;]}</Property>
+      <UpdateItem>
+        <Property name="dataSet">$dataSetMessageForSend</Property>
+      </UpdateItem>
+    </UpdateAction>
+    <DataSet id="$dataSetSendMessage">
+      <Property name="dataType">[dataTypeMessage]</Property>
+      <Property name="dataProvider">bdf2.seeMessage#loadSendMessages</Property>
+      <Property name="pageSize">20</Property>
+    </DataSet>
+    <DataSet id="$dataSetReceiveMessage">
+      <Property name="dataType">[dataTypeMessage]</Property>
+      <Property name="dataProvider">bdf2.seeMessage#loadReceiveMessages</Property>
+      <Property name="pageSize">20</Property>
+    </DataSet>
+    <Dialog id="$dialogSeeMessage">
+      <Property name="center">true</Property>
+      <Property name="width">700</Property>
+      <Property name="height">500</Property>
+      <Property name="caption">${res[&quot;bdf2.core/dialogSeeMessageCaption&quot;]}</Property>
+      <Buttons>
+        <Button>
+          <ClientEvent name="onClick">view.id(&quot;$dialogSeeMessage&quot;).hide();&#xD;
+</ClientEvent>
+          <Property name="caption">${res[&quot;bdf2.core/closeDialogSeeMessage&quot;]}</Property>
+          <Property name="icon">url(skin>common/icons.gif) -40px 0px</Property>
+        </Button>
+      </Buttons>
+      <Children>
+        <TabControl>
+          <ControlTab>
+            <Property name="caption">${res[&quot;bdf2.core/receivedMessage&quot;]}</Property>
+            <Container>
+              <ToolBar>
+                <DataPilot>
+                  <Property name="dataSet">$dataSetReceiveMessage</Property>
+                  <Property name="itemCodes">pages</Property>
+                </DataPilot>
+                <ToolBarButton>
+                  <ClientEvent name="onClick">var data=view.id(&quot;$dataSetReceiveMessage&quot;).getData(&quot;#&quot;);&#xD;
+if(data){&#xD;
+	view.id(&quot;$dialogMessageDetail&quot;).show();&#xD;
+	view.id(&quot;$autoFormMessageDetail&quot;).set(&quot;entity&quot;,data.toJSON());&#xD;
+	if(!data.get(&quot;read&quot;)){&#xD;
+		data.set(&quot;read&quot;,true);&#xD;
+		view.id(&quot;$updateActionSetRead&quot;).execute();&#xD;
+	}&#xD;
+}else{&#xD;
+	dorado.MessageBox.alert(&quot;${res['bdf2.core/showDetailMessageError']}&quot;)&#xD;
+}&#xD;
+</ClientEvent>
+                  <Property name="caption">${res[&quot;bdf2.core/showDetailMessage&quot;]}</Property>
+                  <Property name="icon">url(skin>common/icons.gif) -180px -80px</Property>
+                </ToolBarButton>
+                <ToolBarButton>
+                  <ClientEvent name="onClick">var data=view.get(&quot;#$dataSetReceiveMessage&quot;).getData(&quot;#&quot;);&#xD;
+var selection=view.get(&quot;#dataGridRecMsg.selection&quot;);&#xD;
+if(selection&amp;&amp;selection.length>0){&#xD;
+	selection.each(function(msg){&#xD;
+		msg.set('read',true);&#xD;
+	});&#xD;
+	view.id(&quot;$updateActionSetRead&quot;).execute(function(){&#xD;
+		view.set(&quot;#dataGridRecMsg.selection&quot;,null);&#xD;
+	});&#xD;
+}else if(data){&#xD;
+	if(!data.get(&quot;read&quot;)){&#xD;
+		data.set(&quot;read&quot;,true);&#xD;
+		view.id(&quot;$updateActionSetRead&quot;).execute();&#xD;
+	}else{&#xD;
+		dorado.MessageBox.alert(&quot;${res['bdf2.core/markedMessageReadDoneError']}&quot;);&#xD;
+	}&#xD;
+}else{&#xD;
+	dorado.MessageBox.alert(&quot;${res['bdf2.core/markedMessageReadDoneNoMessage']}&quot;);&#xD;
+}</ClientEvent>
+                  <Property name="caption">${res[&quot;bdf2.core/markedMessageReadDone&quot;]}</Property>
+                  <Property name="icon">url(skin>common/icons.gif) -180px -100px</Property>
+                </ToolBarButton>
+                <ToolBarButton>
+                  <ClientEvent name="onClick" signature="self,arg,dataGridRecMsg">var entityList = dataGridRecMsg.get(&quot;selection&quot;);
+if(entityList.length >= 1){
+	dorado.MessageBox.confirm(&quot;${res['bdf2.core/deleteCurrentMessageConfirm']}&quot;, function(){
+		entityList.each(function(entity){
+ 			entity.remove();
+		})
+		view.id(&quot;$updateActionSetRead&quot;).execute();	
+	});
+}else{
+	dorado.MessageBox.alert(&quot;请勾选单条或者多条数据后重试！&quot;,{title:&quot;提示&quot;});
+}
+//var data=view.id(&quot;$dataSetReceiveMessage&quot;).getData(&quot;#&quot;);
+//if(data){
+//	dorado.MessageBox.confirm(&quot;${res['bdf2.core/deleteCurrentMessageConfirm']}&quot;, function(){
+//		data.remove();
+//		view.id(&quot;$updateActionSetRead&quot;).execute();		
+//	});
+//}
+</ClientEvent>
+                  <Property name="caption">${res[&quot;bdf2.core/deleteMessage&quot;]}</Property>
+                  <Property name="icon">url(skin>common/icons.gif) -140px 0px</Property>
+                </ToolBarButton>
+              </ToolBar>
+              <DataGrid id="dataGridRecMsg">
+                <ClientEvent name="beforeSelectionChange">var added=arg.added;&#xD;
+if(added){&#xD;
+	var obj=added[0];&#xD;
+	if(obj.get('read')){&#xD;
+	//	arg.added=null;&#xD;
+	}&#xD;
+} </ClientEvent>
+                <Property name="dataSet">$dataSetReceiveMessage</Property>
+                <Property name="filterMode">serverSide</Property>
+                <Property name="showFilterBar">true</Property>
+                <Property name="readOnly">true</Property>
+                <Property name="selectionMode">multiRows</Property>
+                <RowNumColumn/>
+                <RowSelectorColumn/>
+                <DataColumn name="title">
+                  <ClientEvent name="onRenderCell">var read=arg.data.get(&quot;read&quot;);&#xD;
+if(read){&#xD;
+	arg.dom.innerHTML=&quot;&lt;font color='green'>&quot;+arg.data.get(&quot;title&quot;)+&quot;&lt;/font>&quot;;&#xD;
+	arg.processDefault=false;&#xD;
+}else{&#xD;
+	arg.dom.innerHTML=arg.data.get(&quot;title&quot;);	&#xD;
+}&#xD;
+</ClientEvent>
+                  <Property name="property">title</Property>
+                  <Property name="width">200</Property>
+                </DataColumn>
+                <DataColumn name="sendDate">
+                  <Property name="property">sendDate</Property>
+                </DataColumn>
+                <DataColumn name="sender">
+                  <Property name="property">sender</Property>
+                </DataColumn>
+                <DataColumn name="receiver">
+                  <Property name="property">receiver</Property>
+                </DataColumn>
+                <DataColumn name="read">
+                  <Property name="property">read</Property>
+                  <Property name="width">90</Property>
+                </DataColumn>
+              </DataGrid>
+            </Container>
+          </ControlTab>
+          <ControlTab>
+            <Property name="caption">${res[&quot;bdf2.core/postedMessage&quot;]}</Property>
+            <Container>
+              <ToolBar>
+                <DataPilot>
+                  <Property name="dataSet">$dataSetSendMessage</Property>
+                  <Property name="itemCodes">pages</Property>
+                </DataPilot>
+                <ToolBarButton>
+                  <ClientEvent name="onClick">var data=view.id(&quot;$dataSetSendMessage&quot;).getData(&quot;#&quot;);&#xD;
+if(data){&#xD;
+	view.id(&quot;$dialogMessageDetail&quot;).show();&#xD;
+	view.id(&quot;$autoFormMessageDetail&quot;).set(&quot;entity&quot;,data.toJSON());&#xD;
+}else{&#xD;
+	dorado.MessageBox.alert(&quot;${res['bdf2.core/showDetailMessageError']}&quot;)&#xD;
+}&#xD;
+</ClientEvent>
+                  <Property name="caption">${res[&quot;bdf2.core/showDetailMessage&quot;]}</Property>
+                  <Property name="icon">url(skin>common/icons.gif) -180px -80px</Property>
+                </ToolBarButton>
+                <ToolBarButton id="btnSendMess">
+                  <ClientEvent name="onClick">view.get(&quot;#$dialogSendMessage&quot;).show();&#xD;
+</ClientEvent>
+                  <Property name="caption">发送消息</Property>
+                  <Property name="icon">url(skin>common/icons.gif) -140px -80px</Property>
+                </ToolBarButton>
+              </ToolBar>
+              <DataGrid>
+                <Property name="dataSet">$dataSetSendMessage</Property>
+                <Property name="filterMode">serverSide</Property>
+                <Property name="showFilterBar">true</Property>
+                <Property name="readOnly">true</Property>
+                <RowNumColumn/>
+                <DataColumn name="title">
+                  <ClientEvent name="onRenderCell">var read=arg.data.get(&quot;read&quot;);&#xD;
+if(read){&#xD;
+	arg.dom.innerHTML=&quot;&lt;font color='green'>&quot;+arg.data.get(&quot;title&quot;)+&quot;&lt;/font>&quot;;&#xD;
+	arg.processDefault=false;&#xD;
+}else{&#xD;
+	arg.dom.innerHTML=arg.data.get(&quot;title&quot;);	&#xD;
+}&#xD;
+</ClientEvent>
+                  <Property name="property">title</Property>
+                  <Property name="width">200</Property>
+                </DataColumn>
+                <DataColumn name="sendDate">
+                  <Property name="property">sendDate</Property>
+                </DataColumn>
+                <DataColumn name="receiver">
+                  <Property name="property">receiver</Property>
+                </DataColumn>
+                <DataColumn name="read">
+                  <Property name="property">read</Property>
+                  <Property name="width">80</Property>
+                </DataColumn>
+                <DataColumn name="reply">
+                  <Property name="property">reply</Property>
+                  <Property name="width">90</Property>
+                  <Property name="visible">false</Property>
+                </DataColumn>
+              </DataGrid>
+            </Container>
+          </ControlTab>
+        </TabControl>
+        <Dialog id="$dialogMessageDetail">
+          <Property name="center">true</Property>
+          <Property name="modal">true</Property>
+          <Property name="width">500</Property>
+          <Property name="height">300</Property>
+          <Buttons>
+            <Button>
+              <ClientEvent name="onClick">view.id(&quot;$dialogMessageDetail&quot;).hide();&#xD;
+</ClientEvent>
+              <Property name="caption">关闭窗口</Property>
+            </Button>
+          </Buttons>
+          <Children>
+            <AutoForm id="$autoFormMessageDetail">
+              <Property name="readOnly">true</Property>
+              <Property name="cols">*</Property>
+              <AutoFormElement>
+                <Property name="name">title</Property>
+                <Property name="property">title</Property>
+                <Property name="label">${res[&quot;bdf2.core/messageTitle&quot;]}</Property>
+                <Editor/>
+              </AutoFormElement>
+              <AutoFormElement>
+                <Property name="name">content</Property>
+                <Property name="property">content</Property>
+                <Property name="editorType">TextArea</Property>
+                <Property name="label">${res[&quot;bdf2.core/messageContent&quot;]}</Property>
+                <Property name="height">160</Property>
+                <Editor/>
+              </AutoFormElement>
+            </AutoForm>
+          </Children>
+          <Tools/>
+        </Dialog>
+      </Children>
+      <Tools/>
+    </Dialog>
+    <UpdateAction id="$updateActionSetRead">
+      <Property name="dataResolver">bdf2.seeMessage#updateMessage</Property>
+      <Property name="successMessage">${res[&quot;bdf2.core/updateActionSetReadSuccessMessage&quot;]}</Property>
+      <UpdateItem>
+        <Property name="dataSet">$dataSetReceiveMessage</Property>
+        <Property name="dataPath">!DIRTY_TREE</Property>
+      </UpdateItem>
+    </UpdateAction>
+    <Dialog id="dialogSkin">
+      <Property name="width">600</Property>
+      <Property name="height">425</Property>
+      <Property name="caption">系统皮肤</Property>
+      <Buttons/>
+      <Children>
+        <BlockView>
+          <ClientEvent name="onCreate">var SimplePropertyBlockRenderer = $extend(dorado.widget.blockview.DefaultBlockRenderer,{&#xD;
+    render: function(dom,arg){&#xD;
+        dom.innerHTML = &quot;&lt;div style='text-align:center;'>&lt;image src ='images/skin/&quot; + arg.data.image + &quot;'  width=80 height=80 >&quot; + &quot;&lt;/image>&lt;/div>&quot; + &quot;&lt;div style='text-align:center;'>&lt;Strong>&quot; + arg.data.value + &quot;&lt;/Strong>&lt;/div>&quot; + &quot;&lt;div style='text-align:center;padding:10px;'>&quot; + arg.data.content + &quot;&lt;/div>&quot;;&#xD;
+    }});&#xD;
+&#xD;
+self.set(&quot;renderer&quot;,new SimplePropertyBlockRenderer());&#xD;
+</ClientEvent>
+          <ClientEvent name="onBlockClick">var item;&#xD;
+var x;&#xD;
+var list = arg.data;&#xD;
+for (var p in list) {&#xD;
+    item = list[p];&#xD;
+    dorado.widget.NotifyTipManager.notify(&quot;您选择了[&quot; + item + &quot;]！&quot;);&#xD;
+    break;&#xD;
+}&#xD;
+&#xD;
+if (item) {&#xD;
+    view.get(&quot;#actionChangeSkin&quot;).set(&quot;parameter&quot;, item).execute(function(){&#xD;
+        window.location.reload();&#xD;
+    });&#xD;
+}&#xD;
+</ClientEvent>
+          <Property name="items">
+            <Collection>
+              <Entity>
+                <Property name="value">天际</Property>
+                <Property name="image">skyline.png</Property>
+                <Property name="content">skyline-final</Property>
+              </Entity>
+              <Entity>
+                <Property name="value">天际-大字体</Property>
+                <Property name="image">skyline-large.png</Property>
+                <Property name="content">skyline-large</Property>
+              </Entity>
+              <Entity>
+                <Property name="value">橙色</Property>
+                <Property name="image">hongheij.png</Property>
+                <Property name="content">orange</Property>
+              </Entity>
+            </Collection>
+          </Property>
+          <Property name="blockHeight">150</Property>
+          <Property name="blockWidth">150</Property>
+          <Property name="blockDecoratorSize">1</Property>
+        </BlockView>
+        <AjaxAction id="actionChangeSkin">
+          <Property name="service">changeSkinService#changeSkin</Property>
+        </AjaxAction>
+      </Children>
+      <Tools/>
+    </Dialog>
+    <Dialog id="dialogStyle">
+      <Property name="width">600</Property>
+      <Property name="height">425</Property>
+      <Property name="caption">界面风格</Property>
+      <Buttons/>
+      <Children>
+        <BlockView>
+          <ClientEvent name="onCreate">var SimplePropertyBlockRenderer = $extend(dorado.widget.blockview.DefaultBlockRenderer,{&#xD;
+    render: function(dom,arg){&#xD;
+        dom.innerHTML = &quot;&lt;div style='text-align:center; padding-top:25px'>&lt;image src =&quot; + arg.data.image + &quot;  width='60' height='60' >&quot; + &quot;&lt;/image>&lt;/div>&quot; + &quot;&lt;div style='text-align:center;'>&lt;font size='4' color='#333' font-weight:normal>&quot; + arg.data.value + &quot;&lt;/font>&lt;/div>&quot;;&#xD;
+    }});&#xD;
+&#xD;
+self.set(&quot;renderer&quot;,new SimplePropertyBlockRenderer());&#xD;
+</ClientEvent>
+          <ClientEvent name="onBlockClick">var item;&#xD;
+var x;&#xD;
+var list=arg.data;&#xD;
+var frame = null;&#xD;
+for(var p in list){&#xD;
+        item = list[p];&#xD;
+		if(item==&quot;简洁白&quot;){&#xD;
+			frame = &quot;MainFrame&quot;;&#xD;
+		}else if(item==&quot;经典灰&quot;){&#xD;
+			frame = &quot;MainFrame2&quot;;&#xD;
+		}else{&#xD;
+			frame = &quot;MainFrame1&quot;;&#xD;
+		}&#xD;
+		dorado.widget.NotifyTipManager.notify(&quot;您选择了[&quot;+item+&quot;]！&quot;);&#xD;
+		break;&#xD;
+}&#xD;
+&#xD;
+if(frame){&#xD;
+		view.get(&quot;#actionChangeMain&quot;).set(&quot;parameter&quot;, frame).execute(function() {&#xD;
+			window.location.href = &quot;bdf2.core.view.frame.main.&quot;+frame+&quot;.d&quot;;&#xD;
+		});&#xD;
+}&#xD;
+</ClientEvent>
+          <Property name="items">
+            <Collection>
+              <Entity>
+                <Property name="value">简洁白</Property>
+                <Property name="image">images/style-1.png</Property>
+              </Entity>
+              <Entity>
+                <Property name="value">经典灰</Property>
+                <Property name="image">images/style-2.png</Property>
+              </Entity>
+              <Entity>
+                <Property name="value">主流蓝</Property>
+                <Property name="image">images/style-3.png</Property>
+              </Entity>
+            </Collection>
+          </Property>
+          <Property name="blockHeight">150</Property>
+          <Property name="blockWidth">150</Property>
+        </BlockView>
+        <AjaxAction id="actionChangeMain">
+          <Property name="service">changeMainService#changeMain</Property>
+        </AjaxAction>
+      </Children>
+      <Tools/>
+    </Dialog>
+    <Container layout="hbox regionPadding:0;padding:0" listener="spring:bdf2.frameBottomListener#onInit" layoutConstraint="bottom ">
+      <Property name="height">19</Property>
+      <Property name="style">
+        <Property name="background">#FDFDFD</Property>
+        <Property name="margin-left">2px</Property>
+      </Property>
+      <Property name="contentOverflow">hidden</Property>
+    </Container>
+  </View>
+</ViewConfig>

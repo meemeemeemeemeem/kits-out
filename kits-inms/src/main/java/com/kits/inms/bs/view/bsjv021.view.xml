@@ -1,0 +1,1132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ViewConfig>
+  <Arguments/>
+  <Context/>
+  <Model>
+    <DataType name="dtBs021">
+      <Property name="creationType">com.kits.inms.bs.domain.Tbbs021</Property>
+      <PropertyDef name="pkBs021">
+        <Property></Property>
+        <Property name="label">PK_BS021_</Property>
+      </PropertyDef>
+      <PropertyDef name="compId">
+        <Property></Property>
+        <Property name="label">COMP_ID_</Property>
+      </PropertyDef>
+      <PropertyDef name="prodeNo">
+        <Property></Property>
+        <Property name="label">代码</Property>
+        <Property name="required">true</Property>
+        <Validator name="validator1" type="charLength">
+          <Property name="maxLength">20</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="prodeName">
+        <Property></Property>
+        <Property name="label">名称</Property>
+        <Property name="required">true</Property>
+        <Validator name="validator1" type="charLength">
+          <Property name="maxLength">40</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="prodeDesc">
+        <Property></Property>
+        <Property name="label">描述</Property>
+      </PropertyDef>
+      <PropertyDef name="createEmp">
+        <Property></Property>
+        <Property name="label">创建人员</Property>
+        <Property name="mapping">
+          <Property name="mapValues">${dorado.getDataProvider(&quot;commonUtils#getLoginUser&quot;).getResult()}</Property>
+          <Property name="keyProperty">name</Property>
+          <Property name="valueProperty">value</Property>
+        </Property>
+      </PropertyDef>
+      <PropertyDef name="createDate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">创建日期</Property>
+      </PropertyDef>
+      <PropertyDef name="updEmp">
+        <Property></Property>
+        <Property name="label">修改人员</Property>
+        <Property name="mapping">
+          <Property name="mapValues">${dorado.getDataProvider(&quot;commonUtils#getLoginUser&quot;).getResult()}</Property>
+          <Property name="keyProperty">name</Property>
+          <Property name="valueProperty">value</Property>
+        </Property>
+      </PropertyDef>
+      <PropertyDef name="updDate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">修改日期</Property>
+      </PropertyDef>
+      <PropertyDef name="defs01">
+        <Property></Property>
+        <Property name="label">DEFS01</Property>
+      </PropertyDef>
+      <PropertyDef name="defs02">
+        <Property></Property>
+        <Property name="label">DEFS02</Property>
+      </PropertyDef>
+      <PropertyDef name="defs03">
+        <Property></Property>
+        <Property name="label">DEFS03</Property>
+      </PropertyDef>
+      <PropertyDef name="defs04">
+        <Property></Property>
+        <Property name="label">DEFS04</Property>
+      </PropertyDef>
+      <PropertyDef name="defs05">
+        <Property></Property>
+        <Property name="label">DEFS05</Property>
+      </PropertyDef>
+      <PropertyDef name="defb01">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">DEFB01</Property>
+      </PropertyDef>
+      <PropertyDef name="defb02">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">DEFB02</Property>
+      </PropertyDef>
+      <PropertyDef name="defb03">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">DEFB03</Property>
+      </PropertyDef>
+      <PropertyDef name="defb04">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">DEFB04</Property>
+      </PropertyDef>
+      <PropertyDef name="defb05">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">DEFB05</Property>
+      </PropertyDef>
+      <PropertyDef name="defm01">
+        <Property></Property>
+        <Property name="label">DEFM01</Property>
+      </PropertyDef>
+      <PropertyDef name="defm02">
+        <Property></Property>
+        <Property name="label">DEFM02</Property>
+      </PropertyDef>
+      <Reference name="treeNode">
+        <Property name="dataType">[SELF]</Property>
+        <Property name="parameter">$${this.prodeNo}</Property>
+        <Property name="dataProvider">bsjc021BO#queryBs021</Property>
+        <Property name="pageSize">999</Property>
+      </Reference>
+      <PropertyDef name="pid">
+        <Property></Property>
+        <Property name="label">PID_</Property>
+      </PropertyDef>
+      <PropertyDef name="pid1">
+        <Property></Property>
+        <Property name="label">代码1</Property>
+      </PropertyDef>
+      <PropertyDef name="pid2">
+        <Property></Property>
+        <Property name="label">代码2</Property>
+      </PropertyDef>
+      <PropertyDef name="pid3">
+        <Property></Property>
+        <Property name="label">代码3</Property>
+      </PropertyDef>
+      <PropertyDef name="pid4">
+        <Property></Property>
+        <Property name="label">代码4</Property>
+      </PropertyDef>
+      <PropertyDef name="pid5">
+        <Property></Property>
+        <Property name="label">代码5</Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="dtBs022">
+      <Property name="creationType">com.kits.inms.bs.domain.Tbbs022</Property>
+      <PropertyDef name="pkBs022">
+        <Property></Property>
+        <Property name="label">PK_BS022_</Property>
+      </PropertyDef>
+      <PropertyDef name="compId">
+        <Property></Property>
+        <Property name="label">COMP_ID_</Property>
+      </PropertyDef>
+      <PropertyDef name="prodeNo">
+        <Property></Property>
+        <Property name="label">PRODE_NO_</Property>
+        <Property name="required">false</Property>
+        <Validator name="validator1" type="charLength">
+          <Property name="maxLength">40</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="prodeName">
+        <Property></Property>
+        <Property name="label">PRODE_NAME_</Property>
+        <Validator name="validator1" type="charLength">
+          <Property name="maxLength">40</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="prodeDesc">
+        <Property></Property>
+        <Property name="label">PRODE_DESC_</Property>
+        <Validator name="validator1" type="charLength">
+          <Property name="maxLength">100</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="createEmp">
+        <Property></Property>
+        <Property name="label">CREATE_EMP_</Property>
+      </PropertyDef>
+      <PropertyDef name="createDate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">CREATE_DATE_</Property>
+      </PropertyDef>
+      <PropertyDef name="updEmp">
+        <Property></Property>
+        <Property name="label">UPD_EMP_</Property>
+      </PropertyDef>
+      <PropertyDef name="updDate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">UPD_DATE_</Property>
+      </PropertyDef>
+      <PropertyDef name="defs01">
+        <Property></Property>
+        <Property name="label">DEFS01</Property>
+      </PropertyDef>
+      <PropertyDef name="defs02">
+        <Property></Property>
+        <Property name="label">DEFS02</Property>
+      </PropertyDef>
+      <PropertyDef name="defs03">
+        <Property></Property>
+        <Property name="label">DEFS03</Property>
+      </PropertyDef>
+      <PropertyDef name="defs04">
+        <Property></Property>
+        <Property name="label">DEFS04</Property>
+      </PropertyDef>
+      <PropertyDef name="defs05">
+        <Property></Property>
+        <Property name="label">DEFS05</Property>
+      </PropertyDef>
+      <PropertyDef name="defb01">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">DEFB01</Property>
+      </PropertyDef>
+      <PropertyDef name="defb02">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">DEFB02</Property>
+      </PropertyDef>
+      <PropertyDef name="defb03">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">DEFB03</Property>
+      </PropertyDef>
+      <PropertyDef name="defb04">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">DEFB04</Property>
+      </PropertyDef>
+      <PropertyDef name="defb05">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">DEFB05</Property>
+      </PropertyDef>
+      <PropertyDef name="defm01">
+        <Property></Property>
+        <Property name="label">DEFM01</Property>
+      </PropertyDef>
+      <PropertyDef name="defm02">
+        <Property></Property>
+        <Property name="label">DEFM02</Property>
+      </PropertyDef>
+      <PropertyDef name="typ">
+        <Property></Property>
+        <Property name="label">TYP_</Property>
+      </PropertyDef>
+      <PropertyDef name="pid">
+        <Property></Property>
+        <Property name="label">PID_</Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="dtBs023">
+      <Property name="creationType">com.kits.inms.bs.domain.Tbbs023</Property>
+      <PropertyDef name="pkBs023">
+        <Property></Property>
+        <Property name="label">PK_BS023_</Property>
+      </PropertyDef>
+      <PropertyDef name="compId">
+        <Property></Property>
+        <Property name="label">COMP_ID_</Property>
+      </PropertyDef>
+      <PropertyDef name="prodeNo">
+        <Property></Property>
+        <Property name="label">PRODE_NO_</Property>
+        <Property name="required">false</Property>
+        <Validator name="validator1" type="charLength">
+          <Property name="maxLength">40</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="prodeName">
+        <Property></Property>
+        <Property name="label">PRODE_NAME_</Property>
+        <Validator name="validator1" type="charLength">
+          <Property name="maxLength">40</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="prodeDesc">
+        <Property></Property>
+        <Property name="label">PRODE_DESC_</Property>
+        <Validator name="validator1" type="charLength">
+          <Property name="maxLength">100</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="createEmp">
+        <Property></Property>
+        <Property name="label">CREATE_EMP_</Property>
+      </PropertyDef>
+      <PropertyDef name="createDate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">CREATE_DATE_</Property>
+      </PropertyDef>
+      <PropertyDef name="updEmp">
+        <Property></Property>
+        <Property name="label">UPD_EMP_</Property>
+      </PropertyDef>
+      <PropertyDef name="updDate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">UPD_DATE_</Property>
+      </PropertyDef>
+      <PropertyDef name="defs01">
+        <Property></Property>
+        <Property name="label">DEFS01</Property>
+      </PropertyDef>
+      <PropertyDef name="defs02">
+        <Property></Property>
+        <Property name="label">DEFS02</Property>
+      </PropertyDef>
+      <PropertyDef name="defs03">
+        <Property></Property>
+        <Property name="label">DEFS03</Property>
+      </PropertyDef>
+      <PropertyDef name="defs04">
+        <Property></Property>
+        <Property name="label">DEFS04</Property>
+      </PropertyDef>
+      <PropertyDef name="defs05">
+        <Property></Property>
+        <Property name="label">DEFS05</Property>
+      </PropertyDef>
+      <PropertyDef name="defb01">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">DEFB01</Property>
+      </PropertyDef>
+      <PropertyDef name="defb02">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">DEFB02</Property>
+      </PropertyDef>
+      <PropertyDef name="defb03">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">DEFB03</Property>
+      </PropertyDef>
+      <PropertyDef name="defb04">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">DEFB04</Property>
+      </PropertyDef>
+      <PropertyDef name="defb05">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">DEFB05</Property>
+      </PropertyDef>
+      <PropertyDef name="defm01">
+        <Property></Property>
+        <Property name="label">DEFM01</Property>
+      </PropertyDef>
+      <PropertyDef name="defm02">
+        <Property></Property>
+        <Property name="label">DEFM02</Property>
+      </PropertyDef>
+      <PropertyDef name="pid">
+        <Property></Property>
+        <Property name="label">PID_</Property>
+      </PropertyDef>
+    </DataType>
+  </Model>
+  <View>
+    <ClientEvent name="onReady">window.dsBs021 = view.get(&quot;#dsBs021&quot;);&#xD;
+&#xD;
+&#xD;
+window.info = view.get(&quot;#info&quot;);&#xD;
+info.doSet(&quot;text&quot;,&quot;欢迎使用本系统 ...&quot;);&#xD;
+</ClientEvent>
+    <ClientEvent name="onCreate">functions = {&#xD;
+	&#xD;
+	&quot;addOnClick&quot;: function(){&#xD;
+			var currentNode = view.get(&quot;#tree.currentNode&quot;);&#xD;
+			if(!currentNode){&#xD;
+				dorado.MessageBox.alert(&quot;请选中一个父节点！&quot;);&#xD;
+				return;&#xD;
+			}&#xD;
+			var currentEntity = currentNode.get(&quot;data&quot;);&#xD;
+			&#xD;
+		var newEntity=currentEntity.createChild(&quot;treeNode&quot;,{&#xD;
+       		prodeNo:&quot;产品代码&quot;,&#xD;
+			pid: currentEntity.get(&quot;prodeNo&quot;),&#xD;
+		    prodeName:&quot;产品名称&quot;&#xD;
+      });  &#xD;
+	  &#xD;
+      view.get(&quot;#tree&quot;).set(&quot;currentEntity&quot;,newEntity);&#xD;
+	//  view.set(&quot;^no1.readOnly&quot;,false); &#xD;
+	},&#xD;
+	&#xD;
+	&#xD;
+	&#xD;
+	&#xD;
+};&#xD;
+</ClientEvent>
+    <Property name="styleSheetFile">com/kits/saas/mw/style1.css</Property>
+    <DataSet id="dsBs021">
+      <ClientEvent name="onLoadData">if(self.getData().entityCount==0){&#xD;
+	view.get(&quot;#addTop&quot;).set(&quot;visible&quot;,true);&#xD;
+}&#xD;
+</ClientEvent>
+      <Property name="dataType">[dtBs021]</Property>
+      <Property name="pageSize">999</Property>
+      <Property name="dataProvider">bsjc021BO#queryBs021</Property>
+    </DataSet>
+    <UpdateAction id="saveBs021">
+      <Property name="dataResolver">bsjc021BO#saveBs021</Property>
+      <Property name="executingMessage">正在保存...</Property>
+      <Property name="successMessage">已保存！</Property>
+      <UpdateItem>
+        <Property name="dataPath">!current</Property>
+        <Property name="dataSet">dsBs021</Property>
+      </UpdateItem>
+    </UpdateAction>
+    <SplitPanel>
+      <Property name="position">20%</Property>
+      <MainControl>
+        <Panel>
+          <Property name="contentOverflow">visible</Property>
+          <Buttons/>
+          <Children>
+            <FieldSet>
+              <Property name="caption">产品大类维护</Property>
+              <Property name="collapseable">false</Property>
+              <Property name="visible">true</Property>
+              <Buttons/>
+              <Children>
+                <ToolBar>
+                  <Property name="visible">true</Property>
+                  <Button layoutConstraint="align:right">
+                    <ClientEvent name="onClick">var data = view.get(&quot;#tree&quot;).getCurrentItem()._data._data;&#xD;
+	&#xD;
+	var pk = data.pkBs021;&#xD;
+	if(!pk){&#xD;
+		//新增&#xD;
+		var prodeNo = data.prodeNo;&#xD;
+		new dorado.widget.AjaxAction({&#xD;
+			parameter:{prodeNo:prodeNo},&#xD;
+			service:&quot;bsjc021BO#getProdeNo&quot;&#xD;
+	}).execute(function(flag){&#xD;
+		&#xD;
+		if(flag==false){&#xD;
+			dorado.MessageBox.alert(&quot;已存在相同的产品代码【&quot;+prodeNo+&quot;】，请更正！&quot;);&#xD;
+		}else{&#xD;
+			view.get(&quot;#saveBs021&quot;).execute(function(msg){&#xD;
+				&#xD;
+				if(msg==null){&#xD;
+					info.doSet(&quot;text&quot;,&quot;保存成功！&quot;);&#xD;
+					view.set(&quot;^typ1.disabled&quot;,false);&#xD;
+					view.set(&quot;^typ2.disabled&quot;,true);&#xD;
+					view.set(&quot;^no1.readOnly&quot;,true);&#xD;
+				}else{&#xD;
+					info.doSet(&quot;text&quot;,msg);&#xD;
+				}&#xD;
+				&#xD;
+			});&#xD;
+		}&#xD;
+		&#xD;
+	});&#xD;
+}else{&#xD;
+	view.get(&quot;#saveBs021&quot;).execute(function(msg){&#xD;
+		&#xD;
+		if(msg==null){&#xD;
+			info.doSet(&quot;text&quot;,&quot;保存成功！&quot;);&#xD;
+		}else{&#xD;
+			info.doSet(&quot;text&quot;,msg);&#xD;
+		}&#xD;
+	});&#xD;
+}&#xD;
+	</ClientEvent>
+                    <Property name="caption">保存</Property>
+                    <Property name="icon">url(>skin>common/icons.gif) -140px -20px</Property>
+                  </Button>
+                </ToolBar>
+                <Panel layout="hbox">
+                  <Property name="contentOverflow">visible</Property>
+                  <Buttons/>
+                  <Children>
+                    <AutoForm id="form1">
+                      <Property name="dataSet">dsBs021</Property>
+                      <Property name="cols">*,*,*</Property>
+                      <Property name="dataPath">!current</Property>
+                      <Property name="width">100%</Property>
+                      <Property name="labelAlign">right</Property>
+                      <AutoFormElement layoutConstraint="padding:0">
+                        <Property name="name">prodeNo</Property>
+                        <Property name="property">prodeNo</Property>
+                        <Property name="tags">no1</Property>
+                        <Editor/>
+                      </AutoFormElement>
+                      <AutoFormElement>
+                        <Property name="name">prodeName</Property>
+                        <Property name="property">prodeName</Property>
+                        <Editor/>
+                      </AutoFormElement>
+                      <AutoFormElement>
+                        <Property name="name">pid1</Property>
+                        <Property name="property">pid1</Property>
+                        <Editor/>
+                      </AutoFormElement>
+                      <AutoFormElement>
+                        <Property name="name">pid2</Property>
+                        <Property name="property">pid2</Property>
+                        <Editor/>
+                      </AutoFormElement>
+                      <AutoFormElement>
+                        <Property name="name">pid3</Property>
+                        <Property name="property">pid3</Property>
+                        <Editor/>
+                      </AutoFormElement>
+                      <AutoFormElement>
+                        <Property name="property">pid4</Property>
+                        <Property name="name">pid4</Property>
+                        <Editor/>
+                      </AutoFormElement>
+                      <AutoFormElement>
+                        <Property name="name">pid5</Property>
+                        <Property name="property">pid5</Property>
+                        <Editor/>
+                      </AutoFormElement>
+                      <AutoFormElement>
+                        <Property name="name">createEmp</Property>
+                        <Property name="property">createEmp</Property>
+                        <Property name="readOnly">true</Property>
+                        <Editor/>
+                      </AutoFormElement>
+                      <AutoFormElement>
+                        <Property name="name">createDate</Property>
+                        <Property name="property">createDate</Property>
+                        <Property name="readOnly">true</Property>
+                        <Editor/>
+                      </AutoFormElement>
+                      <AutoFormElement>
+                        <Property name="name">updEmp</Property>
+                        <Property name="property">updEmp</Property>
+                        <Property name="readOnly">true</Property>
+                        <Editor/>
+                      </AutoFormElement>
+                      <AutoFormElement>
+                        <Property name="name">updDate</Property>
+                        <Property name="property">updDate</Property>
+                        <Property name="readOnly">true</Property>
+                        <Editor/>
+                      </AutoFormElement>
+                    </AutoForm>
+                    <Panel layoutConstraint="align:center;padding:10">
+                      <Property name="background">white</Property>
+                      <Property name="border">none</Property>
+                      <Property name="height">100%</Property>
+                      <Property name="contentOverflow">visible</Property>
+                      <Property name="width">auto</Property>
+                      <Property name="visible">false</Property>
+                      <Property name="hideMode">display</Property>
+                      <Buttons/>
+                      <Children>
+                        <Import src="com.kits.inms.mw.view.info#infoPanel"/>
+                      </Children>
+                      <Tools/>
+                    </Panel>
+                  </Children>
+                  <Tools/>
+                </Panel>
+              </Children>
+            </FieldSet>
+            <FieldSet>
+              <Property name="caption">产品大类信息</Property>
+              <Property name="collapseable">false</Property>
+              <Buttons/>
+              <Children>
+                <ToolBar>
+                  <Button>
+                    <ClientEvent name="onClick">view.get(&quot;#saveBs0211&quot;).execute();&#xD;
+</ClientEvent>
+                    <Property name="caption">保存</Property>
+                    <Property name="icon">url(>skin>common/icons.gif) -140px -20px</Property>
+                  </Button>
+                  <Button>
+                    <ClientEvent name="onClick">//var df01 = view.get(&quot;#tree&quot;).getCurrentItem()._data._data;&#xD;
+/*var df01 = view.get(&quot;#tree&quot;).getCurrentItem().get(&quot;data&quot;);&#xD;
+ var prodeNo = df01.get(&quot;prodeNo&quot;);&#xD;
+ var prodeName = df01.get(&quot;prodeName&quot;);&#xD;
+ console.log(prodeNo);&#xD;
+ dsBs021.insert({&#xD;
+ &quot;prodeNo&quot; : prodeNo,&#xD;
+ &quot;prodeName&quot; : prodeName,&#xD;
+ &quot;pid5&quot; : prodeNo&#xD;
+ });*/&#xD;
+view.set(&quot;^typ1.disabled&quot;, true);&#xD;
+view.set(&quot;^typ2.disabled&quot;, true);&#xD;
+functions[&quot;addOnClick&quot;]();&#xD;
+</ClientEvent>
+                    <Property name="caption">增行</Property>
+                    <Property name="icon">url(>skin>common/icons.gif) -120px 0px</Property>
+                  </Button>
+                  <Button>
+                    <ClientEvent name="onClick">var options = {&#xD;
+    callback: function(){&#xD;
+        var dataList = view.get(&quot;#dsBs021Infos.selection&quot;);&#xD;
+        var mapList = [];&#xD;
+        dataList.each(function(data){&#xD;
+            if (data.get(&quot;pkBs021&quot;)) {&#xD;
+				var map = {&quot;prodeNo&quot;:data.get(&quot;prodeNo&quot;)};&#xD;
+                mapList.push(map);&#xD;
+            }&#xD;
+            data.remove();&#xD;
+        })&#xD;
+        if (mapList.length > 0) {&#xD;
+            new dorado.widget.AjaxAction({&#xD;
+                parameter: mapList,&#xD;
+                service: &quot;bsjc021BO#delNodesB&quot;&#xD;
+            }).execute();&#xD;
+        }&#xD;
+    },&#xD;
+    icon: &quot;WARNING&quot;&#xD;
+}&#xD;
+dorado.MessageBox.confirm(&quot;您确认要删除当前节点吗？&quot;, options);&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+/*var selection = view.get(&quot;#dsBs021Infos&quot;).get(&quot;selection&quot;);&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+ console.log(selection)&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+ if(selection.length==0){&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+ dorado.MessageBox.alert(&quot;请勾选一条要删除的数据！&quot;);&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+ return;&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+ }else{&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+ &#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+ var options = {&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+ callback:function(){&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+ selection.each(function(data){&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+ data.remove();&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+ &#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+ });&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+ /*	if(data.get(&quot;pkDf02&quot;)){&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+ saveDf02.execute(function(){&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+ });&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+ }*/&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+/*			&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+ &#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+ },&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+ icon:&quot;WARNING&quot;&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+ };&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+ dorado.MessageBox.confirm(&quot;您确定要删除勾选的所有数据吗？&quot;,options);&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+ }*/&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+</ClientEvent>
+                    <Property name="caption">删除</Property>
+                    <Property name="icon">url(>skin>common/icons.gif) -140px 0px</Property>
+                  </Button>
+                </ToolBar>
+                <DataGrid id="dsBs021Infos">
+                  <ClientEvent name="onReady">//var currentNode = view.get(&quot;#tree.currentNode&quot;);&#xD;
+&#xD;
+//var currentNode = view.get(&quot;#tree.currentNode&quot;);&#xD;
+//console.log(currentNode);&#xD;
+/*var entity = currentNode.get(&quot;data&quot;);&#xD;
+console.log(entity);&#xD;
+entity.set(&quot;prodeNo&quot;,entity.get(&quot;prodeNo&quot;));&#xD;
+*/&#xD;
+&#xD;
+&#xD;
+</ClientEvent>
+                  <Property name="selectionMode">multiRows</Property>
+                  <Property name="dataSet">dsBs021</Property>
+                  <Property name="dataPath">!current.treeNode</Property>
+                  <RowNumColumn/>
+                  <RowSelectorColumn/>
+                  <DataColumn name="prodeNo">
+                    <Property name="property">prodeNo</Property>
+                  </DataColumn>
+                  <DataColumn name="prodeName">
+                    <Property name="property">prodeName</Property>
+                  </DataColumn>
+                  <DataColumn name="pid1">
+                    <Property name="property">pid1</Property>
+                  </DataColumn>
+                  <DataColumn name="pid2">
+                    <Property name="property">pid2</Property>
+                  </DataColumn>
+                  <DataColumn name="pid3">
+                    <Property name="property">pid3</Property>
+                  </DataColumn>
+                  <DataColumn name="pid4">
+                    <Property name="property">pid4</Property>
+                  </DataColumn>
+                  <DataColumn name="pid5">
+                    <Property name="property">pid5</Property>
+                  </DataColumn>
+                </DataGrid>
+              </Children>
+            </FieldSet>
+          </Children>
+          <Tools/>
+        </Panel>
+      </MainControl>
+      <SideControl>
+        <DataTree id="tree">
+          <ClientEvent name="onContextMenu">view.get(&quot;#menu1&quot;).show({&#xD;
+  position: {&#xD;
+    left: arg.event.pageX,&#xD;
+    top: arg.event.pageY&#xD;
+  }&#xD;
+});</ClientEvent>
+          <ClientEvent name="onCurrentChange">	//	var entity = view.get(&quot;#tree&quot;).getCurrentItem().get(&quot;data&quot;);&#xD;
+		//var data  = entity.get(&quot;data&quot;);&#xD;
+	//	var compId = df01.compId;&#xD;
+		//var prodeNo = entity.get(&quot;prodeNo&quot;);&#xD;
+		//console.log(prodeNo);&#xD;
+		/*var pk = df01.pkDf01;&#xD;
+		if(pk){&#xD;
+			view.set(&quot;^tag.readOnly&quot;,true);&#xD;
+		}else{&#xD;
+			view.set(&quot;^tag.readOnly&quot;,false);&#xD;
+		}*/&#xD;
+	/*	if(refId==&quot;common_setting&quot;){&#xD;
+			view.set(&quot;^typ.visible&quot;,false);&#xD;
+		}else{&#xD;
+			view.set(&quot;^typ.visible&quot;,true);&#xD;
+		}*/&#xD;
+		//alert(refId);&#xD;
+	//	view.get(&quot;#dsBs0211&quot;).set(&quot;parameter&quot;,{&#xD;
+	//		&quot;prodeNo&quot; : entity.get(&quot;prodeNo&quot;)&#xD;
+	//	}).flush();&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+/*var c = view.get(&quot;#tree&quot;).getCurrentItem();&#xD;
+if(c){&#xD;
+	var data = view.get(&quot;#tree&quot;).getCurrentItem()._data._data;&#xD;
+		var pk = data.pkBs021;&#xD;
+		if(pk){&#xD;
+			view.set(&quot;^no1.readOnly&quot;,true);&#xD;
+			view.get(&quot;#dsBs022&quot;).set(&quot;parameter&quot;,{&#xD;
+				prodeNo:data.prodeNo,&#xD;
+				typ:&quot;02&quot;&#xD;
+			}).flush();&#xD;
+			&#xD;
+			view.get(&quot;#dsBs0222&quot;).set(&quot;parameter&quot;,{&#xD;
+				prodeNo:data.prodeNo,&#xD;
+				typ:&quot;01&quot;&#xD;
+			}).flush();&#xD;
+		}else{&#xD;
+			view.set(&quot;^no1.readOnly&quot;,false);&#xD;
+		}&#xD;
+}&#xD;
+&#xD;
+*/&#xD;
+&#xD;
+&#xD;
+&#xD;
+</ClientEvent>
+          <Property name="dataSet">dsBs021</Property>
+          <Property name="currentNodeDataPath">current</Property>
+          <BindingConfigs>
+            <BindingConfig>
+              <Property name="expandLevel">5</Property>
+              <Property name="childrenProperty">treeNode</Property>
+              <Property name="recursive">true</Property>
+              <Property name="labelProperty">prodeDesc</Property>
+              <Property name="hasChild">false</Property>
+            </BindingConfig>
+          </BindingConfigs>
+        </DataTree>
+      </SideControl>
+    </SplitPanel>
+    <Menu id="menu1">
+      <MenuItem id="addTop">
+        <ClientEvent name="onClick">	dsBs021.insert({&#xD;
+		prodeNo:&quot;PD&quot;,&#xD;
+		pid:null,&#xD;
+		prodeName:&quot;产品大类&quot;,&#xD;
+		prodeDesc:&quot;产品大类&quot;&#xD;
+	});&#xD;
+</ClientEvent>
+        <Property name="caption">新增顶点</Property>
+        <Property name="visible">false</Property>
+      </MenuItem>
+      <MenuItem>
+        <ClientEvent name="onClick">view.set(&quot;^typ1.disabled&quot;,true);&#xD;
+view.set(&quot;^typ2.disabled&quot;,true);&#xD;
+functions[&quot;addOnClick&quot;]();</ClientEvent>
+        <Property name="caption">新增节点</Property>
+      </MenuItem>
+      <MenuItem>
+        <ClientEvent name="onClick">&#xD;
+var options = {&#xD;
+	callback:function(){&#xD;
+		var data = view.get(&quot;#tree.currentEntity&quot;);&#xD;
+		var pk = data.get(&quot;pkBs021&quot;);&#xD;
+		var prodeNo = data.get(&quot;prodeNo&quot;);&#xD;
+		data.remove();&#xD;
+		&#xD;
+		if(pk){&#xD;
+			new dorado.widget.AjaxAction({&#xD;
+				parameter:{&#xD;
+					prodeNo:prodeNo&#xD;
+				},&#xD;
+				service:&quot;bsjc021BO#delNodes&quot;&#xD;
+			}).execute();&#xD;
+		}&#xD;
+	&#xD;
+},&#xD;
+icon:&quot;WARNING&quot;&#xD;
+}&#xD;
+dorado.MessageBox.confirm(&quot;您确认要删除当前节点吗？&quot;,options);&#xD;
+</ClientEvent>
+        <Property name="caption">删除节点</Property>
+      </MenuItem>
+    </Menu>
+    <DataSet id="dsBs0211">
+      <Property name="pageSize">999</Property>
+      <Property name="dataProvider">bsjc021BO#queryBs0211</Property>
+      <Property name="dataType">[dtBs021]</Property>
+    </DataSet>
+    <UpdateAction id="saveBs0211">
+      <Property name="dataResolver">bsjc021BO#saveBs0211</Property>
+      <UpdateItem>
+        <Property name="dataSet">dsBs021</Property>
+      </UpdateItem>
+    </UpdateAction>
+  </View>
+</ViewConfig>

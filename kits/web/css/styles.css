@@ -1,0 +1,81 @@
+﻿@charset "utf-8";
+/* ============================================================ web css reset  ============================================================ */
+
+/*login*/
+.login_box_bg {display: flex; width:950px; height:100%; margin-top:80px; }
+.logo { position:absolute; left:15%; top:30px; z-index:99;}
+.login_pic {display：inline-block; width:477px; height:377px; overflow:hidden; background: url(../images/login_pic.png) no-repeat top center;background-size:100% 100%;  }
+.login_box {display：inline-block; width:400px; height:377px; overflow:hidden; }
+.login_main { width:377px; margin:0 auto;  }
+.input_item {width:377px; height:41px; margin:17px auto;}
+
+.item_1 { background: url(../images/input_bg.png) no-repeat;}
+.item_2 { background: url(../images/input_bg_1.png) no-repeat;}
+.item_3 p { float:left; width:132px; height:36px; background: url(../images/login_input_08.jpg) no-repeat;}
+.input_item .login_1 { float:left; width:335px; height:41px; line-height:41px;  font-size:14px; margin-left:42px; padding-left:10px; display:inline; border:0; background:none;}
+.input_item .login_2 { float:left; width:195px; height:39px; line-height:39px;  font-size:14px; padding-left:25px; display:inline; border:1px solid #dddddd; background:none;}
+.input_item .yzm { float:left; margin-left:10px; display:inline;}
+.input_item .again_yzm { float:left; margin-left:10px; line-height:41px; background:url(../images/ag_icon.png) no-repeat right center; padding-right:20px; display:inline;}
+.login_sub { width:377px; height:41px; overflow:hidden; margin:0px auto; text-align:center;}
+.login_sub .login_sub_1 { width:185px; height:41px; background: #34405d; cursor:pointer; color:#fff; border:0; font-size:14px;}
+.login_sub .login_sub_2 { width:185px; height:41px; background:#cedae6; cursor:pointer; color:#34405d; border:0; font-size:14px;}
+
+
+input:-webkit-autofill, 
+ textarea:-webkit-autofill, 
+ select:-webkit-autofill { 
+       -webkit-box-shadow: 0 0 0 1000px #fafafa inset; 
+}
+ input[type=text]:focus, input[type=password]:focus, textarea:focus {
+      -webkit-box-shadow: 0 0 0 1000px #fafafa inset; 
+}
+
+
+.select_item {
+		display: inline-block;
+		width: 377px;
+		position: relative;
+		vertical-align: middle;
+		padding: 0;
+		overflow: hidden;
+		background-color: #fff;
+		color: #555;
+		border: 1px solid #aaa;
+		text-shadow: none;
+		border-radius: 4px;	
+		transition: box-shadow 0.25s ease;
+		z-index: 2;
+		font-size:14px;
+	}
+ 
+	.select_item:hover {
+		box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+	}
+ 
+	.select_item:before {
+		content: "";
+		position: absolute;
+		width: 0;
+		height: 0;
+		border: 10px solid transparent;
+		border-top-color: #ccc;
+		top: 14px;
+		right: 10px;
+		cursor: pointer;
+		z-index: -2;
+	}
+	.select_item select {
+		cursor: pointer;
+		padding: 10px;
+		width: 100%;
+		border: none;
+		background: transparent;
+		background-image: none;
+		-webkit-appearance: none;
+		-moz-appearance: none;
+	}
+ 
+	.select_item select:focus {
+		outline: none;
+	}
+

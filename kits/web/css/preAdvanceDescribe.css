@@ -1,0 +1,68 @@
+* {
+	font-family: Microsoft Yahei;
+}
+
+.order {
+	width: 80%;
+	margin: 10px auto;
+}
+
+h3 {
+	text-align: center;
+	color: #5093e3;
+	font-weight: bold;
+	letter-spacing: 2px;
+	font-size: 20px;
+	width: 100%;
+}
+
+textarea {
+	border: 1px solid #5093e3;
+	resize: none;
+	outline: 0;
+	line-height: 32px;
+	padding: 8px;
+	border-radius: 3px;
+	color: #505050;
+	width: 99%;
+}
+
+.applycontext{
+	border: 1px solid #5093e3;
+	resize: none;
+	outline: 0;
+	line-height: 32px;
+	padding: 8px;
+	border-radius: 3px;
+	color: #505050;
+	width: 99%;
+	overflow-y:scroll;
+}
+
+.accept {
+	height: 36px;
+	line-height: 36px;
+}
+
+.accept input {
+	width: 18px;
+	height: 18px;
+	vertical-align: middle;
+}
+
+.submitBox {
+	text-align: center;
+}
+
+.submit {
+	width: 120px;
+	height: 42px;
+	line-height: 42px;
+	text-align: center;
+	background: #5093e3;
+	border-radius: 4px;
+	border: 0;
+	color: #fff;
+	font-size: 1.2em;
+	cursor: pointer;
+}

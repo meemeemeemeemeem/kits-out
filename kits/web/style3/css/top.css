@@ -1,0 +1,46 @@
+@charset "utf-8";
+body, button, dd, dl, dt, form, h1, h2, h3, h4, h5, h6, hr, input, li, ol, p, pre, td, textarea, th, ul{margin:0; padding:0; list-style:none;}
+
+body{min-width: 1125px}
+a{text-decoration: none;}
+
+.logos{height: 30px;padding-left: 20px;padding-top: 23px;}
+
+@media screen and (min-width:1024px){
+.box{width: 100%;height: 75px;background: url(../../images/tu.png) no-repeat; background-size:100% 100%; overflow:hidden}
+.top-left{height: 75px;float: left;margin-left: 16px;}
+.top-left h2{height: 75px;margin-top: 15px;float: left}
+.top-left .gaoliang{height: 30px;float: left;font-size: 16px;color: #fff;line-height: 30px;margin-left: 20px;padding-left: 15px;margin-top: 23px;border-left: 2px solid #ddd;}
+.top-left a:hover{color:#000099; }
+.top-center{height: 75px;float: left;margin-left: 60px;}
+.top-center .map{display: inline-block;}
+.on-line{display: inline-block;float: left;margin-top: 28px;font-size: 16px;color: #fff;margin-left: 5px;  }
+.on-line:hover{color:#F40;}
+.map img{float: left;margin-top: 25px;width: 25px}
+.top-right{float: right;margin-right: 16px}
+.list li{color: #fff;height: 75px;text-align: center;font-size: 18px;margin-left: 30px; float: left }
+.list  li:hover .character{color: #000099}
+.list img{width: 16px;float: left;margin-top: 30px;margin-right: 5px}
+.list .character{display: inline-block;font-size: 16px;color:#fff;line-height: 75px; }	
+}
+
+@media screen and (max-width:1024px){
+.box{width: 100%;height: 75px;background: #15A4FA;}
+.top-left{height: 75px;background: #15A4FA;float: left;margin-left: 16px;}
+.top-left h2{height: 75px;margin-top: 15px;float: left}
+.top-left .gaoliang{height: 30px;float: left;font-size: 16px;color: #fff;line-height: 30px;margin-left: 20px;padding-left: 15px;margin-top: 23px;border-left: 2px solid #ddd;}
+.top-left a:hover{color:#000099; }
+.top-center{height: 75px;float: left;margin-left: 20px;}
+.top-center .map{display: inline-block;}
+.on-line{display: inline-block;float: left;margin-top: 28px;font-size: 16px;color: #fff;margin-left: 5px; }
+.on-line:hover{color:#F40;}
+.map img{float: left;margin-top: 25px;width: 25px}
+.top-right{float: right;margin-right: 51px}
+.list li{color: #fff;height: 75px; float: left;text-align: center;font-size: 12px;margin-left: 15px;}
+.list  li:hover .character{color: #000099}
+.list img{width: 16px;float: left;margin-top: 30px;margin-right: 5px}
+.list .character{display: inline-block;font-size: 16px;color:#fff;line-height: 75px;float: left }
+}
+
+
+

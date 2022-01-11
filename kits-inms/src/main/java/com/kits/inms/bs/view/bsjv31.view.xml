@@ -1,0 +1,786 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ViewConfig>
+  <Arguments/>
+  <Context/>
+  <Model>
+    <DataType name="dtQuery">
+      <PropertyDef name="compId">
+        <Property name="label">公司别</Property>
+        <Property name="defaultValue">xyt</Property>
+        <Property name="required">false</Property>
+      </PropertyDef>
+      <PropertyDef name="currency">
+        <Property name="label">币别</Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="dtTbdf06">
+      <Property name="creationType">com.kits.inms.bs.domain.Tbdf06</Property>
+      <PropertyDef name="pkDf06">
+        <Property></Property>
+        <Property name="label">币别档键值</Property>
+      </PropertyDef>
+      <PropertyDef name="compId">
+        <Property></Property>
+        <Property name="label">公司代码</Property>
+      </PropertyDef>
+      <PropertyDef name="currency">
+        <Property></Property>
+        <Property name="label">货币代码</Property>
+        <Property name="required">true</Property>
+        <Validator name="validator1" type="regExp">
+          <Property name="whiteRegExp">/^[A-Z,0-9]{1,4}$/</Property>
+          <Property name="resultMessage">请输入1~4位字母，数字，或两者组合！</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="currencyAbb">
+        <Property></Property>
+        <Property name="label">货币简称</Property>
+        <Property name="required">true</Property>
+        <Validator name="validator1" type="regExp">
+          <Property name="whiteRegExp">/^[A-Z]{1,5}$/</Property>
+          <Property name="resultMessage">请输入1~5位英文大写字母！</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="currencyNameEn">
+        <Property></Property>
+        <Property name="label">货币英文全名</Property>
+        <Property name="required">true</Property>
+        <Validator name="validator1" type="length">
+          <Property name="maxLength">50</Property>
+          <Property name="minLength">1</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="currencyNameLocal">
+        <Property></Property>
+        <Property name="label">货币当地名称</Property>
+        <Property name="required">true</Property>
+        <Validator name="validator1" type="length">
+          <Property name="maxLength">50</Property>
+          <Property name="minLength">1</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="currencySymbol">
+        <Property></Property>
+        <Property name="label">货币符号</Property>
+        <Validator name="validator1" type="length">
+          <Property name="maxLength">20</Property>
+          <Property name="minLength">0</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="currencyDef">
+        <Property></Property>
+        <Property name="label">默认货币</Property>
+      </PropertyDef>
+      <PropertyDef name="currencyPictureUrl">
+        <Property></Property>
+        <Property name="label">图档地址</Property>
+        <Validator name="validator1" type="length">
+          <Property name="minLength">0</Property>
+          <Property name="maxLength">100</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="createEmpNo">
+        <Property></Property>
+        <Property name="label">创建者</Property>
+      </PropertyDef>
+      <PropertyDef name="createDate">
+        <Property name="dataType">Date</Property>
+        <Property name="displayFormat">Y-m-d H:i:s</Property>
+        <Property name="label">创建时间</Property>
+      </PropertyDef>
+      <PropertyDef name="modifyEmpNo">
+        <Property></Property>
+        <Property name="label">修改者</Property>
+      </PropertyDef>
+      <PropertyDef name="modifyDate">
+        <Property name="dataType">Date</Property>
+        <Property name="displayFormat">Y-m-d H:i:s</Property>
+        <Property name="label">修改日期</Property>
+      </PropertyDef>
+    </DataType>
+  </Model>
+  <View>
+    <ClientEvent name="onReady">window.dsQuery = view.get(&quot;#dsQuery&quot;);&#xD;
+window.dataSet2 = view.get(&quot;#dataSet2&quot;);&#xD;
+window.dsTbdf06 = view.get(&quot;#dsTbdf06&quot;);&#xD;
+window.dataSet1 = view.get(&quot;#dataSet1&quot;);//新增的时候数据没有刷新&#xD;
+&#xD;
+window.dgTbdf06 = view.get(&quot;#dgTbdf06&quot;);&#xD;
+&#xD;
+window.dialogTbdf06 = view.get(&quot;#dialogTbdf06&quot;);&#xD;
+&#xD;
+//window.userName='${session.getAttribute(&quot;BDF_LOGIN_USER_&quot;).getCname()}';&#xD;
+window.userName=&quot;${loginUsername}&quot;;			//登录人</ClientEvent>
+    <ClientEvent name="onCreate">functions = {&#xD;
+	/****************************准备工作*********************************************************/&#xD;
+	/**&#xD;
+	 * 0.准备工作&#xD;
+	 */&#xD;
+	/** 0-1.获取长度32的唯一字符串*/&#xD;
+	&quot;guid&quot;:function () { &#xD;
+	   return ((((1+Math.random())*0x10000)|0).toString(16).substring(1)+(((1+Math.random())*0x10000)|0).toString(16).substring(1)+&quot;-&quot;+(((1+Math.random())*0x10000)|0).toString(16).substring(1)+&quot;-&quot;+(((1+Math.random())*0x10000)|0).toString(16).substring(1)+&quot;-&quot;+(((1+Math.random())*0x10000)|0).toString(16).substring(1)+&quot;-&quot;+(((1+Math.random())*0x10000)|0).toString(16).substring(1)+(((1+Math.random())*0x10000)|0).toString(16).substring(1)+(((1+Math.random())*0x10000)|0).toString(16).substring(1));&#xD;
+	   //return (&quot;A&quot;+(((1+Math.random())*10000).toString(5).substring(0,5)));&#xD;
+	},&#xD;
+	&#xD;
+	/** 0-2.获取公司别*/&#xD;
+	&quot;getCompId&quot;:function () { &#xD;
+		var compId = &quot;${loginUser.companyId}&quot;;&#xD;
+	    return compId;&#xD;
+	},&#xD;
+	&#xD;
+	/** 0-3.获取当前时间yyyyMMddHHmmss*/&#xD;
+	&quot;getNowFormatDate&quot;: function(){&#xD;
+	    var date = new Date();&#xD;
+	    var seperator1 = &quot;-&quot;;&#xD;
+	    var seperator2 = &quot;:&quot;;&#xD;
+	    var month = date.getMonth() + 1;&#xD;
+	    var strDate = date.getDate();&#xD;
+	    if (month >= 1 &amp;&amp; month &lt;= 9) {&#xD;
+	        month = &quot;0&quot; + month;&#xD;
+	    }&#xD;
+	    if (strDate >= 0 &amp;&amp; strDate &lt;= 9) {&#xD;
+	        strDate = &quot;0&quot; + strDate;&#xD;
+	    }&#xD;
+	    var currentdate = date.getFullYear() + seperator1 + month + seperator1 + strDate&#xD;
+	            + &quot; &quot; + date.getHours() + seperator2 + date.getMinutes()&#xD;
+	            + seperator2 + date.getSeconds();&#xD;
+	    return currentdate;&#xD;
+	},   &#xD;
+	&#xD;
+	/****************************查询*********************************************************/&#xD;
+	/**&#xD;
+     * 1.“查询”按钮---Onclick事件---searchOnclick函数&#xD;
+     * 修改内容：日期查询条件做校验，不通过给出页面提示信息。&#xD;
+     */&#xD;
+    &quot;searchOnclick&quot;: function(){&#xD;
+		var entity = view.get(&quot;#dsQuery.data:#&quot;);&#xD;
+		if(entity){&#xD;
+			view.get(&quot;#dsTbdf06&quot;).set(&quot;parameter&quot;,{&#xD;
+				&quot;compId&quot;: entity.get(&quot;compId&quot;),&#xD;
+				&quot;currency0&quot;: entity.get(&quot;currency&quot;)&#xD;
+			}).flushAsync();&#xD;
+		}//else{&#xD;
+		//	view.get(&quot;#dsTbdf06&quot;).set(&quot;parameter&quot;,null).flushAsync();&#xD;
+		//}&#xD;
+		view.set(&quot;^saveButton0.disabled&quot;,false);&#xD;
+    },&#xD;
+	&#xD;
+	/****************************重置*********************************************************/&#xD;
+	/**&#xD;
+     * 2.“重置”按钮---Onclick事件---直接执行代码&#xD;
+     */&#xD;
+	&#xD;
+	/****************************资料新增*********************************************************/&#xD;
+	/**&#xD;
+     * 3.“资料新增”按钮---Onclick事件---insertOnclick函数(---dialogTbdf06.show()函数)&#xD;
+     * 修改内容：新增的数据“修改人员”“修改时间”不能有值&#xD;
+     */&#xD;
+    &quot;insertOnclick&quot;: function(){&#xD;
+		//dialogTbdf06.set(&quot;parameter&quot;,{&quot;message&quot;:&quot;查无资料！&quot;);&#xD;
+		dsTbdf06.insert({&#xD;
+			//pkDf06:functions[&quot;guid&quot;](),		//键值&#xD;
+			//compId:functions[&quot;getCompId&quot;](),  //公司别&#xD;
+			//createEmpNo:userName,       		//创建者&#xD;
+			//createDate:new Date()      		//创建时间&#xD;
+			//modifyUser:userName,     			//修改者&#xD;
+			//modifyDate:new Date(),   			//修改时间&#xD;
+		});&#xD;
+		dialogTbdf06.show();  &#xD;
+		&#xD;
+		//控制编辑权限&#xD;
+		view.set(&quot;^saveButton1.disabled&quot;,false);&#xD;
+		view.set(&quot;^saveButton2.disabled&quot;,true);&#xD;
+		view.set(&quot;^saveButton3.disabled&quot;,true);&#xD;
+		//view.set(&quot;^dialogTbdf06.readOnly&quot;,false);		&#xD;
+    },&#xD;
+	&#xD;
+	/****************************删除*********************************************************/&#xD;
+	/**&#xD;
+     * 4.“删除”按钮---Onclick事件---delOnclick函数&#xD;
+     * dgTbdf06.get(&quot;selection&quot;).slice(0).each(function(entity){})&#xD;
+	 * var entitys = dgTbdf06.get(&quot;selection&quot;).slice(0);&#xD;
+     */&#xD;
+    &quot;delOnclick&quot;: function(){&#xD;
+		var data=view.get(&quot;#dsTbdf06.data:#&quot;);&#xD;
+		if(data){&#xD;
+			var createEmpNo = data.get(&quot;createEmpNo&quot;);&#xD;
+			if(createEmpNo==userName){&#xD;
+				var entitys = dgTbdf06.get(&quot;selection&quot;).slice(0);&#xD;
+				if(entitys!=null &amp;&amp; entitys!=&quot;&quot;){&#xD;
+					var options = {&#xD;
+					    callback: function(){&#xD;
+							entitys.each(function(entity){&#xD;
+								entity.remove();&#xD;
+							});&#xD;
+							&#xD;
+					        view.get(&quot;#saveTbdf06&quot;).set({&#xD;
+								executingMessage:&quot;正在删除...&quot;,&#xD;
+								successMessage:&quot;删除成功！&quot;&#xD;
+							}).execute(function(){&#xD;
+								//view.set(&quot;^saveButton2.disabled&quot;,true);&#xD;
+								//view.set(&quot;^saveButton3.disabled&quot;,true);&#xD;
+								//dsTbdf06.set(&quot;parameter&quot;,null).flushAsync();	//刷新数据&#xD;
+								dataSet2.set(&quot;parameter&quot;,null).flushAsync();	//刷新数据&#xD;
+							});&#xD;
+				    	},&#xD;
+						icon : &quot;WARNING&quot;,&#xD;
+						title : &quot;删除确认&quot;&#xD;
+				    };&#xD;
+					dorado.MessageBox.confirm(&quot;您确定要删除勾选的数据吗？&quot;, options);		//删除数据&#xD;
+				}else{&#xD;
+					dorado.MessageBox.alert(&quot;请勾选要删除的数据!&quot;);&#xD;
+				}		&#xD;
+			}else{&#xD;
+				dorado.MessageBox.alert(&quot;权限不足!&quot;);&#xD;
+			}&#xD;
+		}else{&#xD;
+			dorado.MessageBox.alert(&quot;没有数据可以删除啦!&quot;);&#xD;
+		}&#xD;
+    },&#xD;
+	&#xD;
+	/****************************新增*********************************************************/&#xD;
+	/**&#xD;
+     * 5.dialogTbdf06弹出框中“新增”(相当于保存)按钮---Onclick事件---addSaveOnclick函数&#xD;
+     */&#xD;
+    &quot;addSaveOnclick&quot;: function(){&#xD;
+		var data = dsTbdf06.getData(&quot;#&quot;);&#xD;
+		if(data){&#xD;
+			if(data.getOldData()){&#xD;
+				//var old_currency = data.getOldData().currency; 	//货币代码&#xD;
+				//if(old_currency!=null &amp;&amp; old_currency!=&quot;&quot;){}&#xD;
+				&#xD;
+				data.set(&quot;pkDf06&quot;,functions[&quot;guid&quot;]());				//键值&#xD;
+				//data.set(&quot;compId&quot;,functions[&quot;getCompId&quot;]());		//公司别&#xD;
+				data.set(&quot;createEmpNo&quot;,userName);					//创建者&#xD;
+				data.set(&quot;createDate&quot;,new Date());					//创建时间&#xD;
+				data.set(&quot;modifyEmpNo&quot;,null);     					//修改者&#xD;
+				data.set(&quot;modifyDate&quot;,null);						//修改时间&#xD;
+				&#xD;
+				dsTbdf06.insert(data);&#xD;
+			}else{&#xD;
+				data.set(&quot;pkDf06&quot;,functions[&quot;guid&quot;]());				//键值&#xD;
+				data.set(&quot;compId&quot;,functions[&quot;getCompId&quot;]());		//公司别&#xD;
+				data.set(&quot;createEmpNo&quot;,userName);					//创建者&#xD;
+				data.set(&quot;createDate&quot;,new Date());					//创建时间&#xD;
+				//data.set(&quot;modifyEmpNo&quot;,null);     				//修改者&#xD;
+				//data.set(&quot;modifyDate&quot;,null);						//修改时间&#xD;
+			}&#xD;
+			&#xD;
+			var currency = data.get(&quot;currency&quot;);						//货币代码&#xD;
+			var currencyAbb = data.get(&quot;currencyAbb&quot;);					//货币简称&#xD;
+			var currencyNameEn = data.get(&quot;currencyNameEn&quot;);			//货币英文名称&#xD;
+			var currencyNameLocal = data.get(&quot;currencyNameLocal&quot;);		//货币当地名称&#xD;
+			if(currency==null || currency==&quot;&quot;){&#xD;
+				dorado.MessageBox.alert(&quot;货币代码不能为空！&quot;); //valueA Can not be null&#xD;
+				return;&#xD;
+			}else if(currencyAbb==null || currencyAbb==&quot;&quot;){&#xD;
+				dorado.MessageBox.alert(&quot;货币简称不能为空！&quot;);&#xD;
+				return;&#xD;
+			}else if(currencyNameEn==null || currencyNameEn==&quot;&quot;){&#xD;
+				dorado.MessageBox.alert(&quot;货币英文全名不能为空！&quot;);&#xD;
+				return;&#xD;
+			}else if(currencyNameLocal==null || currencyNameLocal==&quot;&quot;){&#xD;
+				dorado.MessageBox.alert(&quot;货币当地名称不能为空！&quot;);&#xD;
+				return;&#xD;
+			}else{&#xD;
+				var flag = 0;&#xD;
+				var compId = data.get(&quot;compId&quot;);&#xD;
+				dataSet1.set(&quot;parameter&quot;,{&#xD;
+					&quot;compId&quot;: compId			//公司别&#xD;
+					//&quot;currency&quot;: currency		//货币代码&#xD;
+				}).flushAsync(function(entitys){&#xD;
+					//var entitys = dataSet1.getData();&#xD;
+					entitys.each(function(entity){&#xD;
+						var compIds = entity.get(&quot;compId&quot;);&#xD;
+						var currencys = entity.get(&quot;currency&quot;);&#xD;
+						if(compIds==compId &amp;&amp; currencys==currency){&#xD;
+							flag++;&#xD;
+							return;&#xD;
+						}&#xD;
+					});&#xD;
+					/*不行，会出现货币代码重复？？？&#xD;
+					if(entitys.entityCount > 0){&#xD;
+						flag++;&#xD;
+					}&#xD;
+					*/&#xD;
+					&#xD;
+					if(flag&lt;=0){&#xD;
+						dorado.MessageBox.confirm(&quot;您确认保存该数据吗？&quot;,function(){&#xD;
+							//var statue = document.getElementById(&quot;check&quot;); &#xD;
+							var statue = view.get(&quot;#check&quot;);&#xD;
+							dorado.MessageBox.confirm(statue);&#xD;
+							&#xD;
+					     	if(statue.checked){         &#xD;
+						 		data.set(&quot;currencyDef&quot;,&quot;Y&quot;);     	//默认货币 &#xD;
+						 	}&#xD;
+							&#xD;
+							//保存数据操作&#xD;
+							view.get(&quot;#saveTbdf06&quot;).set({&#xD;
+								executingMessage:&quot;正在保存...&quot;,&#xD;
+								successMessage:&quot;保存成功！&quot;&#xD;
+							}).execute(function(){&#xD;
+								//dialogTbdf06.hide();&#xD;
+								//var oldSaveButton2 = view.get(&quot;^saveButton2.disabled&quot;);&#xD;
+								//var oldSaveButton3 = view.get(&quot;^saveButton3.disabled&quot;);&#xD;
+								var oldSaveButton2 = view.id(&quot;button2&quot;).get(&quot;disabled&quot;);&#xD;
+								var oldSaveButton3 = view.id(&quot;button3&quot;).get(&quot;disabled&quot;);&#xD;
+								if(oldSaveButton2==false &amp;&amp; oldSaveButton3==false){&#xD;
+									dsTbdf06.set(&quot;parameter&quot;,null).flushAsync();	//刷新数据&#xD;
+								}&#xD;
+								view.set(&quot;^saveButton1.disabled&quot;,false);&#xD;
+								view.set(&quot;^saveButton2.disabled&quot;,false);&#xD;
+								view.set(&quot;^saveButton3.disabled&quot;,false);&#xD;
+								view.set(&quot;^dialogTbdf06.readOnly&quot;,false);&#xD;
+								dataSet2.set(&quot;parameter&quot;,null).flushAsync();		//刷新数据&#xD;
+							});&#xD;
+						})&#xD;
+					}else{&#xD;
+						dorado.MessageBox.alert(&quot;货币代码重复！&quot;);&#xD;
+						return;&#xD;
+					}		&#xD;
+					&#xD;
+				});&#xD;
+			}	&#xD;
+		}&#xD;
+    },&#xD;
+	&#xD;
+	/****************************修改*********************************************************/&#xD;
+	/**&#xD;
+     * 6.dialogTbdf06弹出框中“修改”(相当于保存)按钮---Onclick事件---updateSaveOnclick函数&#xD;
+     */&#xD;
+	&quot;updateSaveOnclick&quot;: function(){&#xD;
+		var data = dsTbdf06.getData(&quot;#&quot;);&#xD;
+		if(data){&#xD;
+			var currency = data.get(&quot;currency&quot;);						//货币代码&#xD;
+			var currencyAbb = data.get(&quot;currencyAbb&quot;);					//货币简称&#xD;
+			var currencyNameEn = data.get(&quot;currencyNameEn&quot;);			//货币英文名称&#xD;
+			var currencyNameLocal = data.get(&quot;currencyNameLocal&quot;);		//货币当地名称&#xD;
+			if(currency==null || currency==&quot;&quot;){&#xD;
+				dorado.MessageBox.alert(&quot;货币代码不能为空！&quot;);&#xD;
+				return;&#xD;
+			}else if(currencyAbb==null || currencyAbb==&quot;&quot;){&#xD;
+				dorado.MessageBox.alert(&quot;货币简称不能为空！&quot;);&#xD;
+				return;&#xD;
+			}else if(currencyNameEn==null || currencyNameEn==&quot;&quot;){&#xD;
+				dorado.MessageBox.alert(&quot;货币英文全名不能为空！&quot;);&#xD;
+				return;&#xD;
+			}else if(currencyNameLocal==null || currencyNameLocal==&quot;&quot;){&#xD;
+				dorado.MessageBox.alert(&quot;货币当地名称不能为空！&quot;);&#xD;
+				return;&#xD;
+			}else{&#xD;
+				var flag=0;&#xD;
+				if(data.getOldData().currency != currency){&#xD;
+					flag++;&#xD;
+				}&#xD;
+				if(flag&lt;=0){&#xD;
+					dorado.MessageBox.confirm(&quot;您确认修改该数据吗？&quot;,function(){&#xD;
+						//设置修改者和修改时间&#xD;
+						data.set(&quot;modifyEmpNo&quot;,userName);     	//修改者&#xD;
+						data.set(&quot;modifyDate&quot;,new Date());		//修改时间&#xD;
+						&#xD;
+						//保存数据操作&#xD;
+						view.get(&quot;#saveTbdf06&quot;).set({&#xD;
+							executingMessage:&quot;正在修改...&quot;,&#xD;
+							successMessage:&quot;修改成功！&quot;&#xD;
+						}).execute(function(){&#xD;
+							view.set(&quot;^saveButton1.disabled&quot;,false);&#xD;
+							view.set(&quot;^saveButton2.disabled&quot;,false);&#xD;
+							view.set(&quot;^saveButton3.disabled&quot;,false);&#xD;
+							view.set(&quot;^dialogTbdf06.readOnly&quot;,false);&#xD;
+							&#xD;
+							dataSet2.set(&quot;parameter&quot;,null).flushAsync();	//刷新数据&#xD;
+							//dsTbdf06.set(&quot;parameter&quot;,null).flushAsync();	//刷新数据&#xD;
+							//dialogTbdf06.hide();&#xD;
+						});&#xD;
+					})&#xD;
+				}else{&#xD;
+					dorado.MessageBox.alert(&quot;货币代码不可修改！&quot;);&#xD;
+					return;&#xD;
+				}&#xD;
+			}&#xD;
+		}&#xD;
+    },&#xD;
+	&#xD;
+	/****************************删除*********************************************************/&#xD;
+	/**&#xD;
+     * 7.dialogTbdf06弹出框中“删除”按钮---Onclick事件---delCurrentOnclick函数&#xD;
+     */&#xD;
+	&quot;delCurrentOnclick&quot;: function(){&#xD;
+		var data = view.get(&quot;#dsTbdf06.data:#&quot;);&#xD;
+		if(data){&#xD;
+			var createEmpNo = data.get(&quot;createEmpNo&quot;);&#xD;
+			if(createEmpNo==userName){&#xD;
+				var options = {&#xD;
+				    callback: function(){&#xD;
+			            data.remove();&#xD;
+				        view.get(&quot;#saveTbdf06&quot;).set({&#xD;
+							executingMessage:&quot;正在删除...&quot;,&#xD;
+							successMessage:&quot;删除成功！&quot;&#xD;
+						}).execute(function(){&#xD;
+							//view.set(&quot;^saveButton2.disabled&quot;,true);&#xD;
+							//view.set(&quot;^saveButton3.disabled&quot;,true);&#xD;
+							//dsTbdf06.set(&quot;parameter&quot;,null).flushAsync();	//刷新数据&#xD;
+							dataSet2.set(&quot;parameter&quot;,null).flushAsync();	//刷新数据&#xD;
+						});&#xD;
+			    	},&#xD;
+					icon : &quot;WARNING&quot;,&#xD;
+					title : &quot;删除确认&quot;&#xD;
+			    }&#xD;
+				dorado.MessageBox.confirm(&quot;您确定要删除此数据吗？&quot;, options);		//删除数据&#xD;
+			}else{&#xD;
+				dorado.MessageBox.alert(&quot;权限不足!&quot;);&#xD;
+			}&#xD;
+		}else{&#xD;
+			dorado.MessageBox.alert(&quot;没有数据可以删除啦!&quot;);&#xD;
+		}&#xD;
+    }&#xD;
+	&#xD;
+	/****************************清空*********************************************************/&#xD;
+	/**&#xD;
+     * 8.“清空”按钮---Onclick事件---直接执行代码&#xD;
+     */&#xD;
+	&#xD;
+	/****************************返回*********************************************************/&#xD;
+	/**&#xD;
+     * 9.“返回”按钮---Onclick事件---直接执行代码&#xD;
+     */&#xD;
+&#xD;
+}&#xD;
+</ClientEvent>
+    <DataSet id="dsQuery">
+      <ClientEvent name="onReady">self.insert(); //自己可输入</ClientEvent>
+      <Property name="dataType">[dtQuery]</Property>
+      <Property name="loadMode">manual</Property>
+    </DataSet>
+    <DataSet id="dataSet2">
+      <Property name="dataProvider">bsjc30BO#loadTbdf06</Property>
+      <Property name="dataType">[dtTbdf06]</Property>
+      <Property name="loadMode">preload</Property>
+      <Property name="pageSize">10</Property>
+    </DataSet>
+    <DataSet id="dsTbdf06">
+      <Property name="dataType">[dtTbdf06]</Property>
+      <Property name="loadMode">manual</Property>
+      <Property name="pageSize">20</Property>
+      <Property name="dataProvider">bsjc30BO#loadTbdf06</Property>
+    </DataSet>
+    <DataSet id="dataSet1">
+      <Property name="dataType">[dtTbdf06]</Property>
+      <Property name="pageSize">9999</Property>
+      <Property name="dataProvider">bsjc30BO#loadTbdf06</Property>
+      <Property name="loadMode">manual</Property>
+    </DataSet>
+    <Panel>
+      <Buttons/>
+      <Children>
+        <AutoForm>
+          <Property name="cols">*,*,*,*,*,*,*,*,*,*,*,*</Property>
+          <Property name="dataSet">dsQuery</Property>
+          <AutoFormElement layoutConstraint="colSpan:2">
+            <Property name="name">compId</Property>
+            <Property name="property">compId</Property>
+            <Property name="labelWidth">60</Property>
+            <Property name="readOnly">true</Property>
+            <Property name="labelAlign">center</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement layoutConstraint="colSpan:2">
+            <Property name="name">currency</Property>
+            <Property name="property">currency</Property>
+            <Property name="labelWidth">60</Property>
+            <Property name="editable">false</Property>
+            <Property name="trigger">dataSetDropDown1</Property>
+            <Property name="labelPosition">left</Property>
+            <Property name="labelAlign">center</Property>
+            <Editor/>
+          </AutoFormElement>
+          <Button>
+            <ClientEvent name="onClick">functions[&quot;searchOnclick&quot;]();</ClientEvent>
+            <Property name="caption">查询</Property>
+            <Property name="icon">	url(>skin>common/icons.gif) -40px -100px</Property>
+          </Button>
+          <Button>
+            <ClientEvent name="onClick">dsQuery.clear();    //清空输入框&#xD;
+dsQuery.insert();   //输入框可输入</ClientEvent>
+            <Property name="icon">url(>skin>common/icons.gif) -40px -240px</Property>
+            <Property name="caption">重置</Property>
+          </Button>
+        </AutoForm>
+        <ToolBar>
+          <DataPilot>
+            <Property name="dataSet">dsTbdf06</Property>
+          </DataPilot>
+          <Button>
+            <ClientEvent name="onClick">functions[&quot;insertOnclick&quot;]();</ClientEvent>
+            <Property name="icon">url(>skin>common/icons.gif) -120px 0px</Property>
+            <Property name="caption">资料新增</Property>
+            <Property name="width">90</Property>
+          </Button>
+          <Button layoutConstraint="colSpan:1">
+            <ClientEvent name="onClick">functions[&quot;delOnclick&quot;]();</ClientEvent>
+            <Property name="icon">	url(>skin>common/icons.gif) -140px 0px</Property>
+            <Property name="caption">删除</Property>
+            <Property name="width">60</Property>
+            <Property name="tags">saveButton0</Property>
+            <Property name="disabled">true</Property>
+          </Button>
+        </ToolBar>
+        <DataGrid id="dgTbdf06">
+          <ClientEvent name="onDataRowClick">if(arg.column.get(&quot;caption&quot;)!=&quot;RowSelector&quot;){&#xD;
+	var selection = self.get(&quot;selection&quot;);&#xD;
+	var entity = self.get(&quot;dataSet&quot;).getData(&quot;#&quot;);&#xD;
+	self.set(&quot;selection&quot;,entity);&#xD;
+}</ClientEvent>
+          <ClientEvent name="onDataRowDoubleClick">if(view.get(&quot;#dsTbdf06.data:#&quot;)){ //选中有数据行时&#xD;
+	dialogTbdf06.show();&#xD;
+	&#xD;
+	var data = dsTbdf06.getData(&quot;#&quot;);&#xD;
+	if(data){&#xD;
+		var createEmpNo = data.get(&quot;createEmpNo&quot;);          //获取建立者&#xD;
+		if(createEmpNo==userName){							//控制编辑权限&#xD;
+			view.set(&quot;^saveButton1.disabled&quot;,false);&#xD;
+			view.set(&quot;^saveButton2.disabled&quot;,false);&#xD;
+			view.set(&quot;^saveButton3.disabled&quot;,false);&#xD;
+			view.set(&quot;^dialogTbdf06.readOnly&quot;,false);&#xD;
+		}else{&#xD;
+			view.set(&quot;^dialogTbdf06.readOnly&quot;,true);&#xD;
+			dorado.MessageBox.alert(&quot;权限不足！&quot;);&#xD;
+		}&#xD;
+	}&#xD;
+}else{ //没有选中数据行时&#xD;
+	dorado.MessageBox.alert(&quot;没有数据可以修改!&quot;);&#xD;
+}</ClientEvent>
+          <Property name="dataSet">dsTbdf06</Property>
+          <Property name="readOnly">true</Property>
+          <Property name="selectionMode">multiRows</Property>
+          <RowSelectorColumn/>
+          <RowNumColumn id="rowNum">
+            <Property name="caption">项次</Property>
+          </RowNumColumn>
+          <DataColumn name="currency">
+            <Property name="property">currency</Property>
+          </DataColumn>
+          <DataColumn name="currencyAbb">
+            <Property name="property">currencyAbb</Property>
+          </DataColumn>
+          <DataColumn name="currencyNameEn">
+            <Property name="property">currencyNameEn</Property>
+          </DataColumn>
+          <DataColumn name="currencyNameLocal">
+            <Property name="property">currencyNameLocal</Property>
+          </DataColumn>
+          <DataColumn name="currencySymbol">
+            <Property name="property">currencySymbol</Property>
+          </DataColumn>
+          <DataColumn name="currencyPictureUrl">
+            <Property name="property">currencyPictureUrl</Property>
+          </DataColumn>
+        </DataGrid>
+      </Children>
+      <Tools/>
+    </Panel>
+    <Dialog id="dialogTbdf06">
+      <ClientEvent name="onShow">//functions[&quot;dialogTbdm031OnShow&quot;]();</ClientEvent>
+      <ClientEvent name="onHide">//functions[&quot;dialogTbdm031OnHide&quot;]();</ClientEvent>
+      <Property name="caption">币别管理</Property>
+      <Property name="height">350</Property>
+      <Property name="width">650</Property>
+      <Buttons/>
+      <Children>
+        <AutoForm>
+          <Property name="dataSet">dsTbdf06</Property>
+          <Property name="tags">dialogTbdf06</Property>
+          <ToolBar layoutConstraint="colSpan:2">
+            <Property name="width">307</Property>
+            <Button>
+              <ClientEvent name="onClick">functions[&quot;addSaveOnclick&quot;]();</ClientEvent>
+              <Property name="caption">新增</Property>
+              <Property name="icon">url(>skin>common/icons.gif) -120px 0px</Property>
+              <Property name="tags">saveButton1</Property>
+            </Button>
+            <ToolBarButton id="button2">
+              <ClientEvent name="onClick">functions[&quot;updateSaveOnclick&quot;]();&#xD;
+&#xD;
+&#xD;
+/*&#xD;
+if(view.get(&quot;^saveButton1.disabled&quot;)==true){ //新增为灰色时&#xD;
+	functions[&quot;saveOnclick&quot;]();&#xD;
+}else{  //新增为亮时&#xD;
+	if(view.get(&quot;#dsTbcr011.data:#&quot;)){ //选中有数据行时&#xD;
+		dialogTbcr011.show();&#xD;
+		&#xD;
+		var data = dsTbcr011.getData(&quot;#&quot;);&#xD;
+		if(data){&#xD;
+			var createEmpNo = data.get(&quot;createEmpNo&quot;);          //获取建立者&#xD;
+			if(createEmpNo==userName){							//控制编辑权限&#xD;
+				view.set(&quot;^saveButton1.disabled&quot;,true);&#xD;
+				view.set(&quot;^saveButton2.disabled&quot;,false);&#xD;
+				view.set(&quot;^dialogTbcr011.readOnly&quot;,false);&#xD;
+			}else{&#xD;
+				view.set(&quot;^dialogTbcr011.readOnly&quot;,true);&#xD;
+				dorado.MessageBox.alert(&quot;您无此操作权限！&quot;);&#xD;
+			}&#xD;
+		}&#xD;
+	&#xD;
+	}else{ //没有选中数据行时&#xD;
+		dorado.MessageBox.alert(&quot;没有数据可以修改!&quot;);&#xD;
+	}&#xD;
+}*/&#xD;
+&#xD;
+</ClientEvent>
+              <Property name="icon">url(>skin>common/icons.gif) -200px 0px</Property>
+              <Property name="caption">修改</Property>
+              <Property name="tags">saveButton2</Property>
+            </ToolBarButton>
+            <Button id="button3" layoutConstraint="colSpan:1">
+              <ClientEvent name="onClick">functions[&quot;delCurrentOnclick&quot;]();</ClientEvent>
+              <Property name="icon">	url(>skin>common/icons.gif) -140px 0px</Property>
+              <Property name="caption">删除</Property>
+              <Property name="tags">saveButton3</Property>
+            </Button>
+            <Button>
+              <ClientEvent name="onClick">var data = dsTbdf06.getData(&quot;#&quot;);&#xD;
+if(data){&#xD;
+	//window.oldData = data.clone();&#xD;
+	window.currencyFlag = data.get(&quot;currency&quot;);//判断是否改动货币代码&#xD;
+}&#xD;
+&#xD;
+view.get(&quot;#dsTbdf06.data:#&quot;).cancel();		//清空输入框主页面不变&#xD;
+//view.get(&quot;#dsTbdf06&quot;).clear();    		//清空输入框主页面为空   &#xD;
+dsTbdf06.insert({  	  &#xD;
+	//pkDf06:functions[&quot;guid&quot;](),			//键值&#xD;
+	//compId:functions[&quot;getCompId&quot;](),   	//公司别&#xD;
+	//createEmpNo:userName,       			//创建者&#xD;
+	//createDate:new Date(),      			//创建时间&#xD;
+	//modifyUser:userName,     				//修改者&#xD;
+	//modifyDate:new Date()   				//修改时间&#xD;
+});&#xD;
+&#xD;
+view.set(&quot;^saveButton1.disabled&quot;,false);&#xD;
+view.set(&quot;^saveButton2.disabled&quot;,true);&#xD;
+view.set(&quot;^saveButton3.disabled&quot;,true);&#xD;
+view.set(&quot;^dialogTbdf06.readOnly&quot;,false);&#xD;
+	&#xD;
+	&#xD;
+	&#xD;
+	&#xD;
+	&#xD;
+	</ClientEvent>
+              <Property name="icon"> url(>skin>common/icons.gif) -40px -0px</Property>
+              <Property name="caption">清空</Property>
+            </Button>
+            <Button>
+              <ClientEvent name="onClick">view.get(&quot;#dsTbdf06.data:#&quot;).cancel();&#xD;
+dialogTbdf06.hide();&#xD;
+//dsTbdf06.set(&quot;parameter&quot;,null).flushAsync();	//刷新数据&#xD;
+//dsTbdf06.flushAsync();	//刷新数据</ClientEvent>
+              <Property name="icon"> url(>skin>common/icons.gif) -40px -0px</Property>
+              <Property name="caption">返回</Property>
+            </Button>
+          </ToolBar>
+          <AutoFormElement>
+            <Property name="name">currency</Property>
+            <Property name="property">currency</Property>
+            <Property name="labelAlign">center</Property>
+            <Property name="labelWidth">90</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">currencyAbb</Property>
+            <Property name="property">currencyAbb</Property>
+            <Property name="labelAlign">center</Property>
+            <Property name="labelWidth">90</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement layoutConstraint="colSpan:2">
+            <Property name="name">currencyNameEn</Property>
+            <Property name="property">currencyNameEn</Property>
+            <Property name="labelWidth">90</Property>
+            <Property name="labelAlign">center</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement layoutConstraint="colSpan:2">
+            <Property name="name">currencyNameLocal</Property>
+            <Property name="property">currencyNameLocal</Property>
+            <Property name="labelAlign">center</Property>
+            <Property name="labelWidth">90</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">currencySymbol</Property>
+            <Property name="property">currencySymbol</Property>
+            <Property name="labelAlign">center</Property>
+            <Property name="labelWidth">90</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="label"> </Property>
+            <Property name="labelWidth">10</Property>
+            <Editor>
+              <CheckBox id="check">
+                <Property name="caption">预设货币</Property>
+              </CheckBox>
+            </Editor>
+          </AutoFormElement>
+          <AutoFormElement layoutConstraint="colSpan:2">
+            <Property name="name">currencyPictureUrl</Property>
+            <Property name="property">currencyPictureUrl</Property>
+            <Property name="labelAlign">center</Property>
+            <Property name="labelWidth">90</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">createEmpNo</Property>
+            <Property name="property">createEmpNo</Property>
+            <Property name="editable">false</Property>
+            <Property name="labelWidth">90</Property>
+            <Property name="readOnly">true</Property>
+            <Property name="labelAlign">center</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="labelWidth">90</Property>
+            <Property name="name">createDate</Property>
+            <Property name="property">createDate</Property>
+            <Property name="readOnly">true</Property>
+            <Property name="editable">false</Property>
+            <Property name="labelAlign">center</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">modifyEmpNo</Property>
+            <Property name="property">modifyEmpNo</Property>
+            <Property name="editable">false</Property>
+            <Property name="readOnly">true</Property>
+            <Property name="labelWidth">90</Property>
+            <Property name="labelAlign">center</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">modifyDate</Property>
+            <Property name="property">modifyDate</Property>
+            <Property name="editable">false</Property>
+            <Property name="labelWidth">90</Property>
+            <Property name="readOnly">true</Property>
+            <Property name="labelAlign">center</Property>
+            <Editor/>
+          </AutoFormElement>
+        </AutoForm>
+      </Children>
+      <Tools/>
+    </Dialog>
+    <UpdateAction id="saveTbdf06">
+      <Property name="dataResolver">bsjc30BO#saveTbdf06</Property>
+      <UpdateItem>
+        <Property name="dataSet">dsTbdf06</Property>
+      </UpdateItem>
+    </UpdateAction>
+    <DataSetDropDown id="dataSetDropDown1">
+      <Property name="autoOpen">false</Property>
+      <Property name="editable">true</Property>
+      <Property name="dataSet">dataSet2</Property>
+      <Property name="displayProperty">currencyNameLocal</Property>
+      <Property name="property">currencyAbb</Property>
+    </DataSetDropDown>
+  </View>
+</ViewConfig>

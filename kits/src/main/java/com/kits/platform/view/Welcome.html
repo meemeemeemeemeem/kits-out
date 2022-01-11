@@ -1,0 +1,288 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+#outputPageHeader()
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>代办事项</title>
+<!--style.css与jquery.smarticker.css都是系统公告部分的样式-->
+<link rel="stylesheet" type="text/css" href="css/index.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css" />
+	<link rel="stylesheet" type="text/css" href="css/jquery.smarticker.css">
+		<!-- <link rel="stylesheet" type="text/css" href="css/calendar.css"> -->
+		<!-- <script type="text/javascript" src="libraries/js/calendar.js"></script> -->
+<script type="text/javascript" src="libraries/js/echarts.common.min.js"></script>
+<style>
+.inline{
+	display:inline-block;
+}
+</style>
+
+</head>
+<body background='#ddd'>
+	<!--代办事项页面主体部分-->
+	<div class="center">
+		<!--第一大块，包含登录提醒、系统公告-->
+		<div class="top">
+			<!--登录提醒部分-->
+			<div class="t-left">
+				<div class="title">
+					<!--            	<img src="images/title-01.png">-->
+					<div class="entry">
+						<!--                	<b>登录提醒</b>身份：<i>郭总</i>站点：<i>武汉</i>部门：<i>研发中心</i>-->
+						<div class="entry-1">登陆提醒</div>
+						<div id="labelUserName" ></div>
+						<div id="labelCompany" ></div>
+					</div>
+				</div>
+			</div>
+			<!--系统公告部分-->
+			<div class="t-right">
+				<div class="title" style="overflow: hidden;">
+					<div style="float: left; margin-top: 12px;"></div>
+					<div class="smarticker3"
+						style="float: left; width: 439px; margin-top: 4px; margin-left: 4px;">
+						<ul>
+							<li><a
+								href="javascript:window.parent.openUrlInFrameTab('business.view.system.NoticeInfo.d?i='+(new Date()).getTime(),'公告管理');"
+								target="_self" id="notice0"></a></li>
+							<li><a
+								href="javascript:window.parent.openUrlInFrameTab('business.view.system.NoticeInfo.d?i='+(new Date()).getTime(),'公告管理');"
+								target="_self" id="notice1"></a></li>
+							<li><a
+								href="javascript:window.parent.openUrlInFrameTab('business.view.system.NoticeInfo.d?i='+(new Date()).getTime(),'公告管理');"
+								target="_self" id="notice2"></a></li>
+						</ul>
+					</div>
+					<div class="read">
+						<a
+							href="javascript:window.parent.openUrlInFrameTab('business.view.system.NoticeInfo.d?i='+(new Date()).getTime(),'公告管理');">查看全部</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!--第二大块，代办事项部分-->
+		<div class="middle">
+			<!--代办业务-->
+			<div class="m-box" style="margin: 0;" onclick="clickBox(1)">
+				<div id="nav">
+					<div class="wait" id="wait">
+						<div class="w-left" style="">
+							<img src="images/wait-01.png" />
+						</div>
+						<div class="w-center" style="" id="dbyw"></div>
+						<div class="w-right" style="">待办业务</div>
+					</div>
+					<div class="show" id="box1">
+						<a
+							href="javascript:window.parent.openUrlInFrameTab('business.view.operating.OrderManage.d?i='+(new Date()).getTime(),'客户订单');"
+							target="_self"><i>订单待处理</i><b id="dddcl"></b></a> <a
+							href="javascript:window.parent.openUrlInFrameTab('business.view.operating.WaybillList.d?i='+(new Date()).getTime(),'运单列表');"
+							target="_self"><i>运单待装车</i><b id="yddzc"></b></a> <a
+							href="javascript:window.parent.openUrlInFrameTab('business.view.operating.LoadOrderManage.d?i='+(new Date()).getTime(),'车辆配载');"
+							target="_self"><i>装车待发车</i><b id="zcdfc"></b></a> <a
+							href="javascript:window.parent.openUrlInFrameTab('business.view.operating.SignatoryManage.d?i='+(new Date()).getTime(),'客户签收');"
+							target="_self"><i>运单待签收</i><b id="yddqs"></b></a>
+					</div>
+				</div>
+			</div>
+			<!--代办财务-->
+			<div class="m-box" onclick="clickBox(2)">
+				<div id="nav">
+					<div class="wait" id="wait">
+						<div class="w-left" style="">
+							<img src="images/wait-02.png" />
+						</div>
+						<div class="w-center" style="" id="dbcw"></div>
+						<div class="w-right" style="">待办财务</div>
+					</div>
+					<div class="show" id="box2">
+					<!-- 
+						<a
+							href="javascript:window.parent.openUrlInFrameTab('inms.view.finance.ConsignorBalance.d?i='+(new Date()).getTime(),'发货人对账');"
+							target="_self"><i>现付现返待核销</i><b id="xfxfdhx"></b></a> <a
+							href="javascript:window.parent.openUrlInFrameTab('inms.view.finance.ConsigneeBalance.d?i='+(new Date()).getTime(),'收货人对账');"
+							target="_self"><i>到付待核销</i><b id="dfdhx"></b></a> <a
+							href="javascript:window.parent.openUrlInFrameTab('inms.view.finance.SiteReconciliation.d?i='+(new Date()).getTime(),'站点对账');"
+							target="_self"><i>欠/月/回待核销</i><b id="qfyjhfdhx"></b></a> <a
+							href="javascript:window.parent.openUrlInFrameTab('inms.view.finance.ManagersBalance.d?i='+(new Date()).getTime(),'经办人对账');"
+							target="_self"><i>货到打卡待核销</i><b id="hddkdhx"></b></a> 
+					-->		
+						<a
+							href="javascript:window.parent.openUrlInFrameTab('business.view.finance.TransferBalance.d?i='+(new Date()).getTime(),'中转公司对账');"
+							target="_self"><i>中转待核销</i><b id="zzdhx"></b></a> 
+					<!-- 
+						<a
+							href="javascript:window.parent.openUrlInFrameTab('inms.view.finance.TruckVfct.d?i='+(new Date()).getTime(),'大车费对账');"
+							target="_self"><i>大车运输待核销</i><b id="dcysdhx"></b></a>
+					-->	
+						<a
+							href="javascript:window.parent.openUrlInFrameTab('business.view.finance.AbnormalVfct.d?i='+(new Date()).getTime(),'少收赔付对账');"
+							target="_self"><i>少收赔付核算</i><b id="sspfdhx"></b></a> <a
+							href="javascript:window.parent.openUrlInFrameTab('business.view.finance.ComprehensiveAccounting.d?i='+(new Date()).getTime(),'提送货短驳对账');"
+							target="_self"><i>调度待核销</i><b id="dddhx"></b></a>
+
+					</div>
+				</div>
+			</div>
+			<!--代收货款-->
+			<div class="m-box" onclick="clickBox(3)">
+				<div id="nav">
+					<div class="wait" id="wait" style="">
+						<div class="w-left" style="">
+							<img src="images/wait-03.png" />
+						</div>
+						<div class="w-center" style="" id="dshk"></div>
+						<div class="w-right" style="">待收货款</div>
+					</div>
+					<div class="show" id="box3">
+						<a
+							href="javascript:window.parent.openUrlInFrameTab('business.view.finance.TrustManager.d?tab=1&i='+(new Date()).getTime(),'代收货款');"
+							target="_self"><i>货款待回收</i><b id="hkdhs"></b></a> <a
+							href="javascript:window.parent.openUrlInFrameTab('business.view.finance.TrustManager.d?tab=2&i='+(new Date()).getTime(),'代收货款');"
+							target="_self"><i>货款待汇款</i><b id="hkdhk"></b></a> <a
+							href="javascript:window.parent.openUrlInFrameTab('business.view.finance.TrustManager.d?tab=3&i='+(new Date()).getTime(),'代收货款');"
+							target="_self"><i>货款待到账</i><b id="hkddz"></b></a> <a
+							href="javascript:window.parent.openUrlInFrameTab('business.view.finance.TrustManager.d?tab=4&i='+(new Date()).getTime(),'代收货款');"
+							target="_self"><i>货款待发放</i><b id="hkdff"></b></a>
+					</div>
+				</div>
+			</div>
+			<!--代办回单-->
+			<div class="m-box" onclick="clickBox(4)">
+				<div id="nav">
+					<div class="wait" id="wait">
+						<div class="w-left">
+							<img src="images/wait-04.png" />
+						</div>
+						<div class="w-center" id="dbhd"></div>
+						<div class="w-right">待办回单</div>
+					</div>
+					<div class="show" id="box4">
+						<a
+							href="javascript:window.parent.openUrlInFrameTab('business.view.operating.ReceiptInfoManage.d?tab=1&i='+(new Date()).getTime(),'回单管理');"
+							target="_self"><i>回单待回收</i><b id="hddhs"></b></a> <a
+							href="javascript:window.parent.openUrlInFrameTab('business.view.operating.ReceiptInfoManage.d?tab=2&i='+(new Date()).getTime(),'回单管理');"
+							target="_self"><i>回单待寄出</i><b id="hddjc"></b></a> <a
+							href="javascript:window.parent.openUrlInFrameTab('business.view.operating.ReceiptInfoManage.d?tab=3&i='+(new Date()).getTime(),'回单管理');"
+							target="_self"><i>回单待接收</i><b id="hddjs"></b></a> <a
+							href="javascript:window.parent.openUrlInFrameTab('business.view.operating.ReceiptInfoManage.d?tab=4&i='+(new Date()).getTime(),'回单管理');"
+							target="_self"><i>回单待发放</i><b id="hddff"></b></a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!--第三大模块，营业数据与营收分析-->
+		<div class="bottom">
+
+			<!--营业数据-->
+			<div class="b-left">
+				<div class="title">
+					<!--            	<img src="images/title-03.png">-->
+					<b>营业数据</b>
+				</div>
+				<div class="bl-box">
+					<div class="b-top">
+						<div class="select1 ">
+							<div class="time">时间区间：</div>
+							<div class="inn" id="startDate"></div>
+							<div class="inn">--</div>
+							<div class="inn" id="endDate"></div>
+							<div class="chaxun" id="btnQueryDate"></div>
+						</div>
+						<div class="select2">
+							<div class="time">统计类型：</div>
+							<div class="inn" id="timeDate"></div>
+							<div class="inn">--</div>
+							<div class="inn" id="getDate"></div>
+							<div class="chaxun" id="btnQueryTime"></div>
+						</div>
+					</div>
+
+					<div class="b-bottom">
+						<div class="b-box"
+							style="border-right: 1px solid #ddd; border-bottom: 1px solid #ddd">
+							<div class="word">营业收入</div>
+							<h1 class="money">
+								<label id="yysr"></label><span>元</span>
+							</h1>
+						</div>
+						<div class="b-box" style="border-bottom: 1px solid #ddd">
+							<div class="word">费用支出</div>
+							<h1 class="money">
+								<label id="fyzc"></label><span>元</span>
+							</h1>
+						</div>
+						<div class="b-box" style="border-right: 1px solid #ddd;">
+							<div class="word">货款回收</div>
+							<h1 class="money">
+								<label id="hkhs"></label><span>元</span>
+							</h1>
+						</div>
+						<div class="b-box">
+							<div class="word">运单数</div>
+							<h1 class="money">
+								<label id="yds"></label><span>单</span>
+							</h1>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--营收分析-->
+			<div class="b-right">
+				<div class="title">
+					<b>营收分析</b>
+				</div>
+
+				<div class="br-box">
+					<div class="chart" id="chart"
+						style="top: 17px; width: 660px; height: 320px;">
+						<!-- <img src="images/chart.png"> -->
+						
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--系统公告部分的JS-->
+	<script type="text/javascript" src="libraries/js/smarticker.js"></script>
+	<!--代办事项部分的JS-->
+	<script type="text/javascript">
+		function clickBox(i) {
+			var box1 = document.getElementById('box1');
+			var box2 = document.getElementById('box2');
+			var box3 = document.getElementById('box3');
+			var box4 = document.getElementById('box4');
+			if (i == 1) {
+				if (box1.style.display == 'block') {
+					box1.style.display = 'none';
+				} else {
+					box1.style.display = 'block';
+				}
+			}
+			if (i == 2) {
+				if (box2.style.display == 'block') {
+					box2.style.display = 'none';
+				} else {
+					box2.style.display = 'block';
+				}
+			}
+			if (i == 3) {
+				if (box3.style.display == 'block') {
+					box3.style.display = 'none';
+				} else {
+					box3.style.display = 'block';
+				}
+			}
+			if (i == 4) {
+				if (box4.style.display == 'block') {
+					box4.style.display = 'none';
+				} else {
+					box4.style.display = 'block';
+				}
+			}
+		}
+	</script>
+</body>
+</html>

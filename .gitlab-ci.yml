@@ -1,0 +1,29 @@
+image: docker.whknow.kits/repository/kits/maven-build:0.0.5
+
+# cache
+cache:
+  key: maven-repository-cache
+  paths:
+    - .m2
+
+variables:
+  MAVEN_OPTS: "-Dmaven.repo.local=.m2"
+
+stages:
+  - deploy_test
+
+before_script:
+  - dockerd-entrypoint.sh > /dev/null 2>&1 &
+  - docker login -u $DOCKER_REGISTRY_USER -p $DOCKER_REGISTRY_PASSWORD $DOCKER_REGISTRY
+
+after_script:
+  - cd / && nexus-cli image delete -name repository/kits/kits-inms -keep 1
+deploy_test:
+  only:
+    - /^release-.*$/
+  stage: deploy_test
+  script:
+    - /bin/bash deploy_test.sh
+  environment:
+    name: inms
+    url: http://inms.whknow.kits

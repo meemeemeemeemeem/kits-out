@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ViewConfig>
+  <Arguments/>
+  <Context/>
+  <Model/>
+  <View>
+    <Label id="labelUserName">
+      <Property name="text">${loginUser.getCname()}</Property>
+      <Property name="exClassName">inline</Property>
+      <Property name="renderTo">#labelUserName</Property>
+      <Property name="style">
+        <Property name="line-height">34px</Property>
+      </Property>
+    </Label>
+    <Label id="labelCompany">
+      <Property name="exClassName">inline</Property>
+      <Property name="renderTo">#labelCompany</Property>
+      <Property name="style">
+        <Property name="line-height">34px</Property>
+      </Property>
+    </Label>
+    <Label id="labelYW">
+      <Property name="exClassName">inline</Property>
+      <Property name="renderTo">#dbyw</Property>
+      <Property name="text">0</Property>
+    </Label>
+    <Label id="labelYWdddcl" layoutConstraint="padding:3">
+      <Property name="text">0</Property>
+      <Property name="exClassName">inline</Property>
+      <Property name="renderTo">#dddcl</Property>
+    </Label>
+    <Label id="labelYWyddzc">
+      <Property name="exClassName">inline</Property>
+      <Property name="renderTo">#yddzc</Property>
+      <Property name="text">0</Property>
+    </Label>
+    <Label id="labelYWzcdfc">
+      <Property name="exClassName">inline</Property>
+      <Property name="renderTo">#zcdfc</Property>
+      <Property name="text">0</Property>
+    </Label>
+    <Label id="labelYWyddqs">
+      <Property name="exClassName">inline</Property>
+      <Property name="renderTo">#yddqs</Property>
+      <Property name="text">0</Property>
+    </Label>
+    <Label id="labelNotice0">
+      <Property name="text">暂无</Property>
+      <Property name="renderTo">#notice0</Property>
+      <Property name="exClassName">inline</Property>
+      <Property name="style">
+        <Property name="line-height">34px</Property>
+      </Property>
+    </Label>
+    <Label id="labelNotice1">
+      <Property name="exClassName">inline</Property>
+      <Property name="text">暂无</Property>
+      <Property name="renderTo">#notice1</Property>
+      <Property name="style">
+        <Property name="line-height">34px</Property>
+      </Property>
+    </Label>
+    <Label id="labelNotice2">
+      <Property name="exClassName">inline</Property>
+      <Property name="text">暂无</Property>
+      <Property name="renderTo">#notice2</Property>
+      <Property name="style">
+        <Property name="line-height">34px</Property>
+      </Property>
+    </Label>
+    <Label id="labelCW">
+      <Property name="exClassName">inline</Property>
+      <Property name="text">0</Property>
+      <Property name="renderTo">#dbcw</Property>
+    </Label>
+    <Label id="labelCWxfxfdhx">
+      <Property name="exClassName">inline</Property>
+      <Property name="text">0</Property>
+    </Label>
+    <Label id="labelCWdfdhx">
+      <Property name="exClassName">inline</Property>
+      <Property name="text">0</Property>
+    </Label>
+    <Label id="labelCWqfyjhfdhx">
+      <Property name="exClassName">inline</Property>
+      <Property name="text">0</Property>
+    </Label>
+    <Label id="labelCWhddkdhx">
+      <Property name="exClassName">inline</Property>
+      <Property name="text">0</Property>
+    </Label>
+    <Label id="labelCWzzdhx">
+      <Property name="exClassName">inline</Property>
+      <Property name="text">0</Property>
+      <Property name="renderTo">#zzdhx</Property>
+    </Label>
+    <Label id="labelCWdcysdhx">
+      <Property name="exClassName">inline</Property>
+      <Property name="text">0</Property>
+    </Label>
+    <Label id="labelCWsspfdhx">
+      <Property name="exClassName">inline</Property>
+      <Property name="text">0</Property>
+      <Property name="renderTo">#sspfdhx</Property>
+    </Label>
+    <Label id="labelCWdddhx">
+      <Property name="exClassName">inline</Property>
+      <Property name="text">0</Property>
+      <Property name="renderTo">#dddhx</Property>
+    </Label>
+    <Label id="labelHK">
+      <Property name="exClassName">inline</Property>
+      <Property name="renderTo">#dshk</Property>
+      <Property name="text">0</Property>
+    </Label>
+    <Label id="labelHKhkdhs">
+      <Property name="exClassName">inline</Property>
+      <Property name="renderTo">#hkdhs</Property>
+      <Property name="text">0</Property>
+    </Label>
+    <Label id="labelHKhkdhk">
+      <Property name="exClassName">inline</Property>
+      <Property name="renderTo">#hkdhk</Property>
+      <Property name="text">0</Property>
+    </Label>
+    <Label id="labelHKhkddz">
+      <Property name="exClassName">inline</Property>
+      <Property name="renderTo">#hkddz</Property>
+      <Property name="text">0</Property>
+    </Label>
+    <Label id="labelHKhkdff">
+      <Property name="exClassName">inline</Property>
+      <Property name="renderTo">#hkdff</Property>
+      <Property name="text">0</Property>
+    </Label>
+    <Label id="labelHD">
+      <Property name="exClassName">inline</Property>
+      <Property name="renderTo">#dbhd</Property>
+      <Property name="text">0</Property>
+    </Label>
+    <Label id="labelHDhddhs">
+      <Property name="exClassName">inline</Property>
+      <Property name="renderTo">#hddhs</Property>
+      <Property name="text">0</Property>
+    </Label>
+    <Label id="labelHDhddjc">
+      <Property name="exClassName">inline</Property>
+      <Property name="text">0</Property>
+      <Property name="renderTo">#hddjc</Property>
+    </Label>
+    <Label id="labelHDhddjs">
+      <Property name="exClassName">inline</Property>
+      <Property name="text">0</Property>
+      <Property name="renderTo">#hddjs</Property>
+    </Label>
+    <Label id="labelHDhddff">
+      <Property name="exClassName">inline</Property>
+      <Property name="text">0</Property>
+      <Property name="renderTo">#hddff</Property>
+    </Label>
+    <Label id="labelSJyysr">
+      <Property name="renderTo">#yysr</Property>
+      <Property name="text">0.00</Property>
+      <Property name="exClassName">inline</Property>
+    </Label>
+    <Label id="labelSJfyzc">
+      <Property name="renderTo">#fyzc</Property>
+      <Property name="text">0.00</Property>
+      <Property name="exClassName">inline</Property>
+    </Label>
+    <Label id="labelSJhkhs">
+      <Property name="renderTo">#hkhs</Property>
+      <Property name="text">0.00</Property>
+      <Property name="exClassName">inline</Property>
+    </Label>
+    <Label id="labelSJyds">
+      <Property name="renderTo">#yds</Property>
+      <Property name="text">0</Property>
+      <Property name="exClassName">inline</Property>
+    </Label>
+    <TextEditor id="teStartDate">
+      <Property name="renderTo">#startDate</Property>
+      <Property name="exClassName">inline</Property>
+      <Property name="width">90</Property>
+      <Property name="dataType">Date</Property>
+      <Property name="editable">false</Property>
+    </TextEditor>
+    <TextEditor id="teEndDate">
+      <Property name="renderTo">#endDate</Property>
+      <Property name="exClassName">inline</Property>
+      <Property name="width">90</Property>
+      <Property name="dataType">Date</Property>
+      <Property name="editable">false</Property>
+    </TextEditor>
+    <TextEditor id="teDateType">
+      <Property name="renderTo">#timeDate</Property>
+      <Property name="exClassName">inline</Property>
+      <Property name="width">90</Property>
+      <Property name="mapping">
+        <Property name="mapValues">
+          <Collection>
+            <Entity>
+              <Property name="key">0</Property>
+              <Property name="value">年统计</Property>
+            </Entity>
+            <Entity>
+              <Property name="key">1</Property>
+              <Property name="value">月统计</Property>
+            </Entity>
+            <Entity>
+              <Property name="key">2</Property>
+              <Property name="value">周统计</Property>
+            </Entity>
+          </Collection>
+        </Property>
+      </Property>
+      <Property name="trigger">autoMappingDropDown1</Property>
+      <Property name="editable">false</Property>
+    </TextEditor>
+    <TextEditor id="teGetDate">
+      <Property name="renderTo">#getDate</Property>
+      <Property name="exClassName">inline</Property>
+      <Property name="width">90</Property>
+      <Property name="dataType">Date</Property>
+      <Property name="editable">false</Property>
+    </TextEditor>
+    <Button id="btnQueryDate">
+      <Property name="caption">查询</Property>
+      <Property name="renderOn">#btnQueryDate</Property>
+    </Button>
+    <Button id="btnQueryTime">
+      <Property name="caption">查询</Property>
+      <Property name="renderOn">#btnQueryTime</Property>
+    </Button>
+    <AjaxAction id="aatnGetWelcomeNotice">
+      <Property name="service">welcomeService#getWelcomeNotice</Property>
+    </AjaxAction>
+    <AjaxAction id="aatnGetYYSJByCondition"/>
+    <AjaxAction id="aatnGetMyWork"/>
+  </View>
+</ViewConfig>

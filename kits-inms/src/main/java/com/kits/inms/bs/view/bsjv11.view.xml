@@ -1,0 +1,417 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ViewConfig>
+  <Arguments/>
+  <Context/>
+  <Model>
+    <DataType name="dtTbqualitydefects">
+      <Property name="creationType">com.kits.inms.bs.domain.Tbqualitydefects</Property>
+      <PropertyDef name="pkQualityDefects">
+        <Property></Property>
+        <Property name="label">质量缺陷主键</Property>
+      </PropertyDef>
+      <PropertyDef name="compId">
+        <Property></Property>
+        <Property name="label">公司别</Property>
+      </PropertyDef>
+      <PropertyDef name="qualityDefectsCode">
+        <Property></Property>
+        <Property name="label">质量缺陷代码</Property>
+        <Property name="required">true</Property>
+        <Validator name="validator1" type="length">
+          <Property name="maxLength">10</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="qualityDefectsName">
+        <Property></Property>
+        <Property name="label">质量缺陷名称</Property>
+        <Property name="required">true</Property>
+        <Validator name="validator1" type="length">
+          <Property name="maxLength">100</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="qualityDefectsType">
+        <Property></Property>
+        <Property name="label">质量缺陷分类</Property>
+        <Validator name="validator1" type="length">
+          <Property name="maxLength">4</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="createEmpNo">
+        <Property></Property>
+        <Property name="label">创建人员</Property>
+        <Property name="readOnly">true</Property>
+      </PropertyDef>
+      <PropertyDef name="createDate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">创建日期</Property>
+        <Property name="readOnly">true</Property>
+      </PropertyDef>
+      <PropertyDef name="modifyEmpNo">
+        <Property></Property>
+        <Property name="label">修改人员</Property>
+        <Property name="readOnly">true</Property>
+      </PropertyDef>
+      <PropertyDef name="modifyDate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">修改日期</Property>
+        <Property name="readOnly">true</Property>
+      </PropertyDef>
+      <PropertyDef name="defs01">
+        <Property></Property>
+        <Property name="label">自定义字符1</Property>
+      </PropertyDef>
+      <PropertyDef name="defs02">
+        <Property></Property>
+        <Property name="label">自定义字符2</Property>
+      </PropertyDef>
+      <PropertyDef name="defs03">
+        <Property></Property>
+        <Property name="label">自定义字符3</Property>
+      </PropertyDef>
+      <PropertyDef name="defs04">
+        <Property></Property>
+        <Property name="label">自定义字符4</Property>
+      </PropertyDef>
+      <PropertyDef name="defs05">
+        <Property></Property>
+        <Property name="label">自定义字符5</Property>
+      </PropertyDef>
+      <PropertyDef name="defb01">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">自定义数值1</Property>
+      </PropertyDef>
+      <PropertyDef name="defb02">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">自定义数值2</Property>
+      </PropertyDef>
+      <PropertyDef name="defb03">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">自定义数值3</Property>
+      </PropertyDef>
+      <PropertyDef name="defb04">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">自定义数值4</Property>
+      </PropertyDef>
+      <PropertyDef name="defb05">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">自定义数值5</Property>
+      </PropertyDef>
+      <PropertyDef name="defm01">
+        <Property></Property>
+        <Property name="label">自定义备注1</Property>
+      </PropertyDef>
+      <PropertyDef name="defm02">
+        <Property></Property>
+        <Property name="label">自定义备注2</Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="dsQuery">
+      <PropertyDef name="qualityDefectsCode">
+        <Property></Property>
+        <Property name="label">质量缺陷代码</Property>
+        <Validator name="validator1" type="length">
+          <Property name="maxLength">10</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="qualityDefectsName">
+        <Property></Property>
+        <Property name="label">质量缺陷名称</Property>
+        <Validator name="validator1" type="length">
+          <Property name="maxLength">100</Property>
+        </Validator>
+      </PropertyDef>
+    </DataType>
+  </Model>
+  <View>
+    <ClientEvent name="onCreate">functions = {&#xD;
+	&#xD;
+	&quot;insertOnclick&quot; : function(){&#xD;
+		var ds = view.get(&quot;#dsTbqualitydefects&quot;);&#xD;
+		ds.insert();&#xD;
+		var af = view.get(&quot;#afTbqualitydefects&quot;);&#xD;
+		af.getElement(&quot;qualityDefectsCode&quot;).set(&quot;readOnly&quot;,false);&#xD;
+		view.get(&quot;#dlTbqualitydefects&quot;).show();&#xD;
+	},&#xD;
+	&#xD;
+	&quot;saveOnclick&quot; : function(){&#xD;
+		var entity = view.get(&quot;#dsTbqualitydefects.data:#&quot;);&#xD;
+		var pk = entity.get(&quot;pkQualityDefects&quot;);&#xD;
+		 view.get(&quot;#saveTbqualitydefects&quot;).set({&#xD;
+            executingMessage: &quot;正在保存...&quot;,&#xD;
+            successMessage: &quot;保存成功！&quot;&#xD;
+        }).execute(function(){&#xD;
+			functions[&quot;checkButton&quot;]();&#xD;
+			view.get(&quot;#dlTbqualitydefects&quot;).hide();&#xD;
+			if (pk != null){&#xD;
+				functions[&quot;modifyOnclick&quot;]();&#xD;
+			}&#xD;
+        });&#xD;
+		&#xD;
+	},&#xD;
+	&#xD;
+	&quot;cancelOnclick&quot; : function(){&#xD;
+		var entity = view.get(&quot;#dsTbqualitydefects.data:#&quot;);&#xD;
+		var pk = entity.get(&quot;pkQualityDefects&quot;);&#xD;
+		if (pk == null){&#xD;
+			entity.cancel();&#xD;
+			view.get(&quot;#dlTbqualitydefects&quot;).hide();&#xD;
+		}else{&#xD;
+			view.get(&quot;#dlTbqualitydefects&quot;).hide();&#xD;
+			functions[&quot;modifyOnclick&quot;]();&#xD;
+		}&#xD;
+	},&#xD;
+	&#xD;
+	&quot;deleteOnclick&quot; : function(){&#xD;
+		var entity=view.get(&quot;#dsTbqualitydefects.data:#&quot;);&#xD;
+		var selection = view.get(&quot;#dgTbqualitydefects&quot;).get(&quot;selection&quot;);&#xD;
+		if(selection.length >= 1){&#xD;
+			if(entity){&#xD;
+				var options = {&#xD;
+				    callback: function(){&#xD;
+						if(selection.length >= 1){&#xD;
+							selection.each(function(data){&#xD;
+								data.remove();&#xD;
+							});&#xD;
+						}else{&#xD;
+							dorado.MessageBox.alert(&quot;请勾选需要删除的数据！&quot;);&#xD;
+						}&#xD;
+				        view.get(&quot;#saveTbqualitydefects&quot;).set({&#xD;
+							executingMessage:&quot;正在删除...&quot;,&#xD;
+							successMessage:&quot;删除成功！&quot;&#xD;
+						}).execute(function(){&#xD;
+							functions[&quot;checkButton&quot;]();&#xD;
+						});&#xD;
+			    	},&#xD;
+					icon : &quot;WARNING&quot;,&#xD;
+					title : &quot;删除确认&quot;&#xD;
+			    }&#xD;
+				dorado.MessageBox.confirm(&quot;您确定要删除此数据吗？&quot;, options);//删除数据&#xD;
+	&#xD;
+			}else{&#xD;
+				dorado.MessageBox.alert(&quot;没有数据可以删除!&quot;);&#xD;
+			}&#xD;
+		}else{&#xD;
+			dorado.MessageBox.alert(&quot;请勾选需要删除的数据！&quot;);&#xD;
+		}&#xD;
+		&#xD;
+	},&#xD;
+	&#xD;
+	&quot;modifyOnclick&quot; : function(){&#xD;
+		var selection = view.get(&quot;#dgTbqualitydefects&quot;).get(&quot;selection&quot;);&#xD;
+		if(selection.length > 0){&#xD;
+			var af = view.get(&quot;#afTbqualitydefects&quot;);&#xD;
+			af.getElement(&quot;qualityDefectsCode&quot;).set(&quot;readOnly&quot;,true);&#xD;
+			selection[0].setCurrent();&#xD;
+			view.get(&quot;#dlTbqualitydefects&quot;).show();&#xD;
+			selection.removeAt(0);&#xD;
+			view.set((&quot;#dgTbqualitydefects.selection&quot;),selection);&#xD;
+		}&#xD;
+	},&#xD;
+	&#xD;
+	&quot;queryOnclick&quot; : function(){&#xD;
+		var entity = view.get(&quot;#dsQuery.data:#&quot;);&#xD;
+		var qualityDefectsCode = entity.get(&quot;qualityDefectsCode&quot;);&#xD;
+		var qualityDefectsName = entity.get(&quot;qualityDefectsName&quot;);&#xD;
+		view.get(&quot;#dsTbqualitydefects&quot;).set(&quot;parameter&quot;,{&#xD;
+			&quot;qualityDefectsCode&quot; : qualityDefectsCode,&#xD;
+			&quot;qualityDefectsName&quot; : qualityDefectsName&#xD;
+		}).flushAsync(function(result){&#xD;
+			var size = result.entityCount;&#xD;
+			functions[&quot;checkButton&quot;]();&#xD;
+			if(size == 0){&#xD;
+				dorado.MessageBox.alert(&quot;未查到数据!&quot;);&#xD;
+			}&#xD;
+		});&#xD;
+	},&#xD;
+	&quot;checkButton&quot; : function(){&#xD;
+		var btModify = view.get(&quot;#modify&quot;);&#xD;
+		var btDelete = view.get(&quot;#delete&quot;);&#xD;
+		var data = view.get(&quot;#dsTbqualitydefects.data&quot;);&#xD;
+		var size = data.entityCount;&#xD;
+		if (size > 0){&#xD;
+			btDelete.set(&quot;disabled&quot;,false);&#xD;
+			btModify.set(&quot;disabled&quot;,false);&#xD;
+		}else {&#xD;
+			btDelete.set(&quot;disabled&quot;,true);&#xD;
+			btModify.set(&quot;disabled&quot;,true);&#xD;
+		}&#xD;
+	}&#xD;
+	&#xD;
+}&#xD;
+</ClientEvent>
+    <Property name="styleSheetFile">com/kits/saas/mw/style1.css</Property>
+    <Panel>
+      <Buttons/>
+      <Children>
+        <Panel>
+          <Property name="exClassName">panel0</Property>
+          <Buttons/>
+          <Children>
+            <AutoForm id="afQuery">
+              <Property name="dataSet">dsQuery</Property>
+              <Property name="cols">180,250,80,80</Property>
+              <AutoFormElement>
+                <Property name="name">qualityDefectsCode</Property>
+                <Property name="property">qualityDefectsCode</Property>
+                <Property name="labelWidth">100</Property>
+                <Editor/>
+              </AutoFormElement>
+              <AutoFormElement>
+                <Property name="name">qualityDefectsName</Property>
+                <Property name="property">qualityDefectsName</Property>
+                <Property name="labelWidth">100</Property>
+                <Editor/>
+              </AutoFormElement>
+              <Button id="query">
+                <ClientEvent name="onClick">functions[&quot;queryOnclick&quot;]();&#xD;
+</ClientEvent>
+                <Property name="caption">查询</Property>
+                <Property name="icon">url(>skin>common/icons.gif) -40px -100px</Property>
+              </Button>
+              <Button id="reset">
+                <ClientEvent name="onClick">var ds = view.get(&quot;#dsQuery&quot;);&#xD;
+var data = ds.getData(&quot;#&quot;);&#xD;
+data.cancel();&#xD;
+ds.insert();&#xD;
+</ClientEvent>
+                <Property name="caption">重置</Property>
+                <Property name="icon">url(>skin>common/icons.gif) -40px -240px</Property>
+              </Button>
+            </AutoForm>
+          </Children>
+          <Tools/>
+        </Panel>
+        <Panel>
+          <Buttons/>
+          <Children>
+            <ToolBar>
+              <Button id="insert">
+                <ClientEvent name="onClick">functions[&quot;insertOnclick&quot;]();&#xD;
+</ClientEvent>
+                <Property name="caption">资料新增</Property>
+                <Property name="icon">url(>skin>common/icons.gif) -120px 0px</Property>
+              </Button>
+              <Button id="modify">
+                <ClientEvent name="onClick">functions[&quot;modifyOnclick&quot;]();&#xD;
+</ClientEvent>
+                <Property name="caption">资料修改</Property>
+                <Property name="icon">url(>skin>common/icons.gif) -200px 0px</Property>
+              </Button>
+              <Button id="delete">
+                <ClientEvent name="onClick">functions[&quot;deleteOnclick&quot;]();&#xD;
+</ClientEvent>
+                <Property name="caption">资料删除</Property>
+                <Property name="icon">	url(>skin>common/icons.gif) -140px 0px</Property>
+              </Button>
+              <Fill/>
+              <DataPilot>
+                <Property name="dataSet">dsTbqualitydefects</Property>
+              </DataPilot>
+            </ToolBar>
+            <DataGrid id="dgTbqualitydefects">
+              <ClientEvent name="onDataRowClick">if(arg.column.get(&quot;caption&quot;)!=&quot;RowSelector&quot;){&#xD;
+	var selection = self.get(&quot;selection&quot;);&#xD;
+	var entity = self.get(&quot;dataSet&quot;).getData(&quot;#&quot;);&#xD;
+	self.set(&quot;selection&quot;,entity);&#xD;
+}</ClientEvent>
+              <ClientEvent name="onDataRowDoubleClick">functions[&quot;modifyOnclick&quot;]();</ClientEvent>
+              <Property name="dataSet">dsTbqualitydefects</Property>
+              <Property name="readOnly">true</Property>
+              <Property name="selectionMode">multiRows</Property>
+              <RowSelectorColumn/>
+              <DataColumn name="qualityDefectsCode">
+                <Property name="property">qualityDefectsCode</Property>
+              </DataColumn>
+              <DataColumn name="qualityDefectsName">
+                <Property name="property">qualityDefectsName</Property>
+              </DataColumn>
+              <DataColumn name="qualityDefectsType">
+                <Property name="property">qualityDefectsType</Property>
+              </DataColumn>
+            </DataGrid>
+          </Children>
+          <Tools/>
+        </Panel>
+      </Children>
+      <Tools/>
+    </Panel>
+    <DataSet id="dsTbqualitydefects">
+      <ClientEvent name="onLoadData">functions[&quot;checkButton&quot;]();</ClientEvent>
+      <Property name="dataType">[dtTbqualitydefects]</Property>
+      <Property name="pageSize">20</Property>
+      <Property name="dataProvider">bsjc11BO#queryTbqualitydefects</Property>
+    </DataSet>
+    <DataSet id="dsQuery">
+      <ClientEvent name="onReady">self.insert();&#xD;
+</ClientEvent>
+      <Property name="dataType">[dsQuery]</Property>
+    </DataSet>
+    <UpdateAction id="saveTbqualitydefects">
+      <Property name="dataResolver">bsjc11BO#saveTbqualitydefects</Property>
+      <UpdateItem>
+        <Property name="dataSet">dsTbqualitydefects</Property>
+      </UpdateItem>
+    </UpdateAction>
+    <Dialog id="dlTbqualitydefects">
+      <Property name="width">630</Property>
+      <Property name="height">250</Property>
+      <Property name="closeable">false</Property>
+      <Buttons>
+        <Button id="save">
+          <ClientEvent name="onClick">functions[&quot;saveOnclick&quot;]();&#xD;
+</ClientEvent>
+          <Property name="caption">保存</Property>
+          <Property name="icon">url(>skin>common/icons.gif) -140px -20px</Property>
+        </Button>
+        <Button id="cancel">
+          <ClientEvent name="onClick">functions[&quot;cancelOnclick&quot;]();&#xD;
+</ClientEvent>
+          <Property name="caption">取消</Property>
+          <Property name="icon">url(>skin>common/icons.gif) -40px -0px</Property>
+        </Button>
+      </Buttons>
+      <Children>
+        <AutoForm id="afTbqualitydefects">
+          <Property name="dataSet">dsTbqualitydefects</Property>
+          <Property name="labelWidth">100</Property>
+          <AutoFormElement layoutConstraint="colSpan:1">
+            <Property name="name">qualityDefectsCode</Property>
+            <Property name="property">qualityDefectsCode</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">qualityDefectsType</Property>
+            <Property name="property">qualityDefectsType</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement layoutConstraint="colSpan:2">
+            <Property name="name">qualityDefectsName</Property>
+            <Property name="property">qualityDefectsName</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">createEmpNo</Property>
+            <Property name="property">createEmpNo</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">createDate</Property>
+            <Property name="property">createDate</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">modifyEmpNo</Property>
+            <Property name="property">modifyEmpNo</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">modifyDate</Property>
+            <Property name="property">modifyDate</Property>
+            <Editor/>
+          </AutoFormElement>
+        </AutoForm>
+      </Children>
+      <Tools/>
+    </Dialog>
+  </View>
+</ViewConfig>

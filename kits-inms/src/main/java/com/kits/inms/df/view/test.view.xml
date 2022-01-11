@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ViewConfig>
+  <Arguments/>
+  <Context/>
+  <Model>
+    <DataType name="dtTest">
+      <PropertyDef name="compId">
+        <Property name="label">公司别</Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="dataType1">
+      <Property name="creationType">com.kits.saas.df.domain.Tbdf02</Property>
+    </DataType>
+  </Model>
+  <View>
+    <DataSet id="dsTest">
+      <ClientEvent name="onReady">self.insert();&#xD;
+</ClientEvent>
+      <Property name="dataType">[dtTest]</Property>
+    </DataSet>
+    <DataSet id="dsCompId">
+      <Property name="dataType">[dataType1]</Property>
+      <Property name="dataProvider">testBO#getCompMappings</Property>
+      <Property name="loadMode">lazy</Property>
+    </DataSet>
+    <AutoForm>
+      <Property name="dataSet">dsTest</Property>
+      <AutoFormElement>
+        <Property name="name">compId</Property>
+        <Property name="property">compId</Property>
+        <Property name="trigger">dataSetDropDown1</Property>
+        <Editor/>
+      </AutoFormElement>
+    </AutoForm>
+    <DataSetDropDown id="dataSetDropDown1">
+      <Property name="dataSet">dsCompId</Property>
+      <Property name="displayProperty">value</Property>
+      <Property name="property">name</Property>
+      <Property name="autoOpen">true</Property>
+      <Property name="postValueOnSelect">true</Property>
+      <Property name="filterOnOpen">true</Property>
+    </DataSetDropDown>
+  </View>
+</ViewConfig>
